@@ -1,0 +1,56 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+    defaultConfig {
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+
+    // 控件
+    api DepConfig.appcompat
+    api DepConfig.ConstraintLayout
+    api DepConfig.RecyclerView
+    api DepConfig.CardView
+    api DepConfig.RWidgetHelper
+    api DepConfig.BasePopup
+    api DepConfig.BaseRecyclerViewAdapterHelper
+    api DepConfig.ImagePreview
+    api DepConfig.PickerView
+    api DepConfig.QrCode
+    api DepConfig.LoadSir
+    api DepConfig.Matisse
+    api DepConfig.UCrop
+    api DepConfig.AgentWeb
+
+    // 工具
+    api DepConfig.kotlin
+    api DepConfig.coreKtx
+    api DepConfig.multiDex
+    api DepConfig.AndroidUtilCode
+    api DepConfig.RxJava2
+    api DepConfig.RxAndroid2
+    api DepConfig.RxBus
+    api DepConfig.RxLifecycleComponents3
+    api DepConfig.RxLifecycleKotlin3
+    api DepConfig.Retrofit
+    api DepConfig.RetrofitGson
+    api DepConfig.RetrofitConverter
+    api DepConfig.RetrofitRxJavaAdapter
+    api DepConfig.RetrofitUrlManager
+    api DepConfig.Glide
+    api DepConfig.ARouter
+    api DepConfig.LuBan
+    api DepConfig.Crash
+
+    // 插件
+    debugApi DepConfig.DoraemonKitDebug
+    releaseApi DepConfig.DoraemonKitRelease
+
+}

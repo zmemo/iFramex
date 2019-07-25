@@ -1,0 +1,30 @@
+apply plugin: 'com.alibaba.arouter'
+
+buildscript {
+    repositories {
+        jcenter()
+        google()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://dl.bintray.com/cjt/maven' }
+    }
+    dependencies {
+        classpath DepConfig.gradle
+        classpath DepConfig.gradleKotlin
+        classpath DepConfig.gradleKotlinAndroid
+        classpath DepConfig.gradleArouter
+        classpath DepConfig.aspectjx
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        google()
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://dl.bintray.com/cjt/maven' }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

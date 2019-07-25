@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.memo.ui">
+    
+    <application android:theme="@style/iTheme" >
+        <activity android:name=".web.WebActivity"/>
+        <activity android:name=".qrcode.QrcodeScanActivity"/>
+    </application>
+</manifest>

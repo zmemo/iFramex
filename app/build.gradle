@@ -1,0 +1,88 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+
+    defaultConfig {
+        applicationId Config.applicationId
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+        testInstrumentationRunner Config.androidJunitRunner
+        multiDexEnabled true
+        resConfigs "zh"
+    }
+
+    signingConfigs {
+        sign {
+            keyAlias 'iFrame'
+            keyPassword 'zhoumemo'
+            storeFile file('iFrame.jks')
+            storePassword 'zhoumemo'
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled true
+            signingConfig signingConfigs.sign
+            applicationIdSuffix '.test'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def time = new Date().format("MM-dd-HH-mm", TimeZone.getDefault())
+                    outputFileName = "debug-v${variant.versionName}-${time}.apk"
+                }
+            }
+        }
+        release {
+            minifyEnabled true
+            zipAlignEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.sign
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            android.applicationVariants.all { variant ->
+                variant.outputs.all {
+                    def time = new Date().format("MM-dd-HH-mm", TimeZone.getDefault())
+                    outputFileName = "release-v${variant.versionName}-${time}.apk"
+                }
+            }
+        }
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+        ignoreWarnings true
+    }
+
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
+    }
+
+    dexOptions {
+        preDexLibraries true
+        maxProcessCount 8
+        javaMaxHeapSize "4g"
+    }
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+
+dependencies {
+    testImplementation DepConfig.junit
+    androidTestImplementation DepConfig.testJunit
+    androidTestImplementation DepConfig.testEspresso
+
+    implementation project(path: ':iFrameUi')
+
+}

@@ -1,0 +1,17 @@
+rootProject.name = 'iFramex'
+
+
+include ':app',
+
+        ':iFrameUi',
+
+        ':iFrameBase',
+
+        ':iFrameWidget',
+
+        ':iFrameTool',
+
+        ':iFrameBasic'
+
+
+
