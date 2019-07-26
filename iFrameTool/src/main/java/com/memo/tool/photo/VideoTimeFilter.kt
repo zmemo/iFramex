@@ -13,7 +13,7 @@ import java.util.*
  * describe:默认15秒
  *
  * @author zhou
- * @date 2019-04-26 17:40
+ * @date 2019-09-26 17:40
  */
 class VideoTimeFilter(private val timeSecond: Int = 15) : Filter() {
 

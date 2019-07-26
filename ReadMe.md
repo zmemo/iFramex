@@ -1,17 +1,19 @@
 #### 项目结构
 
 版本： 
-androidx   
-minSdkVersion 19  
-targetSdkVersion：27   
-compileSdkVersion：28   
+androidx    
+targetSdkVersion：27 
+compileSdkVersion：28    
 语言：Kotlin   
 模式：MVP  
 
 ##### buildSrc
 该模块主要是放置第三方依赖包，以及一些配置文件   
-使用config.gradle的时候，如果需要更改都需要重新同步一次  
 缺点是在AS3.3和AS3.4中无法提示，需要手动复制  
+在修改完之后需要手动进行同步
+***Config*** App的一些基本配置
+***DepConfig*** 依赖包的基本配置
+***ModuleConfig*** 模块化划分的基础配置
 
 #### iFrameBasic
 该模块放置使用api导入第三方依赖包，jar，so，aar等等  
@@ -41,3 +43,9 @@ compileSdkVersion：28
 该模块为项目中的独立界面模块，implementation依赖iFrameBase  
 内部存放一些通用界面，比如二维码扫描，网页界面等一些不需要进行业务逻辑的界面  
 通过RouterManager进行启动  
+
+#### ModuleTest
+一些示例代码都卸载ModuleTest中
+
+给自己的提示：需要使用的时候把项目拉下来，看下是如何配置的，因为会经常修改
+一些常见的错误提示都写在笔记里了注意看
