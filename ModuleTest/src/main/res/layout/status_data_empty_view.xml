@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/empty_view"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<TextView
+		android:id="@+id/statue_empty_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:drawableTop="@drawable/status_no_data"
+		android:drawablePadding="@dimen/dp15"
+		android:gravity="center"
+		android:text="暂无数据"
+		android:textColor="#666666"
+		android:textSize="@dimen/sp18" />
+
+</FrameLayout>

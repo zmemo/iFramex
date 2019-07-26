@@ -1,0 +1,49 @@
+
+//----------------------------------------后台----------------------------------------
+1.建议所有的返回提示语句都放在后台接口返回
+2.建议后台应预留黑名单权限 限制该账号无法进行主动操作
+3.必须 限制后台接口返回的数据类型必须匹配 List类型不能返回null 文档中必须标注字段是否可为空
+  建议接口所有的返回值都添加默认值而不是返回null 特别是String类型
+  建议接口把不需要的数据都剔除 select * 很简单但是真的很Low Low爆了
+4.建议后台添加一条接口可以在接口onError回调中把错误信息返回后台 在测试环境中可以把错误日志放在本地
+
+
+//----------------------------------------前端----------------------------------------
+
+1.数据库 需要进行加密和升级处理 GreenDao可以查看 https://www.jianshu.com/p/438589bb5f75
+2.如果使用SharedPreferences进行存储数据 重要数据需要进行加密存储 EncryptHelper工具类
+  如果某些情况下需要存储大量数据 请在子线程中操作 ThreadUtils 注意合适的时候取消task
+3.在数据库增删改查的操作都需要放在子线程中操作 必须的必 就算是1条数据
+4.Glide加载图片如果是加载图片作为背景可以使用into(mLl.getTarget)
+
+
+
+
+
+
+
+
+RecyclerView优化 一句话思路 空间换取时间 使用内存空间来换取数据转化的时间
+1.在Adapter中最好不要进行任何的逻辑操作，比如日期转换,字符串切割等等,可以在model内部自行添加一个参数来
+  存储数据转换后的结果,这样数据逻辑操作就只执行一次，而不会随着数据回收重复计算
+2.新增删除数据不刷线全部，而是刷新局部
+3.布局优化，尽量少的布局嵌套，尽量少的控件
+4.对于一些RecyclerView嵌套RecyclerView的布局可以进行多布局展示，而不是使用嵌套
+5.xml文件的读取,尽量使用对象创建的形式进行
+6.如果RecyclerView条目高度固定，使用setHasFixedSize(true),避免多次测量条目高度
+7.对于RecyclerView，如果不需要动画，就把条目显示动画取消setSupportsChangeAnimations(false)
+8.在RecyclerView添加滑动监听，一些图片加载可以在RecyclerView快速滑动的时候不进行加载图片
+9.对于一个页面中的多个RecyclerView,如果使用同一个Adapter，可以使用setRecycledViewPool(pool)，共用回收池，
+  避免来每一个RecyclerView都创建一个回收池，特别是RecyclerView嵌套RecyclerView时候，
+  内部的RecyclerView必定使用的都是同一个Adapter，这个时候就很有必要使用回收池了
+10.视情况使用setItemViewCacheSize(size)来加大RecyclerView缓存数目，用空间换取时间提高流畅度
+11.对于条目点击时间不要在复用部分进行setOnClickListener，这样会重复设置点击监听，而是应该创建一个listener对象，
+   传入控件的id，和当前的条目position，通过id和position判断处理点击监听
+12.可以进行预加载,重写LayoutManager的getExtraLayoutSpace()方法,可以返回屏幕高度,预先加载一屏幕高度的数据,
+   视情况，图片加载可以使用Glide的preload()预加载，在展示图片的时候就不用重新加载图片了
+
+
+
+
+
+

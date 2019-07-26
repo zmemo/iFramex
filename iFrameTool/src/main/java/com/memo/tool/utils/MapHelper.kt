@@ -5,7 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.LogUtils
-import com.blankj.utilcode.util.Utils
+import com.memo.tool.app.BaseApp
 
 /**
  * title:地图帮助类
@@ -34,7 +34,7 @@ object MapHelper {
             val intent = Intent()
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.data = Uri.parse(uri)
-            Utils.getApp().applicationContext.startActivity(intent)
+            BaseApp.app.applicationContext.startActivity(intent)
         } else {
             toast("暂未安装高德地图")
         }
@@ -55,7 +55,7 @@ object MapHelper {
             val intent = Intent()
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.data = Uri.parse(uri)
-            Utils.getApp().applicationContext.startActivity(intent)
+            BaseApp.app.applicationContext.startActivity(intent)
         } else {
             toast("暂未安装百度地图")
         }
@@ -76,7 +76,7 @@ object MapHelper {
             val intent = Intent()
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
             intent.data = Uri.parse(uri)
-            Utils.getApp().applicationContext.startActivity(intent)
+            BaseApp.app.applicationContext.startActivity(intent)
         } else {
             toast("暂未安装腾讯地图")
         }
@@ -110,7 +110,7 @@ object MapHelper {
         LogUtils.iTag("Navi", uri)
         intent.data = Uri.parse(uri)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        Utils.getApp().applicationContext.startActivity(intent)
+        BaseApp.app.applicationContext.startActivity(intent)
     }
 
     var pi = 3.1415926535897932384626

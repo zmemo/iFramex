@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".map.MapActivity">
+	
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="地图导航" />
+	
+	<Button
+		android:id="@+id/mBtnGaode"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="高德地图" />
+	
+	<Button
+		android:id="@+id/mBtnBaidu"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="百度地图" />
+	
+	<Button
+		android:id="@+id/mBtnTencent"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="腾讯地图" />
+	
+	<Button
+		android:id="@+id/mBtnWeb"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="网页地图" />
+
+</LinearLayout>

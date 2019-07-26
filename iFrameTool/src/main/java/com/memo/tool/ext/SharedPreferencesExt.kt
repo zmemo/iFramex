@@ -3,7 +3,7 @@ package com.memo.tool.ext
 import android.content.Context
 import android.content.SharedPreferences
 import com.blankj.utilcode.util.AppUtils
-import com.blankj.utilcode.util.Utils
+import com.memo.tool.app.BaseApp
 
 /**
  * title:对SharedPreferences的拓展
@@ -13,7 +13,7 @@ import com.blankj.utilcode.util.Utils
  * @date 2019-01-29 17:09
  */
 fun sp(): SharedPreferences =
-    Utils.getApp().applicationContext.getSharedPreferences(
+    BaseApp.app.applicationContext.getSharedPreferences(
         AppUtils.getAppName(),
         Context.MODE_PRIVATE
     )

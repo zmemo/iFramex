@@ -540,8 +540,12 @@ object StatusBarHelper {
         }
     }
 
+    /**
+     * 设置状态栏颜色亮色调 白色
+     * @param activity Activity
+     */
     @TargetApi(Build.VERSION_CODES.M)
-    fun setLightMode(activity: Activity) {
+    fun setStatusTextDarkMode(activity: Activity) {
         setMIUIStatusBarDarkIcon(activity, true)
         setMeizuStatusBarDarkIcon(activity, true)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -550,8 +554,12 @@ object StatusBarHelper {
         }
     }
 
+    /**
+     * 设置状态栏颜色暗色调 黑色
+     * @param activity Activity
+     */
     @TargetApi(Build.VERSION_CODES.M)
-    fun setDarkMode(activity: Activity) {
+    fun setStatusTextLightMode(activity: Activity) {
         setMIUIStatusBarDarkIcon(activity, false)
         setMeizuStatusBarDarkIcon(activity, false)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {

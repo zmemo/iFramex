@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".download.DownLoadActivity">
+	
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="下载演示" />
+	
+	<Button
+		android:id="@+id/mBtnService"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="使用IntentService下载" />
+	
+	<Button
+		android:id="@+id/mBtnManager"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="使用DownLoadManager下载" />
+</LinearLayout>

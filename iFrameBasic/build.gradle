@@ -21,7 +21,6 @@ dependencies {
     api DepConfig.RWidgetHelper
     api DepConfig.BasePopup
     api DepConfig.BaseRecyclerViewAdapterHelper
-    api DepConfig.ImagePreview
     api DepConfig.PickerView
     api DepConfig.QrCode
     api DepConfig.LoadSir
@@ -46,11 +45,15 @@ dependencies {
     api DepConfig.RetrofitUrlManager
     api DepConfig.Glide
     api DepConfig.ARouter
+
+    // zmemo
     api DepConfig.LuBan
     api DepConfig.Crash
+    api DepConfig.ImagePreview
+    api DepConfig.proguard
 
     // 插件
+    debugApi DepConfig.LeakCanaryDebug
     debugApi DepConfig.DoraemonKitDebug
     releaseApi DepConfig.DoraemonKitRelease
-
 }

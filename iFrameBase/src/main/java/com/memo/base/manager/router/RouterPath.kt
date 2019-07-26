@@ -20,4 +20,12 @@ class RouterPath {
         const val WebActivity = "/iFrameUi/WebActivity"
     }
 
+    /**
+     * Test模块
+     */
+    object Test {
+        // 测试页面
+        const val TestActivity = "/Test/TestActivity"
+    }
+
 }

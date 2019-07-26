@@ -1,14 +1,13 @@
 package com.memo.base.application
 
-import android.app.Application
-import androidx.multidex.MultiDexApplication
 import com.alibaba.android.arouter.launcher.ARouter
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.Utils
 import com.didichuxing.doraemonkit.DoraemonKit
 import com.memo.base.R
-import com.memo.crashhunter.CrashHunter
 import com.memo.base.config.config.Config
+import com.memo.crashhunter.CrashHunter
+import com.memo.tool.app.BaseApp
 import com.memo.tool.preview.PreviewImageLoader
 import com.previewlibrary.ZoomMediaLoader
 
@@ -19,7 +18,8 @@ import com.previewlibrary.ZoomMediaLoader
  * @author zhou
  * @date 2018-11-15 下午6:03
  */
-open class BaseApplication : MultiDexApplication() {
+open class BaseApplication : BaseApp() {
+
 
     override fun onCreate() {
         super.onCreate()

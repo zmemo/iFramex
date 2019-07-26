@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	package="com.memo.test">
+	
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	
+	<application
+		android:name=".App"
+		android:allowBackup="true"
+		android:icon="@mipmap/ic_launcher"
+		android:label="@string/app_name"
+		android:roundIcon="@mipmap/ic_launcher_round"
+		android:supportsRtl="true"
+		android:theme="@style/iTheme"
+		tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
+		
+		<activity android:name=".TestActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity android:name=".retrofit.RetrofitActivity" />
+		<activity android:name=".bus.BusSubscribeActivity" />
+		<activity android:name=".bus.BusPostActivity" />
+		<activity android:name=".sw.SmallestWidthActivity" />
+		<activity android:name=".download.DownLoadActivity" />
+		<activity android:name=".ninegridview.NineGridActivity" />
+		<activity android:name=".status.LoadSirActivity" />
+		<activity android:name=".matisse.MatisseSelectActivity" />
+		<activity android:name=".notification.NotificationActivity" />
+		<activity android:name=".map.MapActivity" />
+		<activity android:name=".anim.AnimActivity" />
+		<activity android:name=".share.ShareToActivity" />
+		<activity android:name=".share.ShareFromActivity" />
+		
+		<service android:name=".download.DownloadService" />
+	</application>
+
+</manifest>

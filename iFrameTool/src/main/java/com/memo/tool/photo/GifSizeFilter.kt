@@ -13,7 +13,7 @@ import java.util.*
 class GifSizeFilter(
     private var mMinWidth: Int = 320,
     private val mMinHeight: Int = 320,
-    private val mMaxSize: Int = 5 * K * K
+    private val mMaxSize: Int = 1 * K * K
 ) : Filter() {
 
     public override fun constraintTypes(): Set<MimeType> {

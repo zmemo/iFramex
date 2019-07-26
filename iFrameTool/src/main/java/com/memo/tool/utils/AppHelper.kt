@@ -2,7 +2,7 @@ package com.memo.tool.utils
 
 import android.content.pm.PackageInfo
 import android.content.pm.PackageManager
-import com.blankj.utilcode.util.Utils
+import com.memo.tool.app.BaseApp
 import java.util.*
 
 /**
@@ -93,7 +93,7 @@ object AppHelper {
      */
     private fun isAvailable(packageName: String): Boolean {
         // 获取PackageManager
-        val packageManager: PackageManager = Utils.getApp().applicationContext.packageManager
+        val packageManager: PackageManager = BaseApp.app.applicationContext.packageManager
         // 获取所有已安装程序的包信息
         val packageInfoLists: List<PackageInfo> = packageManager.getInstalledPackages(0)
         // 用于存储所有已安装程序的包名

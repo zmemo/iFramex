@@ -5,12 +5,14 @@ import android.view.Gravity
 import android.view.View
 import android.view.animation.Animation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.SimpleItemAnimator
+import com.memo.tool.R
 import com.memo.tool.adapter.BaseRecyclerAdapter
 import com.memo.tool.dialog.listener.OnListItemClickListener
-import com.memo.tool.R
 import com.memo.tool.ext.onClick
 import kotlinx.android.synthetic.main.dialog_bottom_list.view.*
 import razerdp.basepopup.BasePopupWindow
+
 
 /**
  * title:
@@ -64,7 +66,7 @@ class BottomListDialog constructor(context: Context, private val data: ArrayList
      * 创建布局
      */
     override fun onCreateContentView(): View {
-        return createPopupById(R.layout.dialog_bottom_list)
+        return createPopupById(com.memo.tool.R.layout.dialog_bottom_list)
     }
 
     /**
@@ -74,6 +76,8 @@ class BottomListDialog constructor(context: Context, private val data: ArrayList
         contentView.mTvClose.onClick { dismiss() }
         contentView.mRvContent.layoutManager = LinearLayoutManager(context)
         contentView.mRvContent.adapter = mAdapter
+        contentView.mRvContent.setHasFixedSize(true)
+        (contentView.mRvContent.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         mAdapter.setNewData(data)
         mAdapter.setOnItemClickListener { _, _, position ->
             mListener?.onItemClick(position, mAdapter.data[position])

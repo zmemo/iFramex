@@ -84,5 +84,6 @@ dependencies {
     androidTestImplementation DepConfig.testEspresso
 
     implementation project(path: ':iFrameUi')
+    if (!ModuleConfig.isModuleTestRunAlone) implementation project(path: ':ModuleTest')
 
 }

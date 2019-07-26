@@ -28,7 +28,8 @@ class RouterManager {
      * @param requestCode Int
      */
     fun startQrCodeActivityForResult(activity: Activity, requestCode: Int) {
-        ARouter.getInstance().build(RouterPath.Ui.QrcodeScanActivity).navigation(activity, requestCode)
+        ARouter.getInstance().build(RouterPath.Ui.QrcodeScanActivity)
+            .navigation(activity, requestCode)
     }
 
     /**
@@ -41,6 +42,13 @@ class RouterManager {
             .withString("url", url)
             .withString("title", title)
             .navigation()
+    }
+
+    /**
+     * 跳转测试界面
+     */
+    fun startTestActivity() {
+        ARouter.getInstance().build(RouterPath.Test.TestActivity).navigation()
     }
 
 }

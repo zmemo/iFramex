@@ -1,12 +1,12 @@
 package com.memo.base.manager.bus
 
 /**
- * title:
+ * title:RxBus的Tag
  * describe:
  *
  * @author zhou
  * @date 2019-01-30 14:02
  */
 object BusTag {
-    const val TAG_MAIN: String = "OtherActivityTag"
+    const val TAG_MAIN: String = "MainActivity"
 }

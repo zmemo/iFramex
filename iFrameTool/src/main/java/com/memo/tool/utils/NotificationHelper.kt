@@ -10,6 +10,7 @@ import android.content.Intent
 import android.os.Build
 import android.text.TextUtils
 import androidx.core.app.NotificationCompat
+import com.memo.tool.app.BaseApp
 
 /**
  * title:通知帮助
@@ -32,8 +33,7 @@ object NotificationHelper {
      * @param pendingIntent 点击后的intent
      */
     @JvmStatic
-    fun setMessageNotification(
-        context: Context,
+    fun sendMessageNotification(
         notifyId: Int,
         channelId: String,
         channelName: String,
@@ -43,13 +43,13 @@ object NotificationHelper {
         ticker: CharSequence? = null,
         pendingIntent: PendingIntent? = null
     ) {
-        val builder: NotificationCompat.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationCompat.Builder(context, channelId)
-        } else {
-            NotificationCompat.Builder(context)
-        }
+        val builder: NotificationCompat.Builder =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationCompat.Builder(BaseApp.app.applicationContext, channelId)
+            } else {
+                NotificationCompat.Builder(BaseApp.app.applicationContext)
+            }
         builder.setSmallIcon(smallIconId)
-            // .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.mipmap.iframe))
             .setContentTitle(title)
             .setContentText(summary)
             .setAutoCancel(true)
@@ -60,9 +60,17 @@ object NotificationHelper {
         if (pendingIntent != null) {
             builder.setContentIntent(pendingIntent)
         } else {
-            builder.setContentIntent(PendingIntent.getBroadcast(context, 0, Intent(), PendingIntent.FLAG_UPDATE_CURRENT))
+            builder.setContentIntent(
+                PendingIntent.getBroadcast(
+                    BaseApp.app.applicationContext,
+                    0,
+                    Intent(),
+                    PendingIntent.FLAG_UPDATE_CURRENT
+                )
+            )
         }
-        val manager = createNotificationManager(context, channelId, channelName)
+        val manager =
+            createNotificationManager(BaseApp.app.applicationContext, channelId, channelName)
         manager.notify(notifyId, builder.build())
     }
 
@@ -70,26 +78,46 @@ object NotificationHelper {
      * 设置进度通知
      *
      * @param notifyId 消息ID
+     * @param channelId 渠道id
+     * @param channelName 渠道名称 这个在app设置界面可以看到一般为 这条通知的作用 比如应用更新 消息通知
+     * @param smallIconId 通知栏小图标
      * @param title 标题
      * @param progress 进度（0-100）
      */
     @JvmStatic
-    fun setProgressNotification(context: Context, notifyId: Int, channelId: String, channelName: String, smallIconId: Int, title: CharSequence, progress: Int) {
-        setProgressNotification(context, notifyId, channelId, channelName, smallIconId, title, null, progress)
+    fun sendProgressNotification(
+        notifyId: Int,
+        channelId: String,
+        channelName: String,
+        smallIconId: Int,
+        title: CharSequence,
+        progress: Int
+    ) {
+        sendProgressNotification(
+            notifyId,
+            channelId,
+            channelName,
+            smallIconId,
+            title,
+            null,
+            progress
+        )
     }
 
     /**
      * 设置下载进度通知
      *
      * @param notifyId 消息ID
+     * @param channelId 渠道id
+     * @param channelName 渠道名称 这个在app设置界面可以看到一般为 这条通知的作用 比如应用更新 消息通知
+     * @param smallIconId 通知栏小图标
      * @param title 标题
      * @param ticker 出现消息时状态栏的提示文字
      * @param progress 进度（0-100）
      * @param pendingIntent 点击后的intent
      */
     @JvmStatic
-    fun setProgressNotification(
-        context: Context,
+    fun sendProgressNotification(
         notifyId: Int,
         channelId: String,
         channelName: String,
@@ -99,28 +127,37 @@ object NotificationHelper {
         progress: Int,
         pendingIntent: PendingIntent? = null
     ) {
-        val builder: NotificationCompat.Builder = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationCompat.Builder(context, channelId)
-        } else {
-            NotificationCompat.Builder(context)
-        }
+        val builder: NotificationCompat.Builder =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationCompat.Builder(BaseApp.app.applicationContext, channelId)
+            } else {
+                NotificationCompat.Builder(BaseApp.app.applicationContext)
+            }
         builder.setSmallIcon(smallIconId)
             // .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable-xhdpi.iframe))
             .setContentTitle(title)
             .setProgress(100, progress, progress == 0)
-            .setOngoing(progress < 100)
-            .setAutoCancel(progress == 100)
+            .setOngoing(progress < 99)
+            .setAutoCancel(progress > 99)
             // 表示只声音提示一次
             .setOnlyAlertOnce(true)
         if (pendingIntent != null) {
             builder.setContentIntent(pendingIntent)
         } else {
-            builder.setContentIntent(PendingIntent.getBroadcast(context, 0, Intent(), PendingIntent.FLAG_UPDATE_CURRENT))
+            builder.setContentIntent(
+                PendingIntent.getBroadcast(
+                    BaseApp.app.applicationContext,
+                    0,
+                    Intent(),
+                    PendingIntent.FLAG_UPDATE_CURRENT
+                )
+            )
         }
         if (!TextUtils.isEmpty(ticker)) {
             builder.setTicker(ticker)
         }
-        val manager = createNotificationManager(context, channelId, channelName)
+        val manager =
+            createNotificationManager(BaseApp.app.applicationContext, channelId, channelName)
         manager.notify(notifyId, builder.build())
     }
 
@@ -142,14 +179,20 @@ object NotificationHelper {
         sNotificationManager?.cancelAll()
     }
 
-    private fun createNotificationManager(context: Context, channelId: String, channelName: String): NotificationManager {
+    private fun createNotificationManager(
+        context: Context,
+        channelId: String,
+        channelName: String
+    ): NotificationManager {
         if (sNotificationManager != null) {
             return sNotificationManager!!
         }
-        sNotificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        sNotificationManager =
+            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         // 适配>=7.0手机通知栏显示问题
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel = NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
+            val notificationChannel =
+                NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
             sNotificationManager!!.createNotificationChannel(notificationChannel)
         }
         return sNotificationManager!!

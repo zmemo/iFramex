@@ -13,15 +13,15 @@ import android.media.MediaRecorder
 import androidx.annotation.IntRange
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.FileUtils
-import com.blankj.utilcode.util.Utils
 import com.memo.tool.R
+import com.memo.tool.app.BaseApp
 import com.memo.tool.constant.LocalDir
 import com.memo.tool.photo.GifSizeFilter
 import com.memo.tool.photo.Glide4Engine
+import com.memo.tool.photo.VideoTimeFilter
 import com.yalantis.ucrop.UCrop
 import com.zhihu.matisse.Matisse
 import com.zhihu.matisse.MimeType
-import com.zhihu.matisse.SelectionCreator
 import com.zhihu.matisse.internal.entity.CaptureStrategy
 import com.zhihu.matisse.internal.utils.MediaStoreCompat
 import io.reactivex.Flowable
@@ -50,10 +50,10 @@ object MediaHelper {
     @JvmStatic
     fun refreshAlbum(file: File?) {
         if (file != null && file.exists()) {
-            Utils.getApp().applicationContext.sendBroadcast(
+            BaseApp.app.applicationContext.sendBroadcast(
                 Intent(
                     Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-                    FileProvider7Helper.getUriForFile(Utils.getApp().applicationContext, file)
+                    FileProvider7Helper.getUriForFile(BaseApp.app.applicationContext, file)
                 )
             )
         }
@@ -133,6 +133,26 @@ object MediaHelper {
         }
 
     /**
+     * 选择视频
+     * @param activity Activity
+     * @param requestCode Int
+     */
+    @JvmStatic
+    fun chooseVideo(activity: Activity, requestCode: Int) {
+        Matisse.from(activity)
+            .choose(MimeType.ofVideo())
+            .addFilter(VideoTimeFilter())
+            .countable(true)
+            .showSingleMediaType(true)
+            .maxSelectable(1)
+            .thumbnailScale(0.8f)
+            .theme(R.style.Matisse_Zhihu)
+            .imageEngine(Glide4Engine())
+            .autoHideToolbarOnSingleTap(true)
+            .forResult(requestCode)
+    }
+
+    /**
      * 选择相册图片
      * @param mActivity 上下文
      * @param showCapture 是否显示照相
@@ -143,26 +163,29 @@ object MediaHelper {
     fun choosePhoto(
         mActivity: Activity,
         showCapture: Boolean, @IntRange(from = 1, to = 9) chooseSize: Int,
-        requestCode: Int
+        requestCode: Int,
+        chooseGif: Boolean = true
     ) {
         if (chooseSize < 1) {
             return
         }
-        val creator: SelectionCreator = Matisse.from(mActivity)
+        val matisse = Matisse.from(mActivity)
+        val creator = if (!chooseGif) {
             // 不使用gif
-            //.choose(MimeType.of( MimeType.JPEG, MimeType.PNG, MimeType.BMP, MimeType.WEBP))
+            matisse.choose(MimeType.of(MimeType.JPEG, MimeType.PNG, MimeType.BMP, MimeType.WEBP))
+        } else {
             // 使用gif
-            .choose(MimeType.ofImage())
+            matisse.choose(MimeType.ofImage())
+        }
         if (showCapture) {
             creator
                 .capture(true)
                 .captureStrategy(CaptureStrategy(true, MATISSE_PROVIDER, "capture"))
         }
-        creator.countable(true)
+        creator.addFilter(GifSizeFilter())
+            .countable(true)
             .showSingleMediaType(true)
             .maxSelectable(chooseSize)
-            // 如果需要使用gif 可以选择添加gif大小筛选
-            .addFilter(GifSizeFilter())
             .thumbnailScale(0.8f)
             .theme(R.style.Matisse_Zhihu)
             .imageEngine(Glide4Engine())
@@ -228,6 +251,16 @@ object MediaHelper {
         // 开始裁剪
         uCrop.start(mActivity, requestCode)
         return outFile.absolutePath
+    }
+
+    /**
+     * 从Intent中获取图片路径地址
+     * @param intent Intent
+     */
+    @JvmStatic
+    fun obtainPathResult(intent: Intent?): MutableList<String> {
+        intent ?: return arrayListOf()
+        return Matisse.obtainPathResult(intent) ?: arrayListOf()
     }
 
     /**

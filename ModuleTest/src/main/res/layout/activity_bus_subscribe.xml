@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".bus.BusSubscribeActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="RxBus接收" />
+	
+	
+	<Button
+		android:id="@+id/mBtnBus"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="跳转发送界面" />
+	
+	<TextView
+		android:id="@+id/mTvBus"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:text="这里是传递过来的数据" />
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.memo.test">
+	
+	<application>
+		<activity android:name=".TestActivity" />
+		<activity android:name=".retrofit.RetrofitActivity" />
+		<activity android:name=".bus.BusSubscribeActivity" />
+		<activity android:name=".bus.BusPostActivity" />
+		<activity android:name=".sw.SmallestWidthActivity" />
+		<activity android:name=".download.DownLoadActivity" />
+		<activity android:name=".ninegridview.NineGridActivity" />
+		<activity android:name=".status.LoadSirActivity" />
+		<activity android:name=".matisse.MatisseSelectActivity" />
+		<activity android:name=".notification.NotificationActivity" />
+		<activity android:name=".map.MapActivity" />
+		<activity android:name=".anim.AnimActivity" />
+		<activity android:name=".share.ShareToActivity" />
+		<activity android:name=".share.ShareFromActivity" />
+		
+		<service android:name=".download.DownloadService" />
+	</application>
+
+</manifest>

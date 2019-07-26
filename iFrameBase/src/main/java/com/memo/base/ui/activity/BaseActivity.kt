@@ -87,7 +87,10 @@ abstract class BaseActivity : RxAppCompatActivity() {
             BarUtils.setStatusBarColor(this, Color.argb(0, 0, 0, 0), true)
         } else {
             // 状态栏颜色
-            StatusBarHelper.setColor(this, Color.WHITE, 50)
+            StatusBarHelper.setStatusTextDarkMode(this)
+            StatusBarHelper.setColor(this, Color.WHITE, 0)
+            // 注意这一行代码 让内容乡下偏移
+            mRootView.fitsSystemWindows = true
         }
         // 设置是否始终竖屏
         if (alwaysPortrait()) {

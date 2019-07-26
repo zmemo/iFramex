@@ -7,10 +7,11 @@ import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.TranslateAnimation
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.blankj.utilcode.util.ScreenUtils
+import com.memo.tool.R
 import com.memo.tool.adapter.BaseRecyclerAdapter
 import com.memo.tool.dialog.listener.OnListItemClickListener
-import com.memo.tool.R
 import kotlinx.android.synthetic.main.dialog_locate_list.view.*
 import razerdp.basepopup.BasePopupWindow
 
@@ -102,6 +103,8 @@ class LocateListDialog(context: Context, private val data: ArrayList<String> = a
     private fun initialize() {
         contentView.mRvContent.layoutManager = LinearLayoutManager(context)
         contentView.mRvContent.adapter = mAdapter
+        contentView.mRvContent.setHasFixedSize(true)
+        (contentView.mRvContent.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         mAdapter.setNewData(data)
         mAdapter.setOnItemClickListener { _, _, position ->
             mListener?.onItemClick(position, mAdapter.data[position])

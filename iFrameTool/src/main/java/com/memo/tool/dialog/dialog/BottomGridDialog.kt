@@ -6,9 +6,10 @@ import android.view.View
 import android.view.animation.Animation
 import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.SimpleItemAnimator
+import com.memo.tool.R
 import com.memo.tool.adapter.BaseRecyclerAdapter
 import com.memo.tool.dialog.listener.OnGridItemClickListener
-import com.memo.tool.R
 import com.memo.tool.ext.onClick
 import kotlinx.android.synthetic.main.dialog_bottom_list.view.*
 import razerdp.basepopup.BasePopupWindow
@@ -83,6 +84,8 @@ class BottomGridDialog constructor(context: Context, data: ArrayList<GridItem> =
         contentView.mTvClose.onClick { dismiss() }
         contentView.mRvContent.layoutManager = GridLayoutManager(context, 3)
         contentView.mRvContent.adapter = mAdapter
+        contentView.mRvContent.setHasFixedSize(true)
+        (contentView.mRvContent.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
         mAdapter.setNewData(mData)
         mAdapter.setOnItemClickListener { _, _, position ->
             mListener?.onItemClick(position, mAdapter.data[position])

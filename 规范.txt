@@ -1,0 +1,237 @@
+
+1. 项目开始前使用最新的稳定版的Studio进行开发
+2. 编码格式统一为 UTF-8；
+3. 编辑完 .java、.xml 等文件后一定要 格式化；
+4. 删除多余的 import；control + option + o
+5. 对于版本号versionCode和版本名称versionName一般由产品经理负责
+   versionCode 可以从1开始 这个随便 注意记录
+   versionName = "1.0.0" "1.0.0-Beta" "1.0.0-Pre" "1.0.0-190101"
+   和ios统一即可
+
+使用阿里巴巴 Java 开发手册 Plugins搜索 Alibaba Java Coding Guidelines
+kotlin开发暂时还没有找到合适的插件
+
+--------------------------- 方法 ---------------------------
+
+类名前添加注释 表明至少 功能 作者 时间 可以预留空白让其他开发者进行注释
+其他开发者如果进行修改视情况应该在类前注释中添加自己添加的内容
+
+变量前除一些特别显著的(mContext,mRootView)可以不加其他尽量进行注释 使用但行注释
+    /*** 注释 ***/
+    val name:String = "name"
+
+方法前添加注释 表明至少 功能 变量参数意义 返回值意义 使用多行注释
+    /**
+     * 获取二维码扫描界面
+     * @param activity Activity
+     * @param requestCode 请求码
+     */
+
+方法内如果需要调用其他方法 应该把调用的方法写在该方法下方 如果多个方法都需要调用应该放在最后一个调用方法的后面
+fun a(){first() second()}
+fun first()
+fun second()
+fun b(){first() third()}
+fun third()
+
+方法长度一般来说不要超过100行 对于一些大量设置数据 和换行注释的内容可以理解
+应该尽量提取方法 使用穿参和返回值来代替大段的逻辑代码
+
+代码长度不要太长 最多不能超过屏幕的2/3
+
+换行符    int result = aaaaaaaaaaaa
+                    + bbbbbbbbbbbb
+                    - cccccccccccc
+                    + dddddddddddd
+
+函数链    int result = a.b()
+                        .c()
+                        .d()
+
+多行传参   load(a,
+                b,
+                c,
+                d)
+
+if内容无论多少 都需要加上{} 包括一行代码也要加
+if传参     if(aa
+            || bb
+            && cc){
+            }
+
+
+RxJava 链式的换行 每一个操作符都需要进行换行
+
+// TODO: 17/3/14  需要实现，但目前还未实现的功能的说明
+// FIXME: 17/3/14 需要修正，甚至代码是错误的，不能工作，需要修复的说明
+
+如果重写 必须加入@Override
+
+对于Activity Fragment生命周期的重写 写在当前页面的最下方 并且按照生命周期顺序排列
+
+//本身方法
+initData()
+initView()
+initListener()
+start()
+//自定义方法
+updateUserName()
+updateUserIcon()
+//接口实现
+onNewsSuccess()
+//Activity回调
+onActivityResult()
+onPermissionResult()
+//生命周期
+onResume()
+onPause()
+onStop()
+onDestroy()
+
+Activity
+直接跳转使用mContext.startActivity<PostActivity>()
+如果需要跳转并且添加变量应使用 在跳转对象中使用公共静态方法 并且添加注释
+/**
+ * 跳转方法
+ * @Param name 姓名
+ */
+fun start(context:Context,name:String){
+    context.startActivity<PostActivity>("name" to name)
+}
+跳转方不需要关心传入的变量的名称是什么 直接传入数据 接收方进行查看编写
+
+Fragment 穿参数
+不能使用new PostFragment(type)
+需要编写构造方法newInstance() 使用Argument来进行传递数据
+
+使用SharedPreference的时候 使用SpManager进行设置setName removeName 方法
+
+使用数据库的时候 使用SQLManager进行设置insertUser deleteUser updateUser findUser方法
+
+在一个方法体中如果代码量过大 应该设置多个方法 一般来说不超过150行
+一些逻辑处理可以放在presenter中直接处理 不要放在Adapter或者Activity内部处理
+例如：对于时间戳转化 一些其他复杂逻辑处理
+
+在调用addXXX方法 一般以addXXXListener居多 这个时候一般是把监听放到队列中了
+注意需要在合适的地方调用removeXXXListener方法
+所以自己在创建监听的时候也需要进行注意setXXX可以不用关注 也可以使用setXXX(null)
+创建的addXXX表示加入队列中 必须要添加removeXXX方法
+一般创建一个监听对象 add对象 remove对象
+
+在使用单例的时候 除了工具了直接使用Object 其他应该使用Holder的方式进行创建单例模式
+
+
+--------------------------- 命名 ---------------------------
+
+建议使用英语来进行命名 对于一个中文对应多个英文 应该尽量使用常用的 并且容易读懂的英文
+
+First	一组变量中的第一个     mFirstName
+Last	一组变量中的最后一个   mLastName
+Next	一组变量中的下一个     mNextName
+Pre	    一组变量中的上一个     mPreName
+Current	一组变量中的当前变量   mCurrentName
+
+集合添加如下后缀：List、Map、Set、Array
+mBookList mBookMap mBookSet mBookArray 也可以是mBooks
+
+长度 length size
+下标 index position
+
+for循环临时变量 i j k m n num index position
+
+结果 result response
+
+正反  unEnable enable
+      unCheck checked
+      unPress pressed
+      unLike liked
+      unCollect collected
+
+
+资源
+activity_main           MainActivity
+fragment_main           MainFragment
+layout_title_view       自定义Layout
+header_main_news        Main界面上的新闻模块的头布局
+dialog_tip              弹窗
+item_news               条目View Adapter中
+color_white             颜色 白
+color_f5f5f5            颜色 f5f5f5
+dp1                     1dp
+px1                     1px
+
+String常量
+SharedPreferences	SP_
+Bundle	            BUNDLE_
+Fragment Arguments	ARGUMENT_
+Intent Extra	    EXTRA_
+Intent Action	    ACTION_
+
+
+方法命名
+initXX()	            初始化相关方法，使用 init 为前缀标识，如初始化布局 initView()
+isXX(), checkXX()	    方法返回值为 boolean 型的请使用 is/check 为前缀标识
+getXX()	                返回某个值的方法，使用 get 为前缀标识
+setXX()	                设置某个属性值
+handleXX()          	对数据进行处理的方法
+showXX()	            弹出提示框和提示信息，使用 show 为前缀标识
+loadXX()                加载数据
+buildXX()               构造数据或者视图等（一般用于将已有数据组装）
+createXX()              构造数据或者视图等（一般用于创建新的数据 无中生有）
+updateXX()	            更新数据或者视图等
+saveXX()                保存数据或者视图等
+insertXX()	            插入数据或者视图等
+addXX()                 添加数据或者视图等（这里需要注意如果有add方法就必须有remove方法）
+resetXX()	            重置数据或者视图等
+clearXX()	            清除数据或者视图等
+removeXX(), deleteXX()	移除数据或者视图等，如 removeView() removeData()
+drawXX()	            绘制数据或效果相关的，使用 draw 前缀标识
+
+
+
+Activity            以Activity结尾                 MainActivity
+
+Fragment            以Fragment结尾                 MainFragment
+
+Adapter             以Adapter结尾                  MainAdapter  RecyclerMainAdapter
+
+工具类               以Utils、Manager、Helper结尾   DataUtils  DataManager  DataHelper
+
+Service             以Service结尾                  TimeService
+
+BroadcastReceiver   以Receiver结尾                 PushReceiver
+
+ContentProvider     以Provider结尾                 ShareProvider
+
+基类                 以Base开                      BaseActivity
+
+抽象类               以Base，Abs开头                BaseView AbsView
+
+图片                 图标以ic开头 背景以bg开头       ic_login  bg_login
+
+shape               通用 以shape_背景颜色_border_边框颜色_粗细_corner_圆角_方向lt_rt_lb_rb.xml
+                    特定 shape_特定页面_控件
+
+                    shape_white_corner_5(背景白色四周圆角5)
+                    shape_f5f5f5_corner_5(背景f5f5f5四周圆角5)
+                    shape_gray_border_blue_corner_5(背景灰色边框蓝色四周圆角5)
+                    shape_gray_border_blue_1_corner_5_lt_rt(背景灰色边框蓝色1dp左上右上圆角5)
+
+                    shape_login_register(登陆界面的注册按钮）
+
+select              select_特定页面_控件             select_mine_check.xml
+
+控件                以m开头 控件缩写 内容             mTvName
+
+变量                 小写字母开头                     name
+                    单例                            instance INSTANCE
+
+静态常量             不会去修改 全部大写_连接          val REQUEST_CODE_TEST = 1
+                    会去修改   同变量                name
+
+
+
+
+
+
+
