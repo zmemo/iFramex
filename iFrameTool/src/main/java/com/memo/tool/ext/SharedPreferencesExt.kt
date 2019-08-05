@@ -25,19 +25,28 @@ fun SharedPreferences.edit(action: SharedPreferences.Editor.() -> Unit) {
     edit().apply { action() }.apply()
 }
 
-/**
- * 传入基本类型
- */
-fun SharedPreferences.put(key: String, value: Any) {
-    edit {
-        when (value) {
-            is String -> putString(key, value)
-            is Int -> putInt(key, value)
-            is Boolean -> putBoolean(key, value)
-            is Float -> putFloat(key, value)
-            is Long -> putLong(key, value)
-        }
-    }
+fun SharedPreferences.put(key: String, value: String) {
+    edit().putString(key, value).apply()
+}
+
+fun SharedPreferences.put(key: String, value: Int) {
+    edit().putInt(key, value).apply()
+}
+
+fun SharedPreferences.put(key: String, value: Boolean) {
+    edit().putBoolean(key, value).apply()
+}
+
+fun SharedPreferences.put(key: String, value: Float) {
+    edit().putFloat(key, value).apply()
+}
+
+fun SharedPreferences.put(key: String, value: Long) {
+    edit().putLong(key, value).apply()
+}
+
+fun SharedPreferences.put(key: String, value: MutableSet<String>) {
+    edit().putStringSet(key, value).apply()
 }
 
 fun SharedPreferences.clear() {

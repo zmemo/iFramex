@@ -13,10 +13,4 @@ class Constant {
     object Api{
         const val BASE_URL = ""
     }
-
-    object SharedPreference {
-        const val GUIDE_VERSION_CODE = "guide_version"
-        const val TOKEN = "token"
-    }
-
 }

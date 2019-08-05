@@ -5,16 +5,16 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context=".ninegridview.NineGridActivity">
+	tools:context="com.memo.test.multirecyclerview.MultiRecyclerActivity">
 	
 	<com.memo.widget.titleview.TitleView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		app:title_title_text="九宫格图片放大" />
+		app:title_title_text="RecyclerView多布局" />
 	
 	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/mRvNineGridView"
+		android:id="@+id/mRvMultiList"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="match_parent"
 		android:overScrollMode="never" />
 </LinearLayout>

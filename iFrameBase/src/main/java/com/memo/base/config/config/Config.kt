@@ -1,7 +1,7 @@
 package com.memo.base.config.config
 
 /**
- * title:App全局配置 控制器 不想写在build.gradle中 改一次编译一次 很烦
+ * title:App全局配置 控制器
  * describe:
  *
  * @author zhou

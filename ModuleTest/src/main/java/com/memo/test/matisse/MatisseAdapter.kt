@@ -4,7 +4,8 @@ import android.widget.ImageView
 
 import com.blankj.utilcode.util.ConvertUtils
 import com.memo.test.R
-import com.memo.tool.adapter.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.utils.ImageLoadHelper
 
 

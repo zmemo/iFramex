@@ -20,5 +20,5 @@ kapt {
 dependencies {
     api project(path: ':iFrameBase')
     // Compiler
-    kapt DepConfig.ARouterCompiler
+    kapt DepConfig.arouterCompiler
 }

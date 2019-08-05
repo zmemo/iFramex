@@ -25,7 +25,7 @@ class RouterManager {
     /**
      * 获取二维码扫描界面
      * @param activity Activity
-     * @param requestCode Int
+     * @param requestCode Int 请求码
      */
     fun startQrCodeActivityForResult(activity: Activity, requestCode: Int) {
         ARouter.getInstance().build(RouterPath.Ui.QrcodeScanActivity)

@@ -11,7 +11,7 @@ android {
     compileSdkVersion Config.compileSdkVersion
     defaultConfig {
         if (ModuleConfig.isModuleTestRunAlone) {
-            applicationId Config.applicationId + project.getName()
+            applicationId Config.applicationId + project.name
         }
         minSdkVersion Config.minSdkVersion
         targetSdkVersion Config.targetSdkVersion
@@ -51,5 +51,5 @@ dependencies {
         implementation project(path: ':iFrameBase')
     }
 
-    kapt DepConfig.ARouterCompiler
+    kapt DepConfig.arouterCompiler
 }

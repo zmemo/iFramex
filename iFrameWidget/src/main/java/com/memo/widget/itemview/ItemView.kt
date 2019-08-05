@@ -13,7 +13,6 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
-import com.memo.tool.ext.dimen
 import com.memo.tool.ext.drawable
 import com.memo.widget.R
 
@@ -54,6 +53,7 @@ class ItemView(context: Context, attrs: AttributeSet? = null) : FrameLayout(cont
     private var mItemDividerHeight: Float = dimen(R.dimen.dp0_5)
     private var mItemDividerColor: Int = Color.parseColor("#F5F5F5")
     private var mItemDividerPadding: Float = 0f
+
 
     init {
         val attr = context.obtainStyledAttributes(attrs, R.styleable.ItemView)
@@ -139,6 +139,8 @@ class ItemView(context: Context, attrs: AttributeSet? = null) : FrameLayout(cont
         addView(mTvExtra)
         addView(mLine)
     }
+
+    private fun dimen(dimenRes: Int): Float = context.resources.getDimension(dimenRes)
 
     /**
      * 设置左右两边的边距

@@ -15,12 +15,12 @@ object EncryptHelper {
     /**
      * 8位DES密钥 自己生成
      */
-    private const val secretKeyDes8 = "1q2p3z4m"
+    private const val secretKeyDes8 = "o5j7r4j9"
 
     /**
      * 32位AES密钥 自己生成
      */
-    private const val secretKeyAes32 = "1q2w3e4r5t6y7u8i9o0p1a2s3d4f5g6h"
+    private const val secretKeyAes32 = "qwe1saz2xdr3fcv8gytuh04bmnkjlpoi"
 
     /**
      * 生成的512位公钥 自行百度或者自己生成
@@ -124,5 +124,13 @@ object EncryptHelper {
                 "RSA"
             )
         )
+    }
+
+    /**
+     * 获取数据md5
+     */
+    @JvmStatic
+    fun md5(content: String): String {
+        return EncryptUtils.encryptMD5ToString(content) ?: content
     }
 }

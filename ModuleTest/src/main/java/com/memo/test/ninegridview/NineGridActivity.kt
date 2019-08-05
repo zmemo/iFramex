@@ -32,7 +32,7 @@ class NineGridActivity : BaseActivity() {
      * 进行初始化操作
      */
     override fun initialize() {
-        mRvList.run {
+        mRvNineGridView.run {
             setHasFixedSize(true)
             layoutManager = mGridManager
             mAdapter.setNewData(images)

@@ -1,7 +1,8 @@
 package com.memo.test.ninegridview
 
 import com.memo.test.R
-import com.memo.tool.adapter.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.utils.ImageLoadHelper
 
 class NineGridViewAdapter : BaseRecyclerAdapter<String>(R.layout.recycler_item_nine_grid) {

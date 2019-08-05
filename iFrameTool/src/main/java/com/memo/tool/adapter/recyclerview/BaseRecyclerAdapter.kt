@@ -1,9 +1,8 @@
-package com.memo.tool.adapter
+package com.memo.tool.adapter.recyclerview
 
 import android.view.View
 import androidx.annotation.LayoutRes
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
 import com.memo.tool.utils.ClickHelper
 
 /**
@@ -14,7 +13,7 @@ import com.memo.tool.utils.ClickHelper
  * @date 2019-07-04 14:55
  */
 abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
-    BaseQuickAdapter<T, BaseRecyclerAdapter.ViewHolder>(layoutResInt) {
+    BaseQuickAdapter<T, ViewHolder>(layoutResInt) {
 
     override fun convert(helper: ViewHolder, item: T?) {
         item ?: return
@@ -42,14 +41,4 @@ abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
         return false
     }
 
-    /**
-     * 自定义ViewHolder
-     * 1、setText 如果传入String为null的时候设置""
-     */
-    class ViewHolder(view: View) : BaseViewHolder(view) {
-
-        override fun setText(viewId: Int, value: CharSequence?): BaseViewHolder {
-            return super.setText(viewId, value ?: "")
-        }
-    }
 }

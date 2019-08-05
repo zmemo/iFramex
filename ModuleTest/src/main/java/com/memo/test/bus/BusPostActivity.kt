@@ -18,7 +18,7 @@ class BusPostActivity : BaseActivity() {
     override fun initialize() {
         mBtnBus.onClick {
             val message = "这是${javaClass.simpleName}传递的数据"
-            BusManager.get().post(message)
+            BusManager.get().postMain(message)
             finish()
         }
     }

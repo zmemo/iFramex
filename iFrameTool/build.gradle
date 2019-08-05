@@ -14,5 +14,5 @@ android {
 dependencies {
     api project(path: ':iFrameBasic')
     // Compiler
-    kapt DepConfig.GlideCompiler
+    kapt DepConfig.glideCompiler
 }

@@ -30,7 +30,7 @@ android {
         debug {
             minifyEnabled true
             signingConfig signingConfigs.sign
-            applicationIdSuffix '.test'
+            applicationIdSuffix '.debug'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             android.applicationVariants.all { variant ->
                 variant.outputs.all {

@@ -12,6 +12,7 @@ import com.memo.test.bus.BusSubscribeActivity
 import com.memo.test.download.DownLoadActivity
 import com.memo.test.map.MapActivity
 import com.memo.test.matisse.MatisseSelectActivity
+import com.memo.test.multirecyclerview.MultiRecyclerActivity
 import com.memo.test.ninegridview.NineGridActivity
 import com.memo.test.notification.NotificationActivity
 import com.memo.test.retrofit.RetrofitActivity
@@ -91,6 +92,7 @@ class TestActivity : BaseActivity() {
         initData()
         initView()
         initListener()
+        doSomeThing()
     }
 
     private fun initData() {
@@ -118,6 +120,11 @@ class TestActivity : BaseActivity() {
         mBtnAnim.onClick(listener)
         mBtnShare.onClick(listener)
         mBtnWeb.onClick(listener)
+        mBtnMulti.onClick(listener)
+    }
+
+    private fun doSomeThing() {
+
     }
 
     private val listener = object : OnNotFastClickListener {
@@ -186,6 +193,9 @@ class TestActivity : BaseActivity() {
                 }
                 R.id.mBtnWeb -> {
                     RouterManager.get().startWebActivity("https://www.baidu.com", "百度一下")
+                }
+                R.id.mBtnMulti -> {
+                    startActivity<MultiRecyclerActivity>()
                 }
             }
         }

@@ -10,7 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.blankj.utilcode.util.ScreenUtils
 import com.memo.tool.R
-import com.memo.tool.adapter.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.dialog.listener.OnListItemClickListener
 import kotlinx.android.synthetic.main.dialog_locate_list.view.*
 import razerdp.basepopup.BasePopupWindow

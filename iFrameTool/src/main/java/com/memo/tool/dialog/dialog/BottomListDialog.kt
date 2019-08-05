@@ -7,7 +7,8 @@ import android.view.animation.Animation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.memo.tool.R
-import com.memo.tool.adapter.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.dialog.listener.OnListItemClickListener
 import com.memo.tool.ext.onClick
 import kotlinx.android.synthetic.main.dialog_bottom_list.view.*

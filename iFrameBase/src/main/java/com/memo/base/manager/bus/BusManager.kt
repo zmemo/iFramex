@@ -19,7 +19,7 @@ class BusManager private constructor() {
         fun get() = Holder.instance
     }
 
-    fun subscribe(subscriber: Any, onNext: (String) -> Unit) {
+    fun subscribeMain(subscriber: Any, onNext: (String) -> Unit) {
         RxBus.getDefault()
             .subscribe(subscriber, BusTag.TAG_MAIN, object : RxBus.Callback<String>() {
                 override fun onEvent(t: String?) {
@@ -28,7 +28,7 @@ class BusManager private constructor() {
             })
     }
 
-    fun post(message: String) {
+    fun postMain(message: String) {
         RxBus.getDefault().post(message, BusTag.TAG_MAIN)
     }
 

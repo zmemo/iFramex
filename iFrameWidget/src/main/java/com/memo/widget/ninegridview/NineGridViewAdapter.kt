@@ -1,7 +1,8 @@
 package com.memo.widget.ninegridview
 
 import androidx.annotation.DrawableRes
-import com.memo.tool.adapter.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.utils.ImageLoadHelper
 import com.memo.widget.R
 

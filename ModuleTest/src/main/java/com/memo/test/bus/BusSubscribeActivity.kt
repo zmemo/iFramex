@@ -20,7 +20,7 @@ class BusSubscribeActivity : BaseActivity() {
     override fun initialize() {
         mBtnBus.onClick { startActivity<BusPostActivity>() }
 
-        BusManager.get().subscribe(this) {
+        BusManager.get().subscribeMain(this) {
             mTvBus.text = it
         }
 

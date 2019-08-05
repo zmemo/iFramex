@@ -4,16 +4,19 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.res.TypedArray
+import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Build
 import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.TypedValue
+import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
+import androidx.core.content.ContextCompat
 import com.memo.tool.ext.*
 import com.memo.widget.R
 import kotlinx.android.synthetic.main.title_view.view.*
@@ -30,15 +33,35 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
 
     /*** 标题 ***/
     private var titleText: String = ""
-    private var titleSize: Float = dimen(R.dimen.sp18)
-    private var titleColor: Int = color(R.color.color_333333)
+    private var titleSize: Float =
+        if (isInEditMode) {
+            50f
+        } else {
+            dimen(R.dimen.sp18)
+        }
+    private var titleColor: Int =
+        if (isInEditMode) {
+            Color.BLACK
+        } else {
+            color(R.color.color_333333)
+        }
     private var titleBold: Boolean = true
     private var titleMarqueeEnable: Boolean = false
 
     /*** 副标题 ***/
     private var subtitleText: String = ""
-    private var subtitleSize: Float = dimen(R.dimen.sp14)
-    private var subtitleColor: Int = color(R.color.color_333333)
+    private var subtitleSize: Float =
+        if (isInEditMode) {
+            40f
+        } else {
+            dimen(R.dimen.sp14)
+        }
+    private var subtitleColor: Int =
+        if (isInEditMode) {
+            Color.BLACK
+        } else {
+            color(R.color.color_333333)
+        }
     private var subtitleBold: Boolean = false
 
     /*** 左侧图标 ***/
@@ -47,11 +70,26 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
 
     /*** 右侧图标 ***/
     private var rightText: String = ""
-    private var rightTextSize: Float = dimen(R.dimen.sp14)
-    private var rightTextColor: Int = color(R.color.color_333333)
+    private var rightTextSize: Float =
+        if (isInEditMode) {
+            40f
+        } else {
+            dimen(R.dimen.sp14)
+        }
+    private var rightTextColor: Int =
+        if (isInEditMode) {
+            Color.BLACK
+        } else {
+            color(R.color.color_333333)
+        }
     private var rightTextBold: Boolean = false
     private var rightDrawable: Int = 0
-    private var rightDrawablePadding: Float = dimen(R.dimen.dp5)
+    private var rightDrawablePadding: Float =
+        if (isInEditMode) {
+            13f
+        } else {
+            dimen(R.dimen.dp5)
+        }
 
     /*** 底部分割线 ***/
     private var dividerShown: Boolean = true
@@ -119,13 +157,13 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
         }
         // 左侧图标
         if (leftShown) {
-            mIvLeft.setImageDrawable(drawable(leftDrawable))
+            mIvLeft.setImageDrawable(ContextCompat.getDrawable(context, leftDrawable))
         } else {
-            mIvLeft.gone()
+            mIvLeft.visibility = View.GONE
         }
         // 右侧文字
         if (rightText.isNotEmpty()) {
-            mTvRight.visible()
+            mTvRight.visibility = View.VISIBLE
             mTvRight.text = rightText
             mTvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize)
             mTvRight.setTextColor(rightTextColor)
@@ -134,7 +172,7 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
             }
         }
         if (rightDrawable != 0) {
-            mTvRight.visible()
+            mTvRight.visibility = View.VISIBLE
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
                 mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, rightDrawable, 0)
             } else {
@@ -142,8 +180,11 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
             }
             mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
         }
-
-        mLine.setVisible(dividerShown)
+        if (dividerShown) {
+            mLine.visibility = View.VISIBLE
+        } else {
+            mLine.visibility = View.GONE
+        }
     }
 
     private fun initListener() {

@@ -1,8 +1,6 @@
 package com.memo.base.manager.data
 
-import com.blankj.utilcode.util.AppUtils
 import com.memo.base.config.config.Config
-import com.memo.base.config.constant.Constant
 import com.memo.tool.ext.put
 import com.memo.tool.ext.sp
 
@@ -14,6 +12,9 @@ import com.memo.tool.ext.sp
  * @date 2019-06-25 14:59
  */
 class SpManager {
+
+    private val GUIDE_VERSION_CODE = "GUIDE_VERSION_CODE"
+    private val TOKEN = "TOKEN"
 
     private object Holder {
         val instance = SpManager()
@@ -28,7 +29,7 @@ class SpManager {
      * @param version Int 版本
      */
     fun putGuideVersion() {
-        sp().put(Constant.SharedPreference.GUIDE_VERSION_CODE, Config.guideVersionCode)
+        sp().put(GUIDE_VERSION_CODE, Config.guideVersionCode)
     }
 
     /**
@@ -36,6 +37,22 @@ class SpManager {
      * @return Int
      */
     fun getGuideVersion(): Int {
-        return sp().getInt(Constant.SharedPreference.GUIDE_VERSION_CODE, 0)
+        return sp().getInt(GUIDE_VERSION_CODE, 0)
+    }
+
+    /**
+     * 设置token
+     * @param token String
+     */
+    fun putToken(token: String) {
+        sp().put(TOKEN, token)
+    }
+
+    /**
+     * 获取token
+     * @return String
+     */
+    fun getToken(): String {
+        return sp().getString(TOKEN, "") ?: ""
     }
 }
