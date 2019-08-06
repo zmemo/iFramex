@@ -11,15 +11,14 @@ import android.util.TypedValue;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-
 import androidx.annotation.ColorInt;
 import androidx.annotation.ColorRes;
 import androidx.annotation.IntDef;
 import androidx.core.content.ContextCompat;
-import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 
 import static android.util.TypedValue.applyDimension;
 
@@ -237,7 +236,7 @@ public class RecyclerViewDivider extends RecyclerView.ItemDecoration {
         private int mMarginRight = 0;
         private int mMarginTop = 0;
         private int mMarginBottom = 0;
-        private int mColor = 0xFFD1D1D1;
+        private int mColor = 0xFFF5F5F5;
         private int mStartSkipCount = 0;
         private int mEndSkipCount = 0;
         private @Style int mStyle = Style.BETWEEN;

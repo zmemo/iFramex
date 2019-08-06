@@ -14,9 +14,11 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
 abstract class BaseMultiAdapter<T : MultiItemEntity>
     : BaseMultiItemQuickAdapter<T, ViewHolder>(null) {
 
+    /*** Provider存储 ***/
     private val mTypeProviders by lazy { SparseArray<BaseMultiProvider<T>>() }
 
     init {
+        // 绑定多布局类型
         this.bindMultiType()
     }
 
@@ -29,11 +31,13 @@ abstract class BaseMultiAdapter<T : MultiItemEntity>
     fun bindMultiTypeProviders(vararg providers: BaseMultiProvider<T>) {
         providers.forEach {
             mTypeProviders.put(it.multiType, it)
+            //
             addItemType(it.multiType, it.layoutRes)
         }
     }
 
     override fun convert(helper: ViewHolder, item: T) {
+        // 更具类型获取Provider进行设置数据
         mTypeProviders[helper.itemViewType]?.converts(mContext, helper, item)
     }
 

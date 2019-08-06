@@ -4,6 +4,7 @@ import okhttp3.*
 import okhttp3.internal.http.HttpHeaders
 import okio.Buffer
 import java.io.IOException
+import java.net.URLDecoder
 import java.nio.charset.Charset
 import java.util.concurrent.TimeUnit
 import java.util.logging.Logger
@@ -101,12 +102,10 @@ class HttpLogInterceptor constructor(private val isPrintLog: Boolean, tag: Strin
                 while (i < count) {
                     val name = headers.name(i)
                     // Skip headers from the request body as they are explicitly logged above.
-                    if (!"Content-Type".equals(name, ignoreCase = true) && !"Content-Length".equals(
-                            name,
-                            ignoreCase = true
-                        )
+                    if (!"Content-Type".equals(name, ignoreCase = true)
+                        && !"Content-Length".equals(name, ignoreCase = true)
                     ) {
-                        log("\t" + name + ": " + headers.value(i))
+                        log("\t" + name + ": " + URLDecoder.decode(headers.value(i), "UTF-8"))
                     }
                     i++
                 }
@@ -180,9 +179,10 @@ class HttpLogInterceptor constructor(private val isPrintLog: Boolean, tag: Strin
             val body = copy.body() ?: return
             val buffer = Buffer()
             body.writeTo(buffer)
-            val charset =
-                getCharset(body.contentType())
-            log("\tbody:" + buffer.readString(charset!!))
+            val charset = getCharset(body.contentType())
+            val readString = buffer.readString(charset!!)
+            val decode = URLDecoder.decode(readString, "UTF-8")
+            log("\tbody: $decode")
         } catch (e: Exception) {
             log(e.toString())
         }
@@ -214,7 +214,9 @@ class HttpLogInterceptor constructor(private val isPrintLog: Boolean, tag: Strin
             var subtype: String? = mediaType.subtype()
             if (subtype != null) {
                 subtype = subtype.toLowerCase()
-                return subtype.contains("x-www-form-urlencoded") || subtype.contains("json") || subtype.contains("xml") || subtype.contains(
+                return subtype.contains("x-www-form-urlencoded") || subtype.contains("json") || subtype.contains(
+                    "xml"
+                ) || subtype.contains(
                     "html"
                 )
             }

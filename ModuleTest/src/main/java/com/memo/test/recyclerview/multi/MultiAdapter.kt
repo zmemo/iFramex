@@ -1,8 +1,9 @@
-package com.memo.test.multirecyclerview
+package com.memo.test.recyclerview.multi
 
-import com.memo.test.multirecyclerview.provider.ImageMultiProvider
-import com.memo.test.multirecyclerview.provider.TextImageMultiProvider
-import com.memo.test.multirecyclerview.provider.TextMultiProvider
+import com.memo.test.recyclerview.MultiEntity
+import com.memo.test.recyclerview.multi.provider.ImageMultiProvider
+import com.memo.test.recyclerview.multi.provider.TextImageMultiProvider
+import com.memo.test.recyclerview.multi.provider.TextMultiProvider
 import com.memo.tool.adapter.recyclerview.BaseMultiAdapter
 
 /**

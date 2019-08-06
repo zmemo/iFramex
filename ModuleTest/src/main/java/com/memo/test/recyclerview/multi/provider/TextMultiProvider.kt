@@ -1,9 +1,9 @@
-package com.memo.test.multirecyclerview.provider
+package com.memo.test.recyclerview.multi.provider
 
 import android.content.Context
 import com.memo.test.R
-import com.memo.test.multirecyclerview.Multi
-import com.memo.test.multirecyclerview.MultiEntity
+import com.memo.test.recyclerview.Multi
+import com.memo.test.recyclerview.MultiEntity
 import com.memo.tool.adapter.recyclerview.BaseMultiProvider
 import com.memo.tool.adapter.recyclerview.ViewHolder
 

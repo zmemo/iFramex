@@ -5,16 +5,24 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context="com.memo.test.recyclerview.multi.MultiRecyclerActivity">
+	tools:context="com.memo.test.recyclerview.RecyclerViewActivity">
 	
 	<com.memo.widget.titleview.TitleView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		app:title_title_text="RecyclerView多布局" />
+		app:title_title_text="BaseRecyclerViewAdapterHelper" />
 	
-	<androidx.recyclerview.widget.RecyclerView
-		android:id="@+id/mRvMultiList"
+	<Button
+		android:id="@+id/mBtnMulti"
 		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:overScrollMode="never" />
+		android:layout_height="wrap_content"
+		android:text="多布局" />
+	
+	
+	<Button
+		android:id="@+id/mBtnSection"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="分组" />
+
 </LinearLayout>

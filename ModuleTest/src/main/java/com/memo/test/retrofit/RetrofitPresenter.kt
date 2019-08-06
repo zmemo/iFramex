@@ -1,6 +1,7 @@
 package com.memo.test.retrofit
 
 import android.annotation.SuppressLint
+import com.blankj.utilcode.util.LogUtils
 import com.memo.base.ui.mvp.BasePresenter
 import com.memo.tool.helper.RxHelper
 
@@ -20,17 +21,21 @@ class RetrofitPresenter : BasePresenter<RetrofitModel, RetrofitContract.View>(),
     override fun requestZhiHu() {
         mModel?.getZhiHu()
             ?.compose(RxHelper.io2Main())
-            ?.subscribe {
+            ?.subscribe({
                 mView?.getZhiHu(it)
-            }
+            }, {
+                LogUtils.eTag("error", it.toString())
+            })
     }
 
     @SuppressLint("CheckResult")
     override fun requestWan() {
         mModel?.getWan()
             ?.compose(RxHelper.io2Main())
-            ?.subscribe {
+            ?.subscribe({
                 mView?.getWan(it)
-            }
+            }, {
+                LogUtils.eTag("error", it.toString())
+            })
     }
 }

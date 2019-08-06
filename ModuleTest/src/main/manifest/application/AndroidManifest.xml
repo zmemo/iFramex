@@ -18,7 +18,7 @@
 		android:supportsRtl="true"
 		android:theme="@style/iTheme"
 		tools:ignore="AllowBackup,GoogleAppIndexingWarning,UnusedAttribute">
-		<activity android:name=".multirecyclerview.MultiRecyclerActivity"></activity>
+
 		<activity android:name=".TestActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -39,6 +39,9 @@
 		<activity android:name=".anim.AnimActivity" />
 		<activity android:name=".share.ShareToActivity" />
 		<activity android:name=".share.ShareFromActivity" />
+		<activity android:name=".recyclerview.section.SectionRecyclerActivity" />
+		<activity android:name=".recyclerview.RecyclerViewActivity" />
+		<activity android:name=".recyclerview.multi.MultiRecyclerActivity" />
 		
 		<service android:name=".download.DownloadService" />
 	</application>

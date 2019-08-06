@@ -1,8 +1,10 @@
-package com.memo.test.multirecyclerview
+package com.memo.test.recyclerview.multi
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
+import com.memo.test.recyclerview.Multi
+import com.memo.test.recyclerview.MultiEntity
 import com.memo.widget.recyclerview.RecyclerViewDivider
 import kotlinx.android.synthetic.main.activity_multi_recycler.*
 

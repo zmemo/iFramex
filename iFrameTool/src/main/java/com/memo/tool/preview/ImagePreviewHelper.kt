@@ -18,6 +18,12 @@ import java.util.*
  */
 object ImagePreviewHelper {
 
+    /**
+     * 单张图片的放大预览
+     * @param mActivity Activity
+     * @param url String 图片地址
+     * @param view View 点击控件
+     */
     @JvmStatic
     fun start(mActivity: Activity, url: String, view: View) {
         val preview = PreviewImageInfo(url)

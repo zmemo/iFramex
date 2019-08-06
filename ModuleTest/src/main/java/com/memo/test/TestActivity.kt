@@ -9,12 +9,13 @@ import com.memo.base.manager.router.RouterPath
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.anim.AnimActivity
 import com.memo.test.bus.BusSubscribeActivity
+import com.memo.test.dialog.ActionBottomSheetDialog
 import com.memo.test.download.DownLoadActivity
 import com.memo.test.map.MapActivity
 import com.memo.test.matisse.MatisseSelectActivity
-import com.memo.test.multirecyclerview.MultiRecyclerActivity
 import com.memo.test.ninegridview.NineGridActivity
 import com.memo.test.notification.NotificationActivity
+import com.memo.test.recyclerview.RecyclerViewActivity
 import com.memo.test.retrofit.RetrofitActivity
 import com.memo.test.share.ShareFromActivity
 import com.memo.test.status.LoadSirActivity
@@ -86,6 +87,17 @@ class TestActivity : BaseActivity() {
         }
     }
 
+
+    private val mActionDialog by lazy {
+        ActionBottomSheetDialog().setData(
+            arrayListOf(
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
+            )
+        )
+    }
+
     override fun bindLayoutResId(): Int = R.layout.activity_test
 
     override fun initialize() {
@@ -124,7 +136,6 @@ class TestActivity : BaseActivity() {
     }
 
     private fun doSomeThing() {
-
     }
 
     private val listener = object : OnNotFastClickListener {
@@ -144,7 +155,7 @@ class TestActivity : BaseActivity() {
                     startActivity<SmallestWidthActivity>()
                 }
                 R.id.mBtnDialog -> {
-                    when (index++ % 7) {
+                    when (index++ % 8) {
                         0 -> {
                             area?.let {
                                 DialogHelper.selectCity(mContext, it) { city ->
@@ -162,6 +173,7 @@ class TestActivity : BaseActivity() {
                         4 -> mBottomGridDialog.show()
                         5 -> mLocateListDialog.showHorizontal(view)
                         6 -> mLoadDialog.show()
+                        7 -> mActionDialog.show(supportFragmentManager)
                     }
                 }
                 R.id.mBtnDown -> {
@@ -195,7 +207,7 @@ class TestActivity : BaseActivity() {
                     RouterManager.get().startWebActivity("https://www.baidu.com", "百度一下")
                 }
                 R.id.mBtnMulti -> {
-                    startActivity<MultiRecyclerActivity>()
+                    startActivity<RecyclerViewActivity>()
                 }
             }
         }

@@ -1,6 +1,7 @@
-package com.memo.test.multirecyclerview
+package com.memo.test.recyclerview
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.chad.library.adapter.base.entity.SectionEntity
 
 /**
  * title:
@@ -22,3 +23,15 @@ data class MultiEntity(
 ) : MultiItemEntity {
     override fun getItemType(): Int = type
 }
+
+class Sections : SectionEntity<SectionItem> {
+
+    constructor(isHeader: Boolean, header: String) : super(isHeader, header)
+
+    constructor(item: SectionItem) : super(item)
+}
+
+data class SectionItem(
+    val content: String,
+    val image: String
+)
