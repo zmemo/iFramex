@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.Gravity
 import android.view.View
 import android.view.animation.Animation
-import com.memo.tool.dialog.listener.OnTipClickListener
 import com.memo.tool.R
+import com.memo.tool.dialog.listener.OnTipClickListener
 import com.memo.tool.ext.gone
 import com.memo.tool.ext.onClick
 import kotlinx.android.synthetic.main.dialog_tip.view.*

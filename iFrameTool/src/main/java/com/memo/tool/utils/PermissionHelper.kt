@@ -1,8 +1,12 @@
 package com.memo.tool.utils
 
+import android.app.Activity
+import android.content.Context
+import android.os.Build
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.PermissionUtils
+import com.blankj.utilcode.util.Utils
 
 /**
  * title:权限请求工具
@@ -13,21 +17,35 @@ import com.blankj.utilcode.util.PermissionUtils
  */
 object PermissionHelper {
 
+    private var useVideo: Boolean? = null
+    private var useAudio: Boolean? = null
+
     private const val CAMERA = android.Manifest.permission.CAMERA
     private const val RECORD_AUDIO = android.Manifest.permission.RECORD_AUDIO
     private const val WRITE_EXTERNAL_STORAGE = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
     private const val READ_EXTERNAL_STORAGE = android.Manifest.permission.READ_EXTERNAL_STORAGE
 
-
     /**
      * 存储
      */
     @JvmStatic
-    fun grantedStorage(): Boolean {
+    fun grantedStorage(context: Context): Boolean {
         if (PermissionUtils.isGranted(WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE)) {
             return true
         }
-        request(PermissionConstants.STORAGE)
+        request(context, PermissionConstants.STORAGE)
+        return false
+    }
+
+    @JvmStatic
+    fun grantedAudio(context: Context): Boolean {
+        if (PermissionUtils.isGranted(RECORD_AUDIO)) {
+            if (useAudio == null) {
+                useAudio = MediaHelper.isAudioUsable
+            }
+            return useAudio!!
+        }
+        request(context, PermissionConstants.MICROPHONE)
         return false
     }
 
@@ -35,11 +53,14 @@ object PermissionHelper {
      * 摄像头
      */
     @JvmStatic
-    fun grantedCamera(): Boolean {
+    fun grantedCamera(context: Context): Boolean {
         if (PermissionUtils.isGranted(CAMERA)) {
-            return true
+            if (useVideo == null) {
+                useVideo = MediaHelper.isCameraUsable
+            }
+            return useVideo!!
         }
-        request(PermissionConstants.CAMERA)
+        request(context, PermissionConstants.CAMERA)
         return false
     }
 
@@ -47,19 +68,38 @@ object PermissionHelper {
      * 摄像头和录音
      */
     @JvmStatic
-    fun grantedCameraAndAudio(): Boolean {
+    fun grantedCameraAndAudio(context: Context): Boolean {
         if (PermissionUtils.isGranted(CAMERA, RECORD_AUDIO)) {
-            return true
+            if (useVideo == null) {
+                useVideo = MediaHelper.isCameraUsable
+            }
+            if (useAudio == null) {
+                useAudio = MediaHelper.isAudioUsable
+            }
+            return useVideo!! and useAudio!!
         }
-        request(PermissionConstants.CAMERA, PermissionConstants.MICROPHONE)
+        request(context, PermissionConstants.CAMERA, PermissionConstants.MICROPHONE)
         return false
+    }
+
+    @JvmStatic
+    fun grantedInstallUnKnowApp(activity: Activity, requestCode: Int): Boolean {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val canInstall = Utils.getApp().packageManager.canRequestPackageInstalls()
+            if (!canInstall) {
+                DialogHelper.showInstallRequestSettingDialog(activity, requestCode)
+            }
+            canInstall
+        } else {
+            true
+        }
     }
 
     /**
      * 读取磁盘权限
      */
     @JvmStatic
-    fun requestStorageInSplash(onGranted: () -> Unit, onDenied: () -> Unit) {
+    fun requestStorageInSplash(context: Context, onGranted: () -> Unit, onDenied: () -> Unit) {
         if (PermissionUtils.isGranted(WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE)) {
             onGranted()
             return
@@ -75,24 +115,25 @@ object PermissionHelper {
                     permissionsDenied: List<String>
                 ) {
                     if (permissionsDeniedForever.isNotEmpty()) {
-                        DialogHelper.showOpenAppSettingDialog(object :
-                            DialogHelper.Callback {
-                            override fun onPositive() {
-                                // 这里跳转到应用设置界面了
-                                AppUtils.launchAppDetailsSettings()
-                                onDenied()
-                            }
+                        DialogHelper.showOpenAppSettingDialog(
+                            context,
+                            object : DialogHelper.Callback {
+                                override fun onPositive() {
+                                    // 这里跳转到应用设置界面了
+                                    AppUtils.launchAppDetailsSettings()
+                                    onDenied()
+                                }
 
-                            override fun onNegative() {
-                                onDenied()
-                            }
-                        })
+                                override fun onNegative() {
+                                    onDenied()
+                                }
+                            })
                         return
                     } else {
                         DialogHelper.showNeedPermissionDialog(object :
                             DialogHelper.Callback {
                             override fun onPositive() {
-                                requestStorageInSplash(onGranted, onDenied)
+                                requestStorageInSplash(context, onGranted, onDenied)
                             }
 
                             override fun onNegative() {
@@ -105,7 +146,7 @@ object PermissionHelper {
             .request()
     }
 
-    private fun request(@PermissionConstants.Permission vararg permissions: String) {
+    private fun request(context: Context, @PermissionConstants.Permission vararg permissions: String) {
         PermissionUtils.permission(*permissions)
             .callback(object : PermissionUtils.FullCallback {
                 override fun onGranted(permissionsGranted: List<String>) {
@@ -116,20 +157,21 @@ object PermissionHelper {
                     permissionsDenied: List<String>
                 ) {
                     if (permissionsDeniedForever.isNotEmpty()) {
-                        DialogHelper.showOpenAppSettingDialog(object : DialogHelper.Callback {
-                            override fun onPositive() {
-                                // 这里跳转到应用设置界面了
-                                AppUtils.launchAppDetailsSettings()
-                            }
+                        DialogHelper.showOpenAppSettingDialog(context,
+                            object : DialogHelper.Callback {
+                                override fun onPositive() {
+                                    // 这里跳转到应用设置界面了
+                                    AppUtils.launchAppDetailsSettings()
+                                }
 
-                            override fun onNegative() {}
-                        })
+                                override fun onNegative() {}
+                            })
                         return
                     } else {
                         DialogHelper.showNeedPermissionDialog(object :
                             DialogHelper.Callback {
                             override fun onPositive() {
-                                request(*permissions)
+                                request(context, *permissions)
                             }
 
                             override fun onNegative() {}

@@ -23,7 +23,7 @@ class DownLoadActivity : BaseActivity() {
     override fun initialize() {
 
         mBtnService.onClick {
-            if (PermissionHelper.grantedStorage()) {
+            if (PermissionHelper.grantedStorage(mContext)) {
                 DownloadService.start(
                     Api.DownUrl,
                     Environment.getExternalStorageDirectory().absolutePath +

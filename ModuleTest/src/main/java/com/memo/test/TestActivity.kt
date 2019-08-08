@@ -28,10 +28,7 @@ import com.memo.tool.dialog.entity.Area
 import com.memo.tool.ext.OnNotFastClickListener
 import com.memo.tool.ext.onClick
 import com.memo.tool.ext.startActivity
-import com.memo.tool.utils.DialogHelper
-import com.memo.tool.utils.ImageLoadHelper
-import com.memo.tool.utils.QrcodeHelper
-import com.memo.tool.utils.toast
+import com.memo.tool.utils.*
 import kotlinx.android.synthetic.main.activity_test.*
 
 /**
@@ -45,6 +42,7 @@ import kotlinx.android.synthetic.main.activity_test.*
 class TestActivity : BaseActivity() {
 
     private val REQUEST_CODE_QRCODE = 1
+    private val REQUEST_CODE_INSTALL = 2
 
     private var area: Area? = null
 
@@ -136,6 +134,9 @@ class TestActivity : BaseActivity() {
     }
 
     private fun doSomeThing() {
+        if (PermissionHelper.grantedInstallUnKnowApp(mActivity, REQUEST_CODE_INSTALL)) {
+            toast("已有安装权限")
+        }
     }
 
     private val listener = object : OnNotFastClickListener {
@@ -216,9 +217,16 @@ class TestActivity : BaseActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_QRCODE) {
-            val message = QrcodeHelper.obtainQrcode(intent)
-            toast(message)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CODE_QRCODE -> {
+                    val message = QrcodeHelper.obtainQrcode(intent)
+                    toast(message)
+                }
+                REQUEST_CODE_INSTALL -> {
+                    toast("已有安装权限")
+                }
+            }
         }
     }
 

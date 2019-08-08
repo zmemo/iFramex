@@ -1,11 +1,17 @@
 package com.memo.tool.utils
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
+import android.net.Uri
+import android.os.Build
+import android.provider.Settings
 import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.annotation.RequiresApi
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
@@ -13,14 +19,15 @@ import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.bigkoo.pickerview.view.OptionsPickerView
 import com.bigkoo.pickerview.view.TimePickerView
 import com.blankj.utilcode.util.ActivityUtils
+import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.PermissionUtils.OnRationaleListener.ShouldRequest
 import com.blankj.utilcode.util.ResourceUtils
 import com.blankj.utilcode.util.TimeUtils
 import com.contrarywind.view.WheelView
+import com.memo.tool.R
 import com.memo.tool.dialog.dialog.AlertDialog
 import com.memo.tool.dialog.entity.Area
 import com.memo.tool.dialog.entity.Province
-import com.memo.tool.R
 import com.memo.tool.ext.color
 import com.memo.tool.ext.string
 import com.memo.tool.helper.RxHelper
@@ -44,15 +51,12 @@ object DialogHelper {
     // ---------------------------------------- 权限请求START ----------------------------------------
 
     @JvmStatic
-    fun showRationaleDialog(shouldRequest: ShouldRequest) {
-        val topActivity = ActivityUtils.getTopActivity()
-        if (topActivity == null || topActivity.isFinishing) {
-            return
-        }
+    fun showRationaleDialog(context: Context, shouldRequest: ShouldRequest) {
         AlertDialog(
-            topActivity,
+            context,
             string(R.string.permission_title),
-            string(R.string.permission_rationale_message))
+            string(R.string.permission_rationale_message)
+        )
             .setOnTipClickListener({
                 shouldRequest.again(true)
             }, {
@@ -61,20 +65,32 @@ object DialogHelper {
     }
 
     @JvmStatic
-    fun showOpenAppSettingDialog(callback: Callback?) {
-        val topActivity = ActivityUtils.getTopActivity()
-        if (topActivity == null || topActivity.isFinishing) {
-            return
-        }
+    fun showOpenAppSettingDialog(context: Context, callback: Callback?) {
         AlertDialog(
-            topActivity,
+            context,
             string(R.string.permission_title),
-            string(R.string.permission_denied_forever_message))
+            string(R.string.permission_denied_forever_message)
+        )
             .setOnTipClickListener({
                 callback?.onPositive()
             }, {
                 callback?.onNegative()
             }).show()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    @JvmStatic
+    fun showInstallRequestSettingDialog(activity: Activity, requestCode: Int) {
+        AlertDialog(
+            activity,
+            string(R.string.permission_title),
+            string(R.string.permission_denied_forever_message)
+        )
+            .setOnTipClickListener {
+                val uri = Uri.parse("package:" + AppUtils.getAppPackageName())
+                val intent = Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, uri)
+                activity.startActivityForResult(intent, requestCode)
+            }.show()
     }
 
     @JvmStatic
@@ -86,7 +102,8 @@ object DialogHelper {
         AlertDialog(
             topActivity,
             string(R.string.permission_title),
-            string(R.string.permission_rationale_message))
+            string(R.string.permission_rationale_message)
+        )
             .setOnTipClickListener({
                 callback.onPositive()
             }, {
@@ -128,7 +145,8 @@ object DialogHelper {
             val params = FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
-                Gravity.BOTTOM)
+                Gravity.BOTTOM
+            )
 
             params.leftMargin = 0
             params.rightMargin = 0
@@ -197,7 +215,8 @@ object DialogHelper {
 
                 val opt3tx = if (area.cities.isNotEmpty() &&
                     area.areas[options1].isNotEmpty() &&
-                    area.areas[options1][options2].isNotEmpty())
+                    area.areas[options1][options2].isNotEmpty()
+                )
                     area.areas[options1][options2][options3]
                 else
                     ""
@@ -220,7 +239,8 @@ object DialogHelper {
             val params = FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT,
-                Gravity.BOTTOM)
+                Gravity.BOTTOM
+            )
 
             params.leftMargin = 0
             params.rightMargin = 0
