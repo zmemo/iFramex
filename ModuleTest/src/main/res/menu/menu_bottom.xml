@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	
+	<item
+		android:id="@+id/menu_home"
+		android:checked="true"
+		android:icon="@drawable/selector_icon_bottom"
+		android:title="@string/MenuHome" />
+	<item
+		android:id="@+id/menu_circle"
+		android:checked="true"
+		android:icon="@drawable/selector_icon_bottom"
+		android:title="@string/MenuCircle" />
+	<item
+		android:id="@+id/menu_find"
+		android:checked="true"
+		android:icon="@drawable/selector_icon_bottom"
+		android:title="@string/MenuFind" />
+	<item
+		android:id="@+id/menu_mine"
+		android:checked="true"
+		android:icon="@drawable/selector_icon_bottom"
+		android:title="@string/MenuMine" />
+</menu>

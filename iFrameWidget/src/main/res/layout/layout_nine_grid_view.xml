@@ -6,7 +6,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:overScrollMode="never"
-	tools:layoutManager="android.support.v7.widget.GridLayoutManager"
+	tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
 	tools:layout_height="@dimen/dp360"
 	tools:listitem="@layout/item_nine_grid_view"
 	tools:spanCount="3" />

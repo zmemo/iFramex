@@ -4,6 +4,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
+/**
+ * title:可循环滚动的LayoutManager
+ * describe:
+ *
+ * @author zhou
+ * @date 2019-08-16 14:02
+ */
 class LooperLayoutManager : RecyclerView.LayoutManager() {
 
     private var looperEnable = true

@@ -1,12 +1,12 @@
 package com.memo.ui.web
 
 import android.view.KeyEvent
-import android.widget.FrameLayout
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.just.agentweb.AgentWeb
 import com.memo.base.manager.router.RouterPath
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.gone
+import com.memo.tool.utils.WebHelper
 import com.memo.ui.R
 import kotlinx.android.synthetic.main.activity_web.*
 
@@ -42,19 +42,12 @@ class WebActivity : BaseActivity() {
     }
 
     private fun initView() {
-
         if (title.isEmpty()) {
             mTitleView.gone()
         } else {
             mTitleView.setTitle(title)
         }
-
-        mAgentWeb = AgentWeb.with(this)
-            .setAgentWebParent(mFlContainer, FrameLayout.LayoutParams(-1, -1))
-            .useDefaultIndicator()
-            .createAgentWeb()
-            .ready()
-            .go(url)
+        mAgentWeb = WebHelper.init(mActivity, mFlContainer, url)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
@@ -64,17 +57,17 @@ class WebActivity : BaseActivity() {
     }
 
     override fun onPause() {
-        mAgentWeb.webLifeCycle.onPause()
+        WebHelper.onPause(mAgentWeb)
         super.onPause()
     }
 
     override fun onResume() {
-        mAgentWeb.webLifeCycle.onResume()
+        WebHelper.onResume(mAgentWeb)
         super.onResume()
     }
 
     override fun onDestroy() {
-        mAgentWeb.webLifeCycle.onDestroy()
+        WebHelper.onDestroy(mAgentWeb)
         super.onDestroy()
     }
 

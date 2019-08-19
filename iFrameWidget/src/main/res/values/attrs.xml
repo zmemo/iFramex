@@ -2,6 +2,9 @@
 <resources>
 	
 	<declare-styleable name="TitleView">
+		<!--背景颜色-->
+		<attr name="title_background" format="color" />
+		
 		<!--主标题-->
 		<attr name="title_title_text" format="string" />
 		<attr name="title_marquee_enable" format="boolean" />
@@ -16,7 +19,12 @@
 		<attr name="title_subtitle_bold" format="boolean" />
 		
 		<!--左侧-->
+		<attr name="title_left_text" format="string" />
+		<attr name="title_left_text_color" format="color" />
+		<attr name="title_left_text_size" format="dimension" />
+		<attr name="title_left_text_bold" format="boolean" />
 		<attr name="title_left_drawable" format="reference" />
+		<attr name="title_left_drawable_padding" format="dimension" />
 		<attr name="title_left_shown" format="boolean" />
 		
 		<!--右侧-->
@@ -27,8 +35,8 @@
 		<attr name="title_right_drawable" format="reference" />
 		<attr name="title_right_drawable_padding" format="dimension" />
 		
-		<!--分割线-->
-		<attr name="title_divider_shown" format="boolean" />
+		<!--标题阴影-->
+		<attr name="title_shadow_shown" format="boolean" />
 	</declare-styleable>
 	
 	<declare-styleable name="ItemView">

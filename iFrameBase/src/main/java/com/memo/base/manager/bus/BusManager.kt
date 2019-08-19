@@ -11,6 +11,8 @@ import com.blankj.rxbus.RxBus
  */
 class BusManager private constructor() {
 
+    val TAG_MAIN: String = "MainActivity"
+
     private object Holder {
         val instance: BusManager = BusManager()
     }
@@ -21,7 +23,7 @@ class BusManager private constructor() {
 
     fun subscribeMain(subscriber: Any, onNext: (String) -> Unit) {
         RxBus.getDefault()
-            .subscribe(subscriber, BusTag.TAG_MAIN, object : RxBus.Callback<String>() {
+            .subscribe(subscriber, TAG_MAIN, object : RxBus.Callback<String>() {
                 override fun onEvent(t: String?) {
                     t?.let { onNext(it) }
                 }
@@ -29,7 +31,7 @@ class BusManager private constructor() {
     }
 
     fun postMain(message: String) {
-        RxBus.getDefault().post(message, BusTag.TAG_MAIN)
+        RxBus.getDefault().post(message, TAG_MAIN)
     }
 
     fun unregister(subscriber: Any) {

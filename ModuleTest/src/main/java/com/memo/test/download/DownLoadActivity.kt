@@ -2,7 +2,6 @@ package com.memo.test.download
 
 import android.os.Environment
 import com.blankj.utilcode.util.AppUtils
-import com.blankj.utilcode.util.LogUtils
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.api.Api
@@ -33,12 +32,6 @@ class DownLoadActivity : BaseActivity() {
             }
         }
 
-        mBtnManager.onClick {
-            AppDownloadManager.get().downloadApk(Api.DownUrl, "文件下载", "文件更新")
-                .setUpdateListener { currentByte, totalByte ->
-                    LogUtils.iTag("down", "current = $currentByte  total = $totalByte")
-                }
-        }
     }
 
 }

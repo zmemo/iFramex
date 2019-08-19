@@ -21,4 +21,9 @@
 	<string name="Anim">动画</string>
 	<string name="Share">共享元素</string>
 	<string name="Html">跳转网页</string>
+	
+	<string name="MenuHome">首页</string>
+	<string name="MenuCircle">圈子</string>
+	<string name="MenuFind">发现</string>
+	<string name="MenuMine">我的</string>
 </resources>

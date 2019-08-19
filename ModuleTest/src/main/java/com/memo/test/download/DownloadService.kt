@@ -42,6 +42,7 @@ class DownloadService : IntentService("DownloadService") {
                     .compose(RxHelper.io2Main())
                     .subscribe(object : Observer<File> {
                         override fun onComplete() {
+                            observer.onComplete()
                         }
 
                         override fun onSubscribe(d: Disposable) {
@@ -92,6 +93,7 @@ class DownloadService : IntentService("DownloadService") {
         }
 
         override fun onSubscribe(disposable: Disposable) {
+
         }
     }
 

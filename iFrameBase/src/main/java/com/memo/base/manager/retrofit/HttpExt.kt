@@ -1,5 +1,7 @@
-package com.memo.base.api
+package com.memo.base.manager.retrofit
 
+import com.memo.base.api.BaseResponse
+import com.memo.base.api.ExceptionHandler
 import com.memo.base.ui.mvp.IView
 import com.memo.tool.helper.RxHelper
 import com.memo.tool.http.exception.ApiException
@@ -52,7 +54,8 @@ fun <T> Observable<BaseResponse<T>>.execute(
                 disposeOnDestroy,
                 checkResult,
                 onSuccess,
-                onFailure)
+                onFailure
+            )
         )
 }
 
@@ -75,7 +78,8 @@ fun <T> Observable<BaseResponse<T>>.execute(
                 disposeOnDestroy = true,
                 checkResult = true,
                 onSuccess = onSuccess,
-                onFailure = onFailure)
+                onFailure = onFailure
+            )
         )
 }
 
@@ -135,7 +139,8 @@ fun <T> Observable<T>.executeZip(
             disposeOnDestroy = true,
             checkResult = true,
             onSuccess = onSuccess,
-            onFailure = onFailure)
+            onFailure = onFailure
+        )
     )
 }
 

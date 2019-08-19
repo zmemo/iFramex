@@ -17,6 +17,10 @@
 		<activity android:name=".anim.AnimActivity" />
 		<activity android:name=".share.ShareToActivity" />
 		<activity android:name=".share.ShareFromActivity" />
+		<activity android:name=".recyclerview.section.SectionRecyclerActivity" />
+		<activity android:name=".recyclerview.RecyclerViewActivity" />
+		<activity android:name=".recyclerview.multi.MultiRecyclerActivity" />
+		<activity android:name=".bottom.BottomActivity" />
 		
 		<service android:name=".download.DownloadService" />
 	</application>

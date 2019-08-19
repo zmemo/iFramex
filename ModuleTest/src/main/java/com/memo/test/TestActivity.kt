@@ -8,6 +8,7 @@ import com.memo.base.manager.router.RouterManager
 import com.memo.base.manager.router.RouterPath
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.anim.AnimActivity
+import com.memo.test.bottom.BottomActivity
 import com.memo.test.bus.BusSubscribeActivity
 import com.memo.test.dialog.ActionBottomSheetDialog
 import com.memo.test.download.DownLoadActivity
@@ -131,6 +132,7 @@ class TestActivity : BaseActivity() {
         mBtnShare.onClick(listener)
         mBtnWeb.onClick(listener)
         mBtnMulti.onClick(listener)
+        mBtnBottom.onClick(listener)
     }
 
     private fun doSomeThing() {
@@ -209,6 +211,9 @@ class TestActivity : BaseActivity() {
                 }
                 R.id.mBtnMulti -> {
                     startActivity<RecyclerViewActivity>()
+                }
+                R.id.mBtnBottom -> {
+                    startActivity<BottomActivity>()
                 }
             }
         }

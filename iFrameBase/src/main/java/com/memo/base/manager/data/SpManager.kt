@@ -28,31 +28,27 @@ class SpManager {
      * 设置导航版本
      * @param version Int 版本
      */
-    fun putGuideVersion() {
-        sp().put(GUIDE_VERSION_CODE, Config.guideVersionCode)
-    }
+    fun putGuideVersion() = sp().put(GUIDE_VERSION_CODE, Config.guideVersionCode)
+
 
     /**
      * 获取导航版本
      * @return Int
      */
-    fun getGuideVersion(): Int {
-        return sp().getInt(GUIDE_VERSION_CODE, 0)
-    }
+    fun getGuideVersion(): Int = sp().getInt(GUIDE_VERSION_CODE, 0)
+
 
     /**
      * 设置token
      * @param token String
      */
-    fun putToken(token: String) {
-        sp().put(TOKEN, token)
-    }
+    fun putToken(token: String) = sp().put(TOKEN, token)
+
 
     /**
      * 获取token
      * @return String
      */
-    fun getToken(): String {
-        return sp().getString(TOKEN, "") ?: ""
-    }
+    fun getToken(): String = sp().getString(TOKEN, "") ?: ""
+
 }

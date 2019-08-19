@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.recyclerview.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/mRvSectionList"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
-	tools:context="com.memo.test.recyclerview.section.SectionRecyclerActivity" />
+	android:orientation="vertical"
+	tools:context="com.memo.test.recyclerview.section.SectionRecyclerActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="分组列表" />
+	
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/mRvSectionList"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:overScrollMode="never" />
+</LinearLayout>

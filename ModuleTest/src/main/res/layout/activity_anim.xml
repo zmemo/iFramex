@@ -28,7 +28,7 @@
 			android:id="@+id/mIvOther"
 			android:layout_width="@dimen/dp100"
 			android:layout_height="@dimen/dp100"
-			android:src="@mipmap/ic_launcher"
+			android:src="@drawable/iframe"
 			android:visibility="gone" />
 	</FrameLayout>
 	

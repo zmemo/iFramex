@@ -82,6 +82,12 @@ object PermissionHelper {
         return false
     }
 
+    /**
+     * 是否允许app安装应用
+     * @param activity Activity
+     * @param requestCode Int 请求码
+     * @return Boolean
+     */
     @JvmStatic
     fun grantedInstallUnKnowApp(activity: Activity, requestCode: Int): Boolean {
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

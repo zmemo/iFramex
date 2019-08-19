@@ -11,12 +11,13 @@ import android.text.TextUtils
 import android.util.AttributeSet
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
 import com.memo.tool.ext.*
 import com.memo.widget.R
 import kotlinx.android.synthetic.main.title_view.view.*
@@ -65,6 +66,26 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
     private var subtitleBold: Boolean = false
 
     /*** 左侧图标 ***/
+    private var leftText: String = ""
+    private var leftTextSize: Float =
+        if (isInEditMode) {
+            40f
+        } else {
+            dimen(R.dimen.sp14)
+        }
+    private var leftTextColor: Int =
+        if (isInEditMode) {
+            Color.BLACK
+        } else {
+            color(R.color.color_333333)
+        }
+    private var leftTextBold: Boolean = false
+    private var leftDrawablePadding: Float =
+        if (isInEditMode) {
+            13f
+        } else {
+            dimen(R.dimen.dp5)
+        }
     private var leftDrawable: Int = R.drawable.ic_back
     private var leftShown: Boolean = true
 
@@ -91,8 +112,18 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
             dimen(R.dimen.dp5)
         }
 
-    /*** 底部分割线 ***/
-    private var dividerShown: Boolean = true
+    private var mElevation: Float =
+        if (isInEditMode) {
+            10f
+        } else {
+            dimen(R.dimen.dp4)
+        }
+
+    /*** 底部阴影 ***/
+    private var shadowShown: Boolean = true
+
+    /*** 背景颜色 ***/
+    private var background: Int = Color.WHITE
 
     private var mListener: SimpleTitleClickListener? = null
 
@@ -110,24 +141,40 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
         titleSize = attr.getDimension(R.styleable.TitleView_title_title_size, titleSize)
         titleColor = attr.getColor(R.styleable.TitleView_title_title_color, titleColor)
         titleBold = attr.getBoolean(R.styleable.TitleView_title_title_bold, titleBold)
-        titleMarqueeEnable = attr.getBoolean(R.styleable.TitleView_title_marquee_enable, titleMarqueeEnable)
+        titleMarqueeEnable =
+            attr.getBoolean(R.styleable.TitleView_title_marquee_enable, titleMarqueeEnable)
 
         subtitleText = attr.getString(R.styleable.TitleView_title_subtitle_text) ?: subtitleText
         subtitleSize = attr.getDimension(R.styleable.TitleView_title_subtitle_size, subtitleSize)
         subtitleColor = attr.getColor(R.styleable.TitleView_title_subtitle_color, subtitleColor)
         subtitleBold = attr.getBoolean(R.styleable.TitleView_title_subtitle_bold, subtitleBold)
 
+        leftText = attr.getString(R.styleable.TitleView_title_left_text) ?: leftText
+        leftTextSize = attr.getDimension(R.styleable.TitleView_title_left_text_size, leftTextSize)
+        leftTextColor = attr.getColor(R.styleable.TitleView_title_left_text_color, leftTextColor)
+        leftTextBold = attr.getBoolean(R.styleable.TitleView_title_left_text_bold, leftTextBold)
+        leftDrawablePadding = attr.getDimension(
+            R.styleable.TitleView_title_left_drawable_padding,
+            leftDrawablePadding
+        )
         leftDrawable = attr.getResourceId(R.styleable.TitleView_title_left_drawable, leftDrawable)
         leftShown = attr.getBoolean(R.styleable.TitleView_title_left_shown, leftShown)
 
         rightText = attr.getString(R.styleable.TitleView_title_right_text) ?: rightText
-        rightTextSize = attr.getDimension(R.styleable.TitleView_title_right_text_size, rightTextSize)
+        rightTextSize =
+            attr.getDimension(R.styleable.TitleView_title_right_text_size, rightTextSize)
         rightTextColor = attr.getColor(R.styleable.TitleView_title_right_text_color, rightTextColor)
         rightTextBold = attr.getBoolean(R.styleable.TitleView_title_right_text_bold, rightTextBold)
-        rightDrawable = attr.getResourceId(R.styleable.TitleView_title_right_drawable, rightDrawable)
-        rightDrawablePadding = attr.getDimension(R.styleable.TitleView_title_right_drawable_padding, rightDrawablePadding)
+        rightDrawable =
+            attr.getResourceId(R.styleable.TitleView_title_right_drawable, rightDrawable)
+        rightDrawablePadding = attr.getDimension(
+            R.styleable.TitleView_title_right_drawable_padding,
+            rightDrawablePadding
+        )
 
-        dividerShown = attr.getBoolean(R.styleable.TitleView_title_divider_shown, dividerShown)
+        shadowShown = attr.getBoolean(R.styleable.TitleView_title_shadow_shown, shadowShown)
+
+        background = attr.getColor(R.styleable.TitleView_title_background, Color.WHITE)
     }
 
     private fun initView() {
@@ -157,9 +204,25 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
         }
         // 左侧图标
         if (leftShown) {
-            mIvLeft.setImageDrawable(ContextCompat.getDrawable(context, leftDrawable))
+            mTvLeft.visibility = View.VISIBLE
+            //左侧图标
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(leftDrawable, 0, 0, 0)
+            } else {
+                mTvLeft.setCompoundDrawablesWithIntrinsicBounds(leftDrawable, 0, 0, 0)
+            }
+            mTvRight.compoundDrawablePadding = leftDrawablePadding.toInt()
+            //左侧文字
+            if (leftText.isNotEmpty()) {
+                mTvLeft.text = leftText
+                mTvLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX, leftTextSize)
+                mTvLeft.setTextColor(leftTextColor)
+                if (leftTextBold) {
+                    mTvLeft.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
+                }
+            }
         } else {
-            mIvLeft.visibility = View.GONE
+            mTvLeft.visibility = View.GONE
         }
         // 右侧文字
         if (rightText.isNotEmpty()) {
@@ -180,15 +243,22 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
             }
             mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
         }
-        if (dividerShown) {
-            mLine.visibility = View.VISIBLE
-        } else {
-            mLine.visibility = View.GONE
+        //设置背景颜色
+        setBackgroundColor(background)
+        //是否显示边框阴影
+        if (shadowShown) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                this.outlineProvider = ViewOutlineProvider.BOUNDS
+            }
+            ViewCompat.setElevation(this, mElevation)
+            clipToPadding = false
         }
+
+
     }
 
     private fun initListener() {
-        mIvLeft.onClick {
+        mTvLeft.onClick {
             if (mListener == null) {
                 if (context is Activity) {
                     (context as Activity).finish()
@@ -297,7 +367,11 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
      * @param drawableRes Int
      */
     fun setLeftDrawable(@DrawableRes drawableRes: Int) {
-        mIvLeft.setImageDrawable(drawable(drawableRes))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, leftDrawable, 0)
+        } else {
+            mTvLeft.setCompoundDrawablesWithIntrinsicBounds(0, 0, leftDrawable, 0)
+        }
     }
 
     /**
@@ -305,7 +379,7 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
      * @param shown Boolean
      */
     fun showLeft(shown: Boolean) {
-        mIvLeft.setVisible(shown)
+        mTvLeft.setVisible(shown)
     }
 
     /**

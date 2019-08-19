@@ -53,6 +53,7 @@ object NotificationHelper {
             .setContentTitle(title)
             .setContentText(summary)
             .setAutoCancel(true)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setProgress(0, 0, false)
         if (!TextUtils.isEmpty(ticker)) {
             builder.setTicker(ticker)
@@ -134,7 +135,6 @@ object NotificationHelper {
                 NotificationCompat.Builder(BaseApp.app.applicationContext)
             }
         builder.setSmallIcon(smallIconId)
-            // .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), R.drawable-xhdpi.iframe))
             .setContentTitle(title)
             .setProgress(100, progress, progress == 0)
             .setOngoing(progress < 99)
