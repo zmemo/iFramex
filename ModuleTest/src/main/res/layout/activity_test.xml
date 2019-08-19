@@ -36,7 +36,7 @@
 				android:layout_marginBottom="@dimen/dp10"
 				app:item_divider_color="@color/color_BFEFFF"
 				app:item_divider_height="@dimen/dp1"
-				app:item_divider_padding="@dimen/dp15"
+				app:item_divider_margin="@dimen/dp15"
 				app:item_divider_shown="true"
 				app:item_extra_drawable="@drawable/ic_arrow_right"
 				app:item_extra_drawablePadding="@dimen/dp10"

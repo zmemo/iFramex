@@ -57,6 +57,6 @@
 		<attr name="item_divider_shown" format="boolean" />
 		<attr name="item_divider_height" format="dimension" />
 		<attr name="item_divider_color" format="color" />
-		<attr name="item_divider_padding" format="dimension" />
+		<attr name="item_divider_margin" format="dimension" />
 	</declare-styleable>
 </resources>

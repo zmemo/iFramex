@@ -10,6 +10,7 @@ import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
@@ -52,7 +53,7 @@ class ItemView(context: Context, attrs: AttributeSet? = null) : FrameLayout(cont
     private var mItemShowDivider: Boolean = true
     private var mItemDividerHeight: Float = dimen(R.dimen.dp0_5)
     private var mItemDividerColor: Int = Color.parseColor("#F5F5F5")
-    private var mItemDividerPadding: Float = 0f
+    private var mItemDividerMargin: Float = 0f
 
 
     init {
@@ -69,27 +70,44 @@ class ItemView(context: Context, attrs: AttributeSet? = null) : FrameLayout(cont
         mItemPadding = attr.getDimension(R.styleable.ItemView_item_padding, mItemPadding)
 
         mItemMainDrawable = attr.getDrawable(R.styleable.ItemView_item_main_drawable)
-        mItemMainDrawablePadding = attr.getDimension(R.styleable.ItemView_item_main_drawablePadding, mItemMainDrawablePadding)
+        mItemMainDrawablePadding = attr.getDimension(
+            R.styleable.ItemView_item_main_drawablePadding,
+            mItemMainDrawablePadding
+        )
 
         mItemMainText = attr.getString(R.styleable.ItemView_item_main_text) ?: mItemMainText
-        mItemMainTextSize = attr.getDimension(R.styleable.ItemView_item_main_textSize, mItemMainTextSize)
-        mItemMainTextColor = attr.getColor(R.styleable.ItemView_item_main_textColor, mItemMainTextColor)
-        mItemMainTextBold = attr.getBoolean(R.styleable.ItemView_item_main_textBold, mItemMainTextBold)
+        mItemMainTextSize =
+            attr.getDimension(R.styleable.ItemView_item_main_textSize, mItemMainTextSize)
+        mItemMainTextColor =
+            attr.getColor(R.styleable.ItemView_item_main_textColor, mItemMainTextColor)
+        mItemMainTextBold =
+            attr.getBoolean(R.styleable.ItemView_item_main_textBold, mItemMainTextBold)
 
         mItemExtraText = attr.getString(R.styleable.ItemView_item_extra_text) ?: mItemExtraText
-        mItemExtraTextSize = attr.getDimension(R.styleable.ItemView_item_extra_textSize, mItemExtraTextSize)
-        mItemExtraTextColor = attr.getColor(R.styleable.ItemView_item_extra_textColor, mItemExtraTextColor)
-        mItemExtraTextBold = attr.getBoolean(R.styleable.ItemView_item_extra_textBold, mItemExtraTextBold)
+        mItemExtraTextSize =
+            attr.getDimension(R.styleable.ItemView_item_extra_textSize, mItemExtraTextSize)
+        mItemExtraTextColor =
+            attr.getColor(R.styleable.ItemView_item_extra_textColor, mItemExtraTextColor)
+        mItemExtraTextBold =
+            attr.getBoolean(R.styleable.ItemView_item_extra_textBold, mItemExtraTextBold)
 
         mItemExtraDrawable = attr.getDrawable(R.styleable.ItemView_item_extra_drawable)
-        mItemExtraDrawablePadding = attr.getDimension(R.styleable.ItemView_item_extra_drawablePadding, mItemExtraDrawablePadding)
+        mItemExtraDrawablePadding = attr.getDimension(
+            R.styleable.ItemView_item_extra_drawablePadding,
+            mItemExtraDrawablePadding
+        )
 
-        mItemEnableRipple = attr.getBoolean(R.styleable.ItemView_item_ripple_enable, mItemEnableRipple)
+        mItemEnableRipple =
+            attr.getBoolean(R.styleable.ItemView_item_ripple_enable, mItemEnableRipple)
 
-        mItemShowDivider = attr.getBoolean(R.styleable.ItemView_item_divider_shown, mItemShowDivider)
-        mItemDividerColor = attr.getColor(R.styleable.ItemView_item_divider_color, mItemDividerColor)
-        mItemDividerHeight = attr.getDimension(R.styleable.ItemView_item_divider_height, mItemDividerHeight)
-        mItemDividerPadding = attr.getDimension(R.styleable.ItemView_item_divider_padding, mItemDividerPadding)
+        mItemShowDivider =
+            attr.getBoolean(R.styleable.ItemView_item_divider_shown, mItemShowDivider)
+        mItemDividerColor =
+            attr.getColor(R.styleable.ItemView_item_divider_color, mItemDividerColor)
+        mItemDividerHeight =
+            attr.getDimension(R.styleable.ItemView_item_divider_height, mItemDividerHeight)
+        mItemDividerMargin =
+            attr.getDimension(R.styleable.ItemView_item_divider_margin, mItemDividerMargin)
     }
 
     private fun buildView() {
@@ -123,12 +141,17 @@ class ItemView(context: Context, attrs: AttributeSet? = null) : FrameLayout(cont
             val typedArray = context.applicationContext.theme.obtainStyledAttributes(attrs)
             foreground = typedArray.getDrawable(0)
         }
-        // 分割线
+        // 分割线 左右间隔和高度
         mLine.setBackgroundColor(mItemDividerColor)
-        mLine.setPadding(mItemDividerPadding.toInt(), 0, mItemDividerPadding.toInt(), 0)
-        val mLineParam = LayoutParams(LayoutParams.MATCH_PARENT, mItemDividerHeight.toInt())
-        mLineParam.gravity = Gravity.BOTTOM
-        mLine.layoutParams = mLineParam
+        val layoutParams = LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            mItemDividerHeight.toInt()
+        )
+        layoutParams.marginStart = mItemDividerMargin.toInt()
+        layoutParams.marginEnd = mItemDividerMargin.toInt()
+        layoutParams.gravity = Gravity.BOTTOM
+        mLine.layoutParams = layoutParams
+
         mLine.visibility = if (mItemShowDivider) {
             View.VISIBLE
         } else {
@@ -156,7 +179,12 @@ class ItemView(context: Context, attrs: AttributeSet? = null) : FrameLayout(cont
      * @param drawableRes 图标资源
      */
     fun setItemMainDrawable(@DrawableRes drawableRes: Int) {
-        mTvMain.setCompoundDrawablesRelativeWithIntrinsicBounds(drawable(drawableRes), null, null, null)
+        mTvMain.setCompoundDrawablesRelativeWithIntrinsicBounds(
+            drawable(drawableRes),
+            null,
+            null,
+            null
+        )
     }
 
     /**
