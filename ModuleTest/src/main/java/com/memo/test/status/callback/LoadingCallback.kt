@@ -11,5 +11,5 @@ import com.memo.test.R
  * @date 2019-06-26 14:28
  */
 class LoadingCallback : Callback() {
-    override fun onCreateView(): Int = R.layout.status_loading_view
+    override fun onCreateView(): Int = R.layout.layout_status_loading_view
 }

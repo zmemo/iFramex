@@ -63,7 +63,7 @@ if传参     if(aa
 RxJava 链式的换行 每一个操作符都需要进行换行
 
 // TODO: 17/3/14  需要实现，但目前还未实现的功能的说明
-// FIXME: 17/3/14 需要修正，甚至代码是错误的，不能工作，需要修复的说明
+// FIXME: 17/3/14 需要修正，甚至代码逻辑是错误的，不能工作，但是不能产生崩溃，需要修复的说明
 
 如果重写 必须加入@Override
 
@@ -228,6 +228,30 @@ select              select_特定页面_控件             select_mine_check.xml
 
 静态常量             不会去修改 全部大写_连接          val REQUEST_CODE_TEST = 1
                     会去修改   同变量                name
+
+Activity            activity_main
+
+Fragment            fragment_main
+
+自定义View           layout_title_view
+
+RecyclerView条目     item_news
+
+Dialog               dialog_login
+
+PopupWindow          popup_login
+
+
+--------------------------- XML ---------------------------
+
+在简单布局中尽量使用FrameLayout和LinearLayout
+在复杂布局中使用ConstraintLayout代替RelativeLayout
+在布局xml文件中，如果不是特殊情况，所有的控件都需要添加默认值，使用tools属性
+使用RecyclerView
+tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+tools:itemCount="9"
+tools:listitem="@layout/item_nine_grid_view"
+tools:spanCount="3"
 
 
 

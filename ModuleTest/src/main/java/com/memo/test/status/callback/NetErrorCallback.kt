@@ -12,5 +12,5 @@ import com.memo.test.R
  */
 class NetErrorCallback : Callback() {
 
-    override fun onCreateView(): Int = R.layout.status_network_error_view
+    override fun onCreateView(): Int = R.layout.layout_status_network_error_view
 }

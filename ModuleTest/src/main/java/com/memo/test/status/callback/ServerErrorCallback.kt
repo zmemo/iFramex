@@ -11,5 +11,5 @@ import com.memo.test.R
  * @date 2019-06-26 14:38
  */
 class ServerErrorCallback : Callback() {
-    override fun onCreateView(): Int = R.layout.status_server_error_view
+    override fun onCreateView(): Int = R.layout.layout_status_server_error_view
 }

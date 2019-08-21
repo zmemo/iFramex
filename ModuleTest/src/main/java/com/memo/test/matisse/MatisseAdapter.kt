@@ -9,7 +9,7 @@ import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.utils.ImageLoadHelper
 
 
-class MatisseAdapter : BaseRecyclerAdapter<String>(R.layout.recycler_item_matisse) {
+class MatisseAdapter : BaseRecyclerAdapter<String>(R.layout.item_matisse) {
 
     override fun converts(helper: ViewHolder, item: String) {
         ImageLoadHelper.loadRoundImage(

@@ -11,5 +11,5 @@ import com.memo.test.R
  * @date 2019-06-26 14:32
  */
 class EmptyDataCallback : Callback() {
-    override fun onCreateView(): Int = R.layout.status_data_empty_view
+    override fun onCreateView(): Int = R.layout.layout_status_data_empty_view
 }

@@ -5,7 +5,7 @@ import com.memo.test.R
 import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
 import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.dialog.dialog.BaseBottomSheetDialog
-import kotlinx.android.synthetic.main.layout_action_dialog.view.*
+import kotlinx.android.synthetic.main.dialog_action_bottom_sheet.view.*
 
 /**
  * title:
@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.layout_action_dialog.view.*
  */
 class ActionBottomSheetDialog : BaseBottomSheetDialog() {
 
-    override fun bindLayoutRes(): Int = R.layout.layout_action_dialog
+    override fun bindLayoutRes(): Int = R.layout.dialog_action_bottom_sheet
 
     private val mAdapter by lazy {
         object : BaseRecyclerAdapter<String>(R.layout.item_multi_text) {

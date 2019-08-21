@@ -7,6 +7,6 @@
 	android:layout_height="wrap_content"
 	android:overScrollMode="never"
 	tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-	tools:layout_height="@dimen/dp360"
+	tools:itemCount="9"
 	tools:listitem="@layout/item_nine_grid_view"
 	tools:spanCount="3" />

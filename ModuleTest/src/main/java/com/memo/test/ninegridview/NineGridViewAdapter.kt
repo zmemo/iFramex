@@ -5,7 +5,7 @@ import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
 import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.utils.ImageLoadHelper
 
-class NineGridViewAdapter : BaseRecyclerAdapter<String>(R.layout.recycler_item_nine_grid) {
+class NineGridViewAdapter : BaseRecyclerAdapter<String>(R.layout.item_nine_grid) {
 
     override fun converts(helper: ViewHolder, item: String) {
         ImageLoadHelper.loadImage(

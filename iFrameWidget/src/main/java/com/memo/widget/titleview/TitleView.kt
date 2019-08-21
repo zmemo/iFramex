@@ -20,7 +20,7 @@ import androidx.annotation.DrawableRes
 import androidx.core.view.ViewCompat
 import com.memo.tool.ext.*
 import com.memo.widget.R
-import kotlinx.android.synthetic.main.title_view.view.*
+import kotlinx.android.synthetic.main.layout_title_view.view.*
 
 /**
  * title:标题控件
@@ -128,7 +128,7 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
     private var mListener: SimpleTitleClickListener? = null
 
     init {
-        inflaterView(R.layout.title_view, this)
+        inflaterView(R.layout.layout_title_view, this)
         val attr: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleView)
         initOption(attr)
         initView()
@@ -368,9 +368,9 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
      */
     fun setLeftDrawable(@DrawableRes drawableRes: Int) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, leftDrawable, 0)
+            mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(drawableRes, 0, 0, 0)
         } else {
-            mTvLeft.setCompoundDrawablesWithIntrinsicBounds(0, 0, leftDrawable, 0)
+            mTvLeft.setCompoundDrawablesWithIntrinsicBounds(drawableRes, 0, 0, 0)
         }
     }
 
