@@ -19,7 +19,8 @@ abstract class BaseMvpFragment<in V : IView, P : IPresenter<V>> : BaseFragment()
     /*** 绑定Presenter ***/
     protected abstract fun buildPresenter(): P
 
-    override fun initMvp() {
+    override fun baseInit() {
+        super.baseInit()
         mPresenter = buildPresenter()
         mPresenter?.attachView(this as V)
     }
@@ -30,7 +31,12 @@ abstract class BaseMvpFragment<in V : IView, P : IPresenter<V>> : BaseFragment()
     }
 
     /*** 显示自定义错误 ***/
-    override fun showError(code: Int) {}
+    override fun showError(firstLoad: Boolean, code: Int) {
+        mLoadDialog.dismiss()
+        if (firstLoad) {
+            //只有第一次加载失败才会显示错误假面
+        }
+    }
 
     /*** 隐藏全部 ***/
     override fun hideAll() {

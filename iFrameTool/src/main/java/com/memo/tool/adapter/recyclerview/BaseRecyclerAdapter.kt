@@ -14,6 +14,11 @@ import com.memo.tool.utils.ClickHelper
  */
 abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
     BaseQuickAdapter<T, ViewHolder>(layoutResInt) {
+    /**
+     * 是否允许过快点击
+     * @return Boolean enable
+     */
+    open fun enableFastClick() = false
 
     override fun convert(helper: ViewHolder, item: T?) {
         item ?: return
@@ -29,14 +34,18 @@ abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
      * 防止过快点击
      */
     override fun setOnItemClick(v: View?, position: Int) {
-        if (ClickHelper.isNotFastClick) {
+        if (!enableFastClick() && ClickHelper.isNotFastClick) {
+            super.setOnItemClick(v, position)
+        } else {
             super.setOnItemClick(v, position)
         }
     }
 
     override fun setOnItemLongClick(v: View?, position: Int): Boolean {
-        if (ClickHelper.isNotFastLongClick) {
-            return super.setOnItemLongClick(v, position)
+        if (!enableFastClick() && ClickHelper.isNotFastClick) {
+            super.setOnItemLongClick(v, position)
+        } else {
+            super.setOnItemLongClick(v, position)
         }
         return false
     }

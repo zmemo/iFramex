@@ -78,7 +78,7 @@ abstract class BaseActivity : RxAppCompatActivity() {
     /**
      * 在初始化之前进行一些操作
      */
-    open fun before() {}
+    protected open fun before() {}
 
     /*** 基础的初始化操作 ***/
     protected open fun baseInit() {
@@ -100,10 +100,10 @@ abstract class BaseActivity : RxAppCompatActivity() {
 
     /*** 绑定布局id ***/
     @LayoutRes
-    abstract fun bindLayoutResId(): Int
+    protected abstract fun bindLayoutResId(): Int
 
     /*** 进行初始化操作 ***/
-    abstract fun initialize()
+    protected abstract fun initialize()
 
     /*** 分发点击事件 用来隐藏软键盘 ***/
     override fun dispatchTouchEvent(ev: MotionEvent?): Boolean {
@@ -114,7 +114,7 @@ abstract class BaseActivity : RxAppCompatActivity() {
     }
 
     /*** 添加入队列 ***/
-    fun addDisposable(disposable: Disposable?) {
+    protected fun addDisposable(disposable: Disposable?) {
         disposable?.let { compositeDisposable.add(it) }
     }
 

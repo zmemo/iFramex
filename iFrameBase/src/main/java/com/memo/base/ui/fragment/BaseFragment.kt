@@ -44,7 +44,7 @@ abstract class BaseFragment : RxFragment() {
         super.onViewCreated(view, savedInstanceState)
         mRootView = view
         isPrepare = true
-        initMvp()
+        baseInit()
         onVisibleToUser()
         initialize()
     }
@@ -70,7 +70,7 @@ abstract class BaseFragment : RxFragment() {
     protected abstract fun bindLayoutResId(): Int
 
     /*** 对于BaseMvpFragment的初始化 ***/
-    protected open fun initMvp() {}
+    protected open fun baseInit() {}
 
     /*** 正常初始化Fragment ***/
     protected open fun initialize() {}
@@ -79,7 +79,7 @@ abstract class BaseFragment : RxFragment() {
     protected abstract fun lazyInitialize()
 
     /*** 添加入队列 ***/
-    fun addDisposable(disposable: Disposable?) {
+    protected fun addDisposable(disposable: Disposable?) {
         disposable?.let { compositeDisposable.add(it) }
     }
 

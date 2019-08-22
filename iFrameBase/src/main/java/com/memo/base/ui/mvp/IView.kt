@@ -17,12 +17,14 @@ interface IView {
     fun showLoading(message: String = "加载中")
 
     /**
-     * 显示自定义错误
+     * 隐藏加载框
+     * 第一次失败显示自定义错误
      */
-    fun showError(code: Int)
+    fun showError(firstLoad: Boolean, code: Int)
 
     /**
-     * 隐藏全部
+     * 隐藏全部其他界面图层
+     * 显示主内容
      */
     fun hideAll()
 

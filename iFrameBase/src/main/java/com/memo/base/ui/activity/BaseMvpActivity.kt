@@ -6,7 +6,7 @@ import io.reactivex.disposables.Disposable
 
 /**
  * title:基础的Mvp模式Activity
- * describe:
+ * describe: 具体的逻辑还是要根据需求进行改变
  *
  * @author zhou
  * @date 2019-01-24 14:08
@@ -36,7 +36,12 @@ abstract class BaseMvpActivity<in V : IView, P : IPresenter<V>> : BaseActivity()
     }
 
     /*** 显示自定义错误 ***/
-    override fun showError(code: Int) {}
+    override fun showError(firstLoad: Boolean, code: Int) {
+        mLoadDialog.dismiss()
+        if (firstLoad) {
+            //只有第一次加载失败才会显示错误假面
+        }
+    }
 
     /*** 隐藏全部 ***/
     override fun hideAll() {
