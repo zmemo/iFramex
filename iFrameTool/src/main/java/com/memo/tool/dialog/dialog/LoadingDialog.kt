@@ -24,6 +24,7 @@ class LoadingDialog constructor(context: Context) : BasePopupWindow(context) {
         popupGravity = Gravity.CENTER
         // 点击外部不消失
         setOutSideDismiss(false)
+        setBackPressEnable(false)
     }
 
     /**

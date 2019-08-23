@@ -23,7 +23,7 @@ class NotificationActivity : BaseActivity() {
                 TestConfig.MESSAGE_NOTIFY_ID,
                 TestConfig.MESSAGE_CHANNEL_ID,
                 TestConfig.MESSAGE_CHANNEL_NAME,
-                R.drawable.iframe,
+                android.R.drawable.ic_dialog_dialer,
                 "测试标题",
                 "测试内容",
                 "IFrame"

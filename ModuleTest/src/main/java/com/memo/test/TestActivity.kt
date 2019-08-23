@@ -116,6 +116,7 @@ class TestActivity : BaseActivity() {
     }
 
     private fun initListener() {
+        mItem.onClick(listener)
         mBtnGlide.onClick(listener)
         mBtnRetrofit.onClick(listener)
         mBtnBus.onClick(listener)
@@ -144,6 +145,9 @@ class TestActivity : BaseActivity() {
     private val listener = object : OnNotFastClickListener {
         override fun onNotFastClick(view: View) {
             when (view.id) {
+                R.id.mItem -> {
+                    toast("水波纹")
+                }
                 R.id.mBtnGlide -> {
                     addDisposable(ImageLoadHelper.clearDiskCache(mContext))
                     ImageLoadHelper.clearMemoryCache(mContext)

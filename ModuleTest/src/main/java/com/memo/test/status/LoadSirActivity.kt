@@ -31,7 +31,7 @@ class LoadSirActivity : BaseActivity() {
     }
 
     private fun initView() {
-        mLoadService = LoadSirService.service(mTvContent) {
+        mLoadService = LoaderHelper.register(mTvContent) {
             mLoadDialog.show()
             mHandler.postDelayed({
                 mLoadDialog.dismiss()

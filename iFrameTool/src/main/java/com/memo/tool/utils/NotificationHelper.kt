@@ -9,7 +9,9 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.text.TextUtils
+import androidx.annotation.IntRange
 import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import com.memo.tool.app.BaseApp
 
 /**
@@ -22,6 +24,16 @@ import com.memo.tool.app.BaseApp
 object NotificationHelper {
 
     private var sNotificationManager: NotificationManager? = null
+
+
+    /**
+     * 判断是否开启应用通知权限
+     * @return Boolean
+     */
+    @JvmStatic
+    fun isNotificationEnable(): Boolean =
+        NotificationManagerCompat.from(BaseApp.app.applicationContext).areNotificationsEnabled()
+
 
     /**
      * 文本消息
@@ -125,7 +137,7 @@ object NotificationHelper {
         smallIconId: Int,
         title: CharSequence,
         ticker: CharSequence?,
-        progress: Int,
+        @IntRange(from = 0, to = 100) progress: Int,
         pendingIntent: PendingIntent? = null
     ) {
         val builder: NotificationCompat.Builder =

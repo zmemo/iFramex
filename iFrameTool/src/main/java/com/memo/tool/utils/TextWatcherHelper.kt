@@ -1,4 +1,4 @@
-package com.memo.iframe.tools.utils
+package com.memo.tool.utils
 
 import android.view.View
 import android.widget.EditText

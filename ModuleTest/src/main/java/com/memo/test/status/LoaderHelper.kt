@@ -11,8 +11,9 @@ import com.kingja.loadsir.core.LoadSir
  * @author zhou
  * @date 2019-06-26 14:47
  */
-object LoadSirService {
-    fun service(view: View, onRetry: () -> Unit): LoadService<*> {
+object LoaderHelper {
+
+    fun register(view: View, onRetry: () -> Unit): LoadService<*> {
         return LoadSir.getDefault().register(view) {
             onRetry()
         }
