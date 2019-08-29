@@ -12,4 +12,5 @@ android {
 
 dependencies {
     api project(path: ':iFrameWidget')
+    api project(path: ':iFrameProguard')
 }

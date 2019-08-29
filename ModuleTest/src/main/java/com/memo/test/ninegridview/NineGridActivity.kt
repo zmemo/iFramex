@@ -1,6 +1,7 @@
 package com.memo.test.ninegridview
 
 import androidx.recyclerview.widget.GridLayoutManager
+import com.blankj.utilcode.util.LogUtils
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.preview.ImagePreviewHelper
@@ -38,6 +39,7 @@ class NineGridActivity : BaseActivity() {
             mAdapter.setNewData(images)
             adapter = mAdapter
             mAdapter.setOnItemClickListener { _, _, position ->
+                LogUtils.iTag("aaa", "aaa")
                 ImagePreviewHelper.start(mActivity, mGridManager, R.id.mImg, images, position)
             }
         }

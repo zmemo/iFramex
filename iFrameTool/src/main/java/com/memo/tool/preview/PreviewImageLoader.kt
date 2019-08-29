@@ -26,7 +26,12 @@ import com.previewlibrary.loader.MySimpleTarget
 class PreviewImageLoader(@DrawableRes val errorRes: Int) : IZoomMediaLoader {
 
 
-    override fun displayImage(context: Fragment, path: String, imageView: ImageView, simpleTarget: MySimpleTarget) {
+    override fun displayImage(
+        context: Fragment,
+        path: String,
+        imageView: ImageView,
+        simpleTarget: MySimpleTarget
+    ) {
         GlideApp.with(context)
             .asBitmap()
             .load(path)
@@ -56,7 +61,12 @@ class PreviewImageLoader(@DrawableRes val errorRes: Int) : IZoomMediaLoader {
             .into(imageView)
     }
 
-    override fun displayGifImage(context: Fragment, path: String, imageView: ImageView, simpleTarget: MySimpleTarget) {
+    override fun displayGifImage(
+        context: Fragment,
+        path: String,
+        imageView: ImageView,
+        simpleTarget: MySimpleTarget
+    ) {
         GlideApp.with(context)
             .asGif()
             .diskCacheStrategy(DiskCacheStrategy.ALL)

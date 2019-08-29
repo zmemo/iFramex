@@ -6,10 +6,10 @@ import com.blankj.utilcode.util.Utils
 import com.didichuxing.doraemonkit.DoraemonKit
 import com.memo.base.R
 import com.memo.base.config.config.Config
-import com.memo.crashhunter.CrashHunter
 import com.memo.tool.app.BaseApp
 import com.memo.tool.preview.PreviewImageLoader
 import com.previewlibrary.ZoomMediaLoader
+import com.tencent.mmkv.MMKV
 
 /**
  * title:Application
@@ -24,11 +24,11 @@ open class BaseApplication : BaseApp() {
     override fun onCreate() {
         super.onCreate()
 
-        // 初始化崩溃界面
-        CrashHunter.init(this).isDebug(Config.isShowCrash)
-
         // 哆啦A梦插件初始化
         DoraemonKit.install(this)
+
+        // 初始化MMKV
+        MMKV.initialize(this)
 
         // 初始化AndroidUtilCode
         Utils.init(this)
@@ -39,7 +39,7 @@ open class BaseApplication : BaseApp() {
             .globalTag = "iFrame"
 
         // 大图预览
-        ZoomMediaLoader.getInstance().init(PreviewImageLoader(R.drawable.ic_pic_error))
+        ZoomMediaLoader.getInstance().init(PreviewImageLoader(R.mipmap.ic_pic_error))
 
         // 初始化ARouter
         if (Config.isDebug) {

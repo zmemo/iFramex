@@ -44,14 +44,12 @@ class DepConfig {
     static retrofitUrlManager = "me.jessyan:retrofit-url-manager:1.4.0"
     static glide = "com.github.bumptech.glide:glide:4.9.0"
     static arouter = "com.alibaba:arouter-api:1.5.0"
+    static mmkv = "com.tencent:mmkv:1.0.22"
+    static preview = "com.ycjiang:ImagePreview:2.2.5"
 
 
     // zmemo
     static luBan = "com.github.zmemo:Luban:1.0.0"
-    static imagePreview = "com.github.zmemo:ZoomPreviewPicture:1.0.0"
-    static crash = "com.github.zmemo:CrashHunter:1.1"
-    static proguard = "com.github.zmemo:proguard:1.0.0"
-
 
     // 插件
     static doraemonKitRelease = "com.didichuxing.doraemonkit:doraemonkit-no-op:1.1.8"

@@ -16,7 +16,7 @@ object ClickHelper {
     private var lastExitTime: Long = 0
 
     /**
-     * 是否过快点击
+     * 是否过快点击 每一次点击都会重置时间
      *
      * @return true 可以执行  false 不可执行
      */
@@ -27,10 +27,11 @@ object ClickHelper {
             val curClickTime = System.currentTimeMillis()
             if (curClickTime - lastClickTime >= 600) {
                 flag = true
-                lastClickTime = curClickTime
             }
+            lastClickTime = curClickTime
             return flag
         }
+
 
     /**
      * 是否过快长按
@@ -44,10 +45,11 @@ object ClickHelper {
             val curClickTime = System.currentTimeMillis()
             if (curClickTime - lastClickTime >= 1200) {
                 flag = true
-                lastClickTime = curClickTime
             }
+            lastClickTime = curClickTime
             return flag
         }
+
 
     /**
      * 判断是否双击返回键进行退出

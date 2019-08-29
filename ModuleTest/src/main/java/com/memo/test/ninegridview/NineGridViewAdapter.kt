@@ -11,7 +11,7 @@ class NineGridViewAdapter : BaseRecyclerAdapter<String>(R.layout.item_nine_grid)
         ImageLoadHelper.loadImage(
             mContext,
             item,
-            R.drawable.ic_pic_error,
+            R.mipmap.ic_pic_error,
             helper.getView(R.id.mImg)
         )
     }

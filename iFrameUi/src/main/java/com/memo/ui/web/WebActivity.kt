@@ -28,6 +28,7 @@ class WebActivity : BaseActivity() {
 
     private lateinit var mAgentWeb: AgentWeb
 
+    override fun alwaysPortrait(): Boolean = false
 
     override fun bindLayoutResId(): Int = R.layout.activity_web
 

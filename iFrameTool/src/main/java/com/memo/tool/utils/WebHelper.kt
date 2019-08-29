@@ -29,14 +29,19 @@ object WebHelper {
 
         val webView = agentWeb.webCreator.webView
         val settings = webView.settings
-
+        //适应屏幕
+        settings.loadWithOverviewMode = true
+        //启动双指放大
+        settings.setSupportZoom(true)
+        settings.builtInZoomControls = true
+        settings.displayZoomControls = false
         //适配5.0不允许http和https混合使用情况
-        if (Build.VERSION.SDK_INT >= 21) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             settings.mixedContentMode = android.webkit.WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
             webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
-        } else if (Build.VERSION.SDK_INT >= 19) {
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
             webView.setLayerType(View.LAYER_TYPE_HARDWARE, null)
-        } else if (Build.VERSION.SDK_INT < 19) {
+        } else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.KITKAT) {
             webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null)
         }
 

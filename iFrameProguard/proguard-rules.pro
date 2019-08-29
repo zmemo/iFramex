@@ -4,3 +4,7 @@
 -classobfuscationdictionary proguard-08oO〇.txt
 # 指定package模糊字典
 -packageobfuscationdictionary proguard-08oO〇.txt
+
+
+# 所有实体类的包名
+ -keep class com.memo.base.entity.** { *; }

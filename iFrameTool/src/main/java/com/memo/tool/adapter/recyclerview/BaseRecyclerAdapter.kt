@@ -34,16 +34,20 @@ abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
      * 防止过快点击
      */
     override fun setOnItemClick(v: View?, position: Int) {
-        if (!enableFastClick() && ClickHelper.isNotFastClick) {
-            super.setOnItemClick(v, position)
+        if (!enableFastClick()) {
+            if (ClickHelper.isNotFastClick) {
+                super.setOnItemClick(v, position)
+            }
         } else {
             super.setOnItemClick(v, position)
         }
     }
 
     override fun setOnItemLongClick(v: View?, position: Int): Boolean {
-        if (!enableFastClick() && ClickHelper.isNotFastClick) {
-            super.setOnItemLongClick(v, position)
+        if (!enableFastClick()) {
+            if (ClickHelper.isNotFastLongClick) {
+                super.setOnItemLongClick(v, position)
+            }
         } else {
             super.setOnItemLongClick(v, position)
         }

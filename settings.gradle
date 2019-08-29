@@ -6,7 +6,7 @@ include ':app',
 
         ':iFrameBase',
 
-        ':iFrameWidget',
+        ':iFrameWidget', ':iFrameProguard',
 
         ':iFrameTool',
 

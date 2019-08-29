@@ -45,12 +45,11 @@ dependencies {
     api DepConfig.retrofitUrlManager
     api DepConfig.glide
     api DepConfig.arouter
+    api DepConfig.mmkv
+    api DepConfig.preview
 
     // zmemo
     api DepConfig.luBan
-    api DepConfig.crash
-    api DepConfig.imagePreview
-    api DepConfig.proguard
 
     // 插件
     debugApi DepConfig.leakCanaryDebug
