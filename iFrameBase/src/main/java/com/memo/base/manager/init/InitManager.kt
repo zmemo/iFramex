@@ -73,6 +73,8 @@ class InitManager {
                     .setNormalColor(ContextCompat.getColor(context, R.color.color_666666))
                     .setAnimatingColor(ContextCompat.getColor(context, R.color.color_666666))
             }
+
+
             isInitInApp = true
         }
     }

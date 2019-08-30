@@ -5,9 +5,6 @@ import android.content.Intent
 import android.os.Handler
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.blankj.utilcode.util.LogUtils
-import com.memo.base.entity.model.User
-import com.memo.base.manager.data.LocalDataManager
 import com.memo.base.manager.router.RouterManager
 import com.memo.base.manager.router.RouterPath
 import com.memo.base.ui.activity.BaseActivity
@@ -151,15 +148,6 @@ class TestActivity : BaseActivity() {
         override fun onNotFastClick(view: View) {
             when (view.id) {
                 R.id.mItem -> {
-                    val startTime = System.currentTimeMillis()
-                    (0..1000).forEach {
-                        LocalDataManager.get().putUsers(User("111", 11))
-                    }
-                    val endTime = System.currentTimeMillis()
-                    LogUtils.iTag(
-                        "time",
-                        "start = $startTime end = $endTime duration = ${endTime - startTime}"
-                    )
                 }
                 R.id.mBtnGlide -> {
                     addDisposable(ImageLoadHelper.clearDiskCache(mContext))
@@ -245,7 +233,7 @@ class TestActivity : BaseActivity() {
         if (resultCode == Activity.RESULT_OK) {
             when (requestCode) {
                 REQUEST_CODE_QRCODE -> {
-                    val message = QrcodeHelper.obtainQrcode(intent)
+                    val message = QrcodeHelper.obtainQRCode(data)
                     toast(message)
                 }
                 REQUEST_CODE_INSTALL -> {

@@ -15,6 +15,7 @@ import retrofit2.http.Headers
  * @date 2019-01-29 16:53
  */
 interface WanApi {
+
     /**
      * 动态更改BaseUrl
      */

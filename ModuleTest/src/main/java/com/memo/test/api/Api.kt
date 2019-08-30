@@ -12,5 +12,5 @@ object Api {
     const val WanUrl = "https://www.wanandroid.com/"
     const val ZhiHuUrl = "https://news-at.zhihu.com/"
 
-    const val DomainWan = "DouBan"
+    const val DomainWan = "Wan"
 }

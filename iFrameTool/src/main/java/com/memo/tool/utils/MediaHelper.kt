@@ -10,6 +10,7 @@ import android.hardware.Camera
 import android.media.AudioFormat
 import android.media.AudioRecord
 import android.media.MediaRecorder
+import android.net.Uri
 import androidx.annotation.IntRange
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.FileUtils
@@ -30,6 +31,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import top.zibin.luban.Luban
 import java.io.File
+import java.util.*
 
 /**
  * title: 安卓6.0一下获取了权限 但是有系统软件拦截 导致不能录制音视频造成的问题
@@ -53,7 +55,7 @@ object MediaHelper {
             BaseApp.app.applicationContext.sendBroadcast(
                 Intent(
                     Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-                    FileProvider7Helper.getUriForFile(BaseApp.app.applicationContext, file)
+                    Uri.fromFile(file)
                 )
             )
         }
@@ -220,12 +222,12 @@ object MediaHelper {
      */
     @JvmStatic
     fun cropPhoto(mActivity: Activity, sourcePath: String, requestCode: Int): String? {
-        val sourceUri = FileProvider7Helper.getUriForFile(mActivity, File(sourcePath))
+        val sourceUri = Uri.fromFile(File(sourcePath))
         val outDir = File(LocalDir.DIR_CROP)
         // 创建文件夹
         FileUtils.createOrExistsDir(outDir)
         val outFile = File(outDir, "CROP_${System.currentTimeMillis()}.jpg")
-        val outUri = FileProvider7Helper.getUriForFile(mActivity, outFile)
+        val outUri = Uri.fromFile(outFile)
 
         val uCrop: UCrop = UCrop.of(sourceUri, outUri)
         // 配置
@@ -291,7 +293,7 @@ object MediaHelper {
                     .setTargetDir(compressDirPath)
                     .filter { path ->
                         //如果是gif图不进行压缩
-                        !path.toLowerCase().endsWith(".gif")
+                        !path.toLowerCase(Locale.getDefault()).endsWith(".gif")
                     }
                     .get()
             }.observeOn(AndroidSchedulers.mainThread())

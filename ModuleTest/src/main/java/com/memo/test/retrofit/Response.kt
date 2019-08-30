@@ -1,5 +1,7 @@
 package com.memo.test.retrofit
 
+import androidx.annotation.Keep
+
 /**
  * title:
  * describe:
@@ -7,13 +9,14 @@ package com.memo.test.retrofit
  * @author zhou
  * @date 2019-01-29 17:29
  */
-
+@Keep
 data class ZhiHuNews(
     var date: String? = "", // 20190129
     var stories: List<Story?>? = listOf(),
     var top_stories: List<TopStory?>? = listOf()
 )
 
+@Keep
 data class TopStory(
     var ga_prefix: String? = "", // 012816
     var id: Int? = 0, // 9707019
@@ -22,6 +25,7 @@ data class TopStory(
     var type: Int? = 0 // 0
 )
 
+@Keep
 data class Story(
     var ga_prefix: String? = "", // 012906
     var id: Int? = 0, // 9706928
@@ -31,12 +35,14 @@ data class Story(
     var type: Int? = 0 // 0
 )
 
+@Keep
 data class Wan(
     val `data`: List<Data> = listOf(),
     val errorCode: Int = 0, // 0
     val errorMsg: String = ""
 )
 
+@Keep
 data class Data(
     val desc: String = "",
     val id: Int = 0, // 5

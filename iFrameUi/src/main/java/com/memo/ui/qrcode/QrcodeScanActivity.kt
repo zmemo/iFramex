@@ -31,7 +31,7 @@ class QrcodeScanActivity : BaseActivity() {
 
     override fun initialize() {
         initTitle()
-        initQrcode()
+        initQRCode()
     }
 
     private fun initTitle() {
@@ -42,7 +42,7 @@ class QrcodeScanActivity : BaseActivity() {
         })
     }
 
-    private fun initQrcode() {
+    private fun initQRCode() {
         // 只识别扫描框中的二维码
         mZXingView.scanBoxView.isOnlyDecodeScanBoxArea = true
         mZXingView.setDelegate(object : QRCodeView.Delegate {

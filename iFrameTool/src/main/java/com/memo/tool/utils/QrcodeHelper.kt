@@ -28,8 +28,8 @@ object QrcodeHelper {
      */
     @JvmStatic
     @Nullable
-    fun obtainQrcode(intent: Intent): String? {
-        return intent.getStringExtra("result")
+    fun obtainQRCode(intent: Intent?): String? {
+        return intent?.getStringExtra("result")
     }
 
     /**
@@ -79,7 +79,15 @@ object QrcodeHelper {
     ): Disposable? {
 
         return Observable.create<Bitmap> {
-            it.onNext(QRCodeEncoder.syncEncodeQRCode(content, sizePx, foregroundColor, backgroundColor, logo))
+            it.onNext(
+                QRCodeEncoder.syncEncodeQRCode(
+                    content,
+                    sizePx,
+                    foregroundColor,
+                    backgroundColor,
+                    logo
+                )
+            )
         }.compose(RxHelper.io2Main())
             .subscribe({
                 onSuccess(it)

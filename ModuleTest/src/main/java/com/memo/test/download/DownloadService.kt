@@ -62,6 +62,11 @@ class DownloadService : IntentService("DownloadService") {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        LogUtils.iTag("Down", "退出下载服务")
+    }
+
     /**
      * 下载回调
      */

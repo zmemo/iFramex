@@ -1,5 +1,6 @@
 package com.memo.tool.dialog.entity
 
+import androidx.annotation.Keep
 import com.contrarywind.interfaces.IPickerViewData
 
 /**
@@ -9,6 +10,7 @@ import com.contrarywind.interfaces.IPickerViewData
  * @author zhou
  * @date 2019-05-05 15:17
  */
+@Keep
 data class Province(
     val city: ArrayList<City> = arrayListOf(),
     val name: String = "" // 香港
@@ -16,6 +18,7 @@ data class Province(
     override fun getPickerViewText() = name
 }
 
+@Keep
 data class City(
     val area: ArrayList<String> = arrayListOf(),
     val name: String = "" // 香港
@@ -23,6 +26,7 @@ data class City(
     override fun getPickerViewText() = name
 }
 
+@Keep
 data class Area(
     val provinces: List<Province> = arrayListOf(),
     val cities: List<List<String>> = arrayListOf(),
