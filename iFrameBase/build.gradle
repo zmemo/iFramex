@@ -7,10 +7,11 @@ android {
     defaultConfig {
         minSdkVersion Config.minSdkVersion
         targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
     }
 }
 
 dependencies {
     api project(path: ':iFrameWidget')
-    api project(path: ':iFrameProguard')
 }

@@ -6,7 +6,9 @@ import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.GridLayoutManager
 import com.blankj.utilcode.util.BarUtils
+import com.memo.tool.R
 import com.previewlibrary.GPreviewBuilder
+import com.previewlibrary.ZoomMediaLoader
 import java.util.*
 
 /**
@@ -18,6 +20,18 @@ import java.util.*
  */
 object ImagePreviewHelper {
 
+    var isInit = false
+
+    /**
+     * 初始化
+     */
+    private fun initPreview() {
+        if (!isInit) {
+            ZoomMediaLoader.getInstance().init(PreviewImageLoader(R.mipmap.ic_pic_error))
+            isInit = true
+        }
+    }
+
     /**
      * 单张图片的放大预览
      * @param mActivity Activity
@@ -26,6 +40,7 @@ object ImagePreviewHelper {
      */
     @JvmStatic
     fun start(mActivity: Activity, url: String, view: View) {
+        initPreview()
         val preview = PreviewImageInfo(url)
         val bounds = Rect()
         view.getGlobalVisibleRect(bounds)
@@ -63,6 +78,7 @@ object ImagePreviewHelper {
         mData: List<String>,
         position: Int
     ) {
+        initPreview()
         val list = ArrayList<PreviewImageInfo>()
         for (url in mData) {
             list.add(PreviewImageInfo(url))

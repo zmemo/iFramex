@@ -2,8 +2,8 @@ class DepConfig {
 
     // Gradle
     static gradle = "com.android.tools.build:gradle:3.4.2"
-    static gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.41"
-    static gradleKotlinAndroid = "org.jetbrains.kotlin:kotlin-android-extensions:1.3.41"
+    static gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50"
+    static gradleKotlinAndroid = "org.jetbrains.kotlin:kotlin-android-extensions:1.3.50"
     static gradleArouter = "com.alibaba:arouter-register:1.0.2"
     static aspectjx = "com.hujiang.aspectjx:gradle-android-plugin-aspectjx:2.0.4"
 
@@ -26,9 +26,10 @@ class DepConfig {
     static qrCode = "cn.bingoogolapple:bga-qrcode-zxing:1.3.6"
     static loadSir = "com.kingja.loadsir:loadsir:1.3.6"
     static agentWeb = "com.just.agentweb:agentweb:4.0.3-beta"
+    static smartRefreshLayout = "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0"
 
     // 工具
-    static kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.41"
+    static kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
     static coreKtx = "androidx.core:core-ktx:1.0.2"
     static multiDex = "androidx.multidex:multidex:2.0.0"
     static androidUtilCode = "com.blankj:utilcodex:1.25.1"

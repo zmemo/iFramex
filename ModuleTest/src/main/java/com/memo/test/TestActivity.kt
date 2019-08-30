@@ -7,7 +7,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.LogUtils
 import com.memo.base.entity.model.User
-import com.memo.base.manager.data.DataManager
+import com.memo.base.manager.data.LocalDataManager
 import com.memo.base.manager.router.RouterManager
 import com.memo.base.manager.router.RouterPath
 import com.memo.base.ui.activity.BaseActivity
@@ -153,7 +153,7 @@ class TestActivity : BaseActivity() {
                 R.id.mItem -> {
                     val startTime = System.currentTimeMillis()
                     (0..1000).forEach {
-                        DataManager.get().putUsers(User("111", 11))
+                        LocalDataManager.get().putUsers(User("111", 11))
                     }
                     val endTime = System.currentTimeMillis()
                     LogUtils.iTag(

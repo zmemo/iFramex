@@ -14,11 +14,6 @@ object Config {
     const val isOpenLog: Boolean = true
 
     /**
-     * 是否开启崩溃展示界面
-     */
-    const val isShowCrash: Boolean = true
-
-    /**
      * 是否是测试版本
      * 注意 如果不是测试 不是预发布 那么就是线上发布版本
      */
@@ -30,7 +25,7 @@ object Config {
     const val isPreRelease: Boolean = false
 
     /**
-     * 导航页更新的版本
+     * 导航页更新的版本 对应更新导航页的app版本
      */
-    const val guideVersionCode = 1000
+    const val guideCode = 1000
 }

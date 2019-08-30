@@ -28,4 +28,6 @@
 		app:labelVisibilityMode="labeled"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:menu="@menu/menu_bottom" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

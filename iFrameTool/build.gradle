@@ -8,6 +8,8 @@ android {
     defaultConfig {
         minSdkVersion Config.minSdkVersion
         targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
         ndk {
             abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
             // 'x86', 'x86_64', 'mips', 'mips64'

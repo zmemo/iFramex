@@ -7,6 +7,8 @@ android {
     defaultConfig {
         minSdkVersion Config.minSdkVersion
         targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
     }
 }
 
@@ -27,6 +29,7 @@ dependencies {
     api DepConfig.matisse
     api DepConfig.uCrop
     api DepConfig.agentWeb
+    api DepConfig.smartRefreshLayout
 
     // 工具
     api DepConfig.kotlin

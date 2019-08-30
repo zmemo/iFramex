@@ -5,12 +5,12 @@ android {
     defaultConfig {
         minSdkVersion Config.minSdkVersion
         targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
     }
 
     buildTypes {
         debug {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             consumerProguardFiles file('.').listFiles(new FilenameFilter() {
                 @Override
                 boolean accept(File file, String s) {
@@ -19,8 +19,6 @@ android {
             })
         }
         release {
-            minifyEnabled true
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             consumerProguardFiles file('.').listFiles(new FilenameFilter() {
                 @Override
                 boolean accept(File file, String s) {
@@ -30,4 +28,3 @@ android {
         }
     }
 }
-

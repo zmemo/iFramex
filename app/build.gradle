@@ -31,6 +31,7 @@ android {
             minifyEnabled true
             signingConfig signingConfigs.sign
             applicationIdSuffix '.debug'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     def time = new Date().format("MM-dd-HH-mm", TimeZone.getDefault())
@@ -43,6 +44,7 @@ android {
             zipAlignEnabled true
             shrinkResources true
             signingConfig signingConfigs.sign
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
                     def time = new Date().format("MM-dd-HH-mm", TimeZone.getDefault())
@@ -75,13 +77,20 @@ android {
     }
 }
 
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
 
 dependencies {
     testImplementation DepConfig.junit
     androidTestImplementation DepConfig.testJunit
     androidTestImplementation DepConfig.testEspresso
 
+    kapt DepConfig.arouterCompiler
+
+    implementation project(path: ':iFrameProguard')
     implementation project(path: ':iFrameUi')
     if (!ModuleConfig.isModuleTestRunAlone) implementation project(path: ':ModuleTest')
-
 }
