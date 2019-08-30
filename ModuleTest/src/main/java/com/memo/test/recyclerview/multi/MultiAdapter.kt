@@ -5,6 +5,7 @@ import com.memo.test.recyclerview.multi.provider.ImageMultiProvider
 import com.memo.test.recyclerview.multi.provider.TextImageMultiProvider
 import com.memo.test.recyclerview.multi.provider.TextMultiProvider
 import com.memo.tool.adapter.recyclerview.BaseMultiAdapter
+import com.memo.tool.adapter.recyclerview.BaseMultiProvider
 
 /**
  * title:
@@ -14,13 +15,11 @@ import com.memo.tool.adapter.recyclerview.BaseMultiAdapter
  * @date 2019-08-05 14:37
  */
 class MultiAdapter : BaseMultiAdapter<MultiEntity>() {
-
     /**
-     * 具体的业务逻辑都在各自的Provider中进行处理
-     * 注意使用bindMultiTypeProvider进行加载Provider
+     * 使用bindMultiTypeProvider方法进行设置Provider
      */
-    override fun bindMultiType() {
-        bindMultiTypeProviders(
+    override fun bindMultiType(): List<BaseMultiProvider<MultiEntity>> {
+        return listOf(
             TextMultiProvider(),
             ImageMultiProvider(),
             TextImageMultiProvider()

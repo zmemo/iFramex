@@ -9,7 +9,7 @@ import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.utils.ImageLoadHelper
 
 /**
- * title:
+ * title:图片类型
  * describe:
  *
  * @author zhou

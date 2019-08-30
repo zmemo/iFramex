@@ -8,7 +8,7 @@ import com.memo.tool.adapter.recyclerview.BaseMultiProvider
 import com.memo.tool.adapter.recyclerview.ViewHolder
 
 /**
- * title:
+ * title:文字类型
  * describe:
  *
  * @author zhou
