@@ -16,6 +16,14 @@ object Multi {
     const val TYPE_TEXT_IMG = 2
 }
 
+object GridMulti {
+    const val TYPE_BANNER = 0
+    const val TYPE_TITLE = 1
+    const val TYPE_LIST = 2
+    const val TYPE_POSTER = 3
+    const val TYPE_SONG = 4
+}
+
 data class MultiEntity(
     val title: String,
     val img: String,
@@ -35,3 +43,4 @@ data class SectionItem(
     val content: String,
     val image: String
 )
+

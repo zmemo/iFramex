@@ -1,10 +1,5 @@
 package com.memo.iframe.tools.ext
 
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.TextUtils
-import android.text.style.ScaleXSpan
 import com.blankj.utilcode.util.EncryptUtils
 import java.util.*
 
@@ -48,40 +43,3 @@ fun String.md5(): String = EncryptUtils.encryptMD5ToString(this)
  */
 fun String?.isNull() = isNullOrEmpty() || this!!.toLowerCase(Locale.getDefault()).trim() == "null"
 
-/**
- * 在最大长度的字符里面进行平均分布代码行数
- * @param maxSize 最大长度不包括结尾的冒号
- */
-fun String.justifyAlign(maxSize: Int): String {
-    val spannableStringBuilder = SpannableStringBuilder()
-    if (TextUtils.isEmpty(this)) {
-        return spannableStringBuilder.toString()
-    }
-    var chars: CharArray = this.toCharArray()
-    if (chars.size >= maxSize || chars.size == 1) {
-        return spannableStringBuilder.append(this).toString()
-    }
-
-    val lastChar: Char = chars.last()
-    var isContainColon = false
-    if (lastChar == ':' || lastChar == '：') {
-        isContainColon = true
-        chars = chars.copyOfRange(0, chars.size - 1)
-    }
-    val l: Int = chars.size
-    val scale: Float = (maxSize - l).toFloat() / (l - 1)
-    for (i: Int in 0 until l) {
-        spannableStringBuilder.append(chars[i])
-        if (i != l - 1) {
-            // 全角空格
-            val s = SpannableString("　")
-            s.setSpan(ScaleXSpan(scale), 0, 1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-            spannableStringBuilder.append(s)
-        }
-    }
-    return if (isContainColon) {
-        spannableStringBuilder.append(lastChar).toString()
-    } else {
-        spannableStringBuilder.toString()
-    }
-}

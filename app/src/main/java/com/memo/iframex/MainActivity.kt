@@ -1,5 +1,6 @@
 package com.memo.iframex
 
+import android.annotation.SuppressLint
 import com.memo.base.manager.router.RouterManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.onClick
@@ -17,6 +18,7 @@ class MainActivity : BaseActivity() {
 
     override fun bindLayoutResId(): Int = R.layout.activity_main
 
+    @SuppressLint("SetTextI18n")
     override fun initialize() {
         mBtnIntent.onClick {
             RouterManager.get().startTestActivity()

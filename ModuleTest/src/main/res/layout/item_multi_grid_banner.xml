@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.ruffian.library.widget.RImageView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:id="@+id/iv_banner"
+	android:layout_width="match_parent"
+	android:layout_height="@dimen/dp130"
+	android:layout_margin="@dimen/dp10"
+	android:orientation="vertical"
+	app:corner_radius="@dimen/dp5" />

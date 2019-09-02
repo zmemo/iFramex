@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="@dimen/dp90"
+	android:layout_margin="@dimen/dp10"
+	android:orientation="vertical">
+	
+	<com.ruffian.library.widget.RImageView
+		android:id="@+id/iv_cover"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:corner_radius="@dimen/dp5" />
+	
+	<com.ruffian.library.widget.RView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:background_normal="#55000000"
+		app:corner_radius="@dimen/dp5" />
+	
+	<TextView
+		android:id="@+id/tv_title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/dp10"
+		android:ellipsize="end"
+		android:maxLines="2"
+		android:textColor="@color/white"
+		android:textSize="@dimen/sp16"
+		tools:text="流行音乐元素" />
+
+</FrameLayout>

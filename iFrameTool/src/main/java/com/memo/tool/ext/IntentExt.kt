@@ -51,6 +51,7 @@ inline fun <reified T : Activity> Fragment.startActivity(vararg params: Pair<Str
 inline fun <reified T : Activity> Fragment.startActivityForResult(vararg params: Pair<String, Any?>, requestCode: Int) =
     internalStartActivityForResult(this, T::class.java, params, requestCode)
 
+
 // ---------------------------------------- 一般来说不要使用下面的方法，可以对下面的方法进行一次封装来使用 ----------------------------------------
 
 fun internalStartActivity(context: Context, activity: Class<out Activity>, params: Array<out Pair<String, Any?>>) =

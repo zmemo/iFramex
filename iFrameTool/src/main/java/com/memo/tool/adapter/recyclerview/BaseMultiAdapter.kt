@@ -30,18 +30,18 @@ abstract class BaseMultiAdapter<T : MultiItemEntity>
     private fun addMultiTypeProviders(vararg providers: BaseMultiProvider<T>) {
         providers.forEach {
             mTypeProviders.put(it.multiType, it)
-            //
+            //绑定多布局的类型和布局
             addItemType(it.multiType, it.layoutRes)
         }
     }
 
     override fun convert(helper: ViewHolder, item: T) {
-        // 更具类型获取Provider进行设置数据
+        // 根据类型获取Provider进行设置数据
         mTypeProviders[helper.itemViewType]?.converts(mContext, helper, item)
     }
 
     /**
-     * 使用bindMultiTypeProvider方法进行设置Provider
+     * 返回MultiProvider集合
      */
     abstract fun bindMultiType(): List<BaseMultiProvider<T>>
 

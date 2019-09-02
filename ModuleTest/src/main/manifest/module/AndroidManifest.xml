@@ -3,6 +3,7 @@
 	package="com.memo.test">
 	
 	<application>
+		<activity android:name=".recyclerview.grid.GridMultiActivity"></activity>
 		<activity android:name=".TestActivity" />
 		<activity android:name=".retrofit.RetrofitActivity" />
 		<activity android:name=".bus.BusSubscribeActivity" />

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".recyclerview.grid.GridMultiActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:id="@+id/mTitleView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="网格多布局" />
+	
+	<com.scwang.smartrefresh.layout.SmartRefreshLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:srlEnableAutoLoadMore="false"
+		app:srlEnableLoadMore="false"
+		app:srlEnableOverScrollBounce="true"
+		app:srlEnableOverScrollDrag="true"
+		app:srlEnableRefresh="false">
+		
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/mRvList"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:overScrollMode="never"
+			android:paddingLeft="@dimen/dp10"
+			android:paddingRight="@dimen/dp10" />
+	
+	</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
+</LinearLayout>

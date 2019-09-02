@@ -13,7 +13,9 @@ import com.chad.library.adapter.base.entity.MultiItemEntity
  */
 abstract class BaseMultiProvider<T : MultiItemEntity>(val multiType: Int, @LayoutRes val layoutRes: Int) {
 
-
+    /**
+     * 数据处理
+     */
     abstract fun converts(context: Context, helper: ViewHolder, item: T)
 
 }

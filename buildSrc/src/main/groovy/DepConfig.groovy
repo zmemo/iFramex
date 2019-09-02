@@ -47,6 +47,7 @@ class DepConfig {
     static arouter = "com.alibaba:arouter-api:1.5.0"
     static mmkv = "com.tencent:mmkv:1.0.22"
     static preview = "com.ycjiang:ImagePreview:2.2.5"
+    static stickyHeader = "com.oushangfeng:PinnedSectionItemDecoration:1.3.2"
 
 
     // zmemo

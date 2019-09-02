@@ -50,6 +50,7 @@ dependencies {
     api DepConfig.arouter
     api DepConfig.mmkv
     api DepConfig.preview
+    api DepConfig.stickyHeader
 
     // zmemo
     api DepConfig.luBan

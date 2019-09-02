@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_margin="@dimen/dp10"
+	android:orientation="horizontal">
+	
+	<com.ruffian.library.widget.RImageView
+		android:id="@+id/iv_cover"
+		android:layout_width="@dimen/dp95"
+		android:layout_height="@dimen/dp95"
+		app:corner_radius="@dimen/dp5" />
+	
+	<TextView
+		android:id="@+id/tv_title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="@dimen/dp10"
+		android:textColor="@color/color_333333"
+		android:textSize="@dimen/sp18"
+		tools:text="行走的CD" />
+
+</LinearLayout>
