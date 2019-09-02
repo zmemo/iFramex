@@ -5,38 +5,38 @@
 	<application
 		android:usesCleartextTraffic="true"
 		tools:ignore="UnusedAttribute">
-	    <!--适配全面屏-->
-        <meta-data
-            android:name="android.max_aspect"
-	        android:value="2.4" />
-	    <!--适配华为（huawei）刘海屏-->
-	    <meta-data
-		    android:name="android.notch_support"
-		    android:value="true" />
-	    <!--适配小米（xiaomi）刘海屏-->
-	    <meta-data
-		    android:name="notch.config"
-		    android:value="portrait|landscape" />
-
-        <activity
-            android:name=".preview.ImagePreviewActivity"
-            android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-        <activity
-            android:name="com.yalantis.ucrop.UCropActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/iTheme" />
-
-        <provider
-            android:name=".provider.MatisseProvider"
-            android:authorities="${applicationId}.provider.MatisseProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths_public" />
-        </provider>
-    </application>
+		<!--适配全面屏-->
+		<meta-data
+			android:name="android.max_aspect"
+			android:value="2.4" />
+		<!--适配华为（huawei）刘海屏-->
+		<meta-data
+			android:name="android.notch_support"
+			android:value="true" />
+		<!--适配小米（xiaomi）刘海屏-->
+		<meta-data
+			android:name="notch.config"
+			android:value="portrait|landscape" />
+		
+		<activity
+			android:name=".preview.ImagePreviewActivity"
+			android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		
+		<activity
+			android:name="com.yalantis.ucrop.UCropActivity"
+			android:screenOrientation="portrait"
+			android:theme="@style/iTheme" />
+		
+		<provider
+			android:name=".provider.MatisseFileProvider"
+			android:authorities="${applicationId}.provider.MatisseFileProvider"
+			android:exported="false"
+			android:grantUriPermissions="true">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/file_paths_matisse" />
+		</provider>
+	</application>
 
 </manifest>

@@ -42,7 +42,7 @@ import java.util.*
  */
 object MediaHelper {
 
-    var MATISSE_PROVIDER = "${AppUtils.getAppPackageName()}.provider.MatisseProvider"
+    var MATISSE_PROVIDER = "${AppUtils.getAppPackageName()}.provider.MatisseFileProvider"
 
     /**
      * 通知相册刷新
@@ -224,9 +224,8 @@ object MediaHelper {
     fun cropPhoto(mActivity: Activity, sourcePath: String, requestCode: Int): String? {
         val sourceUri = Uri.fromFile(File(sourcePath))
         val outDir = File(LocalDir.DIR_CROP)
-        // 创建文件夹
-        FileUtils.createOrExistsDir(outDir)
         val outFile = File(outDir, "CROP_${System.currentTimeMillis()}.jpg")
+        FileUtils.createOrExistsFile(outFile)
         val outUri = Uri.fromFile(outFile)
 
         val uCrop: UCrop = UCrop.of(sourceUri, outUri)
