@@ -40,20 +40,14 @@ public enum DimenTypes {
     // 想生成多少自己以此类推
 
 
-    /**
-     * 屏幕最小宽度
-     */
     private int swWidthDp;
 
-
     DimenTypes(int swWidthDp) {
-
         this.swWidthDp = swWidthDp;
     }
 
     public int getSwWidthDp() {
         return swWidthDp;
     }
-
 
 }

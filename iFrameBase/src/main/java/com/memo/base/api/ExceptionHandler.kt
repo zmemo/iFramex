@@ -5,7 +5,7 @@ import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.*
 import com.google.gson.JsonParseException
 import com.memo.base.config.config.Config
-import com.memo.tool.constant.LocalDir
+import com.memo.tool.dir.LocalDir
 import com.memo.tool.helper.IOHelper
 import com.memo.tool.http.exception.ApiException
 import org.json.JSONException

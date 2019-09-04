@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseSectionQuickAdapter
 import com.chad.library.adapter.base.entity.SectionEntity
 
 /**
- * title:
+ * title:RecyclerView分组Adapter
  * describe:
  *
  * @author zhou

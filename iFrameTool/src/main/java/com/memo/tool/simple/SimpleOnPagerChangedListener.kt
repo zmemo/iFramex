@@ -10,7 +10,7 @@ import androidx.viewpager.widget.ViewPager
  * @author zhou
  * @date 2019-03-12 14:05
  */
-class SimpleOnPagerChangerListener : ViewPager.OnPageChangeListener {
+class SimpleOnPagerChangedListener : ViewPager.OnPageChangeListener {
     override fun onPageScrollStateChanged(position: Int) {
     }
 

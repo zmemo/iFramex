@@ -1,4 +1,4 @@
-package com.memo.tool.constant
+package com.memo.tool.dir
 
 import android.os.Environment
 import com.memo.tool.app.BaseApp

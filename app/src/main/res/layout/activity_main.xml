@@ -7,11 +7,19 @@
 	tools:context=".MainActivity">
 	
 	
-	<Button
+	<com.ruffian.library.widget.RButton
 		android:id="@+id/mBtnIntent"
 		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_height="@dimen/dp30"
+		android:paddingLeft="@dimen/dp10"
+		android:paddingTop="0dp"
+		android:paddingRight="@dimen/dp10"
+		android:paddingBottom="0dp"
 		android:text="跳转ModuleTest"
+		android:textColor="@color/white"
+		app:background_normal="@color/color_666666"
+		app:background_pressed="@color/color_333333"
+		app:corner_radius="@dimen/dp10"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintLeft_toLeftOf="parent"
 		app:layout_constraintRight_toRightOf="parent"

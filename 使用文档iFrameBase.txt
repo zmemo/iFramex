@@ -1,0 +1,44 @@
+主要文件
+
+base
+|---api
+|   |---ApiCode                 与后台约定的ErrorCode
+|   |---BaseResponse            与后台预定的基础返回值
+|   |---ExceptionHandler        错误错误信息处理
+|---application
+|   |---BaseApplication         Application基础的Application 每一个模块运行时都可以单独集成
+|---config
+|   |---config
+|   |---|---Config              全局配置 日志开启 测试模式等
+|   |---constant
+|   |---|---Constant            全集不变常量
+|---entity
+|   |---event                   RxBus的传递Event
+|   |---model                   本地自定义的模型
+|   |---remote                  网络请求数据
+|---manager
+|   |---bus
+|   |   |---BusManager          RxBus管理类
+|   |---data
+|   |   |---LocalDataManager    本地数据管理类 使用mmkv
+|   |---init
+|   |   |---InitManager         初始化管理类 app初始化 启动页初始化 使用时初始化
+|   |---retrofit
+|   |   |---HttpExt             网络请求回调拓展
+|   |   |---RetrofitManager     网络请求管理
+|   |---router
+|   |   |---RouterManager       路由跳转管理
+|   |   |---RouterPath          路由地址
+|---ui
+|   |---activity
+|   |   |---BaseActivity        基础的Activity
+|   |   |---BaseMvpActivity     基础的MvpActivity 使用mvp模式继承
+|   |---fragment
+|   |   |---BaseFragment        基础的Fragment 是否使用懒加载
+|   |   |---BaseMvpFragment     基础的MvpFragment 使用mvp模式继承
+|   |---mvp
+|   |   |---BasePresenter       基础的Presenter 如果打开页面有占位图 记得使用isFirstLoad切换状态
+|   |   |---IModel
+|   |   |---IPresenter
+|   |   |---IView               与BaseMvpActivity和BaseMvpFragment等进行联动 自行处理逻辑
+

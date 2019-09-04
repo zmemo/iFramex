@@ -1,0 +1,82 @@
+主要文件
+
+tool
+|
+|---adapter
+|   |---recyclerview（对于BaseRecyclerViewAdapterHelper的封装）
+|   |   |---BaseMultiAdapter        RecyclerView的多布局Adapter
+|   |   |---BaseMultiProvider       RecyclerView每一个多布局都是一个Provider
+|   |   |---BaseRecyclerAdapter     RecyclerView的基础Adapter
+|   |   |---BaseSectionAdapter      RecyclerView的分组Adapter
+|   |   |---ViewHolder              RecyclerView的ViewHolder封装
+|---app
+|   |---BaseApp                     提供全局的Application
+|---dialog
+|   |---dialog
+|   |   |---AlertDialog             提示弹窗
+|   |   |---BaseBottomSheetDialog   基础的BottomSheetDialog
+|   |   |---BottomGridDialog        底部网格弹窗
+|   |   |---BottomListDialog        底部列表弹窗
+|   |   |---LoadingDialog           加载弹窗
+|   |   |---LocateListDialog        固定未知的弹窗 PopupWindow
+|   |---listener
+|   |   |---Listener                点击监听
+|---dir
+|   |---LocalDir                    默认本地的文件路径
+|---ext
+|   |---IntentExt                   Intent拓展
+|   |---ResourceExt                 本地资源拓展
+|   |---SharedPreferencesExt        SP拓展
+|   |---StringExt                   字符串拓展
+|   |---TimeExt                     时间拓展 字符串转时间
+|   |---ViewExt                     控件拓展
+|---glide
+|   |---GlideAppModule              GlideApp形成配置
+|---handler
+|   |---WeakHandler                 弱引用的Handler
+|---helper
+|   |---AnimHelper                  简单动画工具类
+|   |---AppHelper                   判断应用是否安装
+|   |---ClickHelper                 防止重复点击工具类
+|   |---CommonHelper                通用的工具类toast
+|   |---DialogHelper                权限弹窗，时间弹窗，地址弹窗的工具类 其他请使用上方dialog
+|   |---EncryptHelper               加密解密工具类
+|   |---FragmentHelper              底部Tab配合多个Fragment的工具类
+|   |---GsonHelper                  Gson工具类
+|   |---ImageLoaderHelper           图片加载工具类
+|   |---IOHelper                    IO关闭工具
+|   |---KeyboardHelper              写在BaseActivity中 点击空白处关闭键盘
+|   |---MapHelper                   地图导航工具类 高德 百度 腾讯 网页
+|   |---MediaHelper                 多媒体工具 图片的拍照压缩选中
+|   |---NotificationHelper          本地通知工具
+|   |---OOMHelper                   两种粗暴解决OOM问题的方法
+|   |---PermissionHelper            权限工具
+|   |---QrcodeHelper                二维码扫描生成
+|   |---RxHelper                    RxJava的工具
+|   |---StatusBarHelper             状态栏工具
+|   |---TextWatcherHelper           监听多个EditText的工具
+|   |---ViewHelper                  控件的工具
+|   |---WebHelper                   网页工具 AgentWeb
+|---http
+|   |---adapter
+|   |---|---StringTypeAdapter       网络请求String为null变为""
+|   |---exception
+|   |---|---ApiException            网络请求自定义异常
+|   |---interceptor
+|   |---|---HttpLogInterceptor      网络请求日志拦截
+|---photo
+|   |---GifSizeFilter               Matisse Gif图的拦截
+|   |---Glide4Engine                Matisse Glide加载图片
+|   |---MatisseFileProvider         Matisse 拍照使用的FileProvider
+|   |---VideoTimeFilter             Matisse 选择Video的时间筛选
+|---preview
+|   |---ImagePreviewActivity        图片放大预览的Activity
+|   |---ImagePreviewHelper          图片放大预览工具
+|   |---PreviewImageLoader          图片放大图片加载
+|---simple
+|   |---SimpleAnimationListener         简单实现的AnimationListener
+|   |---SimpleAnimatorListener          简单实现的AnimatorListener
+|   |---SimpleOnPageChangedListener     简单实现的ViewPager.OnPageChangeListener
+|   |---SimpleRecyclerScrollListener    RecyclerView的滑动监听
+|   |---SimpleTextWatcher               简单视线的TextWatcher
+

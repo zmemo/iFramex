@@ -18,7 +18,7 @@ class DepConfig {
     static recyclerView = "androidx.recyclerview:recyclerview:1.0.0"
     static cardView = "androidx.cardview:cardview:1.0.0"
     static basePopup = "com.github.razerdp:BasePopup:2.2.1"
-    static rWidgetHelper = "com.ruffian.library:RWidgetHelper:1.1.0"
+    static rWidgetHelper = "com.ruffian.library:RWidgetHelper:1.1.3"
     static baseRecyclerViewAdapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47-androidx"
     static matisse = "com.zhihu.android:matisse:0.5.2-beta5"
     static uCrop = "com.github.yalantis:ucrop:2.2.3"

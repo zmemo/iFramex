@@ -5,7 +5,7 @@ import androidx.annotation.LayoutRes
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
 /**
- * title:
+ * title: 每一个多布局item就是一个Provider
  * describe:
  *
  * @author zhou

@@ -1,0 +1,4 @@
+主要文件
+DimenGenerator -> 最小宽度适配方案的文件生成工具
+
+build.gradle -> 项目所使用的所有依赖全部导入 全部使用api 上层所有module都可以使用

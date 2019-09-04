@@ -28,3 +28,7 @@ fun toastCenter(message: Any?) {
         ToastUtils.showCustomShort(R.layout.layout_toast).mTvMessage.text = it.toString()
     }
 }
+
+fun toastCancel() {
+    ToastUtils.cancel()
+}

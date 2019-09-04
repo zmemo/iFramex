@@ -29,7 +29,7 @@
 			android:theme="@style/iTheme" />
 		
 		<provider
-			android:name=".provider.MatisseFileProvider"
+			android:name=".photo.MatisseFileProvider"
 			android:authorities="${applicationId}.provider.MatisseFileProvider"
 			android:exported="false"
 			android:grantUriPermissions="true">

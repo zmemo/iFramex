@@ -1,0 +1,30 @@
+主要文件
+
+widget
+|
+|---bottomnavigationbar
+|   |---BottomNavigationViewEx      底部导航控件
+|   |---OnItemChangeListener        条目切换监听
+|---itemview
+|   |---ItemView                    横条控件
+|---ninegridview
+|   |---NineGridView                九宫格控件
+|---recyclerview
+|   |---RootRecyclerView            RecyclerView嵌套RecyclerView是外侧的RecyclerView
+|   |---ChildRecyclerView           RecyclerView嵌套RecyclerView是内部的RecyclerView
+|   |---NoScrollGridlayoutManager   RecyclerView不可滑动的GridLayoutManager
+|   |---NoScrollLinearLayoutManager RecyclerView不可滑动的LinearLayoutManager
+|   |---LoopLayoutManager           RecyclerView可无限循环的LayoutManager
+|   |---RecyclerViewDivider         RecyclerView添加分割线
+|   |---ScrollRecyclerView          判断RecyclerView的滑动状态
+|   |---StartSnapHelper             起始边对齐的SnapHelper
+|---scrollview
+|   |---StateScrollView             检测滑动状态的ScrollView
+|   |---OnScrollListener            滑动状态监听
+|---textview
+|   |---AlignTextView               两端对齐的TextView
+|   |---WatcherEditText             封装TextWatcher的EditText
+|---titleview
+|   |---TitleView                   标题控件
+|---viewpager
+|   |---ScrollViewPager             控制是否可滑动的ViewPager

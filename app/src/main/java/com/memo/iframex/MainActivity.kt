@@ -6,6 +6,7 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.onClick
 import com.memo.tool.helper.ClickHelper
 import com.memo.tool.helper.OOMHelper
+import com.memo.tool.helper.toastCancel
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -21,7 +22,7 @@ class MainActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     override fun initialize() {
-        //开启内粗监听
+        //开启内存监听
         OOMHelper.startMonitorLowMemory()
 
         mBtnIntent.onClick {
@@ -31,6 +32,7 @@ class MainActivity : BaseActivity() {
 
     override fun finish() {
         if (ClickHelper.isDoubleClickExit) {
+            toastCancel()
             super.finish()
         }
     }

@@ -43,8 +43,6 @@ class QrcodeScanActivity : BaseActivity() {
     }
 
     private fun initQRCode() {
-        // 只识别扫描框中的二维码
-        mZXingView.scanBoxView.isOnlyDecodeScanBoxArea = true
         mZXingView.setDelegate(object : QRCodeView.Delegate {
             // 扫描成功
             override fun onScanQRCodeSuccess(result: String?) {

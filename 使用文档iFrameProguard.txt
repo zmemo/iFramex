@@ -1,0 +1,5 @@
+主要文件
+
+proguard
+|---proguard—Android.pro    Android基础混淆文件包括了Androidx
+|---proguard—XXXXXX.pro     使用依赖的混淆文件 注意每一个依赖单图添加一个混淆文件 文件第一行是混淆查看地址

@@ -12,7 +12,7 @@ import android.widget.EditText
  * @author zhou
  * @date 2019-09-04 09:30
  */
-class WatcherEditTest : EditText {
+class WatcherEditText : EditText {
 
     private val list = arrayListOf<TextWatcher>()
 

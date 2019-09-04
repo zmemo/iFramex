@@ -1,0 +1,7 @@
+主要文件
+
+ui
+|---qrcode
+|   |---QrcodeScanActivity  二维码扫描界面 包括从二维码扫描和本地相册获取
+|---Web
+|   |---WebActivity         Web网页界面（只是进行简单的界面展示）

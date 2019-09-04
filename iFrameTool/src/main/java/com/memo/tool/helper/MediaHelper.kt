@@ -16,7 +16,7 @@ import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.FileUtils
 import com.memo.tool.R
 import com.memo.tool.app.BaseApp
-import com.memo.tool.constant.LocalDir
+import com.memo.tool.dir.LocalDir
 import com.memo.tool.photo.GifSizeFilter
 import com.memo.tool.photo.Glide4Engine
 import com.memo.tool.photo.VideoTimeFilter

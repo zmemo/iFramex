@@ -3,7 +3,7 @@ package com.memo.tool.helper
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
-import com.memo.tool.http.gson.StringTypeAdapter
+import com.memo.tool.http.adapter.StringTypeAdapter
 
 /**
  * title:

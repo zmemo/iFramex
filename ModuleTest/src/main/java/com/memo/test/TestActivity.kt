@@ -200,7 +200,10 @@ class TestActivity : BaseActivity() {
                     startActivity<MatisseSelectActivity>()
                 }
                 R.id.mBtnQrcode -> {
-                    RouterManager.get().startQrCodeActivityForResult(mActivity, REQUEST_CODE_QRCODE)
+                    if (PermissionHelper.grantedCamera(mContext)) {
+                        RouterManager.get()
+                            .startQrCodeActivityForResult(mActivity, REQUEST_CODE_QRCODE)
+                    }
                 }
                 R.id.mBtnNotification -> {
                     startActivity<NotificationActivity>()

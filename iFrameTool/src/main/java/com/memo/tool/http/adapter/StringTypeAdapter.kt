@@ -1,4 +1,4 @@
-package com.memo.tool.http.gson
+package com.memo.tool.http.adapter
 
 import com.google.gson.TypeAdapter
 import com.google.gson.stream.JsonReader

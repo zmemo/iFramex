@@ -3,9 +3,9 @@ package com.memo.tool.preview;
 import android.graphics.Rect;
 import android.os.Parcel;
 
-import com.previewlibrary.enitity.IThumbViewInfo;
-
 import androidx.annotation.Nullable;
+
+import com.previewlibrary.enitity.IThumbViewInfo;
 
 /**
  * title:图片预览实体类
@@ -27,6 +27,7 @@ public class PreviewImageInfo implements IThumbViewInfo {
             return new PreviewImageInfo[size];
         }
     };
+
     /**
      * 图片地址
      */
@@ -42,7 +43,6 @@ public class PreviewImageInfo implements IThumbViewInfo {
         this.url = url;
         this.videoUrl = videoUrl;
     }
-
 
     @Override
     public String getUrl() {//将你的图片地址字段返回
@@ -72,11 +72,6 @@ public class PreviewImageInfo implements IThumbViewInfo {
         this.videoUrl = videoUrl;
     }
 
-    /**
-     * 记录坐标
-     */
-    private Rect mBounds;
-
 
     private PreviewImageInfo(Parcel parcel) {
         this.url = parcel.readString();
@@ -95,4 +90,9 @@ public class PreviewImageInfo implements IThumbViewInfo {
         dest.writeParcelable(this.mBounds, flags);
         dest.writeString(this.videoUrl);
     }
+
+    /**
+     * 记录坐标
+     */
+    private Rect mBounds;
 }

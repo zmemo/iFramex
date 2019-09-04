@@ -5,7 +5,7 @@ import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
 /**
- * title:
+ * title:基础的多布局Adapter
  * describe:
  *
  * @author zhou
