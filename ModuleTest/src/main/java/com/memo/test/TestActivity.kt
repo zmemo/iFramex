@@ -30,7 +30,7 @@ import com.memo.tool.dialog.entity.Area
 import com.memo.tool.ext.OnNotFastClickListener
 import com.memo.tool.ext.onClick
 import com.memo.tool.ext.startActivity
-import com.memo.tool.utils.*
+import com.memo.tool.helper.*
 import kotlinx.android.synthetic.main.activity_test.*
 
 /**

@@ -1,4 +1,4 @@
-package com.memo.tool.utils
+package com.memo.tool.helper
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -30,7 +30,6 @@ import com.memo.tool.dialog.entity.Area
 import com.memo.tool.dialog.entity.Province
 import com.memo.tool.ext.color
 import com.memo.tool.ext.string
-import com.memo.tool.helper.RxHelper
 import io.reactivex.disposables.Disposable
 import java.text.SimpleDateFormat
 

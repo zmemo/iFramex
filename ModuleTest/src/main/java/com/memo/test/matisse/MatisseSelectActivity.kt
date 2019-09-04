@@ -8,9 +8,9 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.constant.LocalDir
 import com.memo.tool.ext.onClick
-import com.memo.tool.utils.MediaHelper
-import com.memo.tool.utils.PermissionHelper
-import com.memo.tool.utils.toast
+import com.memo.tool.helper.MediaHelper
+import com.memo.tool.helper.PermissionHelper
+import com.memo.tool.helper.toast
 import kotlinx.android.synthetic.main.activity_matisse_select.*
 
 class MatisseSelectActivity : BaseActivity() {

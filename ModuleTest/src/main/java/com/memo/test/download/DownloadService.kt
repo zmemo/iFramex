@@ -8,8 +8,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.memo.test.api.RetrofitClient
 import com.memo.test.config.TestConfig
 import com.memo.tool.app.BaseApp
+import com.memo.tool.helper.NotificationHelper
 import com.memo.tool.helper.RxHelper
-import com.memo.tool.utils.NotificationHelper
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import java.io.File

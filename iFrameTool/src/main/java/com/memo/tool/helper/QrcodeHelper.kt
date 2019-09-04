@@ -1,4 +1,4 @@
-package com.memo.tool.utils
+package com.memo.tool.helper
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -8,7 +8,6 @@ import androidx.annotation.Nullable
 import cn.bingoogolapple.qrcode.zxing.QRCodeDecoder
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder
 import com.blankj.utilcode.util.LogUtils
-import com.memo.tool.helper.RxHelper
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 

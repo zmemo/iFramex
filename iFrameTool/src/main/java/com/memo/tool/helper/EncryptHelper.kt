@@ -1,4 +1,4 @@
-package com.memo.tool.utils
+package com.memo.tool.helper
 
 import com.blankj.utilcode.util.EncodeUtils
 import com.blankj.utilcode.util.EncryptUtils
@@ -106,7 +106,7 @@ object EncryptHelper {
         return EncryptUtils.encryptRSA2HexString(
             content.toByteArray(),
             EncodeUtils.base64Decode(publicRsaSecretKey512.toByteArray()),
-            true,
+            512,
             "RSA"
         )
     }
@@ -120,7 +120,7 @@ object EncryptHelper {
             EncryptUtils.decryptHexStringRSA(
                 secret,
                 EncodeUtils.base64Decode(privateRsaSecretKey512.toByteArray()),
-                false,
+                512,
                 "RSA"
             )
         )

@@ -1,4 +1,4 @@
-package com.memo.tool.utils
+package com.memo.tool.helper
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -16,7 +16,6 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.memo.tool.glide.GlideApp
-import com.memo.tool.helper.RxHelper
 import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import java.io.File
@@ -58,6 +57,36 @@ object ImageLoadHelper {
             .diskCacheStrategy(DiskCacheStrategy.NONE)
             .centerCrop()
             .into(image)
+    }
+
+    /**
+     * 加载不需要内粗缓存的图片
+     * @param context Context
+     * @param url Any
+     * @param imageView ImageView
+     */
+    @JvmStatic
+    fun loadNoMemoryImage(context: Context, url: Any, imageView: ImageView) {
+        GlideApp.with(context)
+            .load(url)
+            .skipMemoryCache(true)
+            .centerCrop()
+            .into(imageView)
+    }
+
+    /**
+     * 加载不需要磁盘缓存的图片
+     * @param context Context
+     * @param url Any
+     * @param imageView ImageView
+     */
+    @JvmStatic
+    fun loadNoDiskImage(context: Context, url: Any, imageView: ImageView) {
+        GlideApp.with(context)
+            .load(url)
+            .diskCacheStrategy(DiskCacheStrategy.NONE)
+            .centerCrop()
+            .into(imageView)
     }
 
     /**

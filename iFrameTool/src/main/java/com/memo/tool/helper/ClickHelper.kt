@@ -1,4 +1,4 @@
-package com.memo.tool.utils
+package com.memo.tool.helper
 
 /**
  * title:点击工具类 防止过快点击

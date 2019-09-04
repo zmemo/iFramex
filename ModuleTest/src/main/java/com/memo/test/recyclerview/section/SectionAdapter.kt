@@ -5,7 +5,7 @@ import com.memo.test.recyclerview.SectionItem
 import com.memo.test.recyclerview.Sections
 import com.memo.tool.adapter.recyclerview.BaseSectionAdapter
 import com.memo.tool.adapter.recyclerview.ViewHolder
-import com.memo.tool.utils.ImageLoadHelper
+import com.memo.tool.helper.ImageLoadHelper
 
 /**
  * title:

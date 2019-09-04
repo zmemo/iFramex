@@ -6,7 +6,7 @@ import com.memo.test.recyclerview.Multi
 import com.memo.test.recyclerview.MultiEntity
 import com.memo.tool.adapter.recyclerview.BaseMultiProvider
 import com.memo.tool.adapter.recyclerview.ViewHolder
-import com.memo.tool.utils.ImageLoadHelper
+import com.memo.tool.helper.ImageLoadHelper
 
 /**
  * title:图文类型

@@ -2,7 +2,7 @@ package com.memo.test.bottom
 
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
-import com.memo.tool.utils.toast
+import com.memo.tool.helper.toast
 import kotlinx.android.synthetic.main.activity_bottom.*
 
 

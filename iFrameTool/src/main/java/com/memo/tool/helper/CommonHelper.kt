@@ -1,4 +1,4 @@
-package com.memo.tool.utils
+package com.memo.tool.helper
 
 import android.view.Gravity
 import com.blankj.utilcode.util.ToastUtils

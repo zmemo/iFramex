@@ -11,8 +11,8 @@ import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.recyclerview.widget.RecyclerView
 import com.memo.tool.R
+import com.memo.tool.helper.ClickHelper
 import com.memo.tool.helper.RxHelper
-import com.memo.tool.utils.ClickHelper
 import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.Observable
 import java.util.concurrent.TimeUnit

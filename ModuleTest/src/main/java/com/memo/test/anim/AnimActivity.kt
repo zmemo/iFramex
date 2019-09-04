@@ -4,7 +4,7 @@ import android.os.Build
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.ext.onClick
-import com.memo.tool.utils.AnimHelper
+import com.memo.tool.helper.AnimHelper
 import kotlinx.android.synthetic.main.activity_anim.*
 
 

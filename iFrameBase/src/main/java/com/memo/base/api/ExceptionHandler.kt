@@ -4,11 +4,10 @@ import android.net.ParseException
 import com.blankj.utilcode.constant.PermissionConstants
 import com.blankj.utilcode.util.*
 import com.google.gson.JsonParseException
-import com.memo.base.BuildConfig
 import com.memo.base.config.config.Config
 import com.memo.tool.constant.LocalDir
+import com.memo.tool.helper.IOHelper
 import com.memo.tool.http.exception.ApiException
-import com.memo.tool.utils.IOHelper
 import org.json.JSONException
 import retrofit2.HttpException
 import java.io.File

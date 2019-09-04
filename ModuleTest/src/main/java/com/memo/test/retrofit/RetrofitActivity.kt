@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import com.memo.base.ui.activity.BaseMvpActivity
 import com.memo.test.R
 import com.memo.tool.ext.onClick
-import com.memo.tool.utils.GsonHelper
+import com.memo.tool.helper.GsonHelper
 import kotlinx.android.synthetic.main.activity_retrofit.*
 
 @SuppressLint("SetTextI18n")

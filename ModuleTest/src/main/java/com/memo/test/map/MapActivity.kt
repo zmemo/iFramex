@@ -4,7 +4,7 @@ import com.memo.base.manager.router.RouterManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.ext.onClick
-import com.memo.tool.utils.MapHelper
+import com.memo.tool.helper.MapHelper
 import kotlinx.android.synthetic.main.activity_map.*
 
 

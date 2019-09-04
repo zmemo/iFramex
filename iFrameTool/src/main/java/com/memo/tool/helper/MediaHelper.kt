@@ -1,6 +1,6 @@
 @file:Suppress("DEPRECATION")
 
-package com.memo.tool.utils
+package com.memo.tool.helper
 
 import android.app.Activity
 import android.content.Context

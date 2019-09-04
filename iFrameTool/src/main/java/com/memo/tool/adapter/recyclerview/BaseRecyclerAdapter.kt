@@ -3,7 +3,7 @@ package com.memo.tool.adapter.recyclerview
 import android.view.View
 import androidx.annotation.LayoutRes
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.memo.tool.utils.ClickHelper
+import com.memo.tool.helper.ClickHelper
 
 /**
  * title:对BaseQuickAdapter的改造

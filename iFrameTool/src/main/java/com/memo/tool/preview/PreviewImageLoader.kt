@@ -12,7 +12,7 @@ import com.bumptech.glide.load.resource.gif.GifDrawable
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 import com.memo.tool.glide.GlideApp
-import com.memo.tool.utils.ImageLoadHelper
+import com.memo.tool.helper.ImageLoadHelper
 import com.previewlibrary.loader.IZoomMediaLoader
 import com.previewlibrary.loader.MySimpleTarget
 

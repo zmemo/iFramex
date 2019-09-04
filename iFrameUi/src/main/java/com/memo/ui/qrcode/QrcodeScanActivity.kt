@@ -8,8 +8,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.memo.base.manager.router.RouterPath
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.finishActivityWithResult
-import com.memo.tool.utils.MediaHelper
-import com.memo.tool.utils.QrcodeHelper
+import com.memo.tool.helper.MediaHelper
+import com.memo.tool.helper.QrcodeHelper
 import com.memo.ui.R
 import com.memo.widget.titleview.TitleView
 import com.zhihu.matisse.Matisse

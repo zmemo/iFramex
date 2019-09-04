@@ -6,7 +6,7 @@ import com.just.agentweb.AgentWeb
 import com.memo.base.manager.router.RouterPath
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.gone
-import com.memo.tool.utils.WebHelper
+import com.memo.tool.helper.WebHelper
 import com.memo.ui.R
 import kotlinx.android.synthetic.main.activity_web.*
 

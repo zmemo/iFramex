@@ -5,8 +5,8 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.config.TestConfig
 import com.memo.tool.ext.onClick
+import com.memo.tool.helper.NotificationHelper
 import com.memo.tool.helper.RxHelper
-import com.memo.tool.utils.NotificationHelper
 import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_notification.*

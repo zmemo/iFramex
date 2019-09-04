@@ -1,8 +1,8 @@
 package com.memo.test.api
 
 import com.memo.base.config.config.Config
+import com.memo.tool.helper.GsonHelper
 import com.memo.tool.http.interceptor.HttpLogInterceptor
-import com.memo.tool.utils.GsonHelper
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

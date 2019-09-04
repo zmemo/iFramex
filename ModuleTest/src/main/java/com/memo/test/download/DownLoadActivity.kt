@@ -6,7 +6,7 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.api.Api
 import com.memo.tool.ext.onClick
-import com.memo.tool.utils.PermissionHelper
+import com.memo.tool.helper.PermissionHelper
 import kotlinx.android.synthetic.main.activity_down_load.*
 import java.io.File
 

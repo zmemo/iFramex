@@ -32,7 +32,7 @@ class DepConfig {
     static kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.50"
     static coreKtx = "androidx.core:core-ktx:1.0.2"
     static multiDex = "androidx.multidex:multidex:2.0.0"
-    static androidUtilCode = "com.blankj:utilcodex:1.25.1"
+    static androidUtilCode = "com.blankj:utilcodex:1.25.9"
     static rxJava2 = "io.reactivex.rxjava2:rxjava:2.2.10"
     static rxAndroid2 = "io.reactivex.rxjava2:rxandroid:2.1.1"
     static rxBus = "com.blankj:rxbus:1.6"
@@ -54,9 +54,9 @@ class DepConfig {
     static luBan = "com.github.zmemo:Luban:1.0.0"
 
     // 插件
-    static doraemonKitRelease = "com.didichuxing.doraemonkit:doraemonkit-no-op:1.1.8"
-    static doraemonKitDebug = "com.didichuxing.doraemonkit:doraemonkit:1.1.8"
-    static leakCanaryDebug = "com.squareup.leakcanary:leakcanary-android:2.0-alpha-3"
+    static doraemonKitRelease = "com.didichuxing.doraemonkit:doraemonkit-no-op:1.2.1"
+    static doraemonKitDebug = "com.didichuxing.doraemonkit:doraemonkit:1.2.0"
+    static leakCanaryDebug = "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
 
     // Compiler
     static glideCompiler = "com.github.bumptech.glide:compiler:4.9.0"

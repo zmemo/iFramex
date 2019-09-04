@@ -1,4 +1,4 @@
-package com.memo.tool.utils
+package com.memo.tool.helper
 
 import android.annotation.SuppressLint
 import android.annotation.TargetApi

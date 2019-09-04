@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import com.memo.tool.dialog.dialog.LoadingDialog
+import com.memo.tool.helper.OOMHelper
 import com.trello.rxlifecycle3.LifecycleProvider
 import com.trello.rxlifecycle3.android.FragmentEvent
 import com.trello.rxlifecycle3.components.RxFragment
@@ -36,7 +37,11 @@ abstract class BaseFragment : RxFragment() {
     /*** 标识 标识是否界面准备完毕 ***/
     private var isPrepare: Boolean = false
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         return inflater.inflate(bindLayoutResId(), container, false)
     }
 
@@ -88,6 +93,8 @@ abstract class BaseFragment : RxFragment() {
         if (!compositeDisposable.isDisposed) {
             compositeDisposable.clear()
         }
+        // 清除所有图片占用的内存
+        OOMHelper.onDestroy(mRootView)
         super.onDestroyView()
     }
 }

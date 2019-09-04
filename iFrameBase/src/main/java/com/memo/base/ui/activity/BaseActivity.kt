@@ -13,8 +13,9 @@ import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.ScreenUtils
 import com.memo.tool.dialog.dialog.LoadingDialog
 import com.memo.tool.ext.inflaterView
-import com.memo.tool.utils.KeyboardHelper
-import com.memo.tool.utils.StatusBarHelper
+import com.memo.tool.helper.KeyboardHelper
+import com.memo.tool.helper.OOMHelper
+import com.memo.tool.helper.StatusBarHelper
 import com.trello.rxlifecycle3.LifecycleProvider
 import com.trello.rxlifecycle3.android.ActivityEvent
 import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
@@ -127,6 +128,8 @@ abstract class BaseActivity : RxAppCompatActivity() {
         KeyboardUtils.hideSoftInput(mActivity)
         // 修复软键盘内存泄漏
         KeyboardUtils.fixSoftInputLeaks(mActivity)
+        // 清除所有的图片内存占用
+        OOMHelper.onDestroy(mRootView)
         super.onDestroy()
     }
 }
