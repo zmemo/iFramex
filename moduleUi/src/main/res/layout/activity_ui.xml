@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context="com.memo.ui.UiActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_left_shown="false"
+		app:title_title_text="Ui模块主界面" />
+	
+	<com.memo.widget.itemview.ItemView
+		android:id="@+id/mItemScan"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:item_divider_color="@color/color_F5F5F5"
+		app:item_divider_margin="@dimen/dp15"
+		app:item_main_text="二维码扫描"
+		app:item_main_textBold="true" />
+	
+	<com.memo.widget.itemview.ItemView
+		android:id="@+id/mItemWeb"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:item_divider_color="@color/color_F5F5F5"
+		app:item_divider_margin="@dimen/dp15"
+		app:item_main_text="跳转网页"
+		app:item_main_textBold="true" />
+
+</LinearLayout>

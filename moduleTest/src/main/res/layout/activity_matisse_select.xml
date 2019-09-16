@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".ui.matisse.MatisseSelectActivity">
+	
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="图片选中/压缩" />
+	
+	<Button
+		android:id="@+id/mBtnSelect"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="选择图片并压缩" />
+	
+	<Button
+		android:id="@+id/mBtnTake"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="照相并裁剪" />
+	
+	<Button
+		android:id="@+id/mBtnVideo"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="选择视频" />
+	
+	<Button
+		android:id="@+id/mBtnClear"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="清除并删除文件" />
+	
+	<com.memo.widget.ninegridview.NineGridView
+		android:id="@+id/mNineGridView"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

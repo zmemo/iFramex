@@ -1,0 +1,44 @@
+if (ModuleConfig.isModuleUiRunAlone) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+    defaultConfig {
+        if (ModuleConfig.isModuleUiRunAlone) {
+            applicationId Config.applicationId + project.name
+        }
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+        testInstrumentationRunner Config.androidJunitRunner
+        multiDexEnabled true
+    }
+    sourceSets {
+        main {
+            if (ModuleConfig.isModuleUiRunAlone) {
+                manifest.srcFile 'src/main/manifest/application/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/manifest/module/AndroidManifest.xml'
+            }
+        }
+    }
+}
+
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    kapt DepConfig.arouterCompiler
+    api project(path: ':moduleBase')
+}
+

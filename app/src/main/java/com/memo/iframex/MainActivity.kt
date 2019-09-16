@@ -25,8 +25,11 @@ class MainActivity : BaseActivity() {
         //开启内存监听
         OOMHelper.startMonitorLowMemory()
 
-        mBtnIntent.onClick {
-            RouterManager.get().startTestActivity()
+        mBtnTest.onClick {
+            RouterManager.get().startLauncherTest()
+        }
+        mBtnUi.onClick {
+            RouterManager.get().startLauncherUi()
         }
     }
 

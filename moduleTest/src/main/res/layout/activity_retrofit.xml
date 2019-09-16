@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:padding="@dimen/dp_10"
+	tools:context=".ui.retrofit.RetrofitActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="网络下载" />
+	
+	<Button
+		android:id="@+id/mBtnZhiHu"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/dp50"
+		android:text="开始网络请求 知乎" />
+	
+	<Button
+		android:id="@+id/mBtnDouBan"
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/dp50"
+		android:text="开始网络请求 玩安卓" />
+	
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:overScrollMode="never">
+		
+		<TextView
+			android:id="@+id/mTvJson"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="JSON"
+			android:textSize="@dimen/sp18" />
+	</androidx.core.widget.NestedScrollView>
+</LinearLayout>

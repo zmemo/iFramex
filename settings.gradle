@@ -2,14 +2,14 @@ rootProject.name = 'iFramex'
 
 include ':app',
 
-        ':iFrameProguard', ':iFrameUi', ':ModuleTest',
+        ':iFrame:iFrameProguard', ':moduleUi', ':moduleTest',
 
-        ':iFrameBase',
+        ':moduleBase',
 
-        ':iFrameWidget',
+        ':iFrame:iFrameWidget',
 
-        ':iFrameTool',
+        ':iFrame:iFrameTool',
 
-        ':iFrameBasic'
+        ':iFrame:iFrameBasic'
 
 

@@ -34,7 +34,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    def time = new Date().format("MM-dd-HH-mm", TimeZone.getDefault())
+                    def time = new Date().format("MM-dd HH:mm", TimeZone.getDefault())
                     outputFileName = "debug-v${variant.versionName}-${time}.apk"
                 }
             }
@@ -47,7 +47,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             android.applicationVariants.all { variant ->
                 variant.outputs.all {
-                    def time = new Date().format("MM-dd-HH-mm", TimeZone.getDefault())
+                    def time = new Date().format("MM-dd HH:mm", TimeZone.getDefault())
                     outputFileName = "release-v${variant.versionName}-${time}.apk"
                 }
             }
@@ -65,10 +65,15 @@ android {
         useNewCruncher = false
     }
 
+    packagingOptions {
+        exclude 'META-INF/*'
+    }
+
     dexOptions {
         preDexLibraries true
+        javaMaxHeapSize "8g"
         maxProcessCount 8
-        javaMaxHeapSize "4g"
+        dexInProcess = true
     }
 
     compileOptions {
@@ -87,10 +92,8 @@ dependencies {
     testImplementation DepConfig.junit
     androidTestImplementation DepConfig.testJunit
     androidTestImplementation DepConfig.testEspresso
-
     kapt DepConfig.arouterCompiler
 
-    implementation project(path: ':iFrameProguard')
-    implementation project(path: ':iFrameUi')
-    if (!ModuleConfig.isModuleTestRunAlone) implementation project(path: ':ModuleTest')
+    if (!ModuleConfig.isModuleUiRunAlone) implementation project(path: ':moduleUi')
+    if (!ModuleConfig.isModuleTestRunAlone) implementation project(path: ':moduleTest')
 }

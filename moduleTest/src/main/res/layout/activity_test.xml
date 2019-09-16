@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/mRootView"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:fillViewport="true"
+	android:orientation="vertical"
+	android:overScrollMode="never"
+	tools:context=".TestActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_left_text="返回"
+		app:title_left_text_bold="true"
+		app:title_right_text="更多"
+		app:title_subtitle_text="副标题"
+		app:title_title_text="主标题" />
+	
+	<com.scwang.smartrefresh.layout.SmartRefreshLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		app:srlEnableAutoLoadMore="false"
+		app:srlEnableLoadMore="false"
+		app:srlEnableOverScrollBounce="true"
+		app:srlEnableOverScrollDrag="true"
+		app:srlEnableRefresh="false">
+		
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:overScrollMode="never">
+			
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical">
+				
+				<Button
+					android:id="@+id/mBtnGlide"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/glide" />
+				
+				
+				<Button
+					android:id="@+id/mBtnRetrofit"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Retrofit" />
+				
+				<Button
+					android:id="@+id/mBtnBus"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/RxBus" />
+				
+				<Button
+					android:id="@+id/mBtnSW"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/SmallestWith" />
+				
+				<Button
+					android:id="@+id/mBtnDialog"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="end"
+					android:text="@string/Dialog" />
+				
+				<Button
+					android:id="@+id/mBtnDown"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Down" />
+				
+				
+				<Button
+					android:id="@+id/mBtnNine"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/NineGridView" />
+				
+				<Button
+					android:id="@+id/mBtnStatus"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/MultiStatusView" />
+				
+				<Button
+					android:id="@+id/mBtnMatisse"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Matisse" />
+				
+				<Button
+					android:id="@+id/mBtnNotification"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Notification" />
+				
+				<Button
+					android:id="@+id/mBtnMap"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Map" />
+				
+				<Button
+					android:id="@+id/mBtnAnim"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Anim" />
+				
+				
+				<Button
+					android:id="@+id/mBtnShare"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Share" />
+				
+				<Button
+					android:id="@+id/mBtnMulti"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/RecyclerView" />
+				
+				<Button
+					android:id="@+id/mBtnBottom"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Bottom" />
+				
+				<Button
+					android:id="@+id/mBtnDrag"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/Drag" />
+				
+				<com.memo.widget.itemview.ItemView
+					android:id="@+id/mItem"
+					android:layout_width="match_parent"
+					android:layout_height="@dimen/dp50"
+					android:layout_marginBottom="@dimen/dp10"
+					app:item_divider_color="@color/color_BFEFFF"
+					app:item_divider_height="@dimen/dp1"
+					app:item_divider_margin="@dimen/dp15"
+					app:item_divider_shown="true"
+					app:item_extra_drawable="@drawable/ic_arrow_right"
+					app:item_extra_drawablePadding="@dimen/dp10"
+					app:item_extra_text="额外文字"
+					app:item_extra_textBold="true"
+					app:item_extra_textColor="@color/color_BFEFFF"
+					app:item_extra_textSize="@dimen/sp12"
+					app:item_main_drawable="@drawable/ic_more"
+					app:item_main_drawablePadding="@dimen/dp10"
+					app:item_main_text="这里是标题"
+					app:item_main_textBold="true"
+					app:item_main_textColor="@color/color_BFEFFF"
+					app:item_main_textSize="@dimen/sp16"
+					app:item_padding="@dimen/dp15"
+					app:item_ripple_enable="true" />
+			
+			
+			</LinearLayout>
+		
+		</androidx.core.widget.NestedScrollView>
+	
+	</com.scwang.smartrefresh.layout.SmartRefreshLayout>
+</LinearLayout>

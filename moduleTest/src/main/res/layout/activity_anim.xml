@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".ui.anim.AnimActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="动画效果展示" />
+	
+	<FrameLayout
+		android:id="@+id/mFlContainer"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal">
+		
+		<ImageView
+			android:id="@+id/mIv"
+			android:layout_width="@dimen/dp100"
+			android:layout_height="@dimen/dp100"
+			android:src="@drawable/iframe" />
+		
+		<ImageView
+			android:id="@+id/mIvOther"
+			android:layout_width="@dimen/dp100"
+			android:layout_height="@dimen/dp100"
+			android:src="@drawable/iframe"
+			android:visibility="gone" />
+	</FrameLayout>
+	
+	
+	<Button
+		android:id="@+id/mBtnCircle"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="圆形扩散" />
+	
+	<Button
+		android:id="@+id/mBtnAlpha"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="渐变动画" />
+	
+	<Button
+		android:id="@+id/mBtnRotate"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="中心翻转" />
+	
+	<Button
+		android:id="@+id/mBtnScale"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="缩放动画" />
+	
+	<Button
+		android:id="@+id/mBtnTranslate"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="平移动画" />
+	
+	<Button
+		android:id="@+id/mBtnRotate3D"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="翻转动画" />
+</LinearLayout>
