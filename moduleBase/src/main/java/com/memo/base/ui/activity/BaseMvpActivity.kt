@@ -22,7 +22,7 @@ abstract class BaseMvpActivity<in V : IView, P : IPresenter<V>> : BaseActivity()
         mPresenter?.attachView(this as V)
     }
 
-    /*** 绑定Presenter ***/
+    /*** 绑定Presenter 如果多个Presenter 返回建议是当前页面的Presenter ***/
     protected abstract fun buildPresenter(): P
 
     /*** 将请求放入队列 ***/

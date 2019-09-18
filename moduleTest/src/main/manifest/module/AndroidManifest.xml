@@ -3,9 +3,6 @@
 	package="com.memo.test">
 	
 	<application>
-		<activity android:name=".ui.drag.DragActivity" />
-		<activity android:name=".ui.recyclerview.drag.DragRvActivity" />
-		<activity android:name=".ui.recyclerview.grid.GridMultiActivity" />
 		<activity android:name=".TestActivity" />
 		<activity android:name=".ui.retrofit.RetrofitActivity" />
 		<activity android:name=".ui.bus.BusSubscribeActivity" />
@@ -23,7 +20,10 @@
 		<activity android:name=".ui.recyclerview.section.SectionRecyclerActivity" />
 		<activity android:name=".ui.recyclerview.RecyclerViewActivity" />
 		<activity android:name=".ui.recyclerview.multi.MultiRecyclerActivity" />
+		<activity android:name=".ui.recyclerview.grid.GridMultiActivity" />
+		<activity android:name=".ui.recyclerview.drag.DragRvActivity" />
 		<activity android:name=".ui.bottom.BottomActivity" />
+		<activity android:name=".ui.drag.DragActivity" />
 		
 		<service android:name=".ui.download.DownloadService" />
 	</application>

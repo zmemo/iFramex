@@ -20,7 +20,6 @@
 		android:usesCleartextTraffic="true"
 		tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
 		tools:replace="android:allowBackup">
-		
 		<activity android:name=".TestActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

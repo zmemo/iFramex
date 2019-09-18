@@ -40,10 +40,12 @@ import kotlinx.android.synthetic.main.activity_test.*
 
 /**
  * title:测试界面
- * describe:测试
+ * describe:
  *
  * @author zhou
- * @date 2019-07-25 17:13
+ * @date 2019-09-17 19:21
+ *
+ * Talk is cheap. Show me the code.
  */
 @Route(path = RouterPath.Launcher.TestActivity)
 class TestActivity : BaseActivity() {
@@ -153,8 +155,8 @@ class TestActivity : BaseActivity() {
         if (PermissionHelper.grantedInstallUnKnowApp(mActivity, REQUEST_CODE_INSTALL)) {
             toast("已有安装权限")
         }
-
     }
+
 
     private val listener = object : OnNotFastClickListener {
         override fun onNotFastClick(view: View) {

@@ -14,5 +14,6 @@ android {
 
 dependencies {
     api project(path: ':iFrame:iFrameWidget')
+    //混淆
     api project(path: ':iFrame:iFrameProguard')
 }

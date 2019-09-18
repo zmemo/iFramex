@@ -2,7 +2,6 @@ package com.memo.ui.qrcode
 
 import android.app.Activity
 import android.content.Intent
-import android.widget.TextView
 import cn.bingoogolapple.qrcode.core.QRCodeView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.memo.base.manager.router.RouterPath
@@ -12,7 +11,6 @@ import com.memo.tool.ext.startActivityForResult
 import com.memo.tool.helper.MediaHelper
 import com.memo.tool.helper.QrcodeHelper
 import com.memo.ui.R
-import com.memo.widget.titleview.TitleView
 import com.zhihu.matisse.Matisse
 import kotlinx.android.synthetic.main.activity_qrcode_scan.*
 
@@ -42,11 +40,9 @@ class QrcodeScanActivity : BaseActivity() {
     }
 
     private fun initTitle() {
-        mTitleView.setOnTitleClickListener(object : TitleView.SimpleTitleClickListener() {
-            override fun onRightClick(mTvRight: TextView) {
-                MediaHelper.choosePhoto(mActivity, false, 1, REQUEST_CODE_QRCODE_ALBLUM)
-            }
-        })
+        mTitleView.setOnRightClickListener {
+            MediaHelper.choosePhoto(mActivity, false, 1, REQUEST_CODE_QRCODE_ALBLUM)
+        }
     }
 
     private fun initQRCode() {
@@ -90,8 +86,8 @@ class QrcodeScanActivity : BaseActivity() {
     }
 
     override fun onDestroy() {
+        super.onDestroy()
         mZXingView.stopCamera()
         mZXingView.onDestroy()
-        super.onDestroy()
     }
 }

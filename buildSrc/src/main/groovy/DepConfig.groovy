@@ -1,7 +1,7 @@
 class DepConfig {
 
     // Gradle
-    static gradle = "com.android.tools.build:gradle:3.4.2"
+    static gradle = "com.android.tools.build:gradle:3.5.0"
     static gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.50"
     static gradleKotlinAndroid = "org.jetbrains.kotlin:kotlin-android-extensions:1.3.50"
     static gradleArouter = "com.alibaba:arouter-register:1.0.2"
@@ -20,7 +20,7 @@ class DepConfig {
     static basePopup = "com.github.razerdp:BasePopup:2.2.1"
     static rWidgetHelper = "com.ruffian.library:RWidgetHelper:1.1.3"
     static baseRecyclerViewAdapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47-androidx"
-    static matisse = "com.zhihu.android:matisse:0.5.2-beta5"
+    static matisse = "com.zhihu.android:matisse:0.5.3-beta2"
     static uCrop = "com.github.yalantis:ucrop:2.2.3"
     static pickerView = "com.contrarywind:Android-PickerView:4.1.8"
     static qrCode = "cn.bingoogolapple:bga-qrcode-zxing:1.3.6"
@@ -48,10 +48,7 @@ class DepConfig {
     static mmkv = "com.tencent:mmkv:1.0.22"
     static preview = "com.ycjiang:ImagePreview:2.2.5"
     static stickyHeader = "com.oushangfeng:PinnedSectionItemDecoration:1.3.2"
-
-
-    // zmemo
-    static luBan = "com.github.zmemo:Luban:1.0.0"
+    static luBan = "top.zibin:Luban:1.1.8"
 
     // 插件
     static doraemonKitRelease = "com.didichuxing.doraemonkit:doraemonkit-no-op:1.2.1"

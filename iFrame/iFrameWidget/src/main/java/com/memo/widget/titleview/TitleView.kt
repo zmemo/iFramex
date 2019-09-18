@@ -13,7 +13,6 @@ import android.util.TypedValue
 import android.view.View
 import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
-import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
@@ -125,7 +124,9 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
     /*** 背景颜色 ***/
     private var background: Int = Color.WHITE
 
-    private var mListener: SimpleTitleClickListener? = null
+    private var mLeftListener: LeftClickListener? = null
+    private var mRightListener: RightClickListener? = null
+    private var mTitleListener: TitleClickListener? = null
 
     init {
         inflaterView(R.layout.layout_title_view, this)
@@ -253,26 +254,28 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
             ViewCompat.setElevation(this, mElevation)
             clipToPadding = false
         }
-
-
     }
 
     private fun initListener() {
-        mTvLeft.onClick {
-            if (mListener == null) {
-                if (context is Activity) {
-                    (context as Activity).finish()
+        onViewsClickListener({
+            when (it.id) {
+                R.id.mTvLeft -> {
+                    if (mLeftListener == null) {
+                        if (context is Activity) {
+                            (context as Activity).finish()
+                        }
+                    } else {
+                        mLeftListener?.onLeftClick()
+                    }
                 }
-            } else {
-                mListener?.onLeftClick()
+                R.id.mTvRight -> {
+                    mTitleListener?.onTitleClick()
+                }
+                R.id.mTvTitle -> {
+                    mRightListener?.onRightClick()
+                }
             }
-        }
-        mTvTitle.onClick {
-            mListener?.onTitleClick()
-        }
-        mTvRight.onClick {
-            mListener?.onRightClick(mTvRight)
-        }
+        }, mTvLeft, mTvTitle, mTvRight)
     }
 
     /**
@@ -446,40 +449,57 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
     }
 
     /**
-     * 设置点击事件
-     * 左侧点击
-     * 标题点击
-     * 右侧点击
-     * @param listener SimpleTitleClickListener
+     * 设置左侧点击
      */
-    fun setOnTitleClickListener(listener: SimpleTitleClickListener) {
-        mListener = listener
+    fun setOnLeftClickListener(onClick: () -> Unit) {
+        mLeftListener = object : LeftClickListener {
+            override fun onLeftClick() {
+                onClick()
+            }
+        }
     }
 
-    private interface OnClickListener {
-        /**
-         * 左侧点击
-         */
+    /**
+     * 设置右侧点击
+     */
+    fun setOnRightClickListener(onClick: () -> Unit) {
+        mRightListener = object : RightClickListener {
+            override fun onRightClick() {
+                onClick()
+            }
+        }
+    }
+
+    /**
+     * 设置标题点击
+     */
+    fun setOnTitleClickListener(onClick: () -> Unit) {
+        mTitleListener = object : TitleClickListener {
+            override fun onTitleClick() {
+                onClick()
+            }
+        }
+    }
+
+    /**
+     * 左侧点击
+     */
+    private interface LeftClickListener {
         fun onLeftClick()
+    }
 
-        /**
-         * 标题点击
-         */
+    /**
+     * 标题点击
+     */
+    private interface RightClickListener {
+        fun onRightClick()
+    }
+
+    /**
+     * 右侧点击
+     */
+    private interface TitleClickListener {
         fun onTitleClick()
-
-        /**
-         * 右侧点击
-         * @param mTvRight TextView 右侧控件
-         */
-        fun onRightClick(mTvRight: TextView)
     }
 
-    open class SimpleTitleClickListener : OnClickListener {
-
-        override fun onLeftClick() {}
-
-        override fun onTitleClick() {}
-
-        override fun onRightClick(mTvRight: TextView) {}
-    }
 }

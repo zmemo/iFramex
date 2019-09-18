@@ -5,7 +5,7 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.ui.recyclerview.Multi
 import com.memo.test.ui.recyclerview.MultiEntity
-import com.memo.widget.recyclerview.RecyclerViewDivider
+import com.memo.widget.recyclerview.RecyclerItemDecoration
 import kotlinx.android.synthetic.main.activity_multi_recycler.*
 
 class MultiRecyclerActivity : BaseActivity() {
@@ -14,7 +14,9 @@ class MultiRecyclerActivity : BaseActivity() {
         "http://5b0988e595225.cdn.sohucs.com/images/20180428/e993669a22c1469aa9ecd35368107267.jpeg"
     private val mAdapter = MultiAdapter()
     private val mData = arrayListOf<MultiEntity>()
-    private val mDecoration by lazy { RecyclerViewDivider.Builder(mContext).setHeight(20f).build() }
+    private val mDecoration by lazy {
+        RecyclerItemDecoration.Builder(mContext).setHeightDp(20f).build()
+    }
 
     override fun bindLayoutResId(): Int = R.layout.activity_multi_recycler
 

@@ -11,7 +11,14 @@ import kotlinx.android.synthetic.main.activity_retrofit.*
 class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresenter>(),
     RetrofitContract.View {
 
-    override fun buildPresenter(): RetrofitPresenter = RetrofitPresenter()
+    private var mPresenterA: RetrofitPresenter? = null
+    private var mPresenterB: RetrofitPresenter? = null
+
+    override fun buildPresenter(): RetrofitPresenter {
+        mPresenterA = RetrofitPresenter()
+        mPresenterB = RetrofitPresenter()
+        return RetrofitPresenter()
+    }
 
     override fun bindLayoutResId(): Int = R.layout.activity_retrofit
 

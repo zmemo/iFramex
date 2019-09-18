@@ -21,16 +21,20 @@ import com.memo.tool.app.BaseApp
 /**
  * 从Context中获取资源
  */
-fun color(id: Int): Int = ContextCompat.getColor(BaseApp.app.applicationContext, id)
+fun color(id: Int): Int =
+    ContextCompat.getColor(BaseApp.app.applicationContext, id)
 
-fun string(id: Int): String = BaseApp.app.applicationContext.resources.getString(id)
+fun string(id: Int): String =
+    BaseApp.app.applicationContext.resources.getString(id)
 
 fun stringArray(id: Int): Array<String> =
     BaseApp.app.applicationContext.resources.getStringArray(id)
 
-fun drawable(id: Int) = ContextCompat.getDrawable(BaseApp.app.applicationContext, id)
+fun drawable(id: Int) =
+    ContextCompat.getDrawable(BaseApp.app.applicationContext, id)
 
-fun dimen(id: Int) = BaseApp.app.applicationContext.resources.getDimension(id)
+fun dimen(id: Int) =
+    BaseApp.app.applicationContext.resources.getDimension(id)
 
 fun dp2px(dp: Float): Int =
     (dp * BaseApp.app.applicationContext.resources.displayMetrics.density + 0.5f).toInt()
@@ -58,3 +62,4 @@ fun View.inflaterView(@LayoutRes layoutRes: Int, parent: ViewGroup? = null): Vie
 
 fun RecyclerView.ViewHolder.inflaterView(@LayoutRes layoutRes: Int, parent: ViewGroup? = null): View =
     View.inflate(itemView.context, layoutRes, parent)
+

@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.annotation.ColorInt
@@ -267,7 +268,7 @@ fun View.onClick(listener: OnNotFastClickListener) {
  * @param views 控件列表
  * @param onClick 点击方法
  */
-fun onViewsClickListener(vararg views: View, onClick: (View) -> Unit) {
+fun onViewsClickListener(onClick: (View) -> Unit, vararg views: View) {
     val listener = View.OnClickListener {
         if (ClickHelper.isNotFastClick) {
             onClick(it)
@@ -333,7 +334,12 @@ fun TextView.resendVerificationCodeAfter(second: Long = 60) {
  * 安全的设置控件文字
  * @param content 内容文字可以为空
  */
-fun TextView.setSafeText(content: CharSequence?) {
-    text = content ?: ""
+fun TextView.setValue(value: CharSequence?) {
+    text = value ?: ""
 }
+
+/**
+ * 获取EditText的文本
+ */
+val EditText.value: CharSequence get() = text.toString()
 

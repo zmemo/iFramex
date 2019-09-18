@@ -41,9 +41,6 @@ class DownloadService : IntentService("DownloadService") {
                     .map { response -> observer.saveFile(response, path, name) }
                     .compose(RxHelper.io2Main())
                     .subscribe(object : Observer<File> {
-                        override fun onComplete() {
-                            observer.onComplete()
-                        }
 
                         override fun onSubscribe(d: Disposable) {
                             observer.onSubscribe(d)
@@ -56,6 +53,10 @@ class DownloadService : IntentService("DownloadService") {
 
                         override fun onError(e: Throwable) {
                             observer.onDownLoadFail(e)
+                        }
+
+                        override fun onComplete() {
+                            observer.onComplete()
                         }
                     })
             }

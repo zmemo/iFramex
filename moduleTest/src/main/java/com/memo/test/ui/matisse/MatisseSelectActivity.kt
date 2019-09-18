@@ -81,16 +81,23 @@ class MatisseSelectActivity : BaseActivity() {
                         val pathList = MediaHelper.obtainPathResult(data)
                         // 压缩图片并且添加
                         mLoadDialog.show("图片压缩")
-                        addDisposable(
-                            MediaHelper.compressImages(mContext, pathList, {
-                                mNineGridView.addImageFiles(it)
-                                toast("图片压缩完毕")
-                                mLoadDialog.dismiss()
-                            }, {
-                                toast("图片压缩失败")
-                                mLoadDialog.dismiss()
-                            })
-                        )
+                        MediaHelper.compressImagesASyn(mContext, pathList, { it ->
+                            val builder = StringBuilder()
+                            it.forEach {
+                                builder.append(it.name)
+                                    .append(" ")
+                                    .append(FileUtils.getFileSize(it))
+                                    .append("\n")
+                            }
+                            LogUtils.iTag("compress", builder)
+
+                            mNineGridView.addImageFiles(it)
+                            toast("图片压缩完毕")
+                            mLoadDialog.dismiss()
+                        }, {
+                            toast("图片压缩失败")
+                            mLoadDialog.dismiss()
+                        })
                     }
                 }
                 REQUEST_CODE_TAKE -> {

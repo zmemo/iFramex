@@ -14,6 +14,8 @@ import android.net.Uri
 import androidx.annotation.IntRange
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.FileUtils
+import com.blankj.utilcode.util.LogUtils
+import com.memo.iframe.tools.ext.md5
 import com.memo.tool.R
 import com.memo.tool.app.BaseApp
 import com.memo.tool.dir.LocalDir
@@ -30,8 +32,10 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import top.zibin.luban.Luban
+import top.zibin.luban.OnCompressListener
 import java.io.File
 import java.util.*
+import java.util.concurrent.locks.ReentrantLock
 
 /**
  * title: 安卓6.0一下获取了权限 但是有系统软件拦截 导致不能录制音视频造成的问题
@@ -43,6 +47,23 @@ import java.util.*
 object MediaHelper {
 
     var MATISSE_PROVIDER = "${AppUtils.getAppPackageName()}.provider.MatisseFileProvider"
+
+
+    /**
+     * 创建多媒体文件夹和.nomedia文件
+     */
+    @JvmStatic
+    fun createLocalDir() {
+        FileUtils.createOrExistsDir(File(LocalDir.DIR_CAPTURE))
+        FileUtils.createOrExistsFile(File(LocalDir.NOMEDIA_CAPTURE))
+        FileUtils.createOrExistsDir(File(LocalDir.DIR_COMPRESS))
+        FileUtils.createOrExistsFile(File(LocalDir.NOMEDIA_COMPRESS))
+        FileUtils.createOrExistsDir(File(LocalDir.DIR_CROP))
+        FileUtils.createOrExistsFile(File(LocalDir.NOMEDIA_CROP))
+        FileUtils.createOrExistsDir(File(LocalDir.DIR_VIDEO))
+        FileUtils.createOrExistsFile(File(LocalDir.NOMEDIA_VIDEO))
+        FileUtils.createOrExistsDir(File(LocalDir.DIR_EXCEPTION_LOG))
+    }
 
     /**
      * 通知相册刷新
@@ -265,7 +286,7 @@ object MediaHelper {
     }
 
     /**
-     * 压缩图片
+     * 同步压缩图片
      * @param mContext 上下文
      * @param images 原图片
      * @param onSuccess 成功回调
@@ -273,7 +294,7 @@ object MediaHelper {
      * @return Disposable
      */
     @JvmStatic
-    fun compressImages(
+    fun compressImagesSyn(
         mContext: Context,
         images: MutableList<String>,
         onSuccess: (images: List<File>) -> Unit,
@@ -282,12 +303,12 @@ object MediaHelper {
         // 创建压缩图片文件夹
         val compressDirPath: String = File(LocalDir.DIR_COMPRESS).absolutePath
         FileUtils.createOrExistsDir(compressDirPath)
-
         return Flowable.just(images)
             .observeOn(Schedulers.io())
             .map {
                 Luban.with(mContext)
                     .load(it)
+                    .ignoreBy(0)
                     .setFocusAlpha(true)
                     .setTargetDir(compressDirPath)
                     .filter { path ->
@@ -302,4 +323,99 @@ object MediaHelper {
                 onFailure()
             })
     }
+
+    /**
+     * 异步压缩图片
+     * 注意点:回调是延时操作并且不回被取消
+     * @param mContext 上下文
+     * @param images 原图片
+     * @param onSuccess 成功回调
+     * @param onFailure 失败回调
+     */
+    @JvmStatic
+    fun compressImagesASyn(
+        mContext: Context,
+        images: MutableList<String>,
+        onSuccess: (images: List<File>) -> Unit,
+        onFailure: () -> Unit
+    ) {
+        // 创建锁
+        val successLock = ReentrantLock()
+        val errorLock = ReentrantLock()
+        // 创建压缩图片文件夹
+        createLocalDir()
+        // 存放压缩文件路径的列表
+        val paths = arrayListOf<File>()
+        // 判断是否错误发生了
+        var isErrorHappened = false
+
+        Luban.with(mContext)
+            .load(images)
+            .ignoreBy(0)
+            .setFocusAlpha(true)
+            .setTargetDir(LocalDir.DIR_COMPRESS)
+            .setRenameListener {
+                // 重命名 第一位是图片顺序
+                "${images.indexOf(it)}${it.md5()}.jpg"
+            }
+            .filter {
+                //如果是gif图不进行压缩
+                !it.toLowerCase(Locale.getDefault()).endsWith(".gif")
+            }
+            .setCompressListener(object : OnCompressListener {
+                /**
+                 * 图片压缩开始执行
+                 */
+                override fun onStart() {}
+
+                /**
+                 * 一张图片压缩成功
+                 */
+                override fun onSuccess(file: File) {
+                    // 加锁
+                    successLock.lock()
+                    try {
+                        paths.add(file)
+                        if (paths.size == images.size) {
+                            onSuccess(sortFile(paths))
+                        }
+                    } finally {
+                        //解锁
+                        successLock.unlock()
+                    }
+                }
+
+                /**
+                 * 一张图片压缩失败
+                 */
+                override fun onError(e: Throwable?) {
+                    LogUtils.eTag("compress", "图片压缩失败 $e")
+                    errorLock.lock()
+                    try {
+                        if (!isErrorHappened) {
+                            isErrorHappened = true
+                            onFailure()
+                        }
+                    } finally {
+                        errorLock.unlock()
+                    }
+                }
+            }).launch()
+    }
+
+
+    /**
+     * 对文件进行排序
+     * 固定第一位是排序位置
+     */
+    private fun sortFile(files: List<File>): List<File> {
+        val arrays: Array<File> = files.toTypedArray()
+        Arrays.sort(arrays) { o1, o2 ->
+            val leftIndex = o1.name.substring(0, 1).toInt()
+            val rightIndex = o2.name.substring(0, 1).toInt()
+            leftIndex - rightIndex
+        }
+        return arrays.asList()
+    }
+
 }
