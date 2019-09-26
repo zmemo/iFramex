@@ -102,6 +102,6 @@ class PreviewImageLoader(@DrawableRes val errorRes: Int) : IZoomMediaLoader {
     }
 
     override fun clearMemory(context: Context) {
-        ImageLoadHelper.clearMemoryCache(context)
+        ImageLoadHelper.clearMemoryCache()
     }
 }

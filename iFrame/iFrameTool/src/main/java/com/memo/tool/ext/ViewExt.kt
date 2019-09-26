@@ -10,12 +10,13 @@ import android.widget.EditText
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.LogUtils
 import com.memo.tool.R
 import com.memo.tool.helper.ClickHelper
-import com.memo.tool.helper.RxHelper
-import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import java.util.concurrent.TimeUnit
 
 /**
@@ -296,14 +297,13 @@ interface OnNotFastClickListener : View.OnClickListener {
  * @param second 秒 3秒 10秒 60秒
  */
 @SuppressLint("CheckResult")
-fun View.enableAfter(second: Long) {
+fun View.enableAfter(owner: LifecycleOwner, second: Long) {
     Observable.interval(0, 1, TimeUnit.SECONDS)
         .take(second + 1)
         .map { second - it }
-        .compose(RxHelper.io2Main())
-        .bindToLifecycle(this)
-        .doOnSubscribe { isEnabled = false }
-        .subscribe({}, {}, { isEnabled = true })
+        .observeOn(AndroidSchedulers.mainThread())
+        .bindLifecycle(owner)
+        .subscribe({}, { isEnabled = true }, { isEnabled = true }, { isEnabled = false })
 }
 
 /**
@@ -311,28 +311,34 @@ fun View.enableAfter(second: Long) {
  * @param second 默认60秒
  */
 @SuppressLint("SetTextI18n", "CheckResult")
-fun TextView.resendVerificationCodeAfter(second: Long = 60) {
-    Observable.interval(0, 1, TimeUnit.SECONDS)
+fun TextView.resendVerificationCodeAfter(owner: LifecycleOwner, second: Long = 60) {
+    val observable = Observable.interval(0, 1, TimeUnit.SECONDS)
         .take(second + 1)
         .map { second - it }
-        .compose(RxHelper.io2Main())
-        .bindToLifecycle(this)
-        .doOnSubscribe { isEnabled = false }
+        .observeOn(AndroidSchedulers.mainThread())
+        .bindLifecycle(owner)
         .subscribe({
+            LogUtils.iTag("sendCode", it)
             text = "(${it}秒)"
             setTextColor(color(R.color.color_F5F5F5))
-        }, {}) {
+        }, {
             isEnabled = true
             text = "发送验证码"
             setTextColor(color(R.color.color_666666))
-        }
+        }, {
+            isEnabled = true
+            text = "发送验证码"
+            setTextColor(color(R.color.color_666666))
+        }, {
+            isEnabled = false
+        })
 }
 
 // ---------------------------------------- TextView ----------------------------------------
 
 /**
  * 安全的设置控件文字
- * @param content 内容文字可以为空
+ * @param value 内容文字可以为空
  */
 fun TextView.setValue(value: CharSequence?) {
     text = value ?: ""

@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.blankj.utilcode.util.LogUtils
-import com.memo.tool.app.BaseApp
 
 
 /**
@@ -43,7 +42,7 @@ object OOMHelper {
                             "shouldCleanMemory = $shouldCleanMemory"
                 )
                 if (shouldCleanMemory) {
-                    ImageLoadHelper.clearMemoryCache(BaseApp.app.applicationContext)
+                    ImageLoadHelper.clearMemoryCache()
                 }
                 lowMemoryMonitorHandler.postDelayed(this, delayMillis)
             }

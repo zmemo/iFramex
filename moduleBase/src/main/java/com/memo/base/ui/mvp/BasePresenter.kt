@@ -1,5 +1,7 @@
 package com.memo.base.ui.mvp
 
+import androidx.lifecycle.LifecycleOwner
+
 /**
  * title:BasePresenter
  * describe:
@@ -9,24 +11,22 @@ package com.memo.base.ui.mvp
  */
 abstract class BasePresenter<M : IModel, V : IView> : IPresenter<V> {
 
-    var mView: V? = null
+    lateinit var mView: V
 
-    var mModel: M? = null
+    lateinit var mModel: M
+
+    /*** AutoDispose ***/
+    lateinit var mLifeOwner: LifecycleOwner
 
     /*** 判断是否是第一次加载数据 只有在请求成功之后才会进行变化***/
     protected var isFirstLoad = true
 
     /**
-     * 判断是否mView还存在
-     * Kotlin总直接使用？符来进行判断就好
-     */
-    protected val isViewAttached: Boolean get() = mView != null
-
-    /**
      * 绑定 View
      */
-    override fun attachView(mView: V) {
+    override fun attachView(mView: V, mLifeOwner: LifecycleOwner) {
         this.mView = mView
+        this.mLifeOwner = mLifeOwner
         mModel = buildModel()
     }
 
@@ -35,11 +35,4 @@ abstract class BasePresenter<M : IModel, V : IView> : IPresenter<V> {
      */
     protected abstract fun buildModel(): M
 
-    /**
-     * 解绑 View
-     */
-    override fun detachView() {
-        this.mView = null
-        this.mModel = null
-    }
 }

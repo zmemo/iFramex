@@ -16,7 +16,7 @@ import com.memo.tool.ext.inflaterView
  *
  * Talk is cheap. Show me the code.
  */
-object Adapter {
+object AdapterHelper {
 
     /**
      * 设置空布局

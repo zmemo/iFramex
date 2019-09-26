@@ -8,8 +8,8 @@ import com.blankj.utilcode.util.ToastUtils
 import com.memo.test.ui.api.RetrofitClient
 import com.memo.test.ui.config.TestConfig
 import com.memo.tool.app.BaseApp
+import com.memo.tool.ext.io2Main
 import com.memo.tool.helper.NotificationHelper
-import com.memo.tool.helper.RxHelper
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import java.io.File
@@ -39,7 +39,7 @@ class DownloadService : IntentService("DownloadService") {
                 RetrofitClient.mDownApi
                     .download(url)
                     .map { response -> observer.saveFile(response, path, name) }
-                    .compose(RxHelper.io2Main())
+                    .io2Main()
                     .subscribe(object : Observer<File> {
 
                         override fun onSubscribe(d: Disposable) {

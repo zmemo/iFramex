@@ -25,7 +25,7 @@ class UiActivity : BaseActivity() {
     override fun initialize() {
         mItemScan.onClick {
             if (PermissionHelper.grantedCamera(mContext)) {
-                QrcodeScanActivity.start(mActivity, REQUEST_CODE_SCAN)
+                QrcodeScanActivity.start(mContext, REQUEST_CODE_SCAN)
             }
         }
         mItemWeb.onClick {

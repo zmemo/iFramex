@@ -1,5 +1,6 @@
 package com.memo.test.ui.recyclerview
 
+import com.chad.library.adapter.base.entity.AbstractExpandableItem
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.chad.library.adapter.base.entity.SectionEntity
 
@@ -50,4 +51,28 @@ data class SectionItem(
     val content: String,
     val image: String
 )
+
+object LevelMulti {
+    const val TYPE_TITLE = 0
+    const val TYPE_CONTENT = 1
+}
+
+data class LevelTitle(
+    val content: String = "title"
+) : AbstractExpandableItem<LevelContent>(), MultiItemEntity {
+
+    override fun getLevel(): Int = 0
+
+    override fun getItemType(): Int {
+        return LevelMulti.TYPE_TITLE
+    }
+}
+
+data class LevelContent(
+    val content: String = "content"
+) : MultiItemEntity {
+    override fun getItemType(): Int {
+        return LevelMulti.TYPE_CONTENT
+    }
+}
 

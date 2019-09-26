@@ -70,9 +70,9 @@ class GridMultiActivity : BaseActivity() {
             mHandler.postDelayed({
                 //更新数据源
                 val data = if (isChanged) {
-                    GsonHelper.parse2List(DataFactory.provideHomeJson1(), MultiEntity::class.java)
+                    GsonHelper.parse2List<MultiEntity>(DataFactory.provideHomeJson1())
                 } else {
-                    GsonHelper.parse2List(DataFactory.provideHomeJson2(), MultiEntity::class.java)
+                    GsonHelper.parse2List<MultiEntity>(DataFactory.provideHomeJson2())
                 }
                 isChanged = !isChanged
                 mAdapter.setNewData(data)

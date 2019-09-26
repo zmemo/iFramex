@@ -22,7 +22,8 @@ dependencies {
     api DepConfig.recyclerView
     api DepConfig.cardView
     api DepConfig.rWidgetHelper
-    api DepConfig.basePopup
+    api DepConfig.basePopupCore
+    api DepConfig.basePopupAndroidx
     api DepConfig.baseRecyclerViewAdapterHelper
     api DepConfig.pickerView
     api DepConfig.qrCode
@@ -40,8 +41,8 @@ dependencies {
     api DepConfig.rxJava2
     api DepConfig.rxAndroid2
     api DepConfig.rxBus
-    api DepConfig.rxLifecycleComponents3
-    api DepConfig.rxLifecycleKotlin3
+    api DepConfig.autoDispose
+    api DepConfig.autoDisposeArch
     api DepConfig.retrofit
     api DepConfig.retrofitGson
     api DepConfig.retrofitConverter
@@ -52,9 +53,8 @@ dependencies {
     api DepConfig.mmkv
     api DepConfig.preview
     api DepConfig.stickyHeader
-
-    // zmemo
     api DepConfig.luBan
+
 
     // 插件
     debugApi DepConfig.leakCanaryDebug

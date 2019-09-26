@@ -5,23 +5,17 @@
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
-	tools:context=".ui.status.LoadSirActivity">
+	tools:context=".ui.recyclerview.expand.ExpandActivity">
 	
 	<com.memo.widget.titleview.TitleView
-		android:id="@+id/mTitleView"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		app:layout_constraintTop_toTopOf="parent"
-		app:title_title_text="Fragment懒加载+LoadSir" />
+		app:title_title_text="树状列表" />
 	
-	<com.google.android.material.tabs.TabLayout
-		android:id="@+id/mTab"
+	<androidx.recyclerview.widget.RecyclerView
+		android:id="@+id/mRvList"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content" />
-	
-	<androidx.viewpager.widget.ViewPager
-		android:id="@+id/mViewPager"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent" />
+		android:layout_height="match_parent"
+		android:overScrollMode="never" />
 
 </LinearLayout>

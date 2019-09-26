@@ -108,6 +108,5 @@ fun fillIntentArguments(intent: Intent, params: Array<out Pair<String, Any?>>) {
             is ShortArray -> intent.putExtra(it.first, value)
             is BooleanArray -> intent.putExtra(it.first, value)
         }
-        return@forEach
     }
 }

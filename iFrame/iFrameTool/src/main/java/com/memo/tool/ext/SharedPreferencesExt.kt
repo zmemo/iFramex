@@ -12,11 +12,12 @@ import com.memo.tool.app.BaseApp
  * @author zhou
  * @date 2019-01-29 17:09
  */
-fun sp(): SharedPreferences =
-    BaseApp.app.applicationContext.getSharedPreferences(
-        AppUtils.getAppName(),
-        Context.MODE_PRIVATE
-    )
+
+private val sSharedPreferences: SharedPreferences by lazy {
+    BaseApp.app.applicationContext.getSharedPreferences(AppUtils.getAppName(), Context.MODE_PRIVATE)
+}
+
+fun sp(): SharedPreferences = sSharedPreferences
 
 /**
  * 批处理

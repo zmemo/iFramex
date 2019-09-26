@@ -1,6 +1,5 @@
 package com.memo.base.manager.init
 
-import android.app.Activity
 import android.app.Application
 import androidx.core.content.ContextCompat
 import com.alibaba.android.arouter.launcher.ARouter
@@ -76,17 +75,6 @@ class InitManager {
 
 
             isInitInApp = true
-        }
-    }
-
-    /**
-     * 放在闪屏页面进行初始化 这个时间一般都在1秒以上
-     * @param activity Activity
-     */
-    fun initInSplash(activity: Activity) {
-        if (!isInitInSplash) {
-
-            isInitInSplash = true
         }
     }
 

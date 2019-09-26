@@ -41,7 +41,7 @@ class QrcodeScanActivity : BaseActivity() {
 
     private fun initTitle() {
         mTitleView.setOnRightClickListener {
-            MediaHelper.choosePhoto(mActivity, false, 1, REQUEST_CODE_QRCODE_ALBLUM)
+            MediaHelper.choosePhoto(mContext, false, 1, REQUEST_CODE_QRCODE_ALBLUM)
         }
     }
 
@@ -67,12 +67,11 @@ class QrcodeScanActivity : BaseActivity() {
         if (requestCode == REQUEST_CODE_QRCODE_ALBLUM && Activity.RESULT_OK == resultCode && data != null) {
             val results = Matisse.obtainPathResult(data)
             if (results.isNotEmpty()) {
-                addDisposable(
                     // 从相册图片中获取二维码
-                    QrcodeHelper.decodeQRCode(results[0], {
+                QrcodeHelper.decodeQRCode(mLifecycleOwner, results[0], {
                         finishActivityWithResult("result" to it)
                     })
-                )
+
             }
         }
     }

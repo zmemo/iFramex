@@ -3,7 +3,7 @@ package com.memo.base.manager.retrofit
 import com.memo.base.api.BaseResponse
 import com.memo.base.api.ExceptionHandler
 import com.memo.base.ui.mvp.IView
-import com.memo.tool.helper.RxHelper
+import com.memo.tool.ext.io2Main
 import com.memo.tool.helper.toastCenter
 import com.memo.tool.http.exception.ApiException
 import io.reactivex.Observable
@@ -27,7 +27,6 @@ import io.reactivex.disposables.Disposable
  * 网络请求处理 对数据源还没有进行转化
  * @param mView View引用
  * @param firstLoad 是否是第一次调用加载界面
- * @param disposeOnDestroy 是否绑定生命周期直到销毁
  * @param checkResult 是否检查结果
  * @param onSuccess 成功回调
  * @param onFailure 失败回调
@@ -35,7 +34,6 @@ import io.reactivex.disposables.Disposable
 private fun <T> Observable<T>.execute(
     mView: IView?,
     firstLoad: Boolean,
-    disposeOnDestroy: Boolean,
     checkResult: Boolean,
     onSuccess: (T) -> Unit,
     onFailure: (code: Int) -> Unit
@@ -44,7 +42,6 @@ private fun <T> Observable<T>.execute(
         ResponseObserver(
             mView = mView,
             firstLoad = firstLoad,
-            disposeOnDestroy = disposeOnDestroy,
             checkResult = checkResult,
             onSuccess = onSuccess,
             onFailure = onFailure
@@ -65,7 +62,6 @@ fun <T> Observable<T>.execute(
         ResponseObserver(
             mView = mView,
             firstLoad = firstLoad,
-            disposeOnDestroy = true,
             checkResult = true,
             onSuccess = onSuccess,
             onFailure = onFailure
@@ -85,7 +81,6 @@ fun <T> Observable<T>.executeSubmit(
     execute(
         mView = mView,
         firstLoad = false,
-        disposeOnDestroy = true,
         checkResult = true,
         onSuccess = onSuccess,
         onFailure = onFailure
@@ -99,7 +94,6 @@ fun <T> Observable<T>.executeUncheck() {
     execute(
         mView = null,
         firstLoad = false,
-        disposeOnDestroy = false,
         checkResult = false,
         onSuccess = {},
         onFailure = {})
@@ -116,29 +110,25 @@ fun <T> Observable<BaseResponse<T>>.convert(): Observable<T> {
         } else {
             Observable.error(ApiException(it.code, it.message))
         }
-    }.compose(RxHelper.io2Main())
+    }.io2Main()
 }
 
 private class ResponseObserver<T>(
     private val mView: IView?,
     private val firstLoad: Boolean = false,
-    private val disposeOnDestroy: Boolean = true,
     private val checkResult: Boolean = true,
     private val onSuccess: (T) -> Unit,
     private val onFailure: (code: Int) -> Unit
 ) : Observer<T> {
     override fun onSubscribe(d: Disposable) {
-        //绑定生命周期直到销毁
-        if (disposeOnDestroy) {
-            mView?.addDispose(d)
-        }
+
     }
 
     override fun onNext(response: T) {
         //成功回调
         if (checkResult) {
             onSuccess(response)
-            mView?.hideAll()
+            //mView?.hideAll()
         }
     }
 
@@ -158,7 +148,7 @@ private class ResponseObserver<T>(
             //加载成功后再去调用接口失败了就不算第一次 这个时候界面已经显示 更改不太好
             //一直失败从未成功仍然算第一次
             //显示错误界面 只有第一次加载的时候才会进行错误界面展示
-            mView?.showError(firstLoad, exception.code)
+            //mView?.showError(firstLoad, exception.code)
         }
     }
 

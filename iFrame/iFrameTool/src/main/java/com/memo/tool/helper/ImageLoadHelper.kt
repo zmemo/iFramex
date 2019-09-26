@@ -5,7 +5,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
-import com.blankj.utilcode.util.LogUtils
+import androidx.lifecycle.LifecycleOwner
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.DiskCacheStrategy
@@ -15,9 +15,11 @@ import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
+import com.memo.tool.app.BaseApp
+import com.memo.tool.ext.doInBackground
+import com.memo.tool.ext.io2Main
 import com.memo.tool.glide.GlideApp
 import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
 import java.io.File
 
 /**
@@ -290,17 +292,13 @@ object ImageLoadHelper {
      * 从缓存中获取bitmap
      * @param context Context 上下文
      * @param url String 图片路径
-     * @param onSuccess (file: File) -> Unit 成功回调
-     * @param onFailure () -> Unit 失败回调
      * @return Disposable?  注意回收
      */
     @JvmStatic
     fun getCacheImageFile(
         context: Context,
-        url: String,
-        onSuccess: (file: File) -> Unit,
-        onFailure: () -> Unit
-    ): Disposable? {
+        url: String
+    ): Observable<File> {
         return Observable.just(url)
             .map {
                 GlideApp
@@ -309,9 +307,7 @@ object ImageLoadHelper {
                     .load(it)
                     .submit(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                     .get()
-            }
-            .compose(RxHelper.io2Main())
-            .subscribe({ onSuccess(it) }, { onFailure() })
+            }.io2Main()
     }
 
     /**
@@ -483,19 +479,17 @@ object ImageLoadHelper {
     /**
      * 清除磁盘缓存
      */
+    @SuppressLint("CheckResult")
     @JvmStatic
-    fun clearDiskCache(context: Context): Disposable {
-        return Observable.just(context)
-            .map { GlideApp.get(it).clearDiskCache() }
-            .compose(RxHelper.io2Main())
-            .subscribe { LogUtils.iTag("Glide", "清除缓存成功") }
+    fun clearDiskCache(owner: LifecycleOwner) {
+        doInBackground(owner) { GlideApp.get(BaseApp.app.applicationContext).clearDiskCache() }
     }
 
     /**
      * 清除内存缓存
      */
     @JvmStatic
-    fun clearMemoryCache(context: Context) {
-        GlideApp.get(context).clearMemory()
+    fun clearMemoryCache() {
+        GlideApp.get(BaseApp.app.applicationContext).clearMemory()
     }
 }

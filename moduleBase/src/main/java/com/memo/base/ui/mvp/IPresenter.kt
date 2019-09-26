@@ -1,5 +1,7 @@
 package com.memo.base.ui.mvp
 
+import androidx.lifecycle.LifecycleOwner
+
 /**
  * title: 基础Presenter接口
  * describe:
@@ -12,10 +14,6 @@ interface IPresenter<in V : IView> {
     /**
      * 绑定 View
      */
-    fun attachView(mView: V)
+    fun attachView(mView: V, mLifeOwner: LifecycleOwner)
 
-    /**
-     * 解绑 View
-     */
-    fun detachView()
 }

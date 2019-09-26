@@ -5,34 +5,33 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import com.memo.tool.dialog.dialog.LoadingDialog
 import com.memo.tool.helper.OOMHelper
-import com.trello.rxlifecycle3.LifecycleProvider
-import com.trello.rxlifecycle3.android.FragmentEvent
-import com.trello.rxlifecycle3.components.RxFragment
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 
 /**
  * title:基础的Fragment
- * tip:
+ * describe:
  *
  * @author zhou
- * @date 2018-11-14 上午10:39
+ * @date 2019-09-26 15:38
+ *
+ * Talk is cheap, Show me the code.
  */
-abstract class BaseFragment : RxFragment() {
+abstract class BaseFragment : Fragment() {
 
     /*** 根布局 ***/
     protected lateinit var mRootView: View
 
-    /*** 生命周期提供 ***/
-    protected val mLifecycleProvider: LifecycleProvider<FragmentEvent> by lazy { this }
+    /*** 上下文Activity ***/
+    protected val mActivity by lazy { activity }
+
+    /*** AutoDispose ***/
+    protected val mLifecycleOwner: LifecycleOwner by lazy { this }
 
     /*** 加载弹窗 ***/
     protected val mLoadDialog: LoadingDialog by lazy { LoadingDialog(activity!!) }
-
-    /*** RxJava2请求序列 ***/
-    private val compositeDisposable by lazy { CompositeDisposable() }
 
     /*** 标识 标识是否界面准备完毕 ***/
     private var isPrepare: Boolean = false
@@ -49,23 +48,24 @@ abstract class BaseFragment : RxFragment() {
         super.onViewCreated(view, savedInstanceState)
         mRootView = view
         isPrepare = true
-        baseInit()
+        baseInitialize()
         onVisibleToUser()
         initialize()
     }
 
-    override fun setUserVisibleHint(isVisibleToUser: Boolean) {
-        super.setUserVisibleHint(isVisibleToUser)
-        if (isVisibleToUser) {
-            onVisibleToUser()
-        }
-    }
 
     private fun onVisibleToUser() {
-        if (isPrepare && userVisibleHint) {
+        if (isPrepare && isResumed) {
             isPrepare = false
             lazyInitialize()
         }
+    }
+
+    override fun onResume() {
+        if (isPrepare) {
+            onVisibleToUser()
+        }
+        super.onResume()
     }
 
     /**
@@ -75,24 +75,15 @@ abstract class BaseFragment : RxFragment() {
     protected abstract fun bindLayoutResId(): Int
 
     /*** 对于BaseMvpFragment的初始化 ***/
-    protected open fun baseInit() {}
+    protected open fun baseInitialize() {}
 
-    /*** 正常初始化Fragment ***/
-    protected open fun initialize() {}
+    /*** 在视图加载完毕的时候初始化 ***/
+    protected abstract fun initialize()
 
-    /*** 懒加载 ***/
+    /*** 在界面可见的时候进行初始化 ***/
     protected abstract fun lazyInitialize()
 
-    /*** 添加入队列 ***/
-    protected fun addDisposable(disposable: Disposable?) {
-        disposable?.let { compositeDisposable.add(it) }
-    }
-
     override fun onDestroyView() {
-        // 清空RxJava2序列
-        if (!compositeDisposable.isDisposed) {
-            compositeDisposable.clear()
-        }
         // 清除所有图片占用的内存
         OOMHelper.onDestroy(mRootView)
         super.onDestroyView()

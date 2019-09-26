@@ -56,7 +56,7 @@ class WebActivity : BaseActivity() {
         } else {
             mTitleView.setTitle(title)
         }
-        mAgentWeb = WebHelper.init(mActivity, mFlContainer, url)
+        mAgentWeb = WebHelper.init(mContext, mFlContainer, url)
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {

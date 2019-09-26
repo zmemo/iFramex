@@ -16,16 +16,16 @@ class ShareFromActivity : BaseActivity() {
 
     override fun initialize() {
         mFlSearch.onClick {
-            val intent = Intent(mActivity, ShareToActivity::class.java)
+            val intent = Intent(mContext, ShareToActivity::class.java)
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                 val pairFl = Pair<View, String>(mFlSearch, mFlSearch.transitionName)
                 val pairTv = Pair<View, String>(mTvSearch, mTvSearch.transitionName)
                 val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    mActivity, pairFl, pairTv
+                    mContext, pairFl, pairTv
                 ).toBundle()
-                mActivity.startActivity(intent, bundle)
+                mContext.startActivity(intent, bundle)
             } else {
-                mActivity.startActivity(intent)
+                mContext.startActivity(intent)
             }
         }
     }

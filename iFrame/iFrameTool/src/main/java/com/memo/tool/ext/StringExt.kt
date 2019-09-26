@@ -55,3 +55,13 @@ fun String.md5(): String = EncryptUtils.encryptMD5ToString(this)
  */
 fun String?.isNull() = isNullOrEmpty() || this!!.trim().toLowerCase(Locale.getDefault()) == "null"
 
+/**
+ * 最后一个字符
+ */
+fun String.lastChar() = this[length - 1]
+
+/**
+ * 第一个字符
+ */
+fun String.firstChar() = this[0]
+

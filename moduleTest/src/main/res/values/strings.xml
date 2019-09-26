@@ -26,4 +26,6 @@
 	<string name="MenuFind">发现</string>
 	<string name="MenuMine">我的</string>
 	<string name="Drag">拖拽</string>
+	<string name="Fragment">测试Fragment的懒加载</string>
+
 </resources>

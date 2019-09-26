@@ -12,25 +12,23 @@ import android.view.Gravity
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import androidx.annotation.RequiresApi
+import androidx.lifecycle.LifecycleOwner
 import com.bigkoo.pickerview.builder.OptionsPickerBuilder
 import com.bigkoo.pickerview.builder.TimePickerBuilder
 import com.bigkoo.pickerview.listener.OnOptionsSelectListener
 import com.bigkoo.pickerview.listener.OnTimeSelectListener
 import com.bigkoo.pickerview.view.OptionsPickerView
 import com.bigkoo.pickerview.view.TimePickerView
-import com.blankj.utilcode.util.ActivityUtils
-import com.blankj.utilcode.util.AppUtils
+import com.blankj.utilcode.util.*
 import com.blankj.utilcode.util.PermissionUtils.OnRationaleListener.ShouldRequest
-import com.blankj.utilcode.util.ResourceUtils
-import com.blankj.utilcode.util.TimeUtils
 import com.contrarywind.view.WheelView
 import com.memo.tool.R
 import com.memo.tool.dialog.dialog.AlertDialog
 import com.memo.tool.dialog.entity.Area
 import com.memo.tool.dialog.entity.Province
 import com.memo.tool.ext.color
+import com.memo.tool.ext.doInBackground
 import com.memo.tool.ext.string
-import io.reactivex.disposables.Disposable
 import java.text.SimpleDateFormat
 
 /**
@@ -166,10 +164,10 @@ object DialogHelper {
      * addDisposable(DialogHelper.parseArea { area = it })
      */
     @JvmStatic
-    fun parseArea(callback: (area: Area) -> Unit): Disposable =
-        RxHelper.create {
+    fun parseArea(lifecycleOwner: LifecycleOwner, onSuccess: (area: Area) -> Unit) =
+        doInBackground(lifecycleOwner, {
             val json = ResourceUtils.readAssets2String("province.json")
-            val provinces = GsonHelper.parse2List(json, Province::class.java)
+            val provinces = GsonHelper.parse2List<Province>(json)
             val cities: ArrayList<ArrayList<String>> = arrayListOf()
             val areas: ArrayList<ArrayList<ArrayList<String>>> = arrayListOf()
             for (province in provinces) {
@@ -186,8 +184,9 @@ object DialogHelper {
                 areas.add(areaList)
             }
             Area(provinces, cities, areas)
-        }.compose(RxHelper.io2Main())
-            .subscribe { callback(it) }
+        }, onSuccess, {
+            LogUtils.eTag("area", it)
+        })
 
     /**
      * 选择城市

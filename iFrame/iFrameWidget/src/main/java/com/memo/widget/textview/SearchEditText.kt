@@ -16,7 +16,7 @@ import com.blankj.utilcode.util.StringUtils
  */
 class SearchEditText : EditText {
 
-    private val LIMIT: Long = 1000
+    private var limitDuration: Long = 800
 
     private var mListener: OnTextChangedListener? = null
     // 记录开始输入前的文本内容
@@ -40,15 +40,21 @@ class SearchEditText : EditText {
     constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int)
             : super(context, attrs, defStyleAttr)
 
+    fun setLimitDuration(duration: Long): SearchEditText {
+        this.limitDuration = duration
+        return this
+    }
+
     /**
-     * 在 LIMIT 时间内连续输入不触发文本变化
+     * 在 limitDuration 时间内连续输入不触发文本变化
      */
-    fun setOnTextChangedListener(onTextChanged: (text: String) -> Unit) {
+    fun setOnTextChangedListener(onTextChanged: (text: String) -> Unit): SearchEditText {
         mListener = object : OnTextChangedListener {
             override fun onTextChanged(text: String) {
                 onTextChanged(text)
             }
         }
+        return this
     }
 
     override fun onTextChanged(
@@ -60,7 +66,7 @@ class SearchEditText : EditText {
         super.onTextChanged(text, start, lengthBefore, lengthAfter)
         // 移除上一次的回调
         removeCallbacks(mAction)
-        postDelayed(mAction, LIMIT)
+        postDelayed(mAction, limitDuration)
     }
 
     override fun onDetachedFromWindow() {

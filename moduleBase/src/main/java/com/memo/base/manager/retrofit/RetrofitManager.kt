@@ -46,6 +46,5 @@ class RetrofitManager private constructor() {
             .build()
 
         //api = mRetrofit.create(ApiService::class.java)
-
     }
 }

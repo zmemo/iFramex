@@ -8,6 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.ConvertUtils
 import com.memo.tool.app.BaseApp
 
 /**
@@ -18,9 +19,6 @@ import com.memo.tool.app.BaseApp
  * @date 2019-01-29 14:43
  */
 
-/**
- * 从Context中获取资源
- */
 fun color(id: Int): Int =
     ContextCompat.getColor(BaseApp.app.applicationContext, id)
 
@@ -36,17 +34,13 @@ fun drawable(id: Int) =
 fun dimen(id: Int) =
     BaseApp.app.applicationContext.resources.getDimension(id)
 
-fun dp2px(dp: Float): Int =
-    (dp * BaseApp.app.applicationContext.resources.displayMetrics.density + 0.5f).toInt()
+fun dp2px(dp: Float): Int = ConvertUtils.dp2px(dp)
 
-fun px2dp(px: Float): Int =
-    (px / BaseApp.app.applicationContext.resources.displayMetrics.density + 0.5f).toInt()
+fun px2dp(px: Float): Int = ConvertUtils.px2dp(px)
 
-fun sp2px(sp: Float): Int =
-    (sp * BaseApp.app.applicationContext.resources.displayMetrics.scaledDensity + 0.5f).toInt()
+fun sp2px(sp: Float): Int = ConvertUtils.sp2px(sp)
 
-fun px2sp(px: Float): Int =
-    (px / BaseApp.app.applicationContext.resources.displayMetrics.scaledDensity + 0.5f).toInt()
+fun px2sp(px: Float): Int = ConvertUtils.px2sp(px)
 
 fun Context.inflaterView(@LayoutRes layoutRes: Int, parent: ViewGroup? = null): View =
     View.inflate(this, layoutRes, parent)

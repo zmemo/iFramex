@@ -18,4 +18,5 @@ abstract class BaseMultiProvider<T : MultiItemEntity>(val multiType: Int, @Layou
      */
     abstract fun converts(context: Context, helper: ViewHolder, item: T)
 
+
 }

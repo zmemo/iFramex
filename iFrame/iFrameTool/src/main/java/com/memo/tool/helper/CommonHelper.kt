@@ -19,15 +19,19 @@ import kotlinx.android.synthetic.main.layout_toast.view.*
 
 fun toast(message: Any?) {
     message?.let {
-        ToastUtils.setGravity(-1, -1, -1)
-        ToastUtils.showCustomShort(R.layout.layout_toast).mTvMessage.text = it.toString()
+        if (it.toString().isNotEmpty()) {
+            ToastUtils.setGravity(-1, -1, -1)
+            ToastUtils.showCustomShort(R.layout.layout_toast).mTvMessage.text = it.toString()
+        }
     }
 }
 
 fun toastCenter(message: Any?) {
     message?.let {
-        ToastUtils.setGravity(Gravity.CENTER, 0, 0)
-        ToastUtils.showCustomShort(R.layout.layout_toast).mTvMessage.text = it.toString()
+        if (it.toString().isNotEmpty()) {
+            ToastUtils.setGravity(Gravity.CENTER, 0, 0)
+            ToastUtils.showCustomShort(R.layout.layout_toast).mTvMessage.text = it.toString()
+        }
     }
 }
 

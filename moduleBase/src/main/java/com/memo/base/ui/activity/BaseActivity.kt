@@ -1,6 +1,5 @@
 package com.memo.base.ui.activity
 
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.MotionEvent
@@ -8,19 +7,14 @@ import android.view.View
 import androidx.annotation.ColorInt
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.BarUtils
-import com.blankj.utilcode.util.KeyboardUtils
 import com.blankj.utilcode.util.ScreenUtils
 import com.memo.tool.dialog.dialog.LoadingDialog
 import com.memo.tool.ext.inflaterView
 import com.memo.tool.helper.KeyboardHelper
 import com.memo.tool.helper.OOMHelper
 import com.memo.tool.helper.StatusBarHelper
-import com.trello.rxlifecycle3.LifecycleProvider
-import com.trello.rxlifecycle3.android.ActivityEvent
-import com.trello.rxlifecycle3.components.support.RxAppCompatActivity
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.disposables.Disposable
 
 /**
  * title:基础的Activity
@@ -29,25 +23,19 @@ import io.reactivex.disposables.Disposable
  * @author zhou
  * @date 2018-11-14 上午9:54
  */
-abstract class BaseActivity : RxAppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
     /*** 根布局 ***/
     protected lateinit var mRootView: View
 
     /*** Context ***/
-    protected val mContext: Context by lazy { this }
+    protected val mContext: BaseActivity by lazy { this }
 
-    /*** Activity ***/
-    protected val mActivity: AppCompatActivity by lazy { this }
-
-    /*** 生命周期提供 ***/
-    protected val mLifecycleProvider: LifecycleProvider<ActivityEvent> by lazy { this }
+    /*** LifecycleOwner ***/
+    protected val mLifecycleOwner: LifecycleOwner by lazy { this }
 
     /*** 加载弹窗 ***/
     protected val mLoadDialog: LoadingDialog by lazy { LoadingDialog(mContext) }
-
-    /*** RxJava2请求序列 ***/
-    private val compositeDisposable by lazy { CompositeDisposable() }
 
     /*** 是否点击空白处隐藏软键盘 ***/
     protected open fun clickBlank2HideKeyboard(): Boolean = true
@@ -114,20 +102,9 @@ abstract class BaseActivity : RxAppCompatActivity() {
         return super.dispatchTouchEvent(ev)
     }
 
-    /*** 添加入队列 ***/
-    protected fun addDisposable(disposable: Disposable?) {
-        disposable?.let { compositeDisposable.add(it) }
-    }
-
     override fun onDestroy() {
-        // 清空RxJava2序列
-        if (!compositeDisposable.isDisposed) {
-            compositeDisposable.clear()
-        }
-        // 隐藏软键盘
-        KeyboardUtils.hideSoftInput(mActivity)
-        // 修复软键盘内存泄漏
-        KeyboardUtils.fixSoftInputLeaks(mActivity)
+        // 销毁软键盘
+        KeyboardHelper.onDestroy(mContext)
         // 清除所有的图片内存占用
         OOMHelper.onDestroy(mRootView)
         super.onDestroy()

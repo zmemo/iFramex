@@ -1,15 +1,18 @@
 package com.memo.tool.helper
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.Color
 import androidx.annotation.ColorInt
 import androidx.annotation.Nullable
+import androidx.lifecycle.LifecycleOwner
 import cn.bingoogolapple.qrcode.zxing.QRCodeDecoder
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder
 import com.blankj.utilcode.util.LogUtils
+import com.memo.tool.ext.doInBackground
+import com.memo.tool.ext.io2MainLifecycle
 import io.reactivex.Observable
-import io.reactivex.disposables.Disposable
 
 /**
  * title: 二维码帮助类
@@ -40,13 +43,14 @@ object QrcodeHelper {
      */
     @JvmStatic
     fun decodeQRCode(
+        lifecycleOwner: LifecycleOwner,
         picPath: String,
         onSuccess: (String) -> Unit,
         onFailure: () -> Unit = { toast("无法读取二维码数据") }
-    ): Disposable? {
-        return Observable.just(picPath)
+    ) {
+        Observable.just(picPath)
             .map { QRCodeDecoder.syncDecodeQRCode(it) }
-            .compose(RxHelper.io2Main())
+            .io2MainLifecycle(lifecycleOwner)
             .subscribe({
                 onSuccess(it)
             }, {
@@ -57,6 +61,7 @@ object QrcodeHelper {
 
     /**
      * 构造二维码
+     * @param lifecycleOwner: LifecycleOwner 生命周期提供
      * @param content String                内容
      * @param sizePx Int                    宽高
      * @param logo Bitmap?                  内部图片 可以为null
@@ -64,10 +69,11 @@ object QrcodeHelper {
      * @param backgroundColor Int 背景颜色
      * @param onSuccess (Bitmap) -> Unit    成功回调
      * @param onFailure () -> Unit          失败回调
-     * @return Disposable?
      */
+    @SuppressLint("CheckResult")
     @JvmStatic
     fun encodeQRCode(
+        lifecycleOwner: LifecycleOwner,
         content: String,
         sizePx: Int,
         logo: Bitmap? = null,
@@ -75,24 +81,14 @@ object QrcodeHelper {
         @ColorInt backgroundColor: Int = Color.WHITE,
         onSuccess: (Bitmap) -> Unit,
         onFailure: () -> Unit = { toast("二维码创建失败") }
-    ): Disposable? {
-
-        return Observable.create<Bitmap> {
-            it.onNext(
-                QRCodeEncoder.syncEncodeQRCode(
-                    content,
-                    sizePx,
-                    foregroundColor,
-                    backgroundColor,
-                    logo
-                )
-            )
-        }.compose(RxHelper.io2Main())
-            .subscribe({
-                onSuccess(it)
-            }, {
-                LogUtils.eTag("QRCode", it.toString())
-                onFailure()
-            })
+    ) {
+        doInBackground(lifecycleOwner, {
+            QRCodeEncoder.syncEncodeQRCode(content, sizePx, foregroundColor, backgroundColor, logo)
+        }, {
+            onSuccess(it)
+        }, {
+            LogUtils.eTag("QRCode", it)
+            onFailure()
+        })
     }
 }

@@ -30,6 +30,7 @@ tool
 |   |---StringExt                   字符串拓展
 |   |---TimeExt                     时间拓展 字符串转时间
 |   |---ViewExt                     控件拓展
+|   |---RxExt                       RxJava拓展
 |---glide
 |   |---GlideAppModule              GlideApp形成配置
 |---handler
@@ -52,7 +53,6 @@ tool
 |   |---OOMHelper                   两种粗暴解决OOM问题的方法
 |   |---PermissionHelper            权限工具
 |   |---QrcodeHelper                二维码扫描生成
-|   |---RxHelper                    RxJava的工具
 |   |---StatusBarHelper             状态栏工具
 |   |---TextWatcherHelper           监听多个EditText的工具
 |   |---ViewHelper                  控件的工具

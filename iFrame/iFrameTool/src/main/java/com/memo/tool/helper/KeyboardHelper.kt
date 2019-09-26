@@ -6,6 +6,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import com.blankj.utilcode.util.KeyboardUtils
 
 /**
  * title:软键盘帮助类 点击空白处隐藏软键盘
@@ -48,5 +49,15 @@ object KeyboardHelper {
                     event.y > top && event.y < bottom)
         }
         return false
+    }
+
+    /**
+     * 销毁软键盘
+     * @param activity Activity
+     */
+    @JvmStatic
+    fun onDestroy(activity: Activity) {
+        KeyboardUtils.hideSoftInput(activity)
+        KeyboardUtils.fixSoftInputLeaks(activity)
     }
 }

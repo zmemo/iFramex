@@ -3,6 +3,7 @@ package com.memo.test
 import android.app.Activity
 import android.content.Intent
 import android.view.View
+import android.widget.Button
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.bigkoo.pickerview.view.OptionsPickerView
 import com.bigkoo.pickerview.view.TimePickerView
@@ -30,6 +31,7 @@ import com.memo.tool.dialog.dialog.LocateListDialog
 import com.memo.tool.dialog.entity.Area
 import com.memo.tool.ext.OnNotFastClickListener
 import com.memo.tool.ext.onClick
+import com.memo.tool.ext.resendVerificationCodeAfter
 import com.memo.tool.ext.startActivity
 import com.memo.tool.handler.WeakHandler
 import com.memo.tool.helper.DialogHelper
@@ -124,7 +126,9 @@ class TestActivity : BaseActivity() {
 
     private fun initData() {
         //解析全国省份字符串
-        addDisposable(DialogHelper.parseArea { area = it })
+        DialogHelper.parseArea(mLifecycleOwner) {
+            area = it
+        }
     }
 
     private fun initView() {
@@ -152,7 +156,7 @@ class TestActivity : BaseActivity() {
     }
 
     private fun doSomeThing() {
-        if (PermissionHelper.grantedInstallUnKnowApp(mActivity, REQUEST_CODE_INSTALL)) {
+        if (PermissionHelper.grantedInstallUnKnowApp(mContext, REQUEST_CODE_INSTALL)) {
             toast("已有安装权限")
         }
     }
@@ -164,8 +168,9 @@ class TestActivity : BaseActivity() {
                 R.id.mItem -> {
                 }
                 R.id.mBtnGlide -> {
-                    addDisposable(ImageLoadHelper.clearDiskCache(mContext))
-                    ImageLoadHelper.clearMemoryCache(mContext)
+                    (view as Button).resendVerificationCodeAfter(mLifecycleOwner, 10)
+                    ImageLoadHelper.clearDiskCache(mLifecycleOwner)
+                    ImageLoadHelper.clearMemoryCache()
                 }
                 R.id.mBtnRetrofit -> {
                     startActivity<RetrofitActivity>()

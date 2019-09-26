@@ -28,9 +28,11 @@ class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresente
 
     private fun initListener() {
         mBtnZhiHu.onClick {
-            mPresenter?.requestZhiHu()
+            mPresenter.requestZhiHu()
         }
-        mBtnDouBan.onClick { mPresenter?.requestWan() }
+        mBtnDouBan.onClick {
+            mPresenter.requestWan()
+        }
     }
 
     /**

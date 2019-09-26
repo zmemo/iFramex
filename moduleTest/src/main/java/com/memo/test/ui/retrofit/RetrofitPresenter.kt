@@ -3,7 +3,7 @@ package com.memo.test.ui.retrofit
 import android.annotation.SuppressLint
 import com.blankj.utilcode.util.LogUtils
 import com.memo.base.ui.mvp.BasePresenter
-import com.memo.tool.helper.RxHelper
+import com.memo.tool.ext.io2MainLifecycle
 
 /**
  * title:
@@ -19,10 +19,10 @@ class RetrofitPresenter : BasePresenter<RetrofitModel, RetrofitContract.View>(),
 
     @SuppressLint("CheckResult")
     override fun requestZhiHu() {
-        mModel?.getZhiHu()
-            ?.compose(RxHelper.io2Main())
-            ?.subscribe({
-                mView?.getZhiHu(it)
+        mModel.getZhiHu()
+            .io2MainLifecycle(mLifeOwner)
+            .subscribe({
+                mView.getZhiHu(it)
             }, {
                 LogUtils.eTag("error", it.toString())
             })
@@ -30,10 +30,10 @@ class RetrofitPresenter : BasePresenter<RetrofitModel, RetrofitContract.View>(),
 
     @SuppressLint("CheckResult")
     override fun requestWan() {
-        mModel?.getWan()
-            ?.compose(RxHelper.io2Main())
-            ?.subscribe({
-                mView?.getWan(it)
+        mModel.getWan()
+            .io2MainLifecycle(mLifeOwner)
+            .subscribe({
+                mView.getWan(it)
             }, {
                 LogUtils.eTag("error", it.toString())
             })

@@ -48,13 +48,13 @@ object GsonHelper {
      * 解析实体类
      */
     @JvmStatic
-    fun <T> parse2Bean(json: String, clazz: Class<T>): T =
-        getGson().fromJson<T>(json, clazz)
+    inline fun <reified T> parse2Bean(json: String): T =
+        getGson().fromJson<T>(json, T::class.java)
 
     /**
      * 解析列表
      */
     @JvmStatic
-    fun <T> parse2List(json: String, clazz: Class<T>): ArrayList<T> =
-        getGson().fromJson(json, TypeToken.getParameterized(ArrayList::class.java, clazz).type)
+    inline fun <reified T> parse2List(json: String): ArrayList<T> =
+        getGson().fromJson(json, TypeToken.getParameterized(ArrayList::class.java, T::class.java).type)
 }

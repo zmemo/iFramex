@@ -4,10 +4,9 @@ import com.blankj.utilcode.util.LogUtils
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.ui.config.TestConfig
+import com.memo.tool.ext.io2MainLifecycle
 import com.memo.tool.ext.onClick
 import com.memo.tool.helper.NotificationHelper
-import com.memo.tool.helper.RxHelper
-import com.trello.rxlifecycle3.kotlin.bindToLifecycle
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_notification.*
 import java.util.concurrent.TimeUnit
@@ -30,11 +29,10 @@ class NotificationActivity : BaseActivity() {
             )
         }
 
-        mBtnProgress.onClick { view ->
+        mBtnProgress.onClick { _ ->
             Observable.interval(0, 100, TimeUnit.MILLISECONDS)
                 .take(101)
-                .compose(RxHelper.io2Main())
-                .bindToLifecycle(view)
+                .io2MainLifecycle(mLifecycleOwner)
                 .subscribe {
                     LogUtils.iTag("progress", it)
                     NotificationHelper.sendProgressNotification(

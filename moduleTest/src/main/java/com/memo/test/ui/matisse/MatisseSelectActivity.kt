@@ -42,7 +42,7 @@ class MatisseSelectActivity : BaseActivity() {
     private fun initListener() {
         mNineGridView.addOnSelectListener {
             MediaHelper.choosePhoto(
-                mActivity,
+                mContext,
                 false,
                 MAXSIZE - mNineGridView.getCurImageSize(),
                 REQUEST_CODE_SELECT
@@ -50,7 +50,7 @@ class MatisseSelectActivity : BaseActivity() {
         }
         mBtnSelect.onClick {
             MediaHelper.choosePhoto(
-                mActivity,
+                mContext,
                 false,
                 MAXSIZE - mNineGridView.getCurImageSize(),
                 REQUEST_CODE_SELECT
@@ -58,11 +58,11 @@ class MatisseSelectActivity : BaseActivity() {
         }
         mBtnTake.onClick {
             if (PermissionHelper.grantedCamera(mContext)) {
-                takePhotoPath = MediaHelper.takePhoto(mActivity, REQUEST_CODE_TAKE)
+                takePhotoPath = MediaHelper.takePhoto(mContext, REQUEST_CODE_TAKE)
             }
         }
         mBtnVideo.onClick {
-            MediaHelper.chooseVideo(mActivity, REQUEST_CODE_VIDEO)
+            MediaHelper.chooseVideo(mContext, REQUEST_CODE_VIDEO)
         }
         mBtnClear.onClick {
             FileUtils.deleteDir(LocalDir.DIR_COMPRESS)
@@ -102,7 +102,7 @@ class MatisseSelectActivity : BaseActivity() {
                 }
                 REQUEST_CODE_TAKE -> {
                     takePhotoPath?.let {
-                        cropPhotpPath = MediaHelper.cropPhoto(mActivity, it, REQUEST_CODE_CROP)
+                        cropPhotpPath = MediaHelper.cropPhoto(mContext, it, REQUEST_CODE_CROP)
                     }
                 }
                 REQUEST_CODE_CROP -> {

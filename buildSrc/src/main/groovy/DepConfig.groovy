@@ -13,11 +13,12 @@ class DepConfig {
     static testEspresso = "androidx.test.espresso:espresso-core:3.2.0"
 
     // 控件
-    static appcompat = "androidx.appcompat:appcompat:1.0.2"
+    static appcompat = "androidx.appcompat:appcompat:1.1.0"
     static constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
     static recyclerView = "androidx.recyclerview:recyclerview:1.0.0"
     static cardView = "androidx.cardview:cardview:1.0.0"
-    static basePopup = "com.github.razerdp:BasePopup:2.2.1"
+    static basePopupCore = "com.github.razerdp:BasePopup:2.2.1"
+    static basePopupAndroidx = "com.github.razerdp:BasePopup-compat-androidx:2.2.1"
     static rWidgetHelper = "com.ruffian.library:RWidgetHelper:1.1.3"
     static baseRecyclerViewAdapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47-androidx"
     static matisse = "com.zhihu.android:matisse:0.5.3-beta2"
@@ -36,8 +37,6 @@ class DepConfig {
     static rxJava2 = "io.reactivex.rxjava2:rxjava:2.2.10"
     static rxAndroid2 = "io.reactivex.rxjava2:rxandroid:2.1.1"
     static rxBus = "com.blankj:rxbus:1.6"
-    static rxLifecycleKotlin3 = "com.trello.rxlifecycle3:rxlifecycle-kotlin:3.0.0"
-    static rxLifecycleComponents3 = "com.trello.rxlifecycle3:rxlifecycle-components:3.0.0"
     static retrofit = "com.squareup.retrofit2:retrofit:2.6.0"
     static retrofitGson = "com.squareup.retrofit2:converter-gson:2.6.0"
     static retrofitConverter = "com.squareup.retrofit2:converter-scalars:2.6.0"
@@ -49,6 +48,8 @@ class DepConfig {
     static preview = "com.ycjiang:ImagePreview:2.2.5"
     static stickyHeader = "com.oushangfeng:PinnedSectionItemDecoration:1.3.2"
     static luBan = "top.zibin:Luban:1.1.8"
+    static autoDispose = "com.uber.autodispose:autodispose-android:1.4.0"
+    static autoDisposeArch = "com.uber.autodispose:autodispose-android-archcomponents:1.4.0"
 
     // 插件
     static doraemonKitRelease = "com.didichuxing.doraemonkit:doraemonkit-no-op:1.2.1"

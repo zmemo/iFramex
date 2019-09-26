@@ -1,18 +1,23 @@
 package com.memo.tool.adapter
 
+import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
+import androidx.fragment.app.FragmentStatePagerAdapter
 
 
 /**
- * title：ViewPager和Fragment 的适配器
- * tip:
+ * title:ViewPager和Fragment结合的Adapter
+ * describe:
+ * 注意使用情况添加了behavior，当前不可见的Fragment会执行生命周期到onResume之前（不执行onResume），可以作为懒加载使用
  *
  * @author zhou
- * @date 2018/8/20 下午5:33
+ * @date 2019-09-26 15:41
+ *
+ * Talk is cheap, Show me the code.
  */
-class BaseFragmentPagerAdapter<T : Fragment>(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+@SuppressLint("WrongConstant")
+class BaseFragmentPagerAdapter<T : Fragment>(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     protected var mData: List<T>? = null
     private var withTabLayoutTitles: Array<String>? = null
 
