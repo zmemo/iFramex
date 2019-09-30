@@ -54,9 +54,8 @@ fun <T> doInBackground(
     onSuccess: (t: T) -> Unit,
     onError: (error: Throwable) -> Unit
 ) {
-    Observable.create<T> {
-        it.onNext(doInBackground())
-    }.io2MainLifecycle(lifecycleOwner)
+    Observable.just(doInBackground())
+        .io2MainLifecycle(lifecycleOwner)
         .subscribe({
             onSuccess(it)
         }, {
@@ -73,8 +72,7 @@ fun doInBackground(
     lifecycleOwner: LifecycleOwner,
     doInBackground: () -> Unit
 ) {
-    Observable.create<Unit> {
-        doInBackground()
-    }.io2MainLifecycle(lifecycleOwner)
+    Observable.just(doInBackground())
+        .io2MainLifecycle(lifecycleOwner)
         .subscribe()
 }

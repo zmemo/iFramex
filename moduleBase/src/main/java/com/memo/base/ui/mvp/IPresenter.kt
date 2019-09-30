@@ -12,7 +12,7 @@ import androidx.lifecycle.LifecycleOwner
 interface IPresenter<in V : IView> {
 
     /**
-     * 绑定 View
+     * 绑定View和LifecycleOwner
      */
     fun attachView(mView: V, mLifeOwner: LifecycleOwner)
 

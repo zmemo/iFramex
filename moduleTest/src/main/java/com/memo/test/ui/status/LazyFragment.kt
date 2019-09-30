@@ -22,6 +22,7 @@ class LazyFragment : BaseFragment() {
 
     override fun bindLayoutResId(): Int = R.layout.fragment_lazy
 
+    /*** 在视图加载完毕的时候初始化 ***/
     override fun initialize() {
         mLoadService = LoaderHelper.register(mTvContainer) {
             toast("点击重试")
@@ -29,6 +30,7 @@ class LazyFragment : BaseFragment() {
         }
     }
 
+    /*** 在界面可见的时候进行初始化 ***/
     override fun lazyInitialize() {
         mTvContainer.postDelayed({
             mTvContainer.text = "懒加载后获取内容"

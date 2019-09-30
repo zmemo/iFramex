@@ -6,8 +6,8 @@ import com.memo.base.ui.mvp.BasePresenter
 import com.memo.tool.ext.io2MainLifecycle
 
 /**
- * title:
- * describe:
+ * title:MVP演示
+ * describe: 在这里强制使用了M-V-P三层 其实如果只是简单调用接口可以把Model层去除 简化代码 灵活一点
  *
  * @author zhou
  * @date 2019-01-24 17:05

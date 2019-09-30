@@ -13,6 +13,7 @@ import com.memo.tool.helper.OOMHelper
 /**
  * title:基础的Fragment
  * describe:
+ * 注意添加 BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
  *
  * @author zhou
  * @date 2019-09-26 15:38
@@ -25,7 +26,7 @@ abstract class BaseFragment : Fragment() {
     protected lateinit var mRootView: View
 
     /*** 上下文Activity ***/
-    protected val mActivity by lazy { activity }
+    protected val mActivity by lazy { activity!! }
 
     /*** AutoDispose ***/
     protected val mLifecycleOwner: LifecycleOwner by lazy { this }
@@ -68,14 +69,13 @@ abstract class BaseFragment : Fragment() {
         super.onResume()
     }
 
-    /**
-     * 绑定布局
-     */
-    @LayoutRes
-    protected abstract fun bindLayoutResId(): Int
 
     /*** 对于BaseMvpFragment的初始化 ***/
     protected open fun baseInitialize() {}
+
+    /*** 绑定布局 ***/
+    @LayoutRes
+    protected abstract fun bindLayoutResId(): Int
 
     /*** 在视图加载完毕的时候初始化 ***/
     protected abstract fun initialize()

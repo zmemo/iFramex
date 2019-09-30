@@ -13,7 +13,7 @@ import com.memo.base.ui.mvp.IView
 @Suppress("UNCHECKED_CAST")
 abstract class BaseMvpFragment<in V : IView, P : IPresenter<V>> : BaseFragment(), IView {
 
-    protected var mPresenter: P? = null
+    protected lateinit var mPresenter: P
 
     /*** 绑定Presenter ***/
     protected abstract fun buildPresenter(): P
@@ -21,7 +21,7 @@ abstract class BaseMvpFragment<in V : IView, P : IPresenter<V>> : BaseFragment()
     override fun baseInitialize() {
         super.baseInitialize()
         mPresenter = buildPresenter()
-        mPresenter?.attachView(this as V, this)
+        mPresenter.attachView(this as V, this)
     }
 
 }

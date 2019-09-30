@@ -12,7 +12,7 @@
 		android:gravity="center"
 		android:text="默认内容"
 		android:textColor="@color/black"
-		android:textSize="@dimen/sp40"
+		android:textSize="@dimen/sp30"
 		android:textStyle="bold" />
 
 </FrameLayout>

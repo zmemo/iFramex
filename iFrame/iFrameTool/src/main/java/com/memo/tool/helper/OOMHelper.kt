@@ -5,6 +5,7 @@ import android.os.HandlerThread
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.view.forEach
 import com.blankj.utilcode.util.LogUtils
 
 
@@ -56,13 +57,11 @@ object OOMHelper {
     fun onDestroy(root: View?) {
         root?.background = null
         if (root is ViewGroup) {
-            val childCount = root.childCount
-            for (i in 0 until childCount) {
-                val child: View? = root.getChildAt(i)
-                if (child is ImageView) {
-                    child.setImageDrawable(null)
+            root.forEach {
+                if (it is ImageView) {
+                    it.setImageDrawable(null)
                 }
-                onDestroy(child)
+                onDestroy(it)
             }
         }
     }
