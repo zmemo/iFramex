@@ -3,6 +3,7 @@ package com.memo.tool.helper
 import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.Lifecycle
 import java.util.*
 
 /**
@@ -24,17 +25,6 @@ class FragmentHelper constructor(containerResId: Int, fragmentManager: FragmentM
     private val mStack: Stack<Fragment> by lazy { Stack<Fragment>() }
 
     /**
-     *  添加一个Fragment
-     */
-    @SuppressLint("CommitTransaction")
-    fun add(fragment: Fragment): FragmentHelper {
-        if (!mStack.contains(fragment)) {
-            mStack.add(fragment)
-        }
-        return this
-    }
-
-    /**
      * 添加Fragment列表
      */
     fun add(vararg fragments: Fragment): FragmentHelper {
@@ -45,45 +35,36 @@ class FragmentHelper constructor(containerResId: Int, fragmentManager: FragmentM
     }
 
     /**
-     * 显示界面
+     *  添加一个Fragment
      */
-    fun show() {
-        val beginTransaction = mFragmentManager.beginTransaction()
-        for ((index, fragment) in mStack.withIndex()) {
-            beginTransaction.add(mContainerResId, fragment)
-            if (0 != index) {
-                beginTransaction.hide(fragment)
-            } else {
-                beginTransaction.show(fragment)
-            }
+    @SuppressLint("CommitTransaction")
+    fun add(fragment: Fragment): FragmentHelper {
+        if (!mStack.contains(fragment)) {
+            mStack.add(fragment)
         }
-        beginTransaction.commitAllowingStateLoss()
+        if (!fragment.isAdded) {
+            mFragmentManager.beginTransaction().add(mContainerResId, fragment)
+                .setMaxLifecycle(fragment, Lifecycle.State.STARTED)
+                .commitAllowingStateLoss()
+        }
+        return this
     }
+
 
     /**
      * 改变Fragment
      */
-    fun change(index: Int) {
+    fun show(index: Int = 0) {
         val beginTransaction = mFragmentManager.beginTransaction()
-        for ((position, fragment) in mStack.withIndex()) {
-            if (position != index) {
-                if (fragment.isAdded) {
-                    beginTransaction.hide(fragment)
-                }
-            } else {
-                if (!fragment.isAdded) {
-                    beginTransaction.add(mContainerResId, fragment)
-                }
+        mStack.forEachIndexed { position, fragment ->
+            if (position == index) {
                 beginTransaction.show(fragment)
+                    .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
+            } else {
+                beginTransaction.hide(fragment)
             }
         }
         beginTransaction.commitAllowingStateLoss()
-    }
 
-    /*** lazy ***/
-    fun lazyShow() {
-        mFragmentManager.beginTransaction()
-            .add(mContainerResId, mStack[0])
-            .commitAllowingStateLoss()
     }
 }

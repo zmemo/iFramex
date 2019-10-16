@@ -312,11 +312,10 @@ fun View.enableAfter(owner: LifecycleOwner, second: Long) {
  */
 @SuppressLint("SetTextI18n", "CheckResult")
 fun TextView.resendVerificationCodeAfter(owner: LifecycleOwner, second: Long = 60) {
-    val observable = Observable.interval(0, 1, TimeUnit.SECONDS)
+    Observable.interval(0, 1, TimeUnit.SECONDS)
         .take(second + 1)
         .map { second - it }
-        .observeOn(AndroidSchedulers.mainThread())
-        .bindLifecycle(owner)
+        .io2MainLifecycle(owner)
         .subscribe({
             LogUtils.iTag("sendCode", it)
             text = "(${it}秒)"

@@ -74,6 +74,9 @@ abstract class AbstractDownLoadObserver {
                 dir.mkdirs()
             }
             val file = File(dir, destFileName)
+            if (file.exists()) {
+                file.delete()
+            }
             fos = FileOutputStream(file)
             len = inputStream.read(buf)
             while (len != -1) {
