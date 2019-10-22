@@ -76,3 +76,5 @@ fun doInBackground(
         .io2MainLifecycle(lifecycleOwner)
         .subscribe()
 }
+
+fun Any.toObservable() = Observable.just(this)

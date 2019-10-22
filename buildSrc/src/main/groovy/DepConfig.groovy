@@ -34,7 +34,7 @@ class DepConfig {
     static coreKtx = "androidx.core:core-ktx:1.0.2"
     static multiDex = "androidx.multidex:multidex:2.0.0"
     static androidUtilCode = "com.blankj:utilcodex:1.25.9"
-    static rxJava2 = "io.reactivex.rxjava2:rxjava:2.2.10"
+    static rxKotlin2 = "io.reactivex.rxjava2:rxkotlin:2.4.0"
     static rxAndroid2 = "io.reactivex.rxjava2:rxandroid:2.1.1"
     static rxBus = "com.blankj:rxbus:1.6"
     static retrofit = "com.squareup.retrofit2:retrofit:2.6.0"

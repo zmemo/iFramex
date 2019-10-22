@@ -269,10 +269,10 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
                     }
                 }
                 R.id.mTvRight -> {
-                    mTitleListener?.onTitleClick()
+                    mRightListener?.onRightClick()
                 }
                 R.id.mTvTitle -> {
-                    mRightListener?.onRightClick()
+                    mTitleListener?.onTitleClick()
                 }
             }
         }, mTvLeft, mTvTitle, mTvRight)
@@ -393,9 +393,9 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
         if (drawable != 0) {
             mTvRight.visible()
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, rightDrawable, 0)
+                mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawable, 0)
             } else {
-                mTvRight.setCompoundDrawablesWithIntrinsicBounds(0, 0, rightDrawable, 0)
+                mTvRight.setCompoundDrawablesWithIntrinsicBounds(0, 0, drawable, 0)
             }
             mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
         }
@@ -406,9 +406,9 @@ class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, a
      * @param moreText String? 文字
      */
     fun setRightText(moreText: String?) {
-        moreText?.let {
+        if (!moreText.isNullOrEmpty()) {
             mTvRight.visible()
-            mTvRight.text = it
+            mTvRight.text = moreText
         }
     }
 

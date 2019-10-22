@@ -38,7 +38,7 @@ dependencies {
     api DepConfig.coreKtx
     api DepConfig.multiDex
     api DepConfig.androidUtilCode
-    api DepConfig.rxJava2
+    api DepConfig.rxKotlin2
     api DepConfig.rxAndroid2
     api DepConfig.rxBus
     api DepConfig.autoDispose
