@@ -5,6 +5,7 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ViewConfiguration
 import androidx.recyclerview.widget.RecyclerView
+import kotlin.math.abs
 
 /**
  * title:横纵相嵌套的RecyclerView 内层RecyclerView
@@ -43,8 +44,7 @@ open class ChildRecyclerView @JvmOverloads constructor(
         if (layoutManager == null) {
             return super.onInterceptTouchEvent(e)
         }
-        val action = e.actionMasked
-        when (action) {
+        when (e.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
                 mScrollPointerId = e.getPointerId(0)
                 mInitialTouchX = (e.x + 0.5f).toInt()
@@ -66,14 +66,14 @@ open class ChildRecyclerView @JvmOverloads constructor(
                     val canScrollVertically = layoutManager!!.canScrollVertically()
                     var startScroll = false
                     if (canScrollHorizontally &&
-                        Math.abs(dx) > mTouchSlop &&
-                        (Math.abs(dx) >= Math.abs(dy) || canScrollVertically)
+                        abs(dx) > mTouchSlop &&
+                        (abs(dx) >= abs(dy) || canScrollVertically)
                     ) {
                         startScroll = true
                     }
                     if (canScrollVertically &&
-                        Math.abs(dy) > mTouchSlop &&
-                        (Math.abs(dy) >= Math.abs(dx) || canScrollHorizontally)
+                        abs(dy) > mTouchSlop &&
+                        (abs(dy) >= abs(dx) || canScrollHorizontally)
                     ) {
                         startScroll = true
                     }
@@ -87,6 +87,6 @@ open class ChildRecyclerView @JvmOverloads constructor(
     }
 
     companion object {
-        private val INVALID_POINTER = -1
+        private const val INVALID_POINTER = -1
     }
 }

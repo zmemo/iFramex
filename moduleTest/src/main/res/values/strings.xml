@@ -27,5 +27,8 @@
 	<string name="MenuMine">我的</string>
 	<string name="Drag">拖拽</string>
 	<string name="Fragment">测试Fragment的懒加载</string>
+	
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

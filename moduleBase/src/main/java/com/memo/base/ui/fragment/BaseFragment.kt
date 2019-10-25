@@ -14,6 +14,7 @@ import com.memo.tool.helper.OOMHelper
  * title:基础的Fragment
  * describe:
  * 注意添加 BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
+ * 建议配合 BaseFragmentPagerAdapter 和 FragmentHelper来进行使用
  *
  * @author zhou
  * @date 2019-09-26 15:38

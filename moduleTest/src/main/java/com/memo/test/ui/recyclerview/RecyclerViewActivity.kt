@@ -6,6 +6,7 @@ import com.memo.test.ui.recyclerview.drag.DragRvActivity
 import com.memo.test.ui.recyclerview.expand.ExpandActivity
 import com.memo.test.ui.recyclerview.grid.GridMultiActivity
 import com.memo.test.ui.recyclerview.multi.MultiRecyclerActivity
+import com.memo.test.ui.recyclerview.resume.RecyclerViewResumeActivity
 import com.memo.test.ui.recyclerview.section.SectionRecyclerActivity
 import com.memo.tool.ext.onClick
 import com.memo.tool.ext.startActivity
@@ -30,6 +31,9 @@ class RecyclerViewActivity : BaseActivity() {
         }
         mBtnExpand.onClick {
             startActivity<ExpandActivity>()
+        }
+        mBtnResume.onClick {
+            startActivity<RecyclerViewResumeActivity>()
         }
     }
 }

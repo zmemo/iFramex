@@ -1,10 +1,10 @@
 package com.memo.test.ui.recyclerview.section
 
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.ui.recyclerview.SectionItem
 import com.memo.test.ui.recyclerview.Sections
+import com.memo.widget.recyclerview.NoScrollLinearLayoutManager
 import kotlinx.android.synthetic.main.activity_section_recycler.*
 
 class SectionRecyclerActivity : BaseActivity() {
@@ -43,12 +43,50 @@ class SectionRecyclerActivity : BaseActivity() {
             add(Sections(SectionItem("内容3-3", url)))
             add(Sections(SectionItem("内容3-4", url)))
             add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
+            add(Sections(SectionItem("内容3-5", url)))
         }
     }
 
     private fun initView() {
         mRvSectionList.run {
-            layoutManager = LinearLayoutManager(mContext)
+            layoutManager = NoScrollLinearLayoutManager(mContext)
             mAdapter.setNewData(mData)
             adapter = mAdapter
         }

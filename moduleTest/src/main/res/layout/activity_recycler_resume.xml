@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".ui.recyclerview.resume.RecyclerViewResumeActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="RecyclerView恢复状态" />
+	
+	<com.memo.widget.recyclerview.RootRecyclerView
+		android:id="@+id/mRvList"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:overScrollMode="never" />
+
+</LinearLayout>
