@@ -4,14 +4,18 @@ import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
+import android.os.Build
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.EditText
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.annotation.ColorInt
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.RecyclerView
+import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.LogUtils
 import com.memo.tool.R
 import com.memo.tool.helper.ClickHelper
@@ -222,14 +226,14 @@ fun View.toBitmap(): Bitmap {
                 totalHeight += this.getChildAt(i).height
             }
             val screenshot =
-                Bitmap.createBitmap(this.getWidth(), totalHeight, Bitmap.Config.ARGB_4444)
+                Bitmap.createBitmap(this.getWidth(), totalHeight, Bitmap.Config.RGB_565)
             val canvas = Canvas(screenshot)
             this.draw(canvas)
             screenshot
         }
         else -> {
             val screenshot =
-                Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.ARGB_4444)
+                Bitmap.createBitmap(measuredWidth, measuredHeight, Bitmap.Config.RGB_565)
             val canvas = Canvas(screenshot)
             if (background != null) {
                 background.setBounds(0, 0, width, measuredHeight)
@@ -241,6 +245,19 @@ fun View.toBitmap(): Bitmap {
             screenshot
         }
     }
+}
+
+/**
+ * 控件绘制监听
+ */
+inline fun View.onGlobalLayoutListener(crossinline callback: () -> Unit) = with(viewTreeObserver) {
+    addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+        @RequiresApi(Build.VERSION_CODES.JELLY_BEAN)
+        override fun onGlobalLayout() {
+            callback()
+            removeOnGlobalLayoutListener(this)
+        }
+    })
 }
 
 /**
@@ -315,7 +332,8 @@ fun TextView.resendVerificationCodeAfter(owner: LifecycleOwner, second: Long = 6
     Observable.interval(0, 1, TimeUnit.SECONDS)
         .take(second + 1)
         .map { second - it }
-        .io2MainLifecycle(owner)
+        .observeOn(AndroidSchedulers.mainThread())
+        .bindLifecycle(owner)
         .subscribe({
             LogUtils.iTag("sendCode", it)
             text = "(${it}秒)"
@@ -333,6 +351,21 @@ fun TextView.resendVerificationCodeAfter(owner: LifecycleOwner, second: Long = 6
         })
 }
 
+/**
+ * 设置距离填充状态栏
+ */
+fun View.paddingStatusBar() {
+    setPadding(paddingLeft, BarUtils.getStatusBarHeight(), paddingRight, paddingBottom)
+}
+
+/**
+ * 设置距离状态栏高度
+ */
+fun View.marginStatusBar() {
+    margin(topMargin = BarUtils.getStatusBarHeight())
+}
+
+
 // ---------------------------------------- TextView ----------------------------------------
 
 /**
@@ -346,5 +379,9 @@ fun TextView.setValue(value: CharSequence?) {
 /**
  * 获取EditText的文本
  */
-val EditText.value: CharSequence get() = text.toString()
+val EditText.value: String get() = text.toString().trim()
+
+
+
+
 

@@ -13,7 +13,7 @@ android {
 }
 
 dependencies {
-    //第三方包库
+    // 第三方包库
     api fileTree(dir: 'libs', include: ['*.jar'])
 
     // 控件
@@ -32,13 +32,16 @@ dependencies {
     api DepConfig.uCrop
     api DepConfig.agentWeb
     api DepConfig.smartRefreshLayout
+    api DepConfig.tabLayout
+    api DepConfig.androidSwipeLayout
+    api DepConfig.flexBoxLayout
 
     // 工具
     api DepConfig.kotlin
     api DepConfig.coreKtx
     api DepConfig.multiDex
     api DepConfig.androidUtilCode
-    api DepConfig.rxKotlin2
+    api DepConfig.rxJava2
     api DepConfig.rxAndroid2
     api DepConfig.rxBus
     api DepConfig.autoDispose
@@ -54,10 +57,14 @@ dependencies {
     api DepConfig.preview
     api DepConfig.stickyHeader
     api DepConfig.luBan
+    api DepConfig.lottie
+    api DepConfig.banner
 
 
     // 插件
     debugApi DepConfig.leakCanaryDebug
-    debugApi DepConfig.doraemonKitDebug
-    releaseApi DepConfig.doraemonKitRelease
+    debugApi(DepConfig.doKitDebug) {
+        exclude module: 'utilcode'
+    }
+    releaseApi DepConfig.doKitRelease
 }

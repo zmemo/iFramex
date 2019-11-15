@@ -54,9 +54,10 @@ object ClickHelper {
     /**
      * 判断是否双击返回键进行退出
      *
-     *  override fun finish() {
+     *  override fun onBackPressed() {
      *      if (ClickHelper.isDoubleClickExit) {
-     *          super.finish()
+     *          toastCancel()
+     *          super.onBackPressed()
      *      }
      *  }
      *

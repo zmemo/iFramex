@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+	package="com.memo.pay">
+	
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	
+	<application>
+		<activity
+			android:name="com.memo.pay.activity.WXPayEntryActivity"
+			android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+			android:launchMode="singleTop"
+			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+		<activity-alias
+			android:name=".wxapi.WXPayEntryActivity"
+			android:exported="true"
+			android:targetActivity="com.memo.pay.activity.WXPayEntryActivity" />
+	</application>
+
+</manifest>

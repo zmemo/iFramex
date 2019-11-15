@@ -24,6 +24,8 @@ object PermissionHelper {
     private const val RECORD_AUDIO = android.Manifest.permission.RECORD_AUDIO
     private const val WRITE_EXTERNAL_STORAGE = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
     private const val READ_EXTERNAL_STORAGE = android.Manifest.permission.READ_EXTERNAL_STORAGE
+    private const val ACCESS_FINE_LOCATION = android.Manifest.permission.ACCESS_FINE_LOCATION
+    private const val ACCESS_COARSE_LOCATION = android.Manifest.permission.ACCESS_COARSE_LOCATION
 
     /**
      * 存储
@@ -61,6 +63,18 @@ object PermissionHelper {
             return useVideo!!
         }
         request(context, PermissionConstants.CAMERA)
+        return false
+    }
+
+    /**
+     * 位置
+     */
+    @JvmStatic
+    fun grantedLocation(context: Context): Boolean {
+        if (PermissionUtils.isGranted(ACCESS_COARSE_LOCATION, ACCESS_FINE_LOCATION)) {
+            return true
+        }
+        request(context, PermissionConstants.LOCATION)
         return false
     }
 

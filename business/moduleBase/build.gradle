@@ -1,0 +1,29 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion Config.compileSdkVersion
+    defaultConfig {
+        minSdkVersion Config.minSdkVersion
+        targetSdkVersion Config.targetSdkVersion
+        versionCode Config.versionCode
+        versionName Config.versionName
+    }
+}
+
+dependencies {
+    //混淆
+    api project(path: ':iFrame:iFrameProguard')
+    //基础工具类
+    api project(path: ':iFrame:iFrameTool')
+    //自定义控件
+    api project(path: ':iFrame:iFrameWidget')
+    //支付
+    api project(path: ':iFrame:iFramePay')
+    //定位
+    api project(path: ':iFrame:iFrameMap')
+    //友盟
+    api project(path: ':iFrame:iFrameUMeng')
+
+}

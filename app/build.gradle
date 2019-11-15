@@ -94,6 +94,6 @@ dependencies {
     androidTestImplementation DepConfig.testEspresso
     kapt DepConfig.arouterCompiler
 
-    if (!ModuleConfig.isModuleUiRunAlone) implementation project(path: ':moduleUi')
-    if (!ModuleConfig.isModuleTestRunAlone) implementation project(path: ':moduleTest')
+    if (!ModuleConfig.isModuleUiRunAlone) implementation project(path: ':business:moduleUi')
+    if (!ModuleConfig.isModuleTestRunAlone) implementation project(path: ':business:moduleTest')
 }

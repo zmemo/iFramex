@@ -1,0 +1,37 @@
+<resources>
+	<string name="app_name">moduleTest</string>
+	<string name="Retrofit">动态设置Retrofit的BaseUrl</string>
+	<string name="RxBus">使用RxBus传递数据</string>
+	<string name="SmallestWith">使用最小宽度适配 查看配置</string>
+	<string name="Dialog">显示弹窗</string>
+	<string name="Title">使用公共Title的界面可以使用Fragment作为内部容器</string>
+	<string name="Down">使用下载</string>
+	<string name="NineGridView">九宫格展示图片并且预览</string>
+	<string name="MultiStatusView">多种状态控件</string>
+	<string name="Sticky">粘性头</string>
+	<string name="Bottom">简单底部控件</string>
+	<string name="Matisse">图片选择裁剪</string>
+	<string name="QRCODE">二维码扫描</string>
+	<string name="Notification">通知栏</string>
+	<string name="Map">地图导航</string>
+	<string name="RecyclerView">RecyclerView</string>
+	<string name="Constraint">ConstraintLayout</string>
+	<string name="glide">Glide清除缓存</string>
+	<string name="Anim">动画</string>
+	<string name="Share">共享元素</string>
+	<string name="Html">跳转网页</string>
+	
+	<string name="MenuHome">首页</string>
+	<string name="MenuCircle">圈子</string>
+	<string name="MenuFind">发现</string>
+	<string name="MenuMine">我的</string>
+	<string name="Drag">拖拽</string>
+	<string name="Fragment">测试Fragment的懒加载</string>
+	
+	<!-- TODO: Remove or change this placeholder text -->
+	<string name="hello_blank_fragment">Hello blank fragment</string>
+	<string name="ViewPager">设置ViewPager滑动变色</string>
+	<string name="DialogActivity">Dialog形式的Activity</string>
+	<string name="Location">定位</string>
+
+</resources>

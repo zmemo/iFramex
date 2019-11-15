@@ -9,10 +9,11 @@
 	tools:context=".MainActivity">
 	
 	
-	<com.ruffian.library.widget.RButton
+	<com.ruffian.library.widget.RTextView
 		android:id="@+id/mBtnTest"
 		android:layout_width="@dimen/dp150"
 		android:layout_height="@dimen/dp30"
+		android:gravity="center"
 		android:paddingLeft="@dimen/dp10"
 		android:paddingTop="0dp"
 		android:paddingRight="@dimen/dp10"
@@ -23,11 +24,12 @@
 		app:background_pressed="@color/color_333333"
 		app:corner_radius="@dimen/dp10" />
 	
-	<com.ruffian.library.widget.RButton
+	<com.ruffian.library.widget.RTextView
 		android:id="@+id/mBtnUi"
 		android:layout_width="@dimen/dp150"
 		android:layout_height="@dimen/dp30"
 		android:layout_marginTop="@dimen/dp10"
+		android:gravity="center"
 		android:paddingLeft="@dimen/dp10"
 		android:paddingTop="0dp"
 		android:paddingRight="@dimen/dp10"

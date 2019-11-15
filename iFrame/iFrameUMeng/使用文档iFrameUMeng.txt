@@ -1,0 +1,1 @@
+注意在清单文件中修改QQ的scheme tencent+appId

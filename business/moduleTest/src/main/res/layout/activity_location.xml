@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	tools:context=".ui.location.LocationActivity">
+	
+	<com.memo.widget.titleview.TitleView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		app:title_title_text="定位" />
+	
+	<androidx.core.widget.NestedScrollView
+		android:layout_width="match_parent"
+		android:layout_height="@dimen/dp200"
+		android:fillViewport="true">
+		
+		<TextView
+			android:id="@+id/mTvLocation"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:gravity="center"
+			android:text="定位中..."
+			android:textSize="@dimen/sp16" />
+	</androidx.core.widget.NestedScrollView>
+	
+	
+	<com.amap.api.maps.MapView
+		android:id="@+id/mMap"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
+</LinearLayout>

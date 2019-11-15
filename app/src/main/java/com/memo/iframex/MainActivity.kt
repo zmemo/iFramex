@@ -33,10 +33,10 @@ class MainActivity : BaseActivity() {
         }
     }
 
-    override fun finish() {
+    override fun onBackPressed() {
         if (ClickHelper.isDoubleClickExit) {
             toastCancel()
-            super.finish()
+            super.onBackPressed()
         }
     }
 }

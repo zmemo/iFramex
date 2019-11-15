@@ -58,10 +58,12 @@ class FragmentHelper constructor(containerResId: Int, fragmentManager: FragmentM
         val beginTransaction = mFragmentManager.beginTransaction()
         mStack.forEachIndexed { position, fragment ->
             if (position == index) {
-                beginTransaction.show(fragment)
+                beginTransaction
                     .setMaxLifecycle(fragment, Lifecycle.State.RESUMED)
+                    .show(fragment)
             } else {
-                beginTransaction.hide(fragment)
+                beginTransaction
+                    .hide(fragment)
             }
         }
         beginTransaction.commitAllowingStateLoss()

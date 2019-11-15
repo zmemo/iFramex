@@ -1,0 +1,4 @@
+注意在清单文件中添加高德的ApiKey,注意查看是项目applicationId是否添加后缀
+
+1.高德后台申请apiKey
+2.替换清单文件中的apiKey，即可使用
