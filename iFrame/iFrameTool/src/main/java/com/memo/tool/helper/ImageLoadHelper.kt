@@ -482,7 +482,9 @@ object ImageLoadHelper {
     @SuppressLint("CheckResult")
     @JvmStatic
     fun clearDiskCache(owner: LifecycleOwner) {
-        doInBackground(owner) { GlideApp.get(BaseApp.app.applicationContext).clearDiskCache() }
+        doInBackground(owner) {
+            GlideApp.get(BaseApp.app.applicationContext).clearDiskCache()
+        }
     }
 
     /**

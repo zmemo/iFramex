@@ -17,6 +17,11 @@ import com.umeng.socialize.PlatformConfig
 class UMengManager {
 
     // 文档地址 https://developer.umeng.com/docs/66632/detail/66639
+	// QQ   https://connect.qq.com/
+	// 微信 https://open.weixin.qq.com/
+	// 微博 https://open.weibo.com/
+	// 支付宝 https://open.alipay.com/platform/home.htm
+
 
     private object Holder {
         val instance = UMengManager()

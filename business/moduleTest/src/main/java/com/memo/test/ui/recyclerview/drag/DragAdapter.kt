@@ -2,7 +2,7 @@ package com.memo.test.ui.recyclerview.drag
 
 import com.chad.library.adapter.base.BaseItemDraggableAdapter
 import com.memo.test.R
-import com.memo.test.ui.recyclerview.MultiEntity
+import com.memo.test.entity.MultiEntity
 import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.helper.ImageLoadHelper
 

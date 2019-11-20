@@ -1,6 +1,6 @@
 package com.memo.test.ui.recyclerview.multi
 
-import com.memo.test.ui.recyclerview.MultiEntity
+import com.memo.test.entity.MultiEntity
 import com.memo.test.ui.recyclerview.multi.provider.ImageMultiProvider
 import com.memo.test.ui.recyclerview.multi.provider.TextImageMultiProvider
 import com.memo.test.ui.recyclerview.multi.provider.TextMultiProvider

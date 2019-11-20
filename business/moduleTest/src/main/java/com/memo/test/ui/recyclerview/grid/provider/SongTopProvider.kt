@@ -2,8 +2,8 @@ package com.memo.test.ui.recyclerview.grid.provider
 
 import android.content.Context
 import com.memo.test.R
-import com.memo.test.ui.recyclerview.GridMulti
-import com.memo.test.ui.recyclerview.MultiEntity
+import com.memo.test.entity.GridMulti
+import com.memo.test.entity.MultiEntity
 import com.memo.tool.adapter.recyclerview.BaseMultiProvider
 import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.helper.ImageLoadHelper

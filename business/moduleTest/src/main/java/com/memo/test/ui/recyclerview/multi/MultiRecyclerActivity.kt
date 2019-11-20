@@ -3,8 +3,8 @@ package com.memo.test.ui.recyclerview.multi
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
-import com.memo.test.ui.recyclerview.Multi
-import com.memo.test.ui.recyclerview.MultiEntity
+import com.memo.test.entity.Multi
+import com.memo.test.entity.MultiEntity
 import com.memo.widget.recyclerview.RecyclerItemDecoration
 import kotlinx.android.synthetic.main.activity_multi_recycler.*
 

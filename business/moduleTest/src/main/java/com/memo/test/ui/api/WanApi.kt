@@ -1,7 +1,7 @@
 package com.memo.test.ui.api
 
+import com.memo.test.entity.Wan
 import com.memo.test.ui.api.Api.DomainWan
-import com.memo.test.ui.retrofit.Wan
 import io.reactivex.Observable
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager.DOMAIN_NAME_HEADER
 import retrofit2.http.GET

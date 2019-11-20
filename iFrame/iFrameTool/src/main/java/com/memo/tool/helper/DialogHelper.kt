@@ -161,7 +161,6 @@ object DialogHelper {
 
     /**
      * 解析json数据
-     * addDisposable(DialogHelper.parseArea { area = it })
      */
     @JvmStatic
     fun parseArea(lifecycleOwner: LifecycleOwner, onSuccess: (area: Area) -> Unit) =
@@ -183,6 +182,7 @@ object DialogHelper {
                 cities.add(cityList)
                 areas.add(areaList)
             }
+	        LogUtils.iTag("area", "城市数据加载完成")
             Area(provinces, cities, areas)
         }, onSuccess, {
             LogUtils.eTag("area", it)

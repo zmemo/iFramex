@@ -1,6 +1,6 @@
 package com.memo.test.ui.api
 
-import com.memo.test.ui.retrofit.ZhiHuNews
+import com.memo.test.entity.ZhiHuNews
 import io.reactivex.Observable
 import retrofit2.http.GET
 

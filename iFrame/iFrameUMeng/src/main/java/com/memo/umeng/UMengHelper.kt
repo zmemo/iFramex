@@ -3,6 +3,7 @@ package com.memo.umeng
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import com.memo.tool.helper.PermissionHelper
 import com.memo.umeng.listener.SimpleAuthListener
 import com.memo.umeng.listener.SimpleShareListener
 import com.umeng.socialize.ShareAction
@@ -45,25 +46,27 @@ object UMengHelper {
      * 分享图片
      * @param activity 当前Activity
      * @param platform 平台
-     * @param text String
+     * @param title String
      * @param image 图片地址 文件File 资源文件R.drawable.ic_share_logo
      */
     @JvmStatic
     fun shareImage(activity: Activity, platform: SHARE_MEDIA, title: String, content: String, image: Any, listener: SimpleShareListener = SimpleShareListener()) {
-        val umImg = when (image) {
-            is String -> UMImage(activity, image)
-            is File -> UMImage(activity, image)
-            is Int -> UMImage(activity, image)
-            else -> null
-        }
-        umImg?.let {
-            it.title = title
-            it.description = content
-            ShareAction(activity)
-                .withMedia(it)
-                .setPlatform(platform)
-                .setCallback(listener)
-                .share()
+	    if (PermissionHelper.grantedStorage(activity)) {
+		    val umImg = when (image) {
+			    is String -> UMImage(activity, image)
+			    is File -> UMImage(activity, image)
+			    is Int -> UMImage(activity, image)
+			    else -> null
+		    }
+		    umImg?.let {
+			    it.title = title
+			    it.description = content
+			    ShareAction(activity)
+				    .withMedia(it)
+				    .setPlatform(platform)
+				    .setCallback(listener)
+				    .share()
+		    }
         }
     }
 
@@ -114,7 +117,7 @@ object UMengHelper {
      * QQ与新浪不需要添加Activity，但需要在使用QQ分享或者授权的Activity中，onActivityResult添加：
      */
     @JvmStatic
-    fun onQQAndWeiBoActivityResult(context: Context, requestCode: Int, resultCode: Int, data: Intent) {
+    fun onQQAndWeiBoActivityResult(context : Context, requestCode : Int, resultCode : Int, data : Intent?) {
         UMShareAPI.get(context).onActivityResult(requestCode, resultCode, data)
     }
 

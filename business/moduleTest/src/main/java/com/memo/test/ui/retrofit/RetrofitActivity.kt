@@ -3,6 +3,8 @@ package com.memo.test.ui.retrofit
 import android.annotation.SuppressLint
 import com.memo.base.ui.activity.BaseMvpActivity
 import com.memo.test.R
+import com.memo.test.entity.Wan
+import com.memo.test.entity.ZhiHuNews
 import com.memo.tool.ext.onClick
 import com.memo.tool.helper.GsonHelper
 import kotlinx.android.synthetic.main.activity_retrofit.*
@@ -28,10 +30,12 @@ class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresente
 
     private fun initListener() {
         mBtnZhiHu.onClick {
-            mPresenter.requestZhiHu()
+	        mLoadDialog.show()
+	        mPresenter.requestZhiHu()
         }
         mBtnDouBan.onClick {
-            mPresenter.requestWan()
+	        mLoadDialog.show()
+	        mPresenter.requestWan()
         }
     }
 
@@ -40,6 +44,7 @@ class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresente
      * @param response 新闻
      */
     override fun getZhiHu(response: ZhiHuNews) {
+	    mLoadDialog.dismiss()
         mTvJson.text = GsonHelper.parse2Json(response)
     }
 
@@ -48,6 +53,7 @@ class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresente
      * @param response 新闻
      */
     override fun getWan(response: Wan) {
+	    mLoadDialog.dismiss()
         mTvJson.text = GsonHelper.parse2Json(response)
     }
 }

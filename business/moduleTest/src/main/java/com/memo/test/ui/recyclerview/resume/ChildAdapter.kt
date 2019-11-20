@@ -1,7 +1,7 @@
 package com.memo.test.ui.recyclerview.resume
 
 import com.memo.test.R
-import com.memo.test.ui.recyclerview.SectionItem
+import com.memo.test.entity.SectionItem
 import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
 import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.helper.ImageLoadHelper

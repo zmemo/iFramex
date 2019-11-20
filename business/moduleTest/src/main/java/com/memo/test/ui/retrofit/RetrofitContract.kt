@@ -2,6 +2,8 @@ package com.memo.test.ui.retrofit
 
 import com.memo.base.ui.mvp.IPresenter
 import com.memo.base.ui.mvp.IView
+import com.memo.test.entity.Wan
+import com.memo.test.entity.ZhiHuNews
 
 /**
  * title:

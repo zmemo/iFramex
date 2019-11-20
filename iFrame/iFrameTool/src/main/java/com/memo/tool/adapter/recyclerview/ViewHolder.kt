@@ -15,4 +15,13 @@ class ViewHolder(view: View) : BaseViewHolder(view) {
     override fun setText(viewId: Int, value: CharSequence?): BaseViewHolder {
         return super.setText(viewId, value ?: "")
     }
+    
+    override fun setText(viewId : Int, strId : Int) : BaseViewHolder {
+        return try {
+            super.setText(viewId, strId)
+        } catch (e : Exception) {
+            super.setText(viewId, strId.toString())
+        }
+    }
+
 }

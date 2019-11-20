@@ -8,7 +8,7 @@ import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback
 import com.chad.library.adapter.base.listener.OnItemDragListener
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
-import com.memo.test.ui.recyclerview.MultiEntity
+import com.memo.test.entity.MultiEntity
 import com.memo.tool.helper.toast
 import kotlinx.android.synthetic.main.activity_drag_rv.*
 

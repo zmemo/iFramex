@@ -605,7 +605,7 @@ object StatusBarHelper {
             meizuFlags.setInt(lp, value)
             activity.window.attributes = lp
         } catch (e: Exception) {
-            e.printStackTrace()
+	        // e.printStackTrace()
         }
     }
 

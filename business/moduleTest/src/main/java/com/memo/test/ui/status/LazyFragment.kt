@@ -4,6 +4,7 @@ package com.memo.test.ui.status
 import com.kingja.loadsir.core.LoadService
 import com.memo.base.ui.fragment.BaseFragment
 import com.memo.test.R
+import com.memo.tool.ext.delay
 import com.memo.tool.helper.toast
 import kotlinx.android.synthetic.main.fragment_lazy.*
 
@@ -32,10 +33,10 @@ class LazyFragment : BaseFragment() {
 
     /*** 在界面可见的时候进行初始化 ***/
     override fun lazyInitialize() {
-        mTvContainer.postDelayed({
+	    delay(mLifecycleOwner, 2000) {
             mTvContainer.text = "懒加载后获取内容"
             mLoadService?.showSuccess()
-        }, 2000)
+	    }
     }
 
 }

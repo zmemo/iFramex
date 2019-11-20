@@ -17,6 +17,7 @@
 		android:roundIcon="@drawable/iframe"
 		android:supportsRtl="true"
 		android:theme="@style/iTheme"
+		android:usesCleartextTraffic="true"
 		tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
 		tools:replace="android:allowBackup">
 		<activity android:name=".MainActivity">

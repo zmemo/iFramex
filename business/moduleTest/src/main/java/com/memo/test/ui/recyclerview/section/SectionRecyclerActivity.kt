@@ -2,8 +2,8 @@ package com.memo.test.ui.recyclerview.section
 
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
-import com.memo.test.ui.recyclerview.SectionItem
-import com.memo.test.ui.recyclerview.Sections
+import com.memo.test.entity.SectionItem
+import com.memo.test.entity.Sections
 import com.memo.widget.recyclerview.NoScrollLinearLayoutManager
 import kotlinx.android.synthetic.main.activity_section_recycler.*
 

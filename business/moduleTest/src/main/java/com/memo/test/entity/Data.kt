@@ -1,4 +1,4 @@
-package com.memo.test.ui.recyclerview
+package com.memo.test.entity
 
 import com.chad.library.adapter.base.entity.AbstractExpandableItem
 import com.chad.library.adapter.base.entity.MultiItemEntity

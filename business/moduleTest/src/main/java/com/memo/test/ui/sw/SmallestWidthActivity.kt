@@ -2,8 +2,11 @@ package com.memo.test.ui.sw
 
 import android.annotation.SuppressLint
 import android.util.DisplayMetrics
+import com.blankj.utilcode.util.ScreenUtils
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
+import com.memo.tool.ext.dimen
+import com.memo.tool.ext.height
 import kotlinx.android.synthetic.main.activity_smallest_width.*
 
 /**
@@ -31,5 +34,11 @@ class SmallestWidthActivity : BaseActivity() {
         val sw = "计算出来的smallestWidth : " + dm.widthPixels / (dm.densityDpi / 160.0) + "dp" + "\n"
         val swResource = "实际使用的smallestWidth :  " + resources.getString(R.string.base_dpi)
         mTvSmInfo.text = dpi + sw + swResource
+	
+	    mTvSmallest.text = "高度设置为dp375 \n dimen(R.dimen.dp375) = ${dimen(R.dimen.dp375)}"
+	
+	    val height = ScreenUtils.getAppScreenWidth()
+	    mTvCustom.text = "高度设置为屏幕宽度 $height"
+	    mTvCustom.height(height)
     }
 }

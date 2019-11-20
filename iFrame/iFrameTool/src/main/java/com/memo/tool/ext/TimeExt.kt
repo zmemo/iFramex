@@ -24,23 +24,23 @@ fun String.toMills(format: String = "yyyy-MM-dd HH:mm:ss"): Long =
  * Long类型时间戳转为字符串的日期格式
  * @param format 时间的格式，默认是按照yyyy-MM-dd HH:mm:ss来转换
  */
-fun Long.toDate(format: String = "yyyy-MM-dd HH:mm:ss"): String =
+fun Long.toTime(format : String = "yyyy-MM-dd HH:mm:ss") : String =
     SimpleDateFormat(format, Locale.getDefault()).format(Date(this))
 
 /**
- * 到秒
+ * yyyy-MM-dd HH:mm:ss 到 yyyy-MM-dd HH:mm
  */
-fun Long.toDateUntilSec(): String = toDate("yyyy-MM-dd HH:mm:ss")
+fun String.toTimeMin() : String = this.substring(0, this.lastIndexOf(":"))
 
 /**
  * 到分
  */
-fun Long.toDateUntilMin(): String = toDate("yyyy-MM-dd HH:mm")
+fun Long.toTimeMin() : String = toTime("yyyy-MM-dd HH:mm")
 
 /**
  * 到日
  */
-fun Long.toDateUntilDay(): String = toDate("yyyy-MM-dd")
+fun Long.toTimeDay() : String = toTime("yyyy-MM-dd")
 
 /**
  * 获取友好时间描述

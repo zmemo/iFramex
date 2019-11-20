@@ -4,10 +4,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
+import com.memo.test.entity.GridMulti
+import com.memo.test.entity.MultiEntity
 import com.memo.test.tool.DataFactory
-import com.memo.test.ui.recyclerview.GridMulti
-import com.memo.test.ui.recyclerview.MultiEntity
-import com.memo.tool.handler.WeakHandler
+import com.memo.tool.ext.delay
 import com.memo.tool.helper.GsonHelper
 import com.oushangfeng.pinnedsectionitemdecoration.PinnedHeaderItemDecoration
 import kotlinx.android.synthetic.main.activity_grid_multi.*
@@ -29,7 +29,6 @@ class GridMultiActivity : BaseActivity() {
     private val mStickyDecoration by lazy {
         PinnedHeaderItemDecoration.Builder(GridMulti.TYPE_TITLE).create()
     }
-    private val mHandler = WeakHandler()
 
     /*** 绑定布局id ***/
     override fun bindLayoutResId(): Int = R.layout.activity_grid_multi
@@ -67,8 +66,7 @@ class GridMultiActivity : BaseActivity() {
 
     private fun initListener() {
         mRefreshLayout.setOnRefreshListener {
-            mHandler.postDelayed({
-                //更新数据源
+            delay(mLifecycleOwner, 400) {
                 val data = if (isChanged) {
                     GsonHelper.parse2List<MultiEntity>(DataFactory.provideHomeJson1())
                 } else {
@@ -76,7 +74,7 @@ class GridMultiActivity : BaseActivity() {
                 }
                 isChanged = !isChanged
                 mAdapter.setNewData(data)
-            }, 400)
+            }
             mRefreshLayout.finishRefresh(400)
         }
     }
@@ -85,8 +83,4 @@ class GridMultiActivity : BaseActivity() {
         mRefreshLayout.autoRefresh()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        mHandler.onDestroy()
-    }
 }

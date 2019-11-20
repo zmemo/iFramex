@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="base_dpi">360dp</string>
+	<string name="base_dpi">default - 360dp</string>
 	<dimen name="dp0_5">0.48dp</dimen>
 	<dimen name="dp2_5">2.40dp</dimen>
 	<dimen name="dp7_5">7.20dp</dimen>

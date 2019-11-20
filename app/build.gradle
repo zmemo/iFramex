@@ -15,20 +15,24 @@ android {
         testInstrumentationRunner Config.androidJunitRunner
         multiDexEnabled true
         resConfigs "zh"
+        ndk {
+            abiFilters 'armeabi','armeabi-v7a', 'arm64-v8a'
+            //'x86','x86_64', 'mips', 'mips64'
+        }
     }
 
     signingConfigs {
         sign {
-            keyAlias 'iFrame'
-            keyPassword 'zhoumemo'
-            storeFile file('iFrame.jks')
-            storePassword 'zhoumemo'
+            keyAlias SignKeyAlias
+            keyPassword SignKeyPassword
+            storeFile file(SignStoreFile)
+            storePassword SignStorePassword
         }
     }
 
     buildTypes {
         debug {
-            minifyEnabled false
+            minifyEnabled true
             signingConfig signingConfigs.sign
             applicationIdSuffix '.debug'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

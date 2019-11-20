@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.view.forEach
+import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.LogUtils
 
 
@@ -36,10 +37,11 @@ object OOMHelper {
                 //如果可用内存超过最大内存的80% 那么就把Glide的图片内存缓存清除
                 val shouldCleanMemory = usedMemory.toDouble().compareTo(maxMemory * 0.8) == 1
                 LogUtils.iTag(
-                    "Memory", "MaxMemory = $maxMemory " +
-                            "TotalMemory = $totalMemory " +
-                            "UsedMemory = $usedMemory " +
-                            "FreeMemory = $freeMemory " +
+	                "Memory",
+	                "MaxMemory = ${ConvertUtils.byte2FitMemorySize(maxMemory)} " +
+			                "TotalMemory = ${ConvertUtils.byte2FitMemorySize(totalMemory)} " +
+			                "UsedMemory = ${ConvertUtils.byte2FitMemorySize(usedMemory)} " +
+			                "FreeMemory = ${ConvertUtils.byte2FitMemorySize(freeMemory)} " +
                             "shouldCleanMemory = $shouldCleanMemory"
                 )
                 if (shouldCleanMemory) {

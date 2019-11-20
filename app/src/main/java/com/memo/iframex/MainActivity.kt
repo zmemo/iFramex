@@ -1,6 +1,7 @@
 package com.memo.iframex
 
 import android.annotation.SuppressLint
+import com.memo.base.manager.init.InitManager
 import com.memo.base.manager.router.RouterManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.onClick
@@ -22,6 +23,8 @@ class MainActivity : BaseActivity() {
 
     @SuppressLint("SetTextI18n")
     override fun initialize() {
+	    //在启动页进行的初始化操作
+	    InitManager.get().initInSplash()
         //开启内存监听
         OOMHelper.startMonitorLowMemory()
 

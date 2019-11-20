@@ -2,8 +2,8 @@ package com.memo.test.ui.recyclerview.section
 
 import com.blankj.utilcode.util.LogUtils
 import com.memo.test.R
-import com.memo.test.ui.recyclerview.SectionItem
-import com.memo.test.ui.recyclerview.Sections
+import com.memo.test.entity.SectionItem
+import com.memo.test.entity.Sections
 import com.memo.tool.adapter.recyclerview.BaseSectionAdapter
 import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.tool.helper.ImageLoadHelper

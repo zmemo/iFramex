@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.blankj.utilcode.util.LogUtils
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
-import com.memo.tool.ext.backgroundColor
 import com.memo.tool.ext.color
 import com.memo.tool.ext.dimen
 import kotlinx.android.synthetic.main.activity_drag.*
@@ -80,7 +79,7 @@ class DragActivity : BaseActivity() {
         dragView.layoutParams = layoutParams
         dragView.gravity = Gravity.CENTER
         dragView.text = dragInfo.text
-        dragView.backgroundColor(color(R.color.color_333333))
+        dragView.setBackgroundColor(color(R.color.color_333333))
         dragView.setTextColor(Color.WHITE)
         //设置是否可以拖拽
         dragView.enableDrag(true)
@@ -125,7 +124,6 @@ class DragActivity : BaseActivity() {
      * @param x Float 左上角点x
      * @param y Float 左上角点y
      * @param drawerLayoutWidth Int 抽屉宽度
-     * @param dragViewHeight Int 拖拽控件高度
      * @return Boolean
      */
     fun isInner(

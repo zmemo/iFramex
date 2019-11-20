@@ -4,8 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.entity.MultiItemEntity
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
-import com.memo.test.ui.recyclerview.LevelContent
-import com.memo.test.ui.recyclerview.LevelTitle
+import com.memo.test.entity.LevelContent
+import com.memo.test.entity.LevelTitle
 import kotlinx.android.synthetic.main.activity_expand.*
 
 class ExpandActivity : BaseActivity() {

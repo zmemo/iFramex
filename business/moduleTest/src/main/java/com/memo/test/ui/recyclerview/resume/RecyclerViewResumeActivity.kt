@@ -3,8 +3,8 @@ package com.memo.test.ui.recyclerview.resume
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
+import com.memo.test.entity.SectionItem
 import com.memo.test.tool.DataFactory
-import com.memo.test.ui.recyclerview.SectionItem
 import kotlinx.android.synthetic.main.activity_expand.*
 
 class RecyclerViewResumeActivity : BaseActivity() {
