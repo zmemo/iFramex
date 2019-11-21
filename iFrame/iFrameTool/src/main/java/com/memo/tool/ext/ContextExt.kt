@@ -64,3 +64,4 @@ fun copyToClipboard(content : String) {
 	val clipboardManager = ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)
 	clipboardManager?.primaryClip = plainText
 }
+
