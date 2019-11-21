@@ -258,56 +258,5 @@ tools:listitem="@layout/item_nine_grid_view"
 tools:spanCount="3"
 
 
---------------------------- git ------------------------
-
-master
-|
-|---develop-1.0.0
-|---develop-1.0.0-memberA
-|---develop-1.0.0-memberB
-|---release-1.0.0
-|
-|---develop-1.0.1
-|---develop-1.0.1-memberA
-|---develop-1.0.1-memberB
-|---develop-feature-1.0.1-memberA
-|---patch-1.0.1.1
-|---release-1.0.1
-
-master
-主分支 永远保持当前发布最新版本 从release或者patch版本提交
-
-patch-1.0.1.1   (1.0.1 补丁分支)
-在1.0.1发布之后出现bug，创建的补丁版本
-从release-1.0.1拉取 完成后提交master
-注意：不要提交到release-1.0.1，发布分支是线上用户安装的版本，他们是没有安装补丁版本的安装包的
-
-release-1.0.1   (1.0.1 发布分支)
-develop-1.0.1拉取 完成提交master
-
-develop-1.0.1   （1.0.1 开发分支）
-从master拉取 完成提交release-1.0.1
-
-develop-1.0.1-memberA   （1.0.1 memberA开发分支）
-从develop-1.0.1拉取 完成后提交develop-1.0.1
-注意：需要解决可能出现的代码冲突问题
-
-develop-1.0.1-memberB   （1.0.1 memberB开发分支）
-从develop-1.0.1拉取 完成后提交develop-1.0.1
-注意：需要解决可能出现的代码冲突问题
-
-develop-feature-1.0.1-memberA   (1.0.1 memberA开发分支进行代码整理的分支)
-从develop-1.0.1-memberA 完成后提交develop-1.0.1-memberA 在测试通过之后视情况进行删除
-
-
-建议每一个版本都可以创建一个项目，这样本地分支数据比较少，比较好操作
-1、从master中拉取一个开发版本develop-1.0.1，修改控制开关，提交到develop-1.0.1
-2、从develop-1.0.1
-
---------------------------- gradle ------------------------
-
-在build.gradle中
-api 可以传递到上层
-implementation 仅当前Module可用
 
 
