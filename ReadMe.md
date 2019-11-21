@@ -2,10 +2,11 @@
 
 版本： 
 androidx    
-targetSdkVersion：27 
+minSdkVersion：19    
+targetSdkVersion：28    
 compileSdkVersion：28    
 语言：Kotlin   
-模式：MVP  
+模式：MVP    
 
 ##### buildSrc
 该模块主要是放置第三方依赖包，以及一些配置文件   
@@ -22,22 +23,39 @@ compileSdkVersion：28
 在其他项目中使用的时候可以直接导入  
 
 #### iFrameTool
-该模块为工具类模块，api依赖iFrameBasic  
+该模块为基础工具类模块  
 放置项目中通用的工具类  
 不允许在该模块中添加其他业务逻辑代码  
 在其他项目中使用的时候可以直接导入  
 
 #### iFrameWidget
-该模块为自定义控件模块，api依赖iFrameTool  
+该模块为自定义控件模块  
 放置项目中需要的自定义控件  
 不允许在该模块中添加其他业务逻辑代码  
-在其他项目中使用的时候可以直接导入  
+在其他项目中使用的时候可以直接导入 
+
+#### iFramePay
+该模块为支付模块  
+直接调用工具类进行支付宝和微信支付
+
+#### iFrameMap
+该模块为地图模块  
+集成基础的地图工具 
+
+#### iFrameUMeng
+该模块为友盟模块  
+内容目前包含分享的登陆   
+如果需要需要使用其他，在自行添加
+
+#### iFrameProguard
+该模块为混淆模块，对于添加的依赖需要混淆的就添加一个混淆文件
 
 #### iFrameBase
-该模块为项目中的基础模块，api依赖iFrameWidget  
+该模块为项目中的基础模块  
+添加iFrameTool，iFrameWidget，iFrameMap，iFramePay，iFrameUMeng，iFrameProguar  
 该模块在项目中处于一个承上启下的作用，每一个业务模块都会依赖iFrameBase  
-可以在内部添加一些业务逻辑，比如DbManager，RrtrofitClient等  
-可以更具项目需求进行更改  
+在内部添加一些业务逻辑，比如DbManager，RetrofitClient等  
+***需要根据项目需求进行更改*** 
 
 #### iFrameUi
 该模块为项目中的独立界面模块，implementation依赖iFrameBase  
@@ -45,7 +63,9 @@ compileSdkVersion：28
 通过RouterManager进行启动  
 
 #### ModuleTest
-一些示例代码都卸载ModuleTest中
+一些示例代码都放在ModuleTest中
 
-给自己的提示：需要使用的时候把项目拉下来，看下是如何配置的，因为会经常修改
-一些常见的错误提示都写在笔记里了注意看
+给自己的提示：需要使用的时候把项目拉下来，看下是如何配置的，因为会经常修改，但有些时候会忘了记笔记，一些常见的错误提示都写在笔记里了注意看
+
+1.混淆模块中，添加一个第三方依赖，需要添加一份混淆文件，具体格式统一，对于业务逻辑模块中的实体类，在App模块的混淆文件中添加 ***keep*** 具体包名  
+2.iFrameUMeng模块中需要对使用到第三方进行注册
