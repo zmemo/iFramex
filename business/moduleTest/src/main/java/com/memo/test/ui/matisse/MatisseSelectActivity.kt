@@ -8,9 +8,9 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.dir.LocalDir
 import com.memo.tool.ext.onClick
+import com.memo.tool.ext.toast
 import com.memo.tool.helper.MediaHelper
 import com.memo.tool.helper.PermissionHelper
-import com.memo.tool.helper.toast
 import kotlinx.android.synthetic.main.activity_matisse_select.*
 
 class MatisseSelectActivity : BaseActivity() {
@@ -23,8 +23,8 @@ class MatisseSelectActivity : BaseActivity() {
     private val MAXSIZE: Int = 9
     private var takePhotoPath: String? = null
     private var cropPhotpPath: String? = null
-
-    override fun bindLayoutResId(): Int = R.layout.activity_matisse_select
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_matisse_select
 
     override fun initialize() {
         initView()
@@ -80,7 +80,7 @@ class MatisseSelectActivity : BaseActivity() {
                     if (data != null) {
                         val pathList = MediaHelper.obtainPathResult(data)
                         // 压缩图片并且添加
-                        mLoadDialog.show("图片压缩")
+	                    showLoading("图片压缩")
                         MediaHelper.compressImagesASyn(mContext, pathList, { it ->
                             val builder = StringBuilder()
                             it.forEach {
@@ -93,10 +93,10 @@ class MatisseSelectActivity : BaseActivity() {
 
                             mNineGridView.addImageFiles(it)
                             toast("图片压缩完毕")
-                            mLoadDialog.dismiss()
+	                        hideLoading()
                         }, {
                             toast("图片压缩失败")
-                            mLoadDialog.dismiss()
+	                        hideLoading()
                         })
                     }
                 }

@@ -21,7 +21,7 @@ abstract class BaseMvpFragment<in V : IView, P : IPresenter<V>> : BaseFragment()
     override fun baseInitialize() {
         super.baseInitialize()
         mPresenter = buildPresenter()
-        mPresenter.attachView(this as V, this)
+	    mPresenter.attach(this as V, this)
     }
 
 }

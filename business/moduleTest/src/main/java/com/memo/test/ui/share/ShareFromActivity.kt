@@ -11,8 +11,8 @@ import com.memo.tool.ext.onClick
 import kotlinx.android.synthetic.main.activity_share_from.*
 
 class ShareFromActivity : BaseActivity() {
-
-    override fun bindLayoutResId(): Int = R.layout.activity_share_from
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_share_from
 
     override fun initialize() {
         mFlSearch.onClick {

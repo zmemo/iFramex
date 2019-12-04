@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  * @author zhou
  * @date 2019-03-12 14:08
  */
-class SimpleRecyclerScrollListener() : RecyclerView.OnScrollListener() {
+open class SimpleRecyclerScrollListener() : RecyclerView.OnScrollListener() {
 
     /**
      * 默认速度限制

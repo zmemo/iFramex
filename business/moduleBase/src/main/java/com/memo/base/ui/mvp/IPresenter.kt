@@ -14,6 +14,6 @@ interface IPresenter<in V : IView> {
     /**
      * 绑定View和LifecycleOwner
      */
-    fun attachView(mView: V, mLifeOwner: LifecycleOwner)
+    fun attach(mView : V, mLifeOwner : LifecycleOwner)
 
 }

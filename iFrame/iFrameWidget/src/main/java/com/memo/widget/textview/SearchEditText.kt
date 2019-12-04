@@ -1,11 +1,10 @@
 package com.memo.widget.textview
 
+
 import android.content.Context
 import android.util.AttributeSet
-import android.widget.EditText
-
-
 import com.blankj.utilcode.util.StringUtils
+import com.ruffian.library.widget.REditText
 
 /**
  * title: 搜索使用的EditText 用于一边输入一边搜索
@@ -14,7 +13,7 @@ import com.blankj.utilcode.util.StringUtils
  * @author zhou
  * @date 2019-09-11 11:35
  */
-class SearchEditText : EditText {
+class SearchEditText : REditText {
 
     private var limitDuration: Long = 800
 
@@ -33,12 +32,9 @@ class SearchEditText : EditText {
     }
 
     constructor(context: Context) : super(context)
+	
+	constructor(context : Context, attrs : AttributeSet) : super(context, attrs)
 
-    constructor(context: Context, attrs: AttributeSet)
-            : super(context, attrs)
-
-    constructor(context: Context, attrs: AttributeSet, defStyleAttr: Int)
-            : super(context, attrs, defStyleAttr)
 
     fun setLimitDuration(duration: Long): SearchEditText {
         this.limitDuration = duration

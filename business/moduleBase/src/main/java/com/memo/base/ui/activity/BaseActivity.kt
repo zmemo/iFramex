@@ -56,8 +56,8 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         before()
         super.onCreate(savedInstanceState)
-        if (bindLayoutResId() != -1) {
-            mRootView = inflaterView(bindLayoutResId())
+	    if (bindLayoutRes() != -1) {
+		    mRootView = inflaterView(bindLayoutRes())
             setContentView(mRootView)
         }
         baseInit()
@@ -78,7 +78,7 @@ abstract class BaseActivity : AppCompatActivity() {
             // 状态栏颜色
             StatusBarHelper.setStatusTextDarkMode(this)
             StatusBarHelper.setColor(this, Color.WHITE, 0)
-            // 注意这一行代码 让内容乡下偏移
+	        // 注意这一行代码 让内容向下偏移
             mRootView.fitsSystemWindows = true
         }
         // 设置是否始终竖屏
@@ -89,7 +89,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     /*** 绑定布局id ***/
     @LayoutRes
-    protected abstract fun bindLayoutResId(): Int
+    protected abstract fun bindLayoutRes() : Int
 
     /*** 进行初始化操作 ***/
     protected abstract fun initialize()
@@ -101,12 +101,22 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         return super.dispatchTouchEvent(ev)
     }
+	
+	/*** 显示加载弹窗 ***/
+	fun showLoading(tip : String = "加载中") {
+		mLoadDialog.show(tip)
+	}
+	
+	/*** 隐藏加载弹窗 ***/
+	fun hideLoading() {
+		mLoadDialog.dismiss()
+	}
 
     override fun onDestroy() {
+	    super.onDestroy()
         // 销毁软键盘
         KeyboardHelper.onDestroy(mContext)
         // 清除所有的图片内存占用
         OOMHelper.onDestroy(mRootView)
-        super.onDestroy()
     }
 }

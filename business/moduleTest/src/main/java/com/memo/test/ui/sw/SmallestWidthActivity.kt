@@ -21,7 +21,7 @@ class SmallestWidthActivity : BaseActivity() {
     /**
      * 绑定布局id
      */
-    override fun bindLayoutResId(): Int = R.layout.activity_smallest_width
+    override fun bindLayoutRes() : Int = R.layout.activity_smallest_width
 
     /**
      * 进行初始化操作

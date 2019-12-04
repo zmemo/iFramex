@@ -4,6 +4,6 @@
 	<application>
 		<activity android:name=".UiActivity" />
 		<activity android:name=".web.WebActivity" />
-		<activity android:name=".qrcode.QrcodeScanActivity" />
+		<activity android:name=".qrcode.QRCodeScanActivity" />
 	</application>
 </manifest>

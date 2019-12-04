@@ -15,8 +15,8 @@ class SectionRecyclerActivity : BaseActivity() {
     private val mAdapter by lazy { SectionAdapter() }
 
     private val mData = arrayListOf<Sections>()
-
-    override fun bindLayoutResId(): Int = R.layout.activity_section_recycler
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_section_recycler
 
     override fun initialize() {
         initData()

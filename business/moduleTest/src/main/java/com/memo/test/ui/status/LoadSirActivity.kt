@@ -14,8 +14,8 @@ import kotlinx.android.synthetic.main.activity_load_sir.*
  * @date 2019-06-26 14:23
  */
 class LoadSirActivity : BaseActivity() {
-
-    override fun bindLayoutResId(): Int = R.layout.activity_load_sir
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_load_sir
 
     override fun initialize() {
         val fragments = arrayListOf(LazyFragment(), LazyFragment(), LazyFragment(), LazyFragment(), LazyFragment())

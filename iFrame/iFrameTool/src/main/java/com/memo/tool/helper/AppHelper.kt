@@ -15,19 +15,19 @@ import java.util.*
 object AppHelper {
 
     /*** QQ ***/
-    private val PACKAGE_NAME_QQ = "com.tencent.mobileqq"
+    private const val PACKAGE_NAME_QQ = "com.tencent.mobileqq"
     /*** 微信 ***/
-    private val PACKAGE_NAME_WECHAT = "com.tencent.mm"
+    private const val PACKAGE_NAME_WECHAT = "com.tencent.mm"
     /*** 支付宝 ***/
-    private val PACKAGE_NAME_ALI_PAY = "com.eg.android.AlipayGphone"
+    private const val PACKAGE_NAME_ALI_PAY = "com.eg.android.AlipayGphone"
     /*** 应用宝 ***/
-    private val PACKAGE_NAME_TECENT_MARKET = "com.tencent.android.qqdownloader"
+    private const val PACKAGE_NAME_TECENT_MARKET = "com.tencent.android.qqdownloader"
     /*** 百度地图 ***/
-    private val PACKAGE_NAME_BAIDU_MAP = "com.baidu.BaiduMap"
+    private const val PACKAGE_NAME_BAIDU_MAP = "com.baidu.BaiduMap"
     /*** 高德地图 ***/
-    private val PACKAGE_NAME_GAODE_MAP = "com.autonavi.minimap"
+    private const val PACKAGE_NAME_GAODE_MAP = "com.autonavi.minimap"
     /*** 腾讯地图 ***/
-    private val PACKAGE_NAME_TENCENT_MAP = "com.tencent.map"
+    private const val PACKAGE_NAME_TENCENT_MAP = "com.tencent.map"
 
     /**
      * 判断微信是否可以用

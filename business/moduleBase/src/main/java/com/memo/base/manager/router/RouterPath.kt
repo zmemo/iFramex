@@ -15,7 +15,7 @@ class RouterPath {
      */
     object Ui {
         // 二维码扫描
-        const val QrcodeScanActivity = "/iFrameUi/QrcodeScanActivity"
+        const val QrCodeScanActivity = "/iFrameUi/QrCodeScanActivity"
         // 网页
         const val WebActivity = "/iFrameUi/WebActivity"
     }

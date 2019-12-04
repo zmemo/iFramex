@@ -12,9 +12,9 @@ import kotlinx.android.synthetic.main.activity_notification.*
 import java.util.concurrent.TimeUnit
 
 class NotificationActivity : BaseActivity() {
-
-
-    override fun bindLayoutResId(): Int = R.layout.activity_notification
+	
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_notification
 
     override fun initialize() {
         mBtnMessage.onClick {

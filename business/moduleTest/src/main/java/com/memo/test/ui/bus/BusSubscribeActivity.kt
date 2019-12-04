@@ -12,7 +12,7 @@ class BusSubscribeActivity : BaseActivity() {
     /**
      * 绑定布局id
      */
-    override fun bindLayoutResId(): Int = R.layout.activity_bus_subscribe
+    override fun bindLayoutRes() : Int = R.layout.activity_bus_subscribe
 
     /**
      * 进行初始化操作

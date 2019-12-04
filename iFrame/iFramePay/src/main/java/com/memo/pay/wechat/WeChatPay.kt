@@ -1,7 +1,7 @@
 package com.memo.pay.wechat
 
 import com.memo.tool.app.BaseApp
-import com.memo.tool.helper.toast
+import com.memo.tool.ext.toast
 import com.tencent.mm.opensdk.constants.Build
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.openapi.IWXAPI
@@ -48,7 +48,7 @@ internal class WeChatPay {
             request.sign = sign
             mWxApi!!.sendReq(request)
         } else {
-            toast("请安装微信或升级微信版本")
+	        toast("请安装微信或升级微信版本")
         }
     }
 

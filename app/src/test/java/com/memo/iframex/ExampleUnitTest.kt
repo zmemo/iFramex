@@ -1,6 +1,6 @@
 package com.memo.iframex
 
-import com.memo.tool.ext.toTimeMin
+import com.memo.tool.helper.GsonHelper
 import org.junit.Test
 
 /**
@@ -9,8 +9,14 @@ import org.junit.Test
  * See [testing documentation](http://d.android.com/tools/testing).
  */
 class ExampleUnitTest {
-    @Test
-    fun test() {
-        print("yyyy-MM-dd HH:mm:ss".toTimeMin())
-    }
+	@Test
+	fun test() {
+		val json = "{\"name\":null}"
+		val person = GsonHelper.parse2Bean<Person>(json)
+		println(person.name)
+	}
+	
+	data class Person(
+		val name : String = "12" // null
+	)
 }

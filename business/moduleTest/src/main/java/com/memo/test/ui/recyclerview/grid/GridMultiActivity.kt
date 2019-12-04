@@ -31,7 +31,7 @@ class GridMultiActivity : BaseActivity() {
     }
 
     /*** 绑定布局id ***/
-    override fun bindLayoutResId(): Int = R.layout.activity_grid_multi
+    override fun bindLayoutRes() : Int = R.layout.activity_grid_multi
 
     /*** 进行初始化操作 ***/
     override fun initialize() {

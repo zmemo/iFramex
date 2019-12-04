@@ -5,7 +5,7 @@ import com.kingja.loadsir.core.LoadService
 import com.memo.base.ui.fragment.BaseFragment
 import com.memo.test.R
 import com.memo.tool.ext.delay
-import com.memo.tool.helper.toast
+import com.memo.tool.ext.toast
 import kotlinx.android.synthetic.main.fragment_lazy.*
 
 /**
@@ -20,8 +20,8 @@ import kotlinx.android.synthetic.main.fragment_lazy.*
 class LazyFragment : BaseFragment() {
 
     private var mLoadService: LoadService<*>? = null
-
-    override fun bindLayoutResId(): Int = R.layout.fragment_lazy
+	
+	override fun bindLayoutRes() : Int = R.layout.fragment_lazy
 
     /*** 在视图加载完毕的时候初始化 ***/
     override fun initialize() {

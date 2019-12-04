@@ -39,10 +39,7 @@
 			android:textSize="@dimen/sp15"
 			tools:text="这个是一条提示" />
 		
-		<View
-			android:layout_width="match_parent"
-			android:layout_height="@dimen/dp0_5"
-			android:background="@color/color_F5F5F5" />
+		<View style="@style/Line" />
 		
 		<LinearLayout
 			android:layout_width="match_parent"

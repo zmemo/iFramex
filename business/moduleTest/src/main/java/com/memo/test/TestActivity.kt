@@ -38,7 +38,6 @@ import com.memo.tool.ext.*
 import com.memo.tool.helper.DialogHelper
 import com.memo.tool.helper.ImageLoadHelper
 import com.memo.tool.helper.PermissionHelper
-import com.memo.tool.helper.toast
 import com.memo.umeng.UMengHelper
 import kotlinx.android.synthetic.main.activity_test.*
 
@@ -115,7 +114,7 @@ class TestActivity : BaseActivity() {
 		}
 	}
 	
-	override fun bindLayoutResId() : Int = R.layout.activity_test
+	override fun bindLayoutRes() : Int = R.layout.activity_test
 	
 	override fun initialize() {
 		initData()
@@ -214,8 +213,8 @@ class TestActivity : BaseActivity() {
 						4 -> mBottomGridDialog.show()
 						5 -> mLocateListDialog.showHorizontal(view)
 						6 -> {
-							mLoadDialog.show()
-							delay(mLifecycleOwner, 1000) { mLoadDialog.dismiss() }
+							showLoading()
+							delay(mLifecycleOwner, 1000) { hideLoading() }
 						}
 						7 -> mActionDialog.show(supportFragmentManager)
 					}

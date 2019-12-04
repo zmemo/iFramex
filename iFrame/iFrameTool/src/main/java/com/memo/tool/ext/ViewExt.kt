@@ -8,6 +8,7 @@ import android.os.Build
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.EditText
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
@@ -315,11 +316,11 @@ fun TextView.resendVerificationCodeAfter(owner : LifecycleOwner, second : Long =
 			setTextColor(color(R.color.color_F5F5F5))
 		}, {
 			isEnabled = true
-			text = "发送验证码"
+			text = "获取验证码"
 			setTextColor(color(R.color.color_666666))
 		}, {
 			isEnabled = true
-			text = "发送验证码"
+			text = "获取验证码"
 			setTextColor(color(R.color.color_666666))
 		}, {
 			isEnabled = false
@@ -338,7 +339,24 @@ var TextView.value : String
 		this.text = value
 	}
 
+/**
+ * 清除控件文字
+ */
+fun TextView.clear() {
+	this.text = ""
+}
 
-
+/**
+ * 设置EditText是否可输入
+ */
+fun EditText.editable(enable : Boolean) {
+	this.isClickable = enable
+	this.isEnabled = enable
+	this.isFocusable = enable
+	this.isFocusableInTouchMode = enable
+	if (enable) {
+		this.requestFocus()
+	}
+}
 
 

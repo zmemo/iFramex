@@ -4,7 +4,7 @@ import com.memo.base.api.BaseResponse
 import com.memo.base.api.ExceptionHandler
 import com.memo.base.ui.mvp.IView
 import com.memo.tool.ext.io2Main
-import com.memo.tool.helper.toastCenter
+import com.memo.tool.ext.toastCenter
 import com.memo.tool.http.exception.ApiException
 import io.reactivex.Observable
 import io.reactivex.Observer
@@ -139,7 +139,7 @@ private class ResponseObserver<T>(
             val exception: ApiException = ExceptionHandler.handleException(e)
 
             //显示弹窗
-            toastCenter(exception.message)
+	        toastCenter(exception.message)
 
             //错误回调
             onFailure(exception.code)

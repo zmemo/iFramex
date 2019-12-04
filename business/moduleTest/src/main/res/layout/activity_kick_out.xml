@@ -38,10 +38,7 @@
 			android:textColor="@color/color_333333"
 			android:textSize="@dimen/sp15" />
 		
-		<View
-			android:layout_width="match_parent"
-			android:layout_height="@dimen/dp0_5"
-			android:background="@color/color_F5F5F5" />
+		<View style="@style/Line" />
 		
 		<LinearLayout
 			android:layout_width="match_parent"

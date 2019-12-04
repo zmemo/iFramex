@@ -14,8 +14,8 @@ abstract class BasePresenter<M : IModel, V : IView> : IPresenter<V> {
     lateinit var mView: V
 
     lateinit var mModel: M
-
-    /*** AutoDispose ***/
+	
+	/*** 配合AutoDispose+RxJava2来进行一些处理 ***/
     lateinit var mLifeOwner: LifecycleOwner
 
     /*** 判断是否是第一次加载数据 只有在请求成功之后才会进行变化***/
@@ -24,7 +24,7 @@ abstract class BasePresenter<M : IModel, V : IView> : IPresenter<V> {
     /**
      * 绑定 View
      */
-    override fun attachView(mView: V, mLifeOwner: LifecycleOwner) {
+    override fun attach(mView : V, mLifeOwner : LifecycleOwner) {
         this.mView = mView
         this.mLifeOwner = mLifeOwner
         mModel = buildModel()

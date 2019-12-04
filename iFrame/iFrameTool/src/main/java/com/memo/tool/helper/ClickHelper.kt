@@ -1,5 +1,7 @@
 package com.memo.tool.helper
 
+import com.memo.tool.ext.toastCenter
+
 /**
  * title:点击工具类 防止过快点击
  * tip:
@@ -71,7 +73,7 @@ object ClickHelper {
             if (curClickTime - lastExitTime > 1500) {
                 flag = false
                 lastExitTime = curClickTime
-                toastCenter("再次点击退出应用")
+	            toastCenter("再次点击退出应用")
             }
             return flag
         }

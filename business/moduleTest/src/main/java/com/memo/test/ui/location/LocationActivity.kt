@@ -6,7 +6,7 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.map.infowindow.InfoWindowOverlay
 import com.memo.map.location.LocationHelper
 import com.memo.test.R
-import com.memo.tool.helper.toast
+import com.memo.tool.ext.toast
 import kotlinx.android.synthetic.main.activity_location.*
 
 /**
@@ -27,7 +27,7 @@ class LocationActivity : BaseActivity() {
     }
 
     /*** 绑定布局id ***/
-    override fun bindLayoutResId(): Int = R.layout.activity_location
+    override fun bindLayoutRes() : Int = R.layout.activity_location
 
     /*** 进行初始化操作 ***/
     override fun initialize() {
@@ -43,10 +43,10 @@ class LocationActivity : BaseActivity() {
                 toast("拨打电话")
             }
         })
-
-        mLoadDialog.show("定位中")
+	
+	    showLoading("定位中")
         LocationHelper.startOnceLocation(mContext, {
-            mLoadDialog.dismiss()
+	        hideLoading()
             LogUtils.iTag("location", it.toString())
             mTvLocation.text = it.toString()
             InfoWindowOverlay.showInfoWindow(aMap, it.latitude, it.longitude, it.address)

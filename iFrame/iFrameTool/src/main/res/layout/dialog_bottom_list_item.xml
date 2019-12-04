@@ -17,10 +17,8 @@
 	
 	<View
 		android:id="@+id/mLine"
-		android:layout_width="match_parent"
-		android:layout_height="@dimen/dp0_5"
+		style="@style/Line"
 		android:layout_marginStart="@dimen/dp15"
-		android:layout_marginEnd="@dimen/dp15"
-		android:background="#f5f5f5" />
+		android:layout_marginEnd="@dimen/dp15" />
 
 </LinearLayout>

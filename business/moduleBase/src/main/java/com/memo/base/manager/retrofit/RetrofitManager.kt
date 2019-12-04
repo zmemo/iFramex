@@ -19,32 +19,33 @@ import java.util.concurrent.TimeUnit
  * @date 2019-01-29 18:09
  */
 class RetrofitManager private constructor() {
-
-    //var api:ApiService
-
-    companion object {
-        private val instance: RetrofitManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-            RetrofitManager()
-        }
-        //val mApi = instance.api
-    }
-
-    init {
-        val mOkHttpClient = RetrofitUrlManager.getInstance()
-            .with(OkHttpClient.Builder())
-            .addInterceptor(HttpLogInterceptor(Config.isOpenLog, "HTTP"))
-            .readTimeout(10, TimeUnit.SECONDS)
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .writeTimeout(10, TimeUnit.SECONDS)
-            .build()
-
-        val mRetrofit = Retrofit.Builder()
-            .baseUrl(Constant.Api.BASE_URL)
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create(GsonHelper.getGson()))
-            .client(mOkHttpClient)
-            .build()
-
-        //api = mRetrofit.create(ApiService::class.java)
-    }
+	
+	private var mRetrofit : Retrofit
+	
+	companion object {
+		private val instance : RetrofitManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+			RetrofitManager()
+		}
+		
+		fun <T> create(service : Class<T>) : T = instance.mRetrofit.create(service)
+	}
+	
+	init {
+		
+		val mOkHttpClient = RetrofitUrlManager.getInstance()
+			.with(OkHttpClient.Builder())
+			.addInterceptor(HttpLogInterceptor(Config.isOpenLog, "HTTP"))
+			.readTimeout(15, TimeUnit.SECONDS)
+			.connectTimeout(15, TimeUnit.SECONDS)
+			.writeTimeout(15, TimeUnit.SECONDS)
+			.build()
+		
+		mRetrofit = Retrofit.Builder()
+			.baseUrl(Constant.Api.BASE_URL)
+			.addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+			.addConverterFactory(GsonConverterFactory.create(GsonHelper.getGson()))
+			.client(mOkHttpClient)
+			.build()
+		
+	}
 }

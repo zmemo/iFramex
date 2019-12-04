@@ -15,7 +15,7 @@ class ExpandActivity : BaseActivity() {
     private val mData = arrayListOf<MultiItemEntity>()
 
     /*** 绑定布局id ***/
-    override fun bindLayoutResId(): Int = R.layout.activity_expand
+    override fun bindLayoutRes() : Int = R.layout.activity_expand
 
     /*** 进行初始化操作 ***/
     override fun initialize() {

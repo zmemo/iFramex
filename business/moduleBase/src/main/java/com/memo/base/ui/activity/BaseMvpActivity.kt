@@ -19,7 +19,7 @@ abstract class BaseMvpActivity<in V : IView, P : IPresenter<V>> : BaseActivity()
     override fun baseInit() {
         super.baseInit()
         mPresenter = buildPresenter()
-        mPresenter.attachView(this as V, this)
+	    mPresenter.attach(this as V, mLifecycleOwner)
     }
 
     /*** 绑定Presenter 如果多个Presenter 返回建议是当前页面的Presenter ***/

@@ -24,7 +24,7 @@ object GsonHelper {
     fun getGson(): Gson {
         if (gson == null) {
             gson = GsonBuilder()
-                // 如果String为null 转为""
+	            // 如果String为null转为""
                 // 如果有一些特定的类也是可以同样设置默认值
                 .registerTypeAdapter(String::class.java, StringTypeAdapter())
                 // 日期格式化

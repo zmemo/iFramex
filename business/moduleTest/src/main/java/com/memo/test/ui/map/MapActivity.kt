@@ -17,7 +17,7 @@ class MapActivity : BaseActivity() {
     /**
      * 绑定布局id
      */
-    override fun bindLayoutResId(): Int = R.layout.activity_map
+    override fun bindLayoutRes() : Int = R.layout.activity_map
 
     /**
      * 进行初始化操作
@@ -28,8 +28,7 @@ class MapActivity : BaseActivity() {
         mBtnBaidu.onClick { NavigationHelper.naviBaiduMap(latLon[0], latLon[1], address) }
         mBtnTencent.onClick { NavigationHelper.naviTencentMap(lat, lon, address) }
         mBtnWeb.onClick {
-            RouterManager.get()
-                .startWebActivity(NavigationHelper.getGaodeWebUrl(lat, lon, address), address)
+	        RouterManager.startWebActivity(NavigationHelper.getGaodeWebUrl(lat, lon, address), address)
         }
     }
 }

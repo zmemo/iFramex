@@ -1,7 +1,7 @@
 package com.memo.umeng.listener
 
 import com.blankj.utilcode.util.LogUtils
-import com.memo.tool.helper.toast
+import com.memo.tool.ext.toast
 import com.umeng.socialize.UMShareListener
 import com.umeng.socialize.bean.SHARE_MEDIA
 
@@ -17,14 +17,14 @@ import com.umeng.socialize.bean.SHARE_MEDIA
  */
 open class SimpleShareListener : UMShareListener {
     override fun onResult(platform: SHARE_MEDIA?) {
-        toast("分享成功")
+	    toast("分享成功")
     }
 
     override fun onCancel(platform: SHARE_MEDIA?) {
     }
 
     override fun onError(platform: SHARE_MEDIA?, error: Throwable?) {
-        toast("分享失败")
+	    toast("分享失败")
         LogUtils.eTag("UMeng-Share", error)
     }
 

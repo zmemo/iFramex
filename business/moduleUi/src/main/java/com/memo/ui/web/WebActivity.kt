@@ -31,8 +31,8 @@ class WebActivity : BaseActivity() {
     private lateinit var mAgentWeb: AgentWeb
 
     override fun alwaysPortrait(): Boolean = false
-
-    override fun bindLayoutResId(): Int = R.layout.activity_web
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_web
 
     companion object {
         fun start(context: Context, url: String, title: String? = "") {

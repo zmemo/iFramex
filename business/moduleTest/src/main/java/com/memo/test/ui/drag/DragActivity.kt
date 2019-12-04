@@ -25,7 +25,7 @@ class DragActivity : BaseActivity() {
 
 
     /*** 绑定布局id ***/
-    override fun bindLayoutResId(): Int = R.layout.activity_drag
+    override fun bindLayoutRes() : Int = R.layout.activity_drag
 
     /*** 进行初始化操作 ***/
     override fun initialize() {

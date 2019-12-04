@@ -17,8 +17,8 @@ class MultiRecyclerActivity : BaseActivity() {
     private val mDecoration by lazy {
         RecyclerItemDecoration.Builder(mContext).setHeightDp(20f).build()
     }
-
-    override fun bindLayoutResId(): Int = R.layout.activity_multi_recycler
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_multi_recycler
 
     override fun initialize() {
         initData()

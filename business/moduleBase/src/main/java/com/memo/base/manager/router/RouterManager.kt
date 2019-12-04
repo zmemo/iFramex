@@ -12,23 +12,15 @@ import com.alibaba.android.arouter.launcher.ARouter
  * @author zhou
  * @date 2019-02-20 11:42
  */
-class RouterManager {
-
-    private object Holder {
-        val instance = RouterManager()
-    }
-
-    companion object {
-        fun get() = Holder.instance
-    }
-
+object RouterManager {
+    
     /**
      * 获取二维码扫描界面
      * @param activity Activity
      * @param requestCode Int 请求码
      */
     fun startQrCodeActivityForResult(activity: Activity, requestCode: Int) {
-        ARouter.getInstance().build(RouterPath.Ui.QrcodeScanActivity)
+	    ARouter.getInstance().build(RouterPath.Ui.QrCodeScanActivity)
             .navigation(activity, requestCode)
     }
 

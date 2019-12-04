@@ -18,7 +18,7 @@ class NineGridActivity : BaseActivity() {
     /**
      * 绑定布局id
      */
-    override fun bindLayoutResId(): Int = R.layout.activity_nine_grid
+    override fun bindLayoutRes() : Int = R.layout.activity_nine_grid
 
     /**
      * 进行初始化操作

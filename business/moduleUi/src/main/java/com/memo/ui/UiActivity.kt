@@ -6,10 +6,10 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.memo.base.manager.router.RouterPath
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.onClick
+import com.memo.tool.ext.toast
 import com.memo.tool.helper.PermissionHelper
-import com.memo.tool.helper.QrcodeHelper
-import com.memo.tool.helper.toast
-import com.memo.ui.qrcode.QrcodeScanActivity
+import com.memo.tool.helper.QRCodeHelper
+import com.memo.ui.qrcode.QRCodeScanActivity
 import com.memo.ui.web.WebActivity
 import kotlinx.android.synthetic.main.activity_ui.*
 
@@ -19,13 +19,13 @@ class UiActivity : BaseActivity() {
     private val REQUEST_CODE_SCAN = 1
 
     /*** 绑定布局id ***/
-    override fun bindLayoutResId(): Int = R.layout.activity_ui
+    override fun bindLayoutRes() : Int = R.layout.activity_ui
 
     /*** 进行初始化操作 ***/
     override fun initialize() {
         mItemScan.onClick {
             if (PermissionHelper.grantedCamera(mContext)) {
-                QrcodeScanActivity.start(mContext, REQUEST_CODE_SCAN)
+	            QRCodeScanActivity.start(mContext, REQUEST_CODE_SCAN)
             }
         }
         mItemWeb.onClick {
@@ -36,8 +36,8 @@ class UiActivity : BaseActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_SCAN) {
-            val result = QrcodeHelper.obtainQRCode(data)
-            toast(result)
+	        val result = QRCodeHelper.obtainQRCode(data)
+	        toast(result)
         }
     }
 }

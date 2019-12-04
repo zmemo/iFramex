@@ -10,7 +10,7 @@ class BusPostActivity : BaseActivity() {
     /**
      * 绑定布局id
      */
-    override fun bindLayoutResId(): Int = R.layout.activity_bus_post
+    override fun bindLayoutRes() : Int = R.layout.activity_bus_post
 
     /**
      * 进行初始化操作

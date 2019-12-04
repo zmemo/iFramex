@@ -21,8 +21,8 @@ class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresente
         mPresenterB = RetrofitPresenter()
         return RetrofitPresenter()
     }
-
-    override fun bindLayoutResId(): Int = R.layout.activity_retrofit
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_retrofit
 
     override fun initialize() {
         initListener()
@@ -30,11 +30,11 @@ class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresente
 
     private fun initListener() {
         mBtnZhiHu.onClick {
-	        mLoadDialog.show()
+	        showLoading()
 	        mPresenter.requestZhiHu()
         }
         mBtnDouBan.onClick {
-	        mLoadDialog.show()
+	        showLoading()
 	        mPresenter.requestWan()
         }
     }
@@ -44,7 +44,7 @@ class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresente
      * @param response 新闻
      */
     override fun getZhiHu(response: ZhiHuNews) {
-	    mLoadDialog.dismiss()
+	    hideLoading()
         mTvJson.text = GsonHelper.parse2Json(response)
     }
 
@@ -53,7 +53,7 @@ class RetrofitActivity : BaseMvpActivity<RetrofitContract.View, RetrofitPresente
      * @param response 新闻
      */
     override fun getWan(response: Wan) {
-	    mLoadDialog.dismiss()
+	    hideLoading()
         mTvJson.text = GsonHelper.parse2Json(response)
     }
 }

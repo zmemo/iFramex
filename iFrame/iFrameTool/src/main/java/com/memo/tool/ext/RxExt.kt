@@ -47,10 +47,10 @@ fun <T> Observable<T>.io2MainLifecycle(owner : LifecycleOwner) : ObservableSubsc
  * @param milliseconds 延时时间
  * @param onNext 延时操作
  */
-fun delay(lifecycleOwner : LifecycleOwner, milliseconds : Long, onNext : () -> Unit) {
+fun delay(lifecycleOwner : LifecycleOwner, milliseconds : Long, onNext : (second : Long) -> Unit) {
 	Observable.timer(milliseconds, TimeUnit.MILLISECONDS)
 		.bindLifecycle(lifecycleOwner)
-		.subscribe { onNext() }
+		.subscribe(onNext)
 }
 
 /**
@@ -68,11 +68,7 @@ fun <T> doInBackground(
 ) {
 	Observable.create<T> { it.onNext(doInBackground()) }
 		.io2MainLifecycle(lifecycleOwner)
-		.subscribe({
-			onSuccess(it)
-		}, {
-			onFailure(it)
-		})
+		.subscribe(onSuccess, onFailure)
 }
 
 /**
@@ -84,9 +80,8 @@ fun doInBackground(
 	lifecycleOwner : LifecycleOwner,
 	doInBackground : () -> Unit
 ) {
-	Observable.create<Unit> {
-		it.onNext(doInBackground())
-	}.io2MainLifecycle(lifecycleOwner)
+	Observable.create<Unit> { it.onNext(doInBackground()) }
+		.io2MainLifecycle(lifecycleOwner)
 		.subscribe()
 }
 
@@ -95,6 +90,6 @@ fun doInBackground(
  * @receiver Any
  * @return Observable<(kotlin.Any..kotlin.Any?)>
  */
-fun Any.toObservable() = Observable.create<Any> {
+fun <T> T.toObservable() = Observable.create<T> {
 	it.onNext(this)
 }

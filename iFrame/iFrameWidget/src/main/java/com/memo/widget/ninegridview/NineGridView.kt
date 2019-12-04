@@ -6,7 +6,7 @@ import android.util.AttributeSet
 import android.widget.FrameLayout
 import androidx.annotation.DrawableRes
 import com.memo.tool.ext.inflaterView
-import com.memo.tool.helper.toast
+import com.memo.tool.ext.toast
 import com.memo.tool.preview.ImagePreviewHelper
 import com.memo.widget.R
 import com.memo.widget.recyclerview.NoScrollGridLayoutManager
@@ -120,7 +120,7 @@ class NineGridView : FrameLayout {
      */
     fun addImages(images: List<String>) {
         if (getCurImageSize() + images.size > mMaxImageSize) {
-            toast("选择图片超出最大限制")
+	        toast("选择图片超出最大限制")
             return
         }
         addImage(images)

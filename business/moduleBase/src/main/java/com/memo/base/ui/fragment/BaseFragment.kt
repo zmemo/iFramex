@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
-import com.memo.tool.dialog.dialog.LoadingDialog
+import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.helper.OOMHelper
 
 /**
@@ -22,71 +22,78 @@ import com.memo.tool.helper.OOMHelper
  * Talk is cheap, Show me the code.
  */
 abstract class BaseFragment : Fragment() {
-
-    /*** 根布局 ***/
-    protected lateinit var mRootView: View
-
-    /*** 上下文Activity ***/
-    protected val mActivity by lazy { activity!! }
-
-    /*** AutoDispose ***/
-    protected val mLifecycleOwner: LifecycleOwner by lazy { this }
-
-    /*** 加载弹窗 ***/
-    protected val mLoadDialog: LoadingDialog by lazy { LoadingDialog(activity!!) }
-
-    /*** 标识 标识是否界面准备完毕 ***/
-    private var isPrepare: Boolean = false
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(bindLayoutResId(), container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        mRootView = view
-        isPrepare = true
-        baseInitialize()
-        onVisibleToUser()
-        initialize()
-    }
-
-
-    private fun onVisibleToUser() {
-        if (isPrepare && isResumed) {
-            isPrepare = false
-            lazyInitialize()
-        }
-    }
-
-    override fun onResume() {
-        if (isPrepare) {
-            onVisibleToUser()
-        }
-        super.onResume()
-    }
-
-
-    /*** 对于BaseMvpFragment的初始化 ***/
-    protected open fun baseInitialize() {}
-
-    /*** 绑定布局 ***/
-    @LayoutRes
-    protected abstract fun bindLayoutResId(): Int
-
-    /*** 在视图加载完毕的时候初始化 ***/
-    protected abstract fun initialize()
-
-    /*** 在界面可见的时候进行初始化 ***/
-    protected abstract fun lazyInitialize()
-
-    override fun onDestroyView() {
-        // 清除所有图片占用的内存
-        OOMHelper.onDestroy(mRootView)
-        super.onDestroyView()
-    }
+	
+	/*** 根布局 ***/
+	protected lateinit var mRootView : View
+	
+	/*** 上下文Activity ***/
+	protected val mActivity by lazy { activity!! }
+	
+	/*** AutoDispose ***/
+	protected val mLifecycleOwner : LifecycleOwner by lazy { this }
+	
+	/*** 标识 标识是否界面准备完毕 ***/
+	private var isPrepared : Boolean = false
+	
+	override fun onCreateView(
+		inflater : LayoutInflater,
+		container : ViewGroup?,
+		savedInstanceState : Bundle?
+	) : View? {
+		return inflater.inflate(bindLayoutRes(), container, false)
+	}
+	
+	override fun onViewCreated(view : View, savedInstanceState : Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		mRootView = view
+		isPrepared = true
+		baseInitialize()
+		initialize()
+		onVisibleToUser()
+	}
+	
+	/*** 对于BaseMvpFragment的初始化 ***/
+	protected open fun baseInitialize() {}
+	
+	private fun onVisibleToUser() {
+		if (isPrepared && isResumed) {
+			isPrepared = false
+			lazyInitialize()
+		}
+	}
+	
+	override fun onResume() {
+		if (isPrepared) {
+			onVisibleToUser()
+		}
+		super.onResume()
+	}
+	
+	protected fun showLoading(tip : String = "加载中") {
+		if (mActivity is BaseActivity) {
+			(mActivity as BaseActivity).showLoading(tip)
+		}
+	}
+	
+	protected fun hideLoading() {
+		if (mActivity is BaseActivity) {
+			(mActivity as BaseActivity).hideLoading()
+		}
+	}
+	
+	/*** 绑定布局 ***/
+	@LayoutRes
+	protected abstract fun bindLayoutRes() : Int
+	
+	/*** 在视图加载完毕的时候初始化 ***/
+	protected abstract fun initialize()
+	
+	/*** 在界面可见的时候进行初始化 ***/
+	protected abstract fun lazyInitialize()
+	
+	override fun onDestroyView() {
+		super.onDestroyView()
+		// 清除所有图片占用的内存
+		OOMHelper.onDestroy(mRootView)
+	}
 }

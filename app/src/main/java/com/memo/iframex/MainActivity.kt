@@ -5,9 +5,9 @@ import com.memo.base.manager.init.InitManager
 import com.memo.base.manager.router.RouterManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.onClick
+import com.memo.tool.ext.toastCancel
 import com.memo.tool.helper.ClickHelper
 import com.memo.tool.helper.OOMHelper
-import com.memo.tool.helper.toastCancel
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -18,8 +18,8 @@ import kotlinx.android.synthetic.main.activity_main.*
  * @date 2019-07-25 17:14
  */
 class MainActivity : BaseActivity() {
-
-    override fun bindLayoutResId(): Int = R.layout.activity_main
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_main
 
     @SuppressLint("SetTextI18n")
     override fun initialize() {
@@ -29,10 +29,10 @@ class MainActivity : BaseActivity() {
         OOMHelper.startMonitorLowMemory()
 
         mBtnTest.onClick {
-            RouterManager.get().startLauncherTest()
+	        RouterManager.startLauncherTest()
         }
         mBtnUi.onClick {
-            RouterManager.get().startLauncherUi()
+	        RouterManager.startLauncherUi()
         }
     }
 

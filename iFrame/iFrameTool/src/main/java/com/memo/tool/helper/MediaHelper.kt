@@ -15,10 +15,10 @@ import androidx.annotation.IntRange
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.LogUtils
-import com.memo.iframe.tools.ext.md5
 import com.memo.tool.R
 import com.memo.tool.app.BaseApp
 import com.memo.tool.dir.LocalDir
+import com.memo.tool.ext.md5
 import com.memo.tool.photo.GifSizeFilter
 import com.memo.tool.photo.Glide4Engine
 import com.memo.tool.photo.VideoTimeFilter

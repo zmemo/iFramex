@@ -14,7 +14,7 @@ class RecyclerViewResumeActivity : BaseActivity() {
     private val image = DataFactory.provideImage()
 
     /*** 绑定布局id ***/
-    override fun bindLayoutResId(): Int = R.layout.activity_recycler_resume
+    override fun bindLayoutRes() : Int = R.layout.activity_recycler_resume
 
     /*** 进行初始化操作 ***/
     override fun initialize() {

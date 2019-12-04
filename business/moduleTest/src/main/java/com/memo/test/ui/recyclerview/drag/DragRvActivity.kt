@@ -9,7 +9,7 @@ import com.chad.library.adapter.base.listener.OnItemDragListener
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.entity.MultiEntity
-import com.memo.tool.helper.toast
+import com.memo.tool.ext.toast
 import kotlinx.android.synthetic.main.activity_drag_rv.*
 
 class DragRvActivity : BaseActivity() {
@@ -22,7 +22,7 @@ class DragRvActivity : BaseActivity() {
     private val mAdapter by lazy { DragAdapter() }
 
     /*** 绑定布局id ***/
-    override fun bindLayoutResId(): Int = R.layout.activity_drag_rv
+    override fun bindLayoutRes() : Int = R.layout.activity_drag_rv
 
     /*** 进行初始化操作 ***/
     override fun initialize() {
@@ -73,7 +73,7 @@ class DragRvActivity : BaseActivity() {
                 target: RecyclerView.ViewHolder?,
                 to: Int
             ) {
-                toast("from $from to $to")
+	            toast("from $from to $to")
             }
         })
 

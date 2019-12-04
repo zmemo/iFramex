@@ -6,6 +6,7 @@ import android.net.Uri
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.LogUtils
 import com.memo.tool.app.BaseApp
+import com.memo.tool.ext.toast
 
 /**
  * title:地图帮助类
@@ -36,7 +37,7 @@ object NavigationHelper {
             intent.data = Uri.parse(uri)
             BaseApp.app.applicationContext.startActivity(intent)
         } else {
-            toast("暂未安装高德地图")
+	        toast("暂未安装高德地图")
         }
     }
 
@@ -57,7 +58,7 @@ object NavigationHelper {
             intent.data = Uri.parse(uri)
             BaseApp.app.applicationContext.startActivity(intent)
         } else {
-            toast("暂未安装百度地图")
+	        toast("暂未安装百度地图")
         }
     }
 
@@ -78,7 +79,7 @@ object NavigationHelper {
             intent.data = Uri.parse(uri)
             BaseApp.app.applicationContext.startActivity(intent)
         } else {
-            toast("暂未安装腾讯地图")
+	        toast("暂未安装腾讯地图")
         }
     }
 

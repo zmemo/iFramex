@@ -52,8 +52,8 @@ class LoadingDialog constructor(context: Context) : BasePopupWindow(context) {
     /**
      * 简化显示方法
      */
-    fun show(message: String = "加载中") {
-        contentView.mTvMessage.text = message
+    fun show(tip : String = "加载中") {
+	    contentView.mTvMessage.text = tip
         showPopupWindow()
     }
 }

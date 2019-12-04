@@ -1,4 +1,4 @@
-package com.memo.iframe.tools.ext
+package com.memo.tool.ext
 
 import com.blankj.utilcode.util.EncryptUtils
 import java.util.*
@@ -12,7 +12,7 @@ import java.util.*
  */
 
 private const val httpRegex =
-    "(((https|http)?://)?([a-z0-9]+[.])|(www.))\\w+[.|/]([a-z0-9]{0,})?[[.]([a-z0-9]{0,})]+((/[\\S&&[^,;\u4E00-\u9FA5]]+)+)?([.][a-z0-9]{0,}+|/?)"
+	"(((https|http)?://)?([a-z0-9]+[.])|(www.))\\w+[.|/]([a-z0-9]{0,})?[[.]([a-z0-9]{0,})]+((/[\\S&&[^,;\u4E00-\u9FA5]]+)+)?([.][a-z0-9]{0,}+|/?)"
 private const val phoneRegex = "1\\d{10}$"
 private const val emailRegex = "\\w+@\\w+\\.[a-z]+(\\.[a-z]+)?"
 private const val idCardRegex = "[1-9]\\d{16}[a-zA-Z0-9]"
@@ -22,32 +22,32 @@ private const val chineseRegex = "^[\u4E00-\u9FA5]+$"
  * 是否是手机号
  * 1+后面10位
  */
-fun String?.isPhone(): Boolean = this != null && phoneRegex.toRegex().matches(this.trim())
+fun String?.isPhone() : Boolean = this != null && phoneRegex.toRegex().matches(this.trim())
 
 /**
  * 是否是邮箱地址
  */
-fun String?.isEmail(): Boolean = this != null && emailRegex.toRegex().matches(this.trim())
+fun String?.isEmail() : Boolean = this != null && emailRegex.toRegex().matches(this.trim())
 
 /**
  * 是否是身份证号码
  */
-fun String?.isIDCard(): Boolean = this != null && idCardRegex.toRegex().matches(this.trim())
+fun String?.isIDCard() : Boolean = this != null && idCardRegex.toRegex().matches(this.trim())
 
 /**
  * 是否是中文字符
  */
-fun String?.isChinese(): Boolean = this != null && chineseRegex.toRegex().matches(this.trim())
+fun String?.isChinese() : Boolean = this != null && chineseRegex.toRegex().matches(this.trim())
 
 /**
  * 判断字符串是否是网址
  */
-fun String?.isHttpUrl(): Boolean = this != null && httpRegex.toRegex().matches(this.trim())
+fun String?.isHttpUrl() : Boolean = this != null && httpRegex.toRegex().matches(this.trim())
 
 /**
  * 获取当前字符串的md5
  */
-fun String.md5(): String = EncryptUtils.encryptMD5ToString(this)
+fun String.md5() : String = EncryptUtils.encryptMD5ToString(this)
 
 /**
  * 判断字符串是否为空或者是null的任意变化
@@ -64,4 +64,10 @@ fun String.lastChar() = this[length - 1]
  * 第一个字符
  */
 fun String.firstChar() = this[0]
+
+/**
+ * 判断是否是空串 并且返回
+ */
+fun String?.checkIfNull(returnStr : String) : String = if (this.isNull()) returnStr else this!!
+
 

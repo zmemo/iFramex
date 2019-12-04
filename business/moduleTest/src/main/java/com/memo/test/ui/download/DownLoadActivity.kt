@@ -14,7 +14,7 @@ class DownLoadActivity : BaseActivity() {
     /**
      * 绑定布局id
      */
-    override fun bindLayoutResId(): Int = R.layout.activity_down_load
+    override fun bindLayoutRes() : Int = R.layout.activity_down_load
 
     /**
      * 进行初始化操作

@@ -32,8 +32,8 @@ class AnimActivity : BaseActivity() {
             1000
         )
     }
-
-    override fun bindLayoutResId(): Int = R.layout.activity_anim
+	
+	override fun bindLayoutRes() : Int = R.layout.activity_anim
 
     override fun initialize() {
         mBtnCircle.onClick {
