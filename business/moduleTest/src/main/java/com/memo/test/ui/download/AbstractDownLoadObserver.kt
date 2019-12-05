@@ -89,8 +89,7 @@ abstract class AbstractDownLoadObserver {
             fos.flush()
             return file
         } finally {
-            IOHelper.close(inputStream)
-            IOHelper.close(fos)
+            IOHelper.close(inputStream, fos)
         }
     }
 }

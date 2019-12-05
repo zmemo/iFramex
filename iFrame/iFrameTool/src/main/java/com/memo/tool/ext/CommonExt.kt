@@ -1,8 +1,12 @@
 package com.memo.tool.ext
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.view.Gravity
+import androidx.core.content.ContextCompat
 import com.blankj.utilcode.util.ToastUtils
 import com.memo.tool.R
+import com.memo.tool.app.BaseApp
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.constant.RefreshState
 import kotlinx.android.synthetic.main.layout_toast.view.*
@@ -44,17 +48,17 @@ fun toastCancel() {
 
 /**
  * 关闭刷新
- * @param noMoreData true -> 不再上拉加载更多 false -> 正常上拉加载
+ * @param hasMore true -> 加载更多 false -> 不上拉加载
  */
-fun SmartRefreshLayout.finish(noMoreData : Boolean) {
+fun SmartRefreshLayout.finish(hasMore : Boolean) {
+	this.setEnableLoadMore(hasMore)
 	when (state) {
 		RefreshState.Refreshing -> finishRefresh(400)
-		RefreshState.Loading -> finishLoadMore(400, true, noMoreData)
+		RefreshState.Loading -> finishLoadMore(400)
 		else -> {
 		}
 	}
 }
-
 
 //---------------------------------------- List ----------------------------------------
 fun Collection<Any>.convert2String() : String {
@@ -69,10 +73,21 @@ fun Collection<Any>.convert2String() : String {
 	return builder.toString()
 }
 
-
 //---------------------------------------- Int ----------------------------------------
 
 /**
  * 判断Int数据是否小于0 小于0则为0
  */
 fun Int.checkLessZero() : Int = if (this < 0) 0 else this
+
+//---------------------------------------- String ----------------------------------------
+
+/**
+ * 复制到粘贴板
+ * @param content 内容
+ */
+fun copyToClipboard(content : String) {
+	val plainText = ClipData.newPlainText("Copy", content)
+	val clipboardManager = ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)
+	clipboardManager?.primaryClip = plainText
+}

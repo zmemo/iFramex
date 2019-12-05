@@ -1,8 +1,6 @@
 package com.memo.tool.ext
 
 import android.app.Dialog
-import android.content.ClipData
-import android.content.ClipboardManager
 import android.content.Context
 import android.view.View
 import android.view.ViewGroup
@@ -58,13 +56,3 @@ fun View.inflaterView(@LayoutRes layoutRes: Int, parent: ViewGroup? = null): Vie
 
 fun RecyclerView.ViewHolder.inflaterView(@LayoutRes layoutRes: Int, parent: ViewGroup? = null): View =
     View.inflate(itemView.context, layoutRes, parent)
-
-/**
- * 复制到粘贴板
- * @param content 内容
- */
-fun copyToClipboard(content : String) {
-	val plainText = ClipData.newPlainText("Copy", content)
-	val clipboardManager = ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)
-	clipboardManager?.primaryClip = plainText
-}

@@ -25,8 +25,8 @@ import com.memo.tool.R
  */
 @SuppressLint("ObsoleteSdkInt")
 object StatusBarHelper {
-
-    val DEFAULT_STATUS_BAR_ALPHA = 112
+    
+    private val DEFAULT_STATUS_BAR_ALPHA = 112
     private val FAKE_STATUS_BAR_VIEW_ID: Int = R.id.statusbar_fake_status_bar_view
     private val FAKE_TRANSLUCENT_VIEW_ID: Int = R.id.statusbar_translucent_view
     private val TAG_KEY_HAVE_SET_OFFSET = -123

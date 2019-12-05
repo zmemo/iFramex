@@ -13,12 +13,12 @@ import com.blankj.utilcode.util.EncryptUtils
 object EncryptHelper {
 
     /**
-     * 8位DES密钥 自己生成
+     * 8位DES密钥 自己生成随便输入
      */
     private const val secretKeyDes8 = "o5j7r4j9"
 
     /**
-     * 32位AES密钥 自己生成
+     * 32位AES密钥 自己生成随便输入
      */
     private const val secretKeyAes32 = "qwe1saz2xdr3fcv8gytuh04bmnkjlpoi"
 

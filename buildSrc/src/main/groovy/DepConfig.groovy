@@ -43,7 +43,7 @@ class DepConfig {
     static kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
     static coreKtx = "androidx.core:core-ktx:1.0.2"
     static multiDex = "androidx.multidex:multidex:2.0.0"
-    static androidUtilCode = "com.blankj:utilcodex:1.25.9"
+    static androidUtilCode = "com.blankj:utilcodex:1.26.0"
     static rxJava2 = "io.reactivex.rxjava2:rxjava:2.2.10"
     static rxAndroid2 = "io.reactivex.rxjava2:rxandroid:2.1.1"
     static rxBus = "com.blankj:rxbus:1.6"

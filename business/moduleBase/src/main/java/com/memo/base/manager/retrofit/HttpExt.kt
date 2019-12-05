@@ -3,7 +3,6 @@ package com.memo.base.manager.retrofit
 import com.memo.base.api.BaseResponse
 import com.memo.base.api.ExceptionHandler
 import com.memo.base.ui.mvp.IView
-import com.memo.tool.ext.io2Main
 import com.memo.tool.ext.toastCenter
 import com.memo.tool.http.exception.ApiException
 import io.reactivex.Observable
@@ -110,7 +109,7 @@ fun <T> Observable<BaseResponse<T>>.convert(): Observable<T> {
         } else {
             Observable.error(ApiException(it.code, it.message))
         }
-    }.io2Main()
+    }
 }
 
 private class ResponseObserver<T>(

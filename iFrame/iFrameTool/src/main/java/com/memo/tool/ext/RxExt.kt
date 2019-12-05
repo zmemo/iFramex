@@ -87,8 +87,6 @@ fun doInBackground(
 
 /**
  * 创建一个RxJava2输入流
- * @receiver Any
- * @return Observable<(kotlin.Any..kotlin.Any?)>
  */
 fun <T> T.toObservable() = Observable.create<T> {
 	it.onNext(this)

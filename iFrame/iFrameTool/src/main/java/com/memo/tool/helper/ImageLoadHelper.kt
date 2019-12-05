@@ -16,10 +16,8 @@ import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.memo.tool.app.BaseApp
 import com.memo.tool.ext.doInBackground
-import com.memo.tool.ext.io2Main
 import com.memo.tool.glide.GlideApp
 import com.memo.tool.simple.SimpleGlideTarget
-import io.reactivex.Observable
 import java.io.File
 
 /**
@@ -33,9 +31,9 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载图片
-	 * @param context Context     上下文
-	 * @param url Any         图片地址
-	 * @param image ImageView   图片
+	 * @param context Context       上下文
+	 * @param url Any               图片地址
+	 * @param image ImageView       图片
 	 */
 	@JvmStatic
 	fun loadImage(context : Context, url : Any, image : ImageView) {
@@ -47,9 +45,9 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载无缓存图片
-	 * @param context Context     上下文
-	 * @param url Any         地址
-	 * @param image ImageView   图片
+	 * @param context Context       上下文
+	 * @param url Any               地址
+	 * @param image ImageView       图片
 	 */
 	@JvmStatic
 	fun loadNoCacheImage(context : Context, url : Any, image : ImageView) {
@@ -63,9 +61,9 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载不需要内粗缓存的图片
-	 * @param context Context
-	 * @param url Any
-	 * @param imageView ImageView
+	 * @param context Context       上下文
+	 * @param url Any               地址
+	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
 	fun loadNoMemoryImage(context : Context, url : Any, imageView : ImageView) {
@@ -78,9 +76,9 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载不需要磁盘缓存的图片
-	 * @param context Context
-	 * @param url Any
-	 * @param imageView ImageView
+	 * @param context Context       上下文
+	 * @param url Any               地址
+	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
 	fun loadNoDiskImage(context : Context, url : Any, imageView : ImageView) {
@@ -93,10 +91,10 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载图片
-	 * @param context Context     上下文
-	 * @param url Any         图片地址
+	 * @param context Context       上下文
+	 * @param url Any               图片地址
 	 * @param holderRes Int         站位图
-	 * @param errorRes Int         错误图
+	 * @param errorRes Int          错误图
 	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
@@ -117,9 +115,9 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载图片
-	 * @param context Context     上下文
-	 * @param url Any         图片地址
-	 * @param errorRes Int         错误图
+	 * @param context Context       上下文
+	 * @param url Any               图片地址
+	 * @param errorRes Int          错误图
 	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
@@ -138,12 +136,12 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载自定义宽高图片
-	 * @param context Context     上下文
-	 * @param url Any         图片地址
-	 * @param width Int         宽
-	 * @param height Int         高
+	 * @param context Context       上下文
+	 * @param url Any               图片地址
+	 * @param width Int             宽
+	 * @param height Int            高
 	 * @param holderRes Int         占位图
-	 * @param errorRes Int         错误图
+	 * @param errorRes Int          错误图
 	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
@@ -167,11 +165,11 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载圆角图片
-	 * @param context Context     上下文
-	 * @param url Any         图片地址
-	 * @param radius Int         圆角
+	 * @param context Context       上下文
+	 * @param url Any               图片地址
+	 * @param radius Int            圆角
 	 * @param holderRes Int         占位图
-	 * @param errorRes Int         错误图
+	 * @param errorRes Int          错误图
 	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
@@ -193,9 +191,9 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载圆角图片
-	 * @param context Context     上下文
-	 * @param url Any         图片地址
-	 * @param radius Int         圆角
+	 * @param context Context       上下文
+	 * @param url Any               图片地址
+	 * @param radius Int            圆角
 	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
@@ -213,11 +211,11 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载圆角缩略图
-	 * @param context Context     上下文
-	 * @param url Any         地址
-	 * @param radius Int         圆角
+	 * @param context Context       上下文
+	 * @param url Any               地址
+	 * @param radius Int            圆角
 	 * @param thumbnail Float       缩略比例
-	 * @param errorRes Int         错误图
+	 * @param errorRes Int          错误图
 	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
@@ -239,10 +237,10 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载圆形图片
-	 * @param context Context     上下文
-	 * @param url Any         图片地址
+	 * @param context Context       上下文
+	 * @param url Any               图片地址
 	 * @param holderRes Int         占位图
-	 * @param errorRes Int         错误图
+	 * @param errorRes Int          错误图
 	 * @param imageView ImageView   图片
 	 */
 	@JvmStatic
@@ -263,12 +261,12 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载自定义大小圆形图片
-	 * @param context Context     上下文
-	 * @param url Any         图片地址
-	 * @param size Int         大小
+	 * @param context Context       上下文
+	 * @param url Any               图片地址
+	 * @param size Int              大小
 	 * @param holderRes Int         占位图
-	 * @param errorRes Int         错误图
-	 * @param image ImageView   图片
+	 * @param errorRes Int          错误图
+	 * @param image ImageView       图片
 	 */
 	@JvmStatic
 	fun loadResizeCircleImage(
@@ -288,32 +286,37 @@ object ImageLoadHelper {
 			.into(image)
 	}
 	
+	
 	/**
 	 * 从缓存中获取bitmap
-	 * @param context Context 上下文
-	 * @param url String 图片路径
-	 * @return Disposable?  注意回收
+	 * @param context           当前上下文
+	 * @param lifecycleOwner    生命周期控制
+	 * @param url               地址
+	 * @param onSuccess         成功回调
+	 * @param onFailure         失败回调
 	 */
 	@JvmStatic
-	fun getCacheImageFile(
+	fun getImageFileFromCache(
 		context : Context,
-		url : String
-	) : Observable<File> {
-		return Observable.just(url)
-			.map {
-				GlideApp
-					.with(context)
-					.downloadOnly()
-					.load(it)
-					.submit(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-					.get()
-			}.io2Main()
+		lifecycleOwner : LifecycleOwner,
+		url : String,
+		onSuccess : (file : File) -> Unit,
+		onFailure : (error : Throwable) -> Unit
+	) {
+		doInBackground(lifecycleOwner, {
+			GlideApp
+				.with(context)
+				.downloadOnly()
+				.load(url)
+				.submit(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
+				.get()
+		}, onSuccess, onFailure)
 	}
 	
 	/**
 	 * 加载图片监听
-	 * @param context Context             上下文
-	 * @param url Any                 图片地址
+	 * @param context Context               上下文
+	 * @param url Any                       图片地址
 	 * @param onSuccess (Bitmap?) -> Unit   成功回调
 	 * @param onFailure () -> Unit          失败回调
 	 */
@@ -342,10 +345,10 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载图片监听
-	 * @param context Context             上下文
-	 * @param url Any                 图片地址
-	 * @param width Int                 宽
-	 * @param height Int                 高
+	 * @param context Context               上下文
+	 * @param url Any                       图片地址
+	 * @param width Int                     宽
+	 * @param height Int                    高
 	 * @param onSuccess (Bitmap?) -> Unit   成功回调
 	 * @param onFailure () -> Unit          失败回调
 	 */
@@ -376,10 +379,10 @@ object ImageLoadHelper {
 	
 	/**
 	 * 加载图片监听
-	 * @param context Context             上下文
-	 * @param url Any                 图片地址
-	 * @param width Int                 宽
-	 * @param height Int                 高
+	 * @param context Context               上下文
+	 * @param url Any                       图片地址
+	 * @param width Int                     宽
+	 * @param height Int                    高
 	 * @param onSuccess (Bitmap?) -> Unit   成功回调
 	 * @param onFailure () -> Unit          失败回调
 	 */
@@ -425,7 +428,7 @@ object ImageLoadHelper {
 	}
 	
 	/**
-	 * 暂停并且停止加载
+	 * 停止加载
 	 */
 	@JvmStatic
 	fun onStop(context : Context) {

@@ -84,8 +84,7 @@ object ExceptionHandler {
         }catch (e:Exception){
             info = exception.toString()
         }finally {
-            IOHelper.close(sw)
-            IOHelper.close(pw)
+	        IOHelper.close(sw, pw)
         }
         //信息存储
         val log = "${file.absolutePath}/${TimeUtils.getNowString()}.txt"
