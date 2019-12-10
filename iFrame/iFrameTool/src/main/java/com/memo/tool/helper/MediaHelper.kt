@@ -184,10 +184,10 @@ object MediaHelper {
 	@JvmStatic
 	fun choosePhoto(
 		mActivity : Activity,
-		showCapture : Boolean, @IntRange(from = 1, to = 9) chooseSize : Int,
+		@IntRange(from = 1, to = 9) chooseSize : Int,
 		requestCode : Int,
-		chooseGif : Boolean = true
-	) {
+		showCapture : Boolean = false,
+		chooseGif : Boolean = true) {
 		if (chooseSize < 1) {
 			return
 		}

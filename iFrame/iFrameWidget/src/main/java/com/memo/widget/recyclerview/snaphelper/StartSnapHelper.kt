@@ -1,4 +1,4 @@
-package com.memo.widget.recyclerview
+package com.memo.widget.recyclerview.snaphelper
 
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager

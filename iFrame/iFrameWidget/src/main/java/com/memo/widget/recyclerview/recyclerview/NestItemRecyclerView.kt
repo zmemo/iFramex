@@ -1,4 +1,4 @@
-package com.memo.widget.recyclerview
+package com.memo.widget.recyclerview.recyclerview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -14,7 +14,7 @@ import kotlin.math.abs
  * @author zhou
  * @date 2018/8/21 上午9:53
  */
-open class ChildRecyclerView @JvmOverloads constructor(
+open class NestItemRecyclerView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyle: Int = 0

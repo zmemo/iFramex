@@ -1,4 +1,4 @@
-package com.memo.widget.recyclerview
+package com.memo.widget.recyclerview.recyclerview
 
 import android.content.Context
 import android.util.AttributeSet

@@ -4,7 +4,7 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.entity.SectionItem
 import com.memo.test.entity.Sections
-import com.memo.widget.recyclerview.NoScrollLinearLayoutManager
+import com.memo.widget.recyclerview.layoutmanager.NoScrollLinearLayoutManager
 import kotlinx.android.synthetic.main.activity_section_recycler.*
 
 class SectionRecyclerActivity : BaseActivity() {

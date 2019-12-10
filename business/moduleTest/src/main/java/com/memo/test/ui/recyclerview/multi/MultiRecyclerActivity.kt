@@ -5,7 +5,7 @@ import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.entity.Multi
 import com.memo.test.entity.MultiEntity
-import com.memo.widget.recyclerview.RecyclerItemDecoration
+import com.memo.widget.recyclerview.decoration.RecyclerItemDecoration
 import kotlinx.android.synthetic.main.activity_multi_recycler.*
 
 class MultiRecyclerActivity : BaseActivity() {

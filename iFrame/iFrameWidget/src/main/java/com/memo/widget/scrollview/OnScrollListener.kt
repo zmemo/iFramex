@@ -22,10 +22,10 @@ interface OnScrollListener {
      *
      * @param scrollView ScrollView
      * @param isTouchScroll 是否点击滑动
-     * @param l L
-     * @param t T
-     * @param oldL oldL
-     * @param oldT oldT
+     * @param curLeft L
+     * @param curTop T
+     * @param oldLeft oldL
+     * @param oldTop oldT
      */
-    fun onScroll(scrollView: StateScrollView, isTouchScroll: Boolean, l: Int, t: Int, oldL: Int, oldT: Int)
+    fun onScroll(scrollView : StateScrollView, isTouchScroll : Boolean, curLeft : Int, curTop : Int, oldLeft : Int, oldTop : Int)
 }

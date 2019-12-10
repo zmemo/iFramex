@@ -32,29 +32,20 @@ class MatisseSelectActivity : BaseActivity() {
 	}
 	
 	private fun initView() {
-		mNineGridView
-			.setAddDrawableRes(R.drawable.ic_pic_add)
+		mNineGridView.setAddDrawableRes(R.drawable.ic_pic_add)
 			.setDelDrawableRes(R.drawable.ic_pic_del)
 			.setMaxImageSize(MAXSIZE)
 			.initialize()
 	}
 	
 	private fun initListener() {
-		mNineGridView.addOnSelectListener {
-			MediaHelper.choosePhoto(
-				mContext,
-				false,
-				MAXSIZE - mNineGridView.getCurImageSize(),
-				REQUEST_CODE_SELECT
-			)
+		mNineGridView.addOnSelectListener { leftSize ->
+			MediaHelper.choosePhoto(mContext, leftSize, REQUEST_CODE_SELECT)
 		}
 		mBtnSelect.onClick {
 			MediaHelper.choosePhoto(
-				mContext,
-				false,
-				MAXSIZE - mNineGridView.getCurImageSize(),
-				REQUEST_CODE_SELECT
-			)
+				mContext, MAXSIZE - mNineGridView.getCurImageSize(),
+				REQUEST_CODE_SELECT)
 		}
 		mBtnTake.onClick {
 			if (PermissionHelper.grantedCamera(mContext)) {

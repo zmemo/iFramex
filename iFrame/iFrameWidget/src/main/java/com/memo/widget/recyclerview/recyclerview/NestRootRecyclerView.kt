@@ -1,4 +1,4 @@
-package com.memo.widget.recyclerview
+package com.memo.widget.recyclerview.recyclerview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,8 +10,8 @@ import android.util.AttributeSet
  * @author zhou
  * @date 2018/8/21 上午9:54
  */
-class RootRecyclerView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0) :
-    ChildRecyclerView(context, attrs, defStyle) {
+class NestRootRecyclerView @JvmOverloads constructor(context : Context, attrs : AttributeSet? = null, defStyle : Int = 0) :
+	NestItemRecyclerView(context, attrs, defStyle) {
 
     override fun requestDisallowInterceptTouchEvent(disallowIntercept: Boolean) {
         /* do nothing */

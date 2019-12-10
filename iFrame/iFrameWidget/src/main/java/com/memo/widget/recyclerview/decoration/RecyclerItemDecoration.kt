@@ -1,4 +1,4 @@
-package com.memo.widget.recyclerview
+package com.memo.widget.recyclerview.decoration
 
 
 import android.content.Context
@@ -250,7 +250,7 @@ class RecyclerItemDecoration constructor(private val mBuilder: Builder) :
     class Builder(private val mContext: Context) {
         private var mDrawable: Drawable? = null
         private var mOrientation =
-            VERTICAL
+	        VERTICAL
         private var mHeight = 1
         private var mMarginLeft = 0
         private var mMarginRight = 0
@@ -261,7 +261,7 @@ class RecyclerItemDecoration constructor(private val mBuilder: Builder) :
         private var mEndSkipCount = 0
         @Style
         private var mStyle =
-            Style.BETWEEN
+	        Style.BETWEEN
         var isShowTopDivider = false
             private set
 
@@ -410,7 +410,7 @@ class RecyclerItemDecoration constructor(private val mBuilder: Builder) :
          * @param marginTop margin top value
          */
         fun setMarginTop(unit: Int, marginTop: Float): Builder {
-            mMarginTop = getSizeValue(unit, marginTop.toFloat())
+	        mMarginTop = getSizeValue(unit, marginTop)
             return this
         }
 

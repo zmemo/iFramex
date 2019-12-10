@@ -4,7 +4,7 @@ import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.module.AppGlideModule
 
 /**
- * title:创建GlideApp
+ * title:创建GlideApp Glide配置文件
  * tip:
  *
  * @author zhou

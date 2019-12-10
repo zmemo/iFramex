@@ -14,7 +14,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.ColorInt
 import androidx.annotation.DrawableRes
-import com.memo.tool.ext.drawable
 import com.memo.widget.R
 
 /**
@@ -184,12 +183,7 @@ class ItemView(context: Context, attrs: AttributeSet? = null) : FrameLayout(cont
      * @param drawableRes 图标资源
      */
     fun setItemMainDrawable(@DrawableRes drawableRes: Int) {
-        mTvMain.setCompoundDrawablesRelativeWithIntrinsicBounds(
-            drawable(drawableRes),
-            null,
-            null,
-            null
-        )
+        mTvMain.setCompoundDrawablesRelativeWithIntrinsicBounds(drawableRes, 0, 0, 0)
     }
 
     /**

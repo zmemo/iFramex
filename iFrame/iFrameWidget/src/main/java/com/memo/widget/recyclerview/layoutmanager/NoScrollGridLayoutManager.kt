@@ -1,4 +1,4 @@
-package com.memo.widget.recyclerview
+package com.memo.widget.recyclerview.layoutmanager
 
 import android.content.Context
 import androidx.recyclerview.widget.GridLayoutManager

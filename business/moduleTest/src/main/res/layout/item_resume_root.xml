@@ -12,7 +12,7 @@
 		android:textColor="@color/black"
 		android:textSize="@dimen/sp15" />
 	
-	<com.memo.widget.recyclerview.ChildRecyclerView
+	<com.memo.widget.recyclerview.recyclerview.NestItemRecyclerView
 		android:id="@+id/mRvList"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
