@@ -66,22 +66,6 @@ class RefreshList : FrameLayout {
 	}
 	
 	/**
-	 * 设置刷新方法
-	 * @param onRefresh 刷新方法
-	 */
-	fun setOnRefreshListener(onRefresh : () -> Unit) {
-		setOnRefreshAndLoadMoreListener(onRefresh, {})
-	}
-	
-	/**
-	 * 设置加载方法
-	 * @param onLoadMore 加载方法
-	 */
-	fun setOnLoadMoreListener(onLoadMore : () -> Unit) {
-		setOnRefreshAndLoadMoreListener({}, onLoadMore)
-	}
-	
-	/**
 	 * 停止刷新
 	 * @param hasMore 是否有更多数据
 	 */
@@ -98,6 +82,13 @@ class RefreshList : FrameLayout {
 	//---------------------------------------- RecyclerView ----------------------------------------
 	
 	fun getRecyclerView() = mRvList
+	
+	/**
+	 * 设置LayoutManager
+	 */
+	fun setLayoutManager(layoutManager : RecyclerView.LayoutManager) {
+		mRvList.layoutManager = layoutManager
+	}
 	
 	/**
 	 * 设置适配器
