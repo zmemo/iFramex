@@ -22,15 +22,18 @@ import com.just.agentweb.AgentWebConfig
  */
 object WebHelper {
 	
-	@SuppressLint("SetJavaScriptEnabled")
+	@SuppressLint("SetJavaScriptEnabled", "ObsoleteSdkInt")
 	fun init(activity : Activity, container : ViewGroup, @LayoutRes errorLayoutRes : Int, url : String) : AgentWeb {
+		//如果是空白网址 设置一个错误的地址
+		val httpUrl = if (url.isEmpty()) "https://error" else url
+		
 		val agentWeb = AgentWeb.with(activity)
 			.setAgentWebParent(container, FrameLayout.LayoutParams(-1, -1))
 			.useDefaultIndicator()
 			.setMainFrameErrorView(errorLayoutRes, -1)
 			.createAgentWeb()
 			.ready()
-			.go(url)
+			.go(httpUrl)
 		
 		val webView = agentWeb.webCreator.webView
 		val settings = webView.settings

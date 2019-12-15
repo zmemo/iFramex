@@ -80,6 +80,11 @@ fun Collection<Any>.convert2String() : String {
  */
 fun Int.checkLessZero() : Int = if (this < 0) 0 else this
 
+/**
+ * 判断数据是否大于99 显示99+
+ */
+fun Int.checkMore99() : String = if (this > 99) "99+" else this.toString()
+
 //---------------------------------------- String ----------------------------------------
 
 /**

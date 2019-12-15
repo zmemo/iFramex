@@ -20,6 +20,12 @@
 		android:visibility="gone"
 		tools:text="1/2" />
 	
+	<com.memo.tool.preview.ImagePreviewViewPager
+		android:id="@+id/viewPager"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@android:color/transparent" />
+	
 	<com.previewlibrary.wight.BezierBannerView
 		android:id="@+id/bezierBannerView"
 		android:layout_width="wrap_content"
@@ -33,10 +39,4 @@
 		app:unSelectedColor="@android:color/darker_gray"
 		app:unSelectedRaduis="4dp" />
 	
-	<com.memo.tool.preview.ImagePreviewViewPager
-		android:id="@+id/viewPager"
-		android:layout_width="match_parent"
-		android:layout_height="match_parent"
-		android:background="@android:color/transparent" />
-
 </FrameLayout>

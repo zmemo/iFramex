@@ -41,7 +41,7 @@ class QRCodeScanActivity : BaseActivity() {
 	
 	private fun initTitle() {
 		mTitleView.setOnRightClickListener {
-			MediaHelper.choosePhoto(mContext, false, 1, REQUEST_CODE_QRCODE_ALBLUM)
+			MediaHelper.choosePhoto(mContext, 1, REQUEST_CODE_QRCODE_ALBLUM, showCapture = false, chooseGif = false)
 		}
 	}
 	

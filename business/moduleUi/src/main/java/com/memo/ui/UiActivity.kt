@@ -13,31 +13,45 @@ import com.memo.ui.qrcode.QRCodeScanActivity
 import com.memo.ui.web.WebActivity
 import kotlinx.android.synthetic.main.activity_ui.*
 
+/**
+ * title:UI模块的启动界面
+ * describe:
+ *
+ * @author memo
+ * @date 2019-12-15 20:47
+ * @email zhou_android@163.com
+ *
+ * Talk is cheap, Show me the code.
+ */
 @Route(path = RouterPath.Launcher.UiActivity)
 class UiActivity : BaseActivity() {
-
-    private val REQUEST_CODE_SCAN = 1
-
-    /*** 绑定布局id ***/
-    override fun bindLayoutRes() : Int = R.layout.activity_ui
-
-    /*** 进行初始化操作 ***/
-    override fun initialize() {
-        mItemScan.onClick {
-            if (PermissionHelper.grantedCamera(mContext)) {
-	            QRCodeScanActivity.start(mContext, REQUEST_CODE_SCAN)
-            }
-        }
-        mItemWeb.onClick {
-            WebActivity.start(mContext, "https://www.baidu.com", "百度一下")
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_SCAN) {
-	        val result = QRCodeHelper.obtainQRCode(data)
-	        toast(result)
-        }
-    }
+	
+	private val REQUEST_CODE_SCAN = 1
+	
+	private var isUrlError = true
+	
+	/*** 绑定布局id ***/
+	override fun bindLayoutRes() : Int = R.layout.activity_ui
+	
+	/*** 进行初始化操作 ***/
+	override fun initialize() {
+		mItemScan.onClick {
+			if (PermissionHelper.grantedCamera(mContext)) {
+				QRCodeScanActivity.start(mContext, REQUEST_CODE_SCAN)
+			}
+		}
+		mItemWeb.onClick {
+			val url = if (isUrlError) "" else "https://www.baidu.com"
+			isUrlError = !isUrlError
+			WebActivity.start(mContext, url, "百度一下")
+		}
+	}
+	
+	override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?) {
+		super.onActivityResult(requestCode, resultCode, data)
+		if (resultCode == Activity.RESULT_OK && requestCode == REQUEST_CODE_SCAN) {
+			val result = QRCodeHelper.obtainQRCode(data)
+			toast(result)
+		}
+	}
 }
