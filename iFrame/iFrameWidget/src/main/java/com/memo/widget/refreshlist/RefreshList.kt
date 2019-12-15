@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.widget.R
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.api.RefreshLayout
@@ -14,7 +15,7 @@ import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener
 import kotlinx.android.synthetic.main.layout_refresh_list.view.*
 
 /**
- * title:
+ * title:刷新列表
  * describe:
  *
  * @author memo
@@ -47,7 +48,11 @@ class RefreshList : FrameLayout {
 	
 	fun getRefreshLayout() = mRefreshLayout
 	
-	
+	/**
+	 * 设置刷新加载监听
+	 * @param onRefresh 刷新方法
+	 * @param onLoadMore 加载方法
+	 */
 	fun setOnRefreshAndLoadMoreListener(onRefresh : () -> Unit, onLoadMore : () -> Unit) {
 		mRefreshLayout.setOnRefreshLoadMoreListener(object : OnRefreshLoadMoreListener {
 			override fun onLoadMore(refreshLayout : RefreshLayout) {
@@ -60,6 +65,26 @@ class RefreshList : FrameLayout {
 		})
 	}
 	
+	/**
+	 * 设置刷新方法
+	 * @param onRefresh 刷新方法
+	 */
+	fun setOnRefreshListener(onRefresh : () -> Unit) {
+		setOnRefreshAndLoadMoreListener(onRefresh, {})
+	}
+	
+	/**
+	 * 设置加载方法
+	 * @param onLoadMore 加载方法
+	 */
+	fun setOnLoadMoreListener(onLoadMore : () -> Unit) {
+		setOnRefreshAndLoadMoreListener({}, onLoadMore)
+	}
+	
+	/**
+	 * 停止刷新
+	 * @param hasMore 是否有更多数据
+	 */
 	fun finish(hasMore : Boolean = true) {
 		mRefreshLayout.setEnableLoadMore(hasMore)
 		if (mRefreshLayout.state == RefreshState.Loading) {
@@ -74,7 +99,11 @@ class RefreshList : FrameLayout {
 	
 	fun getRecyclerView() = mRvList
 	
-	fun setAdapter(adapter : RecyclerView.Adapter<*>) {
+	/**
+	 * 设置适配器
+	 * @param adapter 适配器
+	 */
+	fun setAdapter(adapter : RecyclerView.Adapter<ViewHolder>) {
 		mRvList.adapter = adapter
 	}
 	
