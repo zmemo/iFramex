@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.widget.R
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -40,7 +41,10 @@ class RefreshList : FrameLayout {
 		val mRootView = LayoutInflater.from(context).inflate(R.layout.layout_refresh_list, this)
 		mRefreshLayout = mRootView.mRefreshLayout
 		mRvList = mRootView.mRvList
+		// 总项列表
 		mRvList.layoutManager = LinearLayoutManager(context)
+		// 取消刷新条目动画
+		(mRvList.itemAnimator as SimpleItemAnimator).supportsChangeAnimations = false
 	}
 	
 	
@@ -91,11 +95,20 @@ class RefreshList : FrameLayout {
 	}
 	
 	/**
+	 * 是否列表条目高度固定
+	 * @param isFixed 是否高度固定
+	 */
+	fun hasFixedSize(isFixed : Boolean) {
+		mRvList.setHasFixedSize(isFixed)
+	}
+	
+	/**
 	 * 设置适配器
 	 * @param adapter 适配器
 	 */
 	fun setAdapter(adapter : RecyclerView.Adapter<ViewHolder>) {
 		mRvList.adapter = adapter
 	}
+	
 	
 }

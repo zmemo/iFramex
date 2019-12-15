@@ -53,13 +53,16 @@ fun third()
                 c,
                 d)
 
-if内容无论多少 都需要加上{} 包括一行代码也要加
+if内容无论多少 建议加上{} 如果只是简短一行代码可以不添加 return if(num>0) true else false
+
 if传参     if(aa
             || bb
             && cc){
+            。。。
             }
 
            if(){
+            。。。
             return
            }
 
@@ -133,10 +136,10 @@ First	一组变量中的第一个     mFirstName
 Last	一组变量中的最后一个   mLastName
 Next	一组变量中的下一个     mNextName
 Pre	    一组变量中的上一个     mPreName
-Current	一组变量中的当前变量   mCurrentName
+Cur 	一组变量中的当前变量   mCurName
 
 集合添加如下后缀：List、Map、Set、Array
-mBookList mBookMap mBookSet mBookArray 也可以是mBooks
+mBookList mBookMap mBookSet mBookArray 也可以是mFragments mTitles
 
 长度 length size
 下标 index position
@@ -145,24 +148,27 @@ for循环临时变量 i j k m n num index position
 
 结果 result response
 
-正反  unEnable enable
-      unCheck checked
-      unPress pressed
-      unLike liked
-      unCollect collected
+正反
+unEnable    enable
+unCheck     checked
+unPress     pressed
+unLike      liked
+unCollect   collected
 
 
 资源
-activity_main           MainActivity
-fragment_main           MainFragment
-layout_title_view       自定义Layout
-header_main_news        Main界面上的新闻模块的头布局
-dialog_tip              弹窗
-item_news               条目View Adapter中
-color_white             颜色 白
-color_f5f5f5            颜色 f5f5f5
-dp1                     1dp
-px1                     1px
+activity_main                       MainActivity
+fragment_main                       MainFragment
+layout_title_view                   自定义Layout
+header_main_news                    Main界面上的新闻模块的头布局
+dialog_tip                          弹窗
+item_news                           条目View Adapter中
+color_white                         颜色 白
+color_f5f5f5                        颜色 f5f5f5
+text_light text_normal text_dark    颜色字体分类
+dp1                                 1dp
+px1                                 1px
+sp12                                12sp
 
 String常量
 SharedPreferences	SP_
@@ -177,7 +183,7 @@ initXX()	            初始化相关方法，使用 init 为前缀标识，如�
 isXX(), checkXX()	    方法返回值为 boolean 型的请使用 is/check 为前缀标识
 getXX()	                返回某个值的方法，使用 get 为前缀标识
 setXX()	                设置某个属性值
-handleXX()          	对数据进行处理的方法
+handleXX(),disposeXX()  对数据进行处理的方法
 showXX()	            弹出提示框和提示信息，使用 show 为前缀标识
 loadXX()                加载数据
 buildXX()               构造数据或者视图等（一般用于将已有数据组装）
@@ -185,7 +191,7 @@ createXX()              构造数据或者视图等（一般用于创建新的�
 updateXX()	            更新数据或者视图等
 saveXX()                保存数据或者视图等
 insertXX()	            插入数据或者视图等
-addXX()                 添加数据或者视图等（这里需要注意如果有add方法就必须有remove方法）
+addXX()                 添加数据或者视图等（这里需要注意如果有add方法就必须有remove方法,add和set不是乱用的）
 resetXX()	            重置数据或者视图等
 clearXX()	            清除数据或者视图等
 removeXX(), deleteXX()	移除数据或者视图等，如 removeView() removeData()
@@ -239,7 +245,7 @@ Fragment            fragment_main
 
 自定义View           layout_title_view
 
-RecyclerView条目     recycler_item_news
+RecyclerView条目     item_news
 
 Dialog               dialog_login
 
@@ -264,8 +270,18 @@ tools:spanCount="3"
 2、从远端develop-1.0.0拉取本地分支dev-1.0.0，从远端release-1.0.0分支拉取本地分支rel-1.0.0分支
 3、个人在本地dev-1.0.0上进行该版本的代码修改，每完成一部分就拉取推送提交到远端develop-1.0.0分支，并且解决代码冲突
 4、在代码通过测试，发布版本之后，将dev-1.0.0合并到rel-1.0.0，并且解决代码冲突（直接覆盖），将本地rel-1.0.0推送到远端release-1.0.0分支
-5、将rel-1.0.0合并到master，并且解决代码冲突（直接覆盖），将本地master分支推送到远端master分支
+5、将rel-1.0.0合并到master，将本地master分支推送到远端master分支
 6、进入第二阶段开发，删除本地除master分支外的其他分支(可选操作，防止分支过多混乱)，重复1-6
+
+
+---------------------------------------- 默认值 ----------------------------------------
+类型          默认值
+Int             0
+Float           0f
+Double          0.0
+Long            0L
+Boolean         false
+
 
 
 
