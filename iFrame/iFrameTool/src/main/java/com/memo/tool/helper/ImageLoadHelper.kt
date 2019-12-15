@@ -394,8 +394,7 @@ object ImageLoadHelper {
 		width : Int,
 		height : Int,
 		onSuccess : (Bitmap?) -> Unit,
-		onFailure : () -> Unit
-	) {
+		onFailure : () -> Unit) {
 		GlideApp.with(context)
 			.asBitmap()
 			.load(url)

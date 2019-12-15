@@ -5,6 +5,7 @@ base
 |   |---ApiCode                 与后台约定的ErrorCode
 |   |---BaseResponse            与后台预定的基础返回值
 |   |---ExceptionHandler        错误错误信息处理
+|---common                      所有业务模块的通用文件
 |---application
 |   |---BaseApplication         Application基础的Application 每一个模块运行时都可以单独集成
 |---config

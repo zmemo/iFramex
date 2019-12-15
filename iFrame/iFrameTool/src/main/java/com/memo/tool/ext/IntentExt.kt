@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Parcelable
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import java.io.Serializable
 
@@ -58,6 +59,12 @@ inline fun <reified T : Activity> Fragment.startActivity(vararg params: Pair<Str
  */
 inline fun <reified T : Activity> Fragment.startActivityForResult(vararg params: Pair<String, Any?>, requestCode: Int) =
     internalStartActivityForResult(this, T::class.java, params, requestCode)
+
+fun <T : Fragment> T.withArguments(vararg params : Pair<String, Any?>) : T {
+	arguments = bundleOf(*params)
+	return this
+}
+
 
 
 // ---------------------------------------- 一般来说不要使用下面的方法，可以对下面的方法进行一次封装来使用 ----------------------------------------
