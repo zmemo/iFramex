@@ -22,13 +22,13 @@
 			android:id="@+id/mIv"
 			android:layout_width="@dimen/dp100"
 			android:layout_height="@dimen/dp100"
-			android:src="@drawable/iframe" />
+			android:src="@drawable/iframex" />
 		
 		<ImageView
 			android:id="@+id/mIvOther"
 			android:layout_width="@dimen/dp100"
 			android:layout_height="@dimen/dp100"
-			android:src="@drawable/iframe"
+			android:src="@drawable/iframex"
 			android:visibility="gone" />
 	</FrameLayout>
 	

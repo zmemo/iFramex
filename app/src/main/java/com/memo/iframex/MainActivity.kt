@@ -5,9 +5,12 @@ import com.memo.base.manager.init.InitManager
 import com.memo.base.manager.router.RouterManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.tool.ext.onClick
+import com.memo.tool.ext.toast
 import com.memo.tool.ext.toastCancel
 import com.memo.tool.helper.ClickHelper
+import com.memo.tool.helper.MediaHelper
 import com.memo.tool.helper.OOMHelper
+import com.memo.tool.helper.PermissionHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -20,26 +23,31 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : BaseActivity() {
 	
 	override fun bindLayoutRes() : Int = R.layout.activity_main
-
-    @SuppressLint("SetTextI18n")
-    override fun initialize() {
-	    //在启动页进行的初始化操作
-	    InitManager.get().initInSplash()
-        //开启内存监听
-        OOMHelper.startMonitorLowMemory()
-
-        mBtnTest.onClick {
-	        RouterManager.startLauncherTest()
-        }
-        mBtnUi.onClick {
-	        RouterManager.startLauncherUi()
-        }
-    }
-
-    override fun onBackPressed() {
-        if (ClickHelper.isDoubleClickExit) {
-            toastCancel()
-            super.onBackPressed()
-        }
-    }
+	
+	@SuppressLint("SetTextI18n")
+	override fun initialize() {
+		//在启动页进行的初始化操作
+		InitManager.get().initInSplash()
+		//开启内存监听
+		OOMHelper.startMonitorLowMemory()
+		PermissionHelper.requestStorageInSplash(this, {
+			MediaHelper.createLocalDir()
+		}, {
+			toast("拒绝了存储权限")
+		})
+		
+		mBtnTest.onClick {
+			RouterManager.startLauncherTest()
+		}
+		mBtnUi.onClick {
+			RouterManager.startLauncherUi()
+		}
+	}
+	
+	override fun onBackPressed() {
+		if (ClickHelper.isDoubleClickExit) {
+			toastCancel()
+			super.onBackPressed()
+		}
+	}
 }

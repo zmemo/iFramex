@@ -1,4 +1,4 @@
-package com.memo.tool.handler
+package com.memo.tool.lifecycle
 
 import android.os.Handler
 import androidx.lifecycle.Lifecycle
@@ -16,8 +16,9 @@ import androidx.lifecycle.OnLifecycleEvent
  *
  * Talk is cheap, Show me the code.
  */
-class WeakHandler(private val lifecycleOwner : LifecycleOwner, callback : Callback)
+class LifecycleHandler(private val lifecycleOwner : LifecycleOwner, callback : Callback)
 	: Handler(callback), LifecycleObserver {
+	
 	
 	init {
 		lifecycleOwner.lifecycle.addObserver(this)

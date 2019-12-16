@@ -1,5 +1,6 @@
 package com.memo.test.ui.bus
 
+import com.memo.base.entity.event.PostEvent
 import com.memo.base.manager.bus.BusManager
 import com.memo.base.ui.activity.BaseActivity
 import com.memo.test.R
@@ -18,7 +19,7 @@ class BusPostActivity : BaseActivity() {
     override fun initialize() {
         mBtnBus.onClick {
             val message = "这是${javaClass.simpleName}传递的数据"
-            BusManager.get().postMain(message)
+	        BusManager.get().postMain(PostEvent(message))
             finish()
         }
     }

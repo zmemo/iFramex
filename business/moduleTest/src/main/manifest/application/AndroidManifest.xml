@@ -12,9 +12,9 @@
 	<application
 		android:name=".App"
 		android:allowBackup="false"
-		android:icon="@drawable/iframe"
+		android:icon="@drawable/iframex"
 		android:label="@string/app_name"
-		android:roundIcon="@drawable/iframe"
+		android:roundIcon="@drawable/iframex"
 		android:supportsRtl="true"
 		android:theme="@style/iTheme"
 		android:usesCleartextTraffic="true"

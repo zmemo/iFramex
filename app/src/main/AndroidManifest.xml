@@ -12,14 +12,14 @@
 	<application
 		android:name="com.memo.test.App"
 		android:allowBackup="false"
-		android:icon="@drawable/iframe"
-		android:label="@string/app_name"
-		android:roundIcon="@drawable/iframe"
+		android:icon="@drawable/iframex"
+		android:label="@string/iFramex"
+		android:roundIcon="@drawable/iframex"
 		android:supportsRtl="true"
 		android:theme="@style/iTheme"
 		android:usesCleartextTraffic="true"
 		tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
-		tools:replace="android:allowBackup">
+		tools:replace="android:allowBackup,android:label">
 		<activity android:name=".MainActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />

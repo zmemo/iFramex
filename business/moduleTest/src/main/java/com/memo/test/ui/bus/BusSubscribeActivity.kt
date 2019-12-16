@@ -21,7 +21,7 @@ class BusSubscribeActivity : BaseActivity() {
         mBtnBus.onClick { startActivity<BusPostActivity>() }
 
         BusManager.get().subscribeMain(this) {
-            mTvBus.text = it
+	        mTvBus.text = it.message
         }
 
     }

@@ -79,6 +79,7 @@ class InitManager {
 	
 	fun initInSplash() {
 		if (!isInitInSplash) {
+			
 			//初始化刷新框架
 			SmartRefreshLayout.setDefaultRefreshInitializer { _, refreshLayout ->
 				refreshLayout

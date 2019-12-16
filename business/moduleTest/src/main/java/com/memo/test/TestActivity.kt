@@ -91,9 +91,9 @@ class TestActivity : BaseActivity() {
 	private val mBottomGridDialog : BottomGridDialog by lazy {
 		BottomGridDialog(
 			mContext, arrayListOf(
-				BottomGridDialog.GridItem(R.drawable.iframe, "Item 1", 1),
-				BottomGridDialog.GridItem(R.drawable.iframe, "Item 2", 2),
-				BottomGridDialog.GridItem(R.drawable.iframe, "Item 3", 3)
+				BottomGridDialog.GridItem(R.drawable.iframex, "Item 1", 1),
+				BottomGridDialog.GridItem(R.drawable.iframex, "Item 2", 2),
+				BottomGridDialog.GridItem(R.drawable.iframex, "Item 3", 3)
 			)
 		).setOnItemClickListener { _, item ->
 			toast(item.name)

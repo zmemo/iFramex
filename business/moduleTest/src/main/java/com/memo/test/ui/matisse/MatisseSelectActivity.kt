@@ -56,9 +56,9 @@ class MatisseSelectActivity : BaseActivity() {
 			MediaHelper.chooseVideo(mContext, REQUEST_CODE_VIDEO)
 		}
 		mBtnClear.onClick {
-			FileUtils.delete(LocalDir.DIR_COMPRESS)
-			FileUtils.delete(LocalDir.DIR_CROP)
-			FileUtils.delete(LocalDir.DIR_CAPTURE)
+			FileUtils.deleteFilesInDir(LocalDir.DIR_COMPRESS)
+			FileUtils.deleteFilesInDir(LocalDir.DIR_CROP)
+			FileUtils.deleteFilesInDir(LocalDir.DIR_CAPTURE)
 			mNineGridView.clear()
 		}
 	}

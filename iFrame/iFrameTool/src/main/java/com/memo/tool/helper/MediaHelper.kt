@@ -53,15 +53,26 @@ object MediaHelper {
 	 */
 	@JvmStatic
 	fun createLocalDir() {
-		FileUtils.createOrExistsDir(File(LocalDir.DIR_CAPTURE))
-		FileUtils.createOrExistsFile(File(LocalDir.NOMEDIA_CAPTURE))
-		FileUtils.createOrExistsDir(File(LocalDir.DIR_COMPRESS))
-		FileUtils.createOrExistsFile(File(LocalDir.NOMEDIA_COMPRESS))
-		FileUtils.createOrExistsDir(File(LocalDir.DIR_CROP))
-		FileUtils.createOrExistsFile(File(LocalDir.NOMEDIA_CROP))
-		FileUtils.createOrExistsDir(File(LocalDir.DIR_VIDEO))
-		FileUtils.createOrExistsFile(File(LocalDir.NOMEDIA_VIDEO))
-		FileUtils.createOrExistsDir(File(LocalDir.DIR_EXCEPTION_LOG))
+		val dirCapture = FileUtils.createOrExistsDir(LocalDir.DIR_CAPTURE)
+		val noMediaCapture = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_CAPTURE)
+		val dirCompress = FileUtils.createOrExistsDir(LocalDir.DIR_COMPRESS)
+		val noMediaCompress = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_COMPRESS)
+		val dirCrop = FileUtils.createOrExistsDir(LocalDir.DIR_CROP)
+		val noMediaCrop = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_CROP)
+		val dirVideo = FileUtils.createOrExistsDir(LocalDir.DIR_VIDEO)
+		val noMediaVideo = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_VIDEO)
+		val dirExceptionLog = FileUtils.createOrExistsDir(LocalDir.DIR_EXCEPTION_LOG)
+		LogUtils.iTag(
+			"LocalDir",
+			"dirCapture = $dirCapture",
+			"noMediaCapture = $noMediaCapture",
+			"dirCompress = $dirCompress",
+			"noMediaCompress = $noMediaCompress",
+			"dirCrop = $dirCrop",
+			"noMediaCrop = $noMediaCrop",
+			"dirVideo = $dirVideo",
+			"noMediaVideo = $noMediaVideo",
+			"dirExceptionLog = $dirExceptionLog")
 	}
 	
 	/**
@@ -225,6 +236,8 @@ object MediaHelper {
 	 */
 	@JvmStatic
 	fun takePhoto(mActivity : Activity, requestCode : Int) : String? {
+		// 创建压缩图片文件夹
+		createLocalDir()
 		val mediaStoreCompat = MediaStoreCompat(mActivity)
 		mediaStoreCompat.setCaptureStrategy(CaptureStrategy(true, MATISSE_PROVIDER, "capture"))
 		mediaStoreCompat.dispatchCaptureIntent(mActivity, requestCode)
@@ -242,6 +255,8 @@ object MediaHelper {
 	 */
 	@JvmStatic
 	fun cropPhoto(mActivity : Activity, sourcePath : String, requestCode : Int) : String? {
+		// 创建压缩图片文件夹
+		createLocalDir()
 		val sourceUri = Uri.fromFile(File(sourcePath))
 		val outDir = File(LocalDir.DIR_CROP)
 		val outFile = File(outDir, "CROP_${System.currentTimeMillis()}.jpg")
@@ -301,15 +316,14 @@ object MediaHelper {
 		onFailure : (error : Throwable) -> Unit
 	) {
 		// 创建压缩图片文件夹
-		val compressDirPath : String = File(LocalDir.DIR_COMPRESS).absolutePath
-		FileUtils.createOrExistsDir(compressDirPath)
+		createLocalDir()
 		Flowable.just(images)
 			.observeOn(Schedulers.io())
 			.map {
 				Luban.with(mContext)
 					.load(it)
 					.setFocusAlpha(true)
-					.setTargetDir(compressDirPath)
+					.setTargetDir(LocalDir.DIR_COMPRESS)
 					.filter { path ->
 						//如果是gif图不进行压缩
 						!path.toLowerCase(Locale.getDefault()).endsWith(".gif")
@@ -334,11 +348,11 @@ object MediaHelper {
 		onSuccess : (images : List<File>) -> Unit,
 		onFailure : () -> Unit
 	) {
+		// 创建压缩图片文件夹
+		createLocalDir()
 		// 创建锁
 		val successLock = ReentrantLock()
 		val errorLock = ReentrantLock()
-		// 创建压缩图片文件夹
-		createLocalDir()
 		// 存放压缩文件路径的列表
 		val paths = arrayListOf<File>()
 		// 判断是否错误发生了

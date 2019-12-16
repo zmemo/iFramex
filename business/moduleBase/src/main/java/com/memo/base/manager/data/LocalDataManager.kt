@@ -5,7 +5,7 @@ import com.memo.base.entity.model.User
 import com.tencent.mmkv.MMKV
 
 /**
- * title:
+ * title:本地数据管理
  * describe:
  *
  * @author zhou

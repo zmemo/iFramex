@@ -1,6 +1,6 @@
 class Config {
-    static applicationId = "com.memo.iframe"
-    static appName = "iFrame"
+    static applicationId = "com.memo.iframex"
+    static appName = "iFramex"
     static compileSdkVersion = 28
     static minSdkVersion = 19
     static targetSdkVersion = 28
