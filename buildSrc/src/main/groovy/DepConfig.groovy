@@ -55,6 +55,7 @@ class DepConfig {
     static autoDispose = "com.uber.autodispose:autodispose-android:$autoDisposeVersion"
     static autoDisposeArch = "com.uber.autodispose:autodispose-android-archcomponents:$autoDisposeVersion"
     static glide = "com.github.bumptech.glide:glide:$glideVersion"
+    static glideOkHttp = "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
     static arouter = "com.alibaba:arouter-api:1.5.0"
     static mmkv = "com.tencent:mmkv:1.0.22"
     static preview = "com.ycjiang:ImagePreview:2.2.5"

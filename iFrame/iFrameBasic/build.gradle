@@ -52,6 +52,7 @@ dependencies {
     api DepConfig.retrofitRxJavaAdapter
     api DepConfig.retrofitUrlManager
     api DepConfig.glide
+    api DepConfig.glideOkHttp
     api DepConfig.arouter
     api DepConfig.mmkv
     api DepConfig.preview
