@@ -39,7 +39,6 @@ object ImageLoadHelper {
 	fun loadImage(context : Context, url : Any, image : ImageView) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.centerCrop()
 			.into(image)
 	}
@@ -54,7 +53,6 @@ object ImageLoadHelper {
 	fun loadNoCacheImage(context : Context, url : Any, image : ImageView) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.skipMemoryCache(true)
 			.diskCacheStrategy(DiskCacheStrategy.NONE)
 			.centerCrop()
@@ -71,7 +69,6 @@ object ImageLoadHelper {
 	fun loadNoMemoryImage(context : Context, url : Any, imageView : ImageView) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.skipMemoryCache(true)
 			.centerCrop()
 			.into(imageView)
@@ -87,7 +84,6 @@ object ImageLoadHelper {
 	fun loadNoDiskImage(context : Context, url : Any, imageView : ImageView) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.diskCacheStrategy(DiskCacheStrategy.NONE)
 			.centerCrop()
 			.into(imageView)
@@ -111,7 +107,6 @@ object ImageLoadHelper {
 	) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.placeholder(holderRes)
 			.error(errorRes)
 			.centerCrop()
@@ -130,11 +125,11 @@ object ImageLoadHelper {
 		context : Context,
 		url : Any,
 		@DrawableRes errorRes : Int,
-		imageView : ImageView
+		imageView : ImageView,
+		gifEnable : Boolean = false
 	) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.error(errorRes)
 			.centerCrop()
 			.into(imageView)
@@ -162,7 +157,6 @@ object ImageLoadHelper {
 	) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.placeholder(holderRes)
 			.error(errorRes)
 			.centerCrop()
@@ -190,7 +184,6 @@ object ImageLoadHelper {
 	) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.placeholder(holderRes)
 			.error(errorRes)
 			.transform(CenterCrop(), RoundedCorners(radius))
@@ -213,7 +206,6 @@ object ImageLoadHelper {
 	) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.transform(CenterCrop(), RoundedCorners(radius))
 			.into(imageView)
 	}
@@ -238,7 +230,6 @@ object ImageLoadHelper {
 	) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.thumbnail(thumbnail)
 			.error(errorRes)
 			.transform(CenterCrop(), RoundedCorners(radius))
@@ -263,7 +254,6 @@ object ImageLoadHelper {
 	) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.placeholder(holderRes)
 			.error(errorRes)
 			.transform(CenterCrop(), CircleCrop())
@@ -290,7 +280,6 @@ object ImageLoadHelper {
 	) {
 		GlideApp.with(context)
 			.load(url)
-			.dontAnimate()
 			.placeholder(holderRes)
 			.error(errorRes)
 			.override(size)
@@ -320,7 +309,6 @@ object ImageLoadHelper {
 				.with(context)
 				.downloadOnly()
 				.load(url)
-				.dontAnimate()
 				.submit(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
 				.get()
 		}, onSuccess, onFailure)
@@ -344,7 +332,6 @@ object ImageLoadHelper {
 		GlideApp.with(context)
 			.asBitmap()
 			.load(url)
-			.dontAnimate()
 			.centerCrop()
 			.into(object : SimpleGlideTarget() {
 				override fun onResourceReady(resource : Bitmap, transition : Transition<in Bitmap>?) {
@@ -379,7 +366,6 @@ object ImageLoadHelper {
 		GlideApp.with(context)
 			.asBitmap()
 			.load(url)
-			.dontAnimate()
 			.centerCrop()
 			.into(object : SimpleGlideTarget(width, height) {
 				override fun onResourceReady(resource : Bitmap, transition : Transition<in Bitmap>?) {
@@ -413,7 +399,6 @@ object ImageLoadHelper {
 		GlideApp.with(context)
 			.asBitmap()
 			.load(url)
-			.dontAnimate()
 			.transform(CenterCrop(), CircleCrop())
 			.into(object : SimpleGlideTarget(width, height) {
 				override fun onResourceReady(resource : Bitmap, transition : Transition<in Bitmap>?) {

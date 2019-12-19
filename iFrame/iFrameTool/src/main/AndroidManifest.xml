@@ -25,7 +25,7 @@
 		<activity
 			android:name="com.yalantis.ucrop.UCropActivity"
 			android:screenOrientation="portrait"
-			android:theme="@style/iTheme" />
+			android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
 		
 		<provider
 			android:name=".photo.MatisseFileProvider"
