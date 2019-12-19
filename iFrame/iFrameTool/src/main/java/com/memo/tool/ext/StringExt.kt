@@ -1,6 +1,8 @@
 package com.memo.tool.ext
 
 import com.blankj.utilcode.util.EncryptUtils
+import java.math.RoundingMode
+import java.text.DecimalFormat
 import java.util.*
 
 /**
@@ -66,8 +68,17 @@ fun String.lastChar() = this[length - 1]
 fun String.firstChar() = this[0]
 
 /**
- * 判断是否是空串 并且返回
+ * 保留两位小数
  */
-fun String?.checkIfNull(returnStr : String) : String = if (this.isNull()) returnStr else this!!
+fun Double.keep2Decimal() : String {
+	val df = DecimalFormat()
+	df.maximumFractionDigits = 2
+	df.groupingSize = 0
+	df.roundingMode = RoundingMode.FLOOR
+	val style = "###0.00" // 定义要显示的数字的格式
+	df.applyPattern(style)
+	return df.format(this)
+}
+
 
 

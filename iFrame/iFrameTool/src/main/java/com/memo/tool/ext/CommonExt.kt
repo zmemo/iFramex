@@ -59,20 +59,6 @@ fun SmartRefreshLayout.finish(hasMore : Boolean) {
 		}
 	}
 }
-
-//---------------------------------------- List ----------------------------------------
-fun Collection<Any>.convert2String() : String {
-	val builder = StringBuilder()
-	this.forEachIndexed { index, i ->
-		if (index == 0) {
-			builder.append(i.toString())
-		} else {
-			builder.append(",").append(i.toString())
-		}
-	}
-	return builder.toString()
-}
-
 //---------------------------------------- Int ----------------------------------------
 
 /**
@@ -95,4 +81,16 @@ fun copyToClipboard(content : String) {
 	val plainText = ClipData.newPlainText("Copy", content)
 	val clipboardManager = ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)
 	clipboardManager?.primaryClip = plainText
+}
+
+/**
+ * 从粘贴板上获取复制数据
+ */
+fun getFromClipboard() : String {
+	val clipData = ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)?.primaryClip
+	return if (clipData != null && clipData.itemCount > 0) {
+		clipData.getItemAt(0).text.toString()
+	} else {
+		""
+	}
 }
