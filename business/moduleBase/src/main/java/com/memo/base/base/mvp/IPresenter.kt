@@ -1,4 +1,4 @@
-package com.memo.base.ui.mvp
+package com.memo.base.base.mvp
 
 import androidx.lifecycle.LifecycleOwner
 

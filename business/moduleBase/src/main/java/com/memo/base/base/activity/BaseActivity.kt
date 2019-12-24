@@ -1,4 +1,4 @@
-package com.memo.base.ui.activity
+package com.memo.base.base.activity
 
 import android.graphics.Color
 import android.os.Bundle

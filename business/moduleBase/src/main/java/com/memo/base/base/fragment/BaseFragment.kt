@@ -1,4 +1,4 @@
-package com.memo.base.ui.fragment
+package com.memo.base.base.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.tool.helper.OOMHelper
 
 /**

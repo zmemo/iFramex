@@ -1,6 +1,6 @@
 package com.memo.test.ui.share
 
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 
 class ShareToActivity : BaseActivity() {

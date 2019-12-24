@@ -1,6 +1,6 @@
 package com.memo.test.ui.recyclerview
 
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.ui.recyclerview.drag.DragRvActivity
 import com.memo.test.ui.recyclerview.expand.ExpandActivity

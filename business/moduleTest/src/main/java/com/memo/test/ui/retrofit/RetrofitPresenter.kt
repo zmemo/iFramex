@@ -2,7 +2,7 @@ package com.memo.test.ui.retrofit
 
 import android.annotation.SuppressLint
 import com.blankj.utilcode.util.LogUtils
-import com.memo.base.ui.mvp.BasePresenter
+import com.memo.base.base.mvp.BasePresenter
 import com.memo.tool.ext.io2MainLifecycle
 
 /**

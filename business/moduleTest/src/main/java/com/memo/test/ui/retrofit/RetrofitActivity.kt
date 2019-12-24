@@ -1,7 +1,7 @@
 package com.memo.test.ui.retrofit
 
 import android.annotation.SuppressLint
-import com.memo.base.ui.activity.BaseMvpActivity
+import com.memo.base.base.activity.BaseMvpActivity
 import com.memo.test.R
 import com.memo.test.entity.Wan
 import com.memo.test.entity.ZhiHuNews

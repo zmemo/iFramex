@@ -1,7 +1,7 @@
 package com.memo.test.ui.recyclerview.multi
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.entity.Multi
 import com.memo.test.entity.MultiEntity

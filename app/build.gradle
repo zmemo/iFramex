@@ -21,19 +21,19 @@ android {
         }
     }
 
-    signingConfigs {
-        sign {
-            keyAlias SignKeyAlias
-            keyPassword SignKeyPassword
-            storeFile file(SignStoreFile)
-            storePassword SignStorePassword
-        }
-    }
+//    signingConfigs {
+//        sign {
+//            keyAlias SignKeyAlias
+//            keyPassword SignKeyPassword
+//            storeFile file(SignStoreFile)
+//            storePassword SignStorePassword
+//        }
+//    }
 
     buildTypes {
         debug {
-            minifyEnabled true
-            signingConfig signingConfigs.sign
+            minifyEnabled false
+            //signingConfig signingConfigs.sign
             applicationIdSuffix '.debug'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             android.applicationVariants.all { variant ->
@@ -47,7 +47,7 @@ android {
             minifyEnabled true
             zipAlignEnabled true
             shrinkResources true
-            signingConfig signingConfigs.sign
+            //signingConfig signingConfigs.sign
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             android.applicationVariants.all { variant ->
                 variant.outputs.all {

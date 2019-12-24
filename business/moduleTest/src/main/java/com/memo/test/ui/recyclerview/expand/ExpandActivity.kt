@@ -2,7 +2,7 @@ package com.memo.test.ui.recyclerview.expand
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.entity.MultiItemEntity
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.entity.LevelContent
 import com.memo.test.entity.LevelTitle

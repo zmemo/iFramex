@@ -5,7 +5,7 @@ import android.content.Intent
 import cn.bingoogolapple.qrcode.core.QRCodeView
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.memo.base.manager.router.RouterPath
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.tool.ext.finishActivityWithResult
 import com.memo.tool.ext.startActivityForResult
 import com.memo.tool.helper.MediaHelper

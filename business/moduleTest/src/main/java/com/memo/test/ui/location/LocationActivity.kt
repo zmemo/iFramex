@@ -2,7 +2,7 @@ package com.memo.test.ui.location
 
 import android.os.Bundle
 import com.blankj.utilcode.util.LogUtils
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.map.infowindow.InfoWindowOverlay
 import com.memo.map.location.LocationHelper
 import com.memo.test.R

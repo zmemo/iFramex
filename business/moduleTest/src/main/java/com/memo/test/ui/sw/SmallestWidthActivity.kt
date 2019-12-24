@@ -3,7 +3,7 @@ package com.memo.test.ui.sw
 import android.annotation.SuppressLint
 import android.util.DisplayMetrics
 import com.blankj.utilcode.util.ScreenUtils
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.ext.dimen
 import com.memo.tool.ext.height

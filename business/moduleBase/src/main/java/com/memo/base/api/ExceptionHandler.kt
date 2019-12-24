@@ -7,7 +7,6 @@ import com.google.gson.JsonParseException
 import com.memo.base.config.config.Config
 import com.memo.tool.dir.LocalDir
 import com.memo.tool.helper.IOHelper
-import com.memo.tool.http.exception.ApiException
 import org.json.JSONException
 import retrofit2.HttpException
 import java.io.File
@@ -46,7 +45,10 @@ object ExceptionHandler {
             is ConnectException,
             is SocketException -> {
                 // 连接错误
-                ApiException(ApiCode.ServerErrorCode, "无法连接服务器")
+                ApiException(
+                    ApiCode.ServerErrorCode,
+                    "无法连接服务器"
+                )
             }
             is UnknownHostException -> {
                 // 网络错误
@@ -54,7 +56,10 @@ object ExceptionHandler {
             }
             else -> {
                 // 位置错误
-                ApiException(ApiCode.UnknownErrorCode, "发生未知错误")
+                ApiException(
+                    ApiCode.UnknownErrorCode,
+                    "发生未知错误"
+                )
             }
         }
     }

@@ -1,7 +1,7 @@
-package com.memo.base.ui.activity
+package com.memo.base.base.activity
 
-import com.memo.base.ui.mvp.IPresenter
-import com.memo.base.ui.mvp.IView
+import com.memo.base.base.mvp.IPresenter
+import com.memo.base.base.mvp.IView
 
 
 /**

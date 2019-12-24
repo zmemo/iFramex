@@ -1,7 +1,7 @@
 package com.memo.test.ui.notification
 
 import com.blankj.utilcode.util.LogUtils
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.ui.config.TestConfig
 import com.memo.tool.ext.io2MainLifecycle

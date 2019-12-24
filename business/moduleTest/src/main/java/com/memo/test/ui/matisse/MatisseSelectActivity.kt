@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import com.blankj.utilcode.util.FileUtils
 import com.blankj.utilcode.util.LogUtils
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.dir.LocalDir
 import com.memo.tool.ext.onClick

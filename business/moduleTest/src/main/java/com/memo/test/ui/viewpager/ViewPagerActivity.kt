@@ -8,7 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.adapter.BaseViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_view_pager.*

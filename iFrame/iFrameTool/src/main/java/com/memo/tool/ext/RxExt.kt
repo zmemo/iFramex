@@ -49,7 +49,7 @@ fun <T> Observable<T>.io2MainLifecycle(owner : LifecycleOwner) : ObservableSubsc
  */
 fun delay(lifecycleOwner : LifecycleOwner, milliseconds : Long, onNext : (second : Long) -> Unit) {
 	Observable.timer(milliseconds, TimeUnit.MILLISECONDS)
-		.bindLifecycle(lifecycleOwner)
+		.io2MainLifecycle(lifecycleOwner)
 		.subscribe(onNext)
 }
 

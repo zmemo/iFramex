@@ -17,10 +17,7 @@
 		android:id="@+id/mRefreshLayout"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent"
-		app:srlEnableAutoLoadMore="false"
-		app:srlEnableLoadMore="false"
-		app:srlEnableOverScrollBounce="true"
-		app:srlEnableOverScrollDrag="true">
+		app:srlEnableLoadMore="false">
 		
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/mRvList"

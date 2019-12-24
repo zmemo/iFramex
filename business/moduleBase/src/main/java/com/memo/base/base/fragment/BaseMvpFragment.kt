@@ -1,7 +1,7 @@
-package com.memo.base.ui.fragment
+package com.memo.base.base.fragment
 
-import com.memo.base.ui.mvp.IPresenter
-import com.memo.base.ui.mvp.IView
+import com.memo.base.base.mvp.IPresenter
+import com.memo.base.base.mvp.IView
 
 /**
  * title:基础的MVP模式Fragment

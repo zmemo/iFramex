@@ -2,7 +2,7 @@ package com.memo.test.ui.download
 
 import android.os.Environment
 import com.blankj.utilcode.util.AppUtils
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.ui.api.Api
 import com.memo.tool.ext.onClick

@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.core.view.children
 import androidx.recyclerview.widget.GridLayoutManager
 import com.blankj.utilcode.util.LogUtils
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.ext.color
 import com.memo.tool.ext.dimen

@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Intent
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.memo.base.manager.router.RouterPath
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.tool.ext.onClick
 import com.memo.tool.ext.toast
 import com.memo.tool.helper.PermissionHelper

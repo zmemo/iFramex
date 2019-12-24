@@ -1,10 +1,7 @@
-package com.memo.base.manager.retrofit
+package com.memo.base.api
 
-import com.memo.base.api.BaseResponse
-import com.memo.base.api.ExceptionHandler
-import com.memo.base.ui.mvp.IView
+import com.memo.base.base.mvp.IView
 import com.memo.tool.ext.toastCenter
-import com.memo.tool.http.exception.ApiException
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable

@@ -2,7 +2,7 @@ package com.memo.test.ui.recyclerview.grid
 
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.entity.GridMulti
 import com.memo.test.entity.MultiEntity

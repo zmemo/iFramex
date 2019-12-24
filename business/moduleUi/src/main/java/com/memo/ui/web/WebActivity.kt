@@ -6,7 +6,7 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.LogUtils
 import com.just.agentweb.AgentWeb
 import com.memo.base.manager.router.RouterPath
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.tool.ext.gone
 import com.memo.tool.ext.startActivity
 import com.memo.tool.helper.WebHelper

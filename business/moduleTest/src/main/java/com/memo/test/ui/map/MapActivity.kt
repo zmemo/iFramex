@@ -1,7 +1,7 @@
 package com.memo.test.ui.map
 
 import com.memo.base.manager.router.RouterManager
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.ext.onClick
 import com.memo.tool.helper.NavigationHelper

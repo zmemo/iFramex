@@ -2,7 +2,7 @@ package com.memo.test.ui.ninegridview
 
 import androidx.recyclerview.widget.GridLayoutManager
 import com.blankj.utilcode.util.LogUtils
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.test.tool.DataFactory
 import com.memo.tool.preview.ImagePreviewHelper

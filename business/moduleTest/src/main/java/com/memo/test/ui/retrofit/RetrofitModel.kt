@@ -1,6 +1,6 @@
 package com.memo.test.ui.retrofit
 
-import com.memo.base.ui.mvp.IModel
+import com.memo.base.base.mvp.IModel
 import com.memo.test.ui.api.RetrofitClient
 
 /**

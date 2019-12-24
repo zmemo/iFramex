@@ -1,6 +1,6 @@
 package com.memo.test.ui.bottom
 
-import com.memo.base.ui.activity.BaseActivity
+import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.ext.toast
 import kotlinx.android.synthetic.main.activity_bottom.*

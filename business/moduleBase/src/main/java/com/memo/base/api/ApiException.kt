@@ -1,4 +1,4 @@
-package com.memo.tool.http.exception
+package com.memo.base.api
 
 /**
  * title: 网络请求错误
