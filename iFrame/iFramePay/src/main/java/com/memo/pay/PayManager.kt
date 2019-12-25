@@ -27,7 +27,7 @@ class PayManager {
         fun get() = Holder.instance
     }
 
-    fun getListener() = mListener
+    fun getListener(): OnPayResultListener? = mListener
 
     /**
      * 设置全局监听
