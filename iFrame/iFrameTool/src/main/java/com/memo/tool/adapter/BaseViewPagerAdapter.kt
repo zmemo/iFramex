@@ -12,8 +12,9 @@ import com.memo.tool.ext.onClick
  * @author zhou
  * @date 2018/8/1 下午7:07
  */
-class BaseViewPagerAdapter<T : View>(private var mData: List<T> = listOf()) : PagerAdapter() {
+class BaseViewPagerAdapter<T : View> : PagerAdapter() {
 
+    private var mData: List<T> = arrayListOf()
     private var mListener: OnItemClickListener? = null
 
     fun setData(list: List<T>) {
