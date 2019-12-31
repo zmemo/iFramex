@@ -39,6 +39,8 @@ fun third()
 
 代码长度不要太长 最多不能超过屏幕的2/3
 
+页面跳转 使用AActivity.start(context,value1,value2) 来代替Intent跳转
+
 换行符    int result = aaaaaaaaaaaa
                     + bbbbbbbbbbbb
                     - cccccccccccc

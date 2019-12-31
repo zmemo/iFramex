@@ -8,14 +8,14 @@
 	
 	<application>
 		<activity
-			android:name="com.memo.pay.activity.WXPayEntryActivity"
+			android:name="com.memo.pay.wechat.WXPayEntryActivity"
 			android:configChanges="orientation|keyboardHidden|navigation|screenSize"
 			android:launchMode="singleTop"
 			android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 		<activity-alias
 			android:name=".wxapi.WXPayEntryActivity"
 			android:exported="true"
-			android:targetActivity="com.memo.pay.activity.WXPayEntryActivity" />
+			android:targetActivity="com.memo.pay.wechat.WXPayEntryActivity" />
 	</application>
 
 </manifest>

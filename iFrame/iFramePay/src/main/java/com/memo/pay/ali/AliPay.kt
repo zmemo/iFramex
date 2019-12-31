@@ -5,9 +5,8 @@ import android.os.Handler
 import android.os.Looper
 import android.os.Message
 import android.text.TextUtils
-import com.alipay.sdk.app.EnvUtils
 import com.alipay.sdk.app.PayTask
-import com.memo.pay.listener.OnPayResultListener
+import com.memo.pay.PayManager
 
 /**
  * title:支付宝支付
@@ -26,11 +25,9 @@ internal class AliPay {
     }
 
     companion object {
-        private val ALI_PAY_WHAT = 1
+        private const val ALI_PAY_WHAT = 1
         fun get() = Holder.instance
     }
-
-    private var mListener: OnPayResultListener? = null
 
     private val mHandler = object : Handler(Looper.getMainLooper()) {
         override fun handleMessage(msg: Message) {
@@ -38,9 +35,9 @@ internal class AliPay {
                 @Suppress("UNCHECKED_CAST")
                 val result = PayResult(msg.obj as Map<String, String>)
                 if (result.isPaySuccess()) {
-                    mListener?.onSuccess()
+                    PayManager.get().getListener()?.onSuccess()
                 } else {
-                    mListener?.onFailure()
+                    PayManager.get().getListener()?.onFailure()
                 }
             }
         }

@@ -1,6 +1,7 @@
 package com.memo.pay
 
 import android.app.Activity
+import android.content.Context
 import com.memo.pay.ali.AliPay
 import com.memo.pay.listener.OnPayResultListener
 import com.memo.pay.wechat.WeChatPay
@@ -48,9 +49,10 @@ class PayManager {
      * 开启微信支付
      */
     fun startWeChatPay(
+        context: Context,
         appId: String, partnerId: String, prepayId: String,
         nonceStr: String, timeStamp: String, sign: String
     ) {
-        WeChatPay.get().pay(appId, partnerId, prepayId, nonceStr, timeStamp, sign)
+        WeChatPay.get().pay(context, appId, partnerId, prepayId, nonceStr, timeStamp, sign)
     }
 }

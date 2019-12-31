@@ -1,7 +1,6 @@
 package com.memo.pay.wechat
 
-import com.memo.tool.app.BaseApp
-import com.memo.tool.ext.toast
+import android.content.Context
 import com.tencent.mm.opensdk.constants.Build
 import com.tencent.mm.opensdk.modelpay.PayReq
 import com.tencent.mm.opensdk.openapi.IWXAPI
@@ -30,11 +29,12 @@ internal class WeChatPay {
     private var mWxApi: IWXAPI? = null
 
     fun pay(
+        context: Context,
         appId: String, partnerId: String, prepayId: String,
         nonceStr: String, timeStamp: String, sign: String
     ) {
         if (mWxApi == null) {
-            mWxApi = WXAPIFactory.createWXAPI(BaseApp.app.applicationContext, null)
+            mWxApi = WXAPIFactory.createWXAPI(context, null)
             mWxApi!!.registerApp(appId)
         }
         if (mWxApi!!.isWXAppInstalled && mWxApi!!.wxAppSupportAPI >= Build.PAY_SUPPORTED_SDK_INT) {
@@ -47,8 +47,6 @@ internal class WeChatPay {
             request.timeStamp = timeStamp
             request.sign = sign
             mWxApi!!.sendReq(request)
-        } else {
-	        toast("请安装微信或升级微信版本")
         }
     }
 

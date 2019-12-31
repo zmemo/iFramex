@@ -1,11 +1,10 @@
-package com.memo.pay.activity
+package com.memo.pay.wechat
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
-import androidx.appcompat.app.AppCompatActivity
 import com.memo.pay.PayManager
-import com.memo.pay.wechat.WeChatPay
 import com.tencent.mm.opensdk.constants.ConstantsAPI
 import com.tencent.mm.opensdk.modelbase.BaseReq
 import com.tencent.mm.opensdk.modelbase.BaseResp
@@ -21,10 +20,10 @@ import com.tencent.mm.opensdk.openapi.IWXAPIEventHandler
  *
  * Talk is cheap, Show me the code.
  */
-class WXPayEntryActivity : AppCompatActivity(), IWXAPIEventHandler {
+class WXPayEntryActivity : Activity(), IWXAPIEventHandler {
 
-    private val PaySuccess = 0
-    private val PayError = -1
+    private val PAY_SUCCESS = 0
+    private val PAY_FAILURE = -1
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
@@ -40,9 +39,9 @@ class WXPayEntryActivity : AppCompatActivity(), IWXAPIEventHandler {
     override fun onResp(resp: BaseResp?) {
         resp?.let {
             if (it.type == ConstantsAPI.COMMAND_PAY_BY_WX) {
-                if (it.errCode == PaySuccess) {
+                if (it.errCode == PAY_SUCCESS) {
                     PayManager.get().getListener()?.onSuccess()
-                } else if (it.errCode == PayError) {
+                } else if (it.errCode == PAY_FAILURE) {
                     PayManager.get().getListener()?.onFailure()
                 }
             }
