@@ -14,6 +14,6 @@ open class BaseApplication : BaseApp() {
 
     override fun onCreate() {
         super.onCreate()
-        InitManager.get().initInApp(app)
+        InitManager.get().initInApp()
     }
 }

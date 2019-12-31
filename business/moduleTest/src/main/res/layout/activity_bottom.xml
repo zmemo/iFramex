@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	tools:context=".ui.bottom.BottomActivity">
-	
-	<com.memo.widget.titleview.TitleView
-		android:id="@+id/mTitleView"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toTopOf="parent"
-		app:title_title_text="底部导航" />
-	
-	<FrameLayout
-		android:layout_width="match_parent"
-		android:layout_height="0dp"
-		app:layout_constraintBottom_toTopOf="@id/mBottomBar"
-		app:layout_constraintTop_toBottomOf="@id/mTitleView" />
-	
-	<com.memo.widget.bottomnavigationbar.BottomNavigationViewEx
-		android:id="@+id/mBottomBar"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:background="@color/color_white"
-		app:itemTextColor="@color/selector_color_bottom"
-		app:labelVisibilityMode="labeled"
-		app:layout_constraintBottom_toBottomOf="parent"
-		app:menu="@menu/menu_bottom" />
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.bottom.BottomActivity">
+
+    <com.memo.widget.titleview.TitleView
+        android:id="@+id/mTitleView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title_title_text="底部导航" />
+
+    <FrameLayout
+        android:id="@+id/mFlContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/mBottomBar"
+        app:layout_constraintTop_toBottomOf="@id/mTitleView" />
+
+
+    <com.memo.widget.bottomnavigationbar.BottomNavigationViewEx
+        android:id="@+id/mBottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        app:itemTextColor="@color/selector_color_bottom"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/menu_bottom" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

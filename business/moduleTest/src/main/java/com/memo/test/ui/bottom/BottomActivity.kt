@@ -10,14 +10,13 @@ class BottomActivity : BaseActivity() {
 
 
     /*** 绑定布局id ***/
-    override fun bindLayoutRes() : Int = R.layout.activity_bottom
+    override fun bindLayoutRes(): Int = R.layout.activity_bottom
 
     /*** 进行初始化操作 ***/
     override fun initialize() {
         mBottomBar.setOnItemChangeListener { menuItem, position ->
             toast("下标 = $position 标题 = ${menuItem.title}")
         }
-
     }
 
 }

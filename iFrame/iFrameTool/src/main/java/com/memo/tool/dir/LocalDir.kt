@@ -23,8 +23,8 @@ object LocalDir {
 	
 	val DIR_CROP : String = "$ROOT_PATH/crop"
 	val NOMEDIA_CROP : String = "$DIR_CROP/.nomedia"
-	
-	val DIR_VIDEO : String = "ROOT_PATH/video"
+
+	val DIR_VIDEO: String = "$ROOT_PATH/video"
 	val NOMEDIA_VIDEO : String = "$DIR_VIDEO/.nomedia"
 	
 	val DIR_EXCEPTION_LOG : String = "$ROOT_PATH/Log"

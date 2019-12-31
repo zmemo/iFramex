@@ -73,12 +73,4 @@ class UMengManager {
         return this
     }
 
-    /**
-     * 注册支付宝
-     * @param appId 例子：2015111700822536
-     */
-    fun registerAliPay(appId: String): UMengManager {
-        PlatformConfig.setAlipay(appId)
-        return this
-    }
 }
