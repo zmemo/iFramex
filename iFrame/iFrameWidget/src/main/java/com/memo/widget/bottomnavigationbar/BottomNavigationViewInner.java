@@ -451,7 +451,6 @@ public class BottomNavigationViewInner extends BottomNavigationView {
             super.setOnNavigationItemSelectedListener(listener);
             return;
         }
-
         mMyOnNavigationItemSelectedListener.setOnNavigationItemSelectedListener(listener);
     }
 
@@ -865,8 +864,6 @@ public class BottomNavigationViewInner extends BottomNavigationView {
 
     /**
      * 条目点击更换监听
-     *
-     * @param listener 监听
      */
     public void setOnItemChangeListener(final OnItemChangeListener listener) {
         lastPosition = getCurrentItem();
@@ -876,12 +873,26 @@ public class BottomNavigationViewInner extends BottomNavigationView {
                 int position = getMenuItemPosition(menuItem);
                 if (lastPosition != position) {
                     lastPosition = position;
-                    listener.onItemChange(menuItem, position);
+                    listener.onItemChanged(menuItem, position);
                 }
                 return true;
             }
         });
     }
+
+    /**
+     * 条目点击事件
+     */
+    public void setOnItemClickListener(final OnItemClickListener listener) {
+        super.setOnNavigationItemSelectedListener(new OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                listener.onItemClicked(menuItem, getMenuItemPosition(menuItem));
+                return true;
+            }
+        });
+    }
+
 
     /**
      * A {@link ViewPager.OnPageChangeListener} class which contains the

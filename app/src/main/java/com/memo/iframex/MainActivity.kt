@@ -1,10 +1,9 @@
 package com.memo.iframex
 
 import android.annotation.SuppressLint
+import com.memo.base.base.activity.BaseActivity
 import com.memo.base.manager.init.InitManager
 import com.memo.base.manager.router.RouterManager
-import com.memo.base.base.activity.BaseActivity
-import com.memo.pay.PayManager
 import com.memo.tool.ext.onClick
 import com.memo.tool.ext.toast
 import com.memo.tool.ext.toastCancel

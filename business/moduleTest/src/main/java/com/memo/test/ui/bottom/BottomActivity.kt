@@ -1,8 +1,10 @@
 package com.memo.test.ui.bottom
 
+import android.view.MenuItem
 import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
-import com.memo.tool.ext.toast
+import com.memo.tool.ext.toastCenter
+import com.memo.widget.bottomnavigationbar.OnItemChangeListener
 import kotlinx.android.synthetic.main.activity_bottom.*
 
 
@@ -14,8 +16,14 @@ class BottomActivity : BaseActivity() {
 
     /*** 进行初始化操作 ***/
     override fun initialize() {
-        mBottomBar.setOnItemChangeListener { menuItem, position ->
-            toast("下标 = $position 标题 = ${menuItem.title}")
+        mBottomBar.setOnItemChangeListener(object : OnItemChangeListener {
+            override fun onItemChanged(menu: MenuItem, position: Int) {
+                toastCenter("下标 = $position 标题 = ${menu.title}")
+            }
+        })
+
+        mTabBar.setOnTabChangedListener {
+            toastCenter("下标 = $it")
         }
     }
 

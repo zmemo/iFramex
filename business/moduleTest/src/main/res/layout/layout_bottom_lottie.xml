@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.airbnb.lottie.LottieAnimationView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mLottie"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp50"
+    android:background="@color/color_F5F5F5"
+    android:scaleType="centerCrop"
+    app:lottie_fileName="bottom_tab.json"
+    app:lottie_loop="false" />

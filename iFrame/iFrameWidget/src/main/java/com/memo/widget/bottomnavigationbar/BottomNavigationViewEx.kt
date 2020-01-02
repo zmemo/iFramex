@@ -10,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationItemView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 /**
@@ -74,23 +73,6 @@ class BottomNavigationViewEx : BottomNavigationViewInner {
             return super.setCurrentItem(index)
         } catch (e: Exception) {
             return this
-        }
-
-    }
-
-    override fun getOnNavigationItemSelectedListener(): BottomNavigationView.OnNavigationItemSelectedListener? {
-        try {
-            return super.getOnNavigationItemSelectedListener()
-        } catch (e: Exception) {
-            return null
-        }
-
-    }
-
-    override fun setOnNavigationItemSelectedListener(listener: BottomNavigationView.OnNavigationItemSelectedListener?) {
-        try {
-            super.setOnNavigationItemSelectedListener(listener)
-        } catch (ignored: Exception) {
         }
 
     }
