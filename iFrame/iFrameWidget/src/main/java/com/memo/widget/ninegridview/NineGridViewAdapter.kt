@@ -3,7 +3,6 @@ package com.memo.widget.ninegridview
 import androidx.annotation.DrawableRes
 import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
 import com.memo.tool.adapter.recyclerview.ViewHolder
-import com.memo.tool.ext.isHttpUrl
 import com.memo.tool.helper.ImageLoadHelper
 import com.memo.widget.R
 
@@ -20,11 +19,7 @@ class NineGridViewAdapter : BaseRecyclerAdapter<Any>(R.layout.item_nine_grid_vie
     private var mDelDrawableRes: Int = R.drawable.ic_pic_del
 
     override fun converts(helper: ViewHolder, item: Any) {
-        if (item.toString().isHttpUrl()) {
-            ImageLoadHelper.loadImage(mContext, item, helper.getView(R.id.mIvPic))
-        } else {
-            ImageLoadHelper.loadNoDiskImage(mContext, item, helper.getView(R.id.mIvPic))
-        }
+        ImageLoadHelper.loadImage(mContext, item, helper.getView(R.id.mIvPic))
 
         helper.setGone(R.id.mIvDel, item != mAddDrawableRes)
             .setImageResource(R.id.mIvDel, mDelDrawableRes)

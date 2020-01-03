@@ -3,7 +3,7 @@
 	package="com.memo.test">
 	
 	<application>
-		<activity android:name=".ui.location.LocationActivity"></activity>
+		<activity android:name=".ui.location.LocationActivity" />
 		<activity android:name=".TestActivity" />
 		<activity android:name=".ui.viewpager.ViewPagerActivity" />
 		<activity android:name=".ui.recyclerview.resume.RecyclerViewResumeActivity" />

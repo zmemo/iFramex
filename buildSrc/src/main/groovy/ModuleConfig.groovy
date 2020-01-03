@@ -4,4 +4,6 @@ class ModuleConfig {
     static isModuleUiRunAlone = false
 
     static isModuleTestRunAlone = false
+
+    static isModuleQuestionRunAlone = true
 }

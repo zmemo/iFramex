@@ -1,7 +1,9 @@
 package com.memo.tool.lifecycle
 
 import android.os.Handler
+import android.os.Handler.Callback
 import android.os.Looper
+import android.os.Message
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.LifecycleOwner
@@ -32,6 +34,15 @@ class LifecycleHandler : Handler, LifecycleObserver {
         addObserver()
     }
 
+    constructor(lifecycleOwner: LifecycleOwner, callback: (Message) -> Unit)
+            : super(Callback {
+        callback(it)
+        false
+    }) {
+        this.lifecycleOwner = lifecycleOwner
+        addObserver()
+    }
+
     constructor(lifecycleOwner: LifecycleOwner, looper: Looper)
             : super(looper) {
         this.lifecycleOwner = lifecycleOwner
@@ -40,6 +51,15 @@ class LifecycleHandler : Handler, LifecycleObserver {
 
     constructor(lifecycleOwner: LifecycleOwner, looper: Looper, callback: Callback)
             : super(looper, callback) {
+        this.lifecycleOwner = lifecycleOwner
+        addObserver()
+    }
+
+    constructor(lifecycleOwner: LifecycleOwner, looper: Looper, callback: (Message) -> Unit)
+            : super(looper, Callback {
+        callback(it)
+        false
+    }) {
         this.lifecycleOwner = lifecycleOwner
         addObserver()
     }

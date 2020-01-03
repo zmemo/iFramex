@@ -12,10 +12,10 @@ import com.memo.tool.helper.ImageLoadHelper
 class MatisseAdapter : BaseRecyclerAdapter<String>(R.layout.item_matisse) {
 
     override fun converts(helper: ViewHolder, item: String) {
-        ImageLoadHelper.loadRoundImage(
-            mContext,
-            item,
+        ImageLoadHelper.loadRoundImage(mContext, item,
             ConvertUtils.dp2px(5f),
+            R.drawable.ic_empty_zhihu,
+            R.drawable.ic_empty_zhihu,
             helper.itemView as ImageView
         )
     }

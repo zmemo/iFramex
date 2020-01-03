@@ -1,0 +1,4 @@
+场景：
+类似新闻App，头部Tab，下面ViewPager包含多个Fragment
+问题：
+假设超过100个Fragment，设置offset为10，那么被销毁的Fragment在恢复的时候该如何恢复数据？

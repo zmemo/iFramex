@@ -63,7 +63,7 @@ dependencies {
 
 
     // 插件
-    debugApi DepConfig.leakCanaryDebug
+    //debugApi DepConfig.leakCanaryDebug
     debugApi(DepConfig.doKitDebug) {
         exclude module: 'utilcode'
     }

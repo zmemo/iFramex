@@ -1,6 +1,8 @@
 apply plugin: 'com.alibaba.arouter'
 
-buildscript {
+buildscript { 
+    ext.kotlin_version = '1.3.61'
+
 
 
     repositories {
@@ -15,7 +17,7 @@ buildscript {
         classpath DepConfig.gradleKotlinAndroid
         classpath DepConfig.gradleArouter
         classpath DepConfig.aspectjx
-    }
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version" }
 }
 
 allprojects {

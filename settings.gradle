@@ -2,7 +2,7 @@ rootProject.name = 'iFramex'
 
 include ':app',
 
-        ':business:moduleUi', ':business:moduleTest',
+        ':business:moduleUi', ':business:moduleTest','business:moduleQuestion',
 
         ':business:moduleBase',
 
