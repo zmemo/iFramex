@@ -2,6 +2,7 @@ package com.memo.pay
 
 import android.app.Activity
 import android.content.Context
+import com.alipay.sdk.app.EnvUtils
 import com.memo.pay.ali.AliPay
 import com.memo.pay.listener.OnPayResultListener
 import com.memo.pay.wechat.WeChatPay
@@ -38,10 +39,16 @@ class PayManager {
         return this
     }
 
+    fun startAliPaySandbox(activity: Activity, orderInfo: String) {
+        EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX)
+        AliPay.get().pay(activity, orderInfo)
+    }
+
     /**
      * 开启支付宝支付
      */
     fun startAliPay(activity: Activity, orderInfo: String) {
+        EnvUtils.setEnv(EnvUtils.EnvEnum.ONLINE)
         AliPay.get().pay(activity, orderInfo)
     }
 

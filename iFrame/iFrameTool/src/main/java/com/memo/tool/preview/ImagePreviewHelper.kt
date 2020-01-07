@@ -20,15 +20,18 @@ import java.util.*
  */
 object ImagePreviewHelper {
 
-    var isInit = false
+    private var isInitPreview = false
+
+
+    private val statusBarHeight by lazy { BarUtils.getStatusBarHeight() }
 
     /**
      * 初始化
      */
     private fun initPreview() {
-        if (!isInit) {
+        if (!isInitPreview) {
             ZoomMediaLoader.getInstance().init(PreviewImageLoader(R.mipmap.ic_pic_error))
-            isInit = true
+            isInitPreview = true
         }
     }
 
@@ -44,7 +47,6 @@ object ImagePreviewHelper {
         val preview = PreviewImageInfo(url)
         val bounds = Rect()
         view.getGlobalVisibleRect(bounds)
-        val statusBarHeight = BarUtils.getStatusBarHeight()
         bounds.top += statusBarHeight
         bounds.bottom += statusBarHeight
         preview.bounds = bounds
@@ -91,7 +93,6 @@ object ImagePreviewHelper {
                 val thumbView = itemView.findViewById<ImageView>(imgResId)
                 thumbView.getGlobalVisibleRect(bounds)
             }
-            val statusBarHeight = BarUtils.getStatusBarHeight()
             bounds.top += statusBarHeight
             bounds.bottom += statusBarHeight
             list[i].bounds = bounds

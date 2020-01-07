@@ -1,6 +1,5 @@
 package com.memo.question.q1
 
-import androidx.fragment.app.Fragment
 import com.memo.base.base.activity.BaseActivity
 import com.memo.question.R
 import com.memo.tool.adapter.BaseFragmentPagerAdapter
@@ -8,8 +7,8 @@ import kotlinx.android.synthetic.main.activity_q1.*
 
 class Q1Activity : BaseActivity() {
 
-    private val mAdapter by lazy { BaseFragmentPagerAdapter<Fragment>(supportFragmentManager) }
-    private val titles by lazy { arrayOf("tab1", "tab2", "tab3", "tab4", "tab5") }
+    private val mAdapter by lazy { BaseFragmentPagerAdapter(supportFragmentManager) }
+    private val titles by lazy { arrayListOf("tab1", "tab2", "tab3", "tab4", "tab5") }
     private val fragments by lazy {
         arrayListOf(Q1Fragment(), Q1Fragment(), Q1Fragment(), Q1Fragment(), Q1Fragment())
     }
@@ -20,7 +19,6 @@ class Q1Activity : BaseActivity() {
     /*** 进行初始化操作 ***/
     override fun initialize() {
         mAdapter.setData(fragments, titles)
-        mViewPager.offscreenPageLimit = 1
         mViewPager.adapter = mAdapter
         mTab.setViewPager(mViewPager)
     }

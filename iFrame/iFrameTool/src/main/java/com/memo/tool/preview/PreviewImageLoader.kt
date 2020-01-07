@@ -98,7 +98,7 @@ class PreviewImageLoader(@DrawableRes val errorRes: Int) : IZoomMediaLoader {
     }
 
     override fun onStop(fragment: Fragment) {
-        ImageLoadHelper.onStop(fragment.activity!!)
+        fragment.activity?.let { ImageLoadHelper.onStop(it) }
     }
 
     override fun clearMemory(context: Context) {

@@ -12,6 +12,8 @@ package com.memo.question.utils
  */
 class Entity {
     var images: String = ""
+
     var title: String = ""
+
     var content: String = ""
 }

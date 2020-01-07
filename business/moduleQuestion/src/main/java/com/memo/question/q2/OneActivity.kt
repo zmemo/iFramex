@@ -5,6 +5,7 @@ import com.memo.base.base.activity.BaseActivity
 import com.memo.question.R
 import com.memo.tool.ext.onClick
 import com.memo.tool.ext.startActivity
+import com.memo.tool.ext.tryCatch
 import com.memo.tool.lifecycle.LifecycleHandler
 import kotlinx.android.synthetic.main.activity_one.*
 
@@ -26,6 +27,7 @@ class OneActivity : BaseActivity() {
             startActivity<TwoActivity>()
             startActivity<TwoActivity>()
         }
+
         LogUtils.iTag("handler", System.currentTimeMillis() / 1000)
         mHandler.postDelayed({
             //9秒后打印
@@ -33,8 +35,8 @@ class OneActivity : BaseActivity() {
         }, 5000)
         mHandler.postDelayed({
             //4s后打印
-            LogUtils.iTag("handler", "1000 - " + System.currentTimeMillis() / 1000)
-            Thread.sleep(5000)
+            LogUtils.iTag("handler", "4000 - " + System.currentTimeMillis() / 1000)
+            tryCatch { Thread.sleep(5000) }
         }, 4000)
     }
 

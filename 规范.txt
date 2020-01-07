@@ -129,6 +129,10 @@ Fragment 穿参数
 
 在使用单例的时候 除了工具了直接使用Object 其他应该使用Holder的方式进行创建单例模式
 
+Activity之间传递数据应该使用Parcelable代替Serializable，因为Serializable在使用的过程中会产生大量的临时变量，
+会引起频繁的GC，Parcelable相对Serializable性能更高，在Androidx+Kotlin不需要复杂的Parcelable实现，直接使用
+注解@Parcelize即可
+
 
 --------------------------- 命名 ---------------------------
 

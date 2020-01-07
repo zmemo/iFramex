@@ -16,6 +16,28 @@ import com.previewlibrary.enitity.IThumbViewInfo;
  */
 public class PreviewImageInfo implements IThumbViewInfo {
 
+
+    /**
+     * 图片地址
+     */
+    private String url = "";
+
+    private String videoUrl = "";
+
+    /**
+     * 记录坐标
+     */
+    private Rect mBounds;
+
+    public PreviewImageInfo(String url) {
+        this.url = url;
+    }
+
+    public PreviewImageInfo(String videoUrl, String url) {
+        this.url = url;
+        this.videoUrl = videoUrl;
+    }
+
     public static final Creator<PreviewImageInfo> CREATOR = new Creator<PreviewImageInfo>() {
         @Override
         public PreviewImageInfo createFromParcel(Parcel source) {
@@ -28,21 +50,6 @@ public class PreviewImageInfo implements IThumbViewInfo {
         }
     };
 
-    /**
-     * 图片地址
-     */
-    private String url;
-
-    private String videoUrl;
-
-    public PreviewImageInfo(String url) {
-        this.url = url;
-    }
-
-    public PreviewImageInfo(String videoUrl, String url) {
-        this.url = url;
-        this.videoUrl = videoUrl;
-    }
 
     @Override
     public String getUrl() {//将你的图片地址字段返回
@@ -91,8 +98,5 @@ public class PreviewImageInfo implements IThumbViewInfo {
         dest.writeString(this.videoUrl);
     }
 
-    /**
-     * 记录坐标
-     */
-    private Rect mBounds;
+
 }

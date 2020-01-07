@@ -8,8 +8,8 @@
 	android:orientation="vertical">
 	
 	<ProgressBar
-		android:layout_width="60dp"
-		android:layout_height="60dp"
+        android:layout_width="@dimen/dp60"
+        android:layout_height="@dimen/dp60"
 		android:indeterminateTint="#3a9bff"
 		tools:targetApi="lollipop" />
 	

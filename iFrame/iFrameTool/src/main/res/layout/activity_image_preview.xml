@@ -7,8 +7,9 @@
 	android:background="@android:color/transparent"
 	android:clickable="true"
 	android:focusable="true">
-	
-	<TextView
+
+
+    <TextView
 		android:id="@+id/ltAddDot"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

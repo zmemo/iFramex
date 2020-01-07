@@ -5,9 +5,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 
-
 /**
- * title:ViewPager和Fragment结合的Adapter
+ * title:ViewPager和Fragment结合的Adapter 只适合于Fragment数量少且不会销毁
  * describe:
  * 注意使用情况添加了behavior，当前不可见的Fragment会执行生命周期到onResume之前（不执行onResume），可以作为懒加载使用
  *
@@ -17,18 +16,13 @@ import androidx.fragment.app.FragmentStatePagerAdapter
  * Talk is cheap, Show me the code.
  */
 @SuppressLint("WrongConstant")
-class BaseFragmentPagerAdapter<T : Fragment>(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-    protected var mData: List<T>? = null
-    private var withTabLayoutTitles: Array<String>? = null
+class BaseFragmentPagerAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    private var mData: List<Fragment>? = null
+    private var titles: List<String>? = null
 
-    fun setData(list: List<T>) {
+    fun setData(list: List<Fragment>, titles: List<String>? = null) {
         this.mData = list
-        this.notifyDataSetChanged()
-    }
-
-    fun setData(list: List<T>, withTabLayoutTitles: Array<String>?) {
-        this.mData = list
-        this.withTabLayoutTitles = withTabLayoutTitles
+        this.titles = titles
         this.notifyDataSetChanged()
     }
 
@@ -41,8 +35,6 @@ class BaseFragmentPagerAdapter<T : Fragment>(fm: FragmentManager) : FragmentStat
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return if (withTabLayoutTitles != null) {
-            withTabLayoutTitles!![position]
-        } else super.getPageTitle(position)
+        return titles?.get(position)
     }
 }
