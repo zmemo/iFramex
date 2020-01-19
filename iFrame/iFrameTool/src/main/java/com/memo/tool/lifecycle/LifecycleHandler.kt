@@ -21,38 +21,32 @@ import androidx.lifecycle.OnLifecycleEvent
  */
 class LifecycleHandler : Handler, LifecycleObserver {
 
-    private var lifecycleOwner: LifecycleOwner
+    private var lifecycleOwner: LifecycleOwner? = null
 
     constructor(lifecycleOwner: LifecycleOwner) {
-        this.lifecycleOwner = lifecycleOwner
-        addObserver()
+        addObserver(lifecycleOwner)
     }
 
     constructor(lifecycleOwner: LifecycleOwner, callback: Callback)
             : super(callback) {
-        this.lifecycleOwner = lifecycleOwner
-        addObserver()
+        addObserver(lifecycleOwner)
     }
 
-    constructor(lifecycleOwner: LifecycleOwner, callback: (Message) -> Unit)
-            : super(Callback {
+    constructor(lifecycleOwner: LifecycleOwner, callback: (Message) -> Unit) : super(Callback {
         callback(it)
         false
     }) {
-        this.lifecycleOwner = lifecycleOwner
-        addObserver()
+        addObserver(lifecycleOwner)
     }
 
     constructor(lifecycleOwner: LifecycleOwner, looper: Looper)
             : super(looper) {
-        this.lifecycleOwner = lifecycleOwner
-        addObserver()
+        addObserver(lifecycleOwner)
     }
 
     constructor(lifecycleOwner: LifecycleOwner, looper: Looper, callback: Callback)
             : super(looper, callback) {
-        this.lifecycleOwner = lifecycleOwner
-        addObserver()
+        addObserver(lifecycleOwner)
     }
 
     constructor(lifecycleOwner: LifecycleOwner, looper: Looper, callback: (Message) -> Unit)
@@ -60,17 +54,17 @@ class LifecycleHandler : Handler, LifecycleObserver {
         callback(it)
         false
     }) {
-        this.lifecycleOwner = lifecycleOwner
-        addObserver()
+        addObserver(lifecycleOwner)
     }
 
-    private fun addObserver() {
-        lifecycleOwner.lifecycle.addObserver(this)
+    private fun addObserver(lifecycleOwner: LifecycleOwner) {
+        this.lifecycleOwner = lifecycleOwner
+        this.lifecycleOwner?.lifecycle?.addObserver(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     private fun onDestroy() {
         removeCallbacksAndMessages(null)
-        lifecycleOwner.lifecycle.removeObserver(this)
+        lifecycleOwner?.lifecycle?.removeObserver(this)
     }
 }

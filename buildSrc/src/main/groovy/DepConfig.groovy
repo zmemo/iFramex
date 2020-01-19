@@ -2,11 +2,10 @@ class DepConfig {
 
     static gradleVersion = "3.5.2"
     static kotlinVersion = "1.3.60"
-    static retrofitVersion = "2.6.0"
-    static glideVersion = "4.10.0"
+    static retrofitVersion = "2.7.1"
+    static glideVersion = "4.11.0"
     static autoDisposeVersion = "1.4.0"
-    static doKitVersion = "2.0.0"
-
+    static doKitVersion = "2.2.1"
     // Gradle
     static gradle = "com.android.tools.build:gradle:$gradleVersion"
     static gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -28,7 +27,7 @@ class DepConfig {
     static basePopupAndroidx = "com.github.razerdp:BasePopup-compat-androidx:2.2.1"
     static rWidgetHelper = "com.ruffian.library:RWidgetHelper:1.1.8"
     static baseRecyclerViewAdapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47-androidx"
-    static matisse = "com.zhihu.android:matisse:0.5.3-beta2"
+    static matisse = "com.zhihu.android:matisse:0.5.3-beta3"
     static uCrop = "com.github.yalantis:ucrop:2.2.3"
     static pickerView = "com.contrarywind:Android-PickerView:4.1.8"
     static qrCode = "cn.bingoogolapple:bga-qrcode-zxing:1.3.6"
@@ -40,7 +39,7 @@ class DepConfig {
     static flexBoxLayout = "com.google.android:flexbox:1.1.1"
 
     // 工具
-    static kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
+    static kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     static coreKtx = "androidx.core:core-ktx:1.0.2"
     static multiDex = "androidx.multidex:multidex:2.0.0"
     static androidUtilCode = "com.blankj:utilcodex:1.26.0"

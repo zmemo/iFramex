@@ -11,12 +11,12 @@ import com.tencent.mmkv.MMKV
  * @author zhou
  * @date 2019-08-29 10:51
  */
-class LocalDataManager {
+class DataManager {
 
     private val mSaver by lazy { MMKV.defaultMMKV() }
 
     private object Holder {
-        val instance = LocalDataManager()
+        val instance = DataManager()
     }
 
     companion object {

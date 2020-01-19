@@ -23,7 +23,7 @@ RecyclerView优化 一句话思路 空间换取时间 使用内存空间来换�
 2.新增删除数据不刷线全部，而是刷新局部
 3.布局优化，尽量少的布局嵌套，尽量少的控件
 4.对于一些RecyclerView嵌套RecyclerView的布局可以进行多布局展示，而不是使用嵌套
-5.xml文件的读取,初始化的时候使用 by lazy 生成
+5.资源文件的读取,初始化的时候使用 by lazy 生成
 6.如果RecyclerView条目高度固定，使用setHasFixedSize(true),避免多次测量条目高度
 7.对于RecyclerView，如果不需要动画，就把条目显示动画取消setSupportsChangeAnimations(false)
 8.在RecyclerView添加滑动监听，一些图片加载可以在RecyclerView快速滑动的时候不进行加载图片

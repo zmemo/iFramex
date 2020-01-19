@@ -13,7 +13,7 @@ import com.memo.tool.ext.inflaterView
 import kotlinx.android.synthetic.main.layout_bottom_lottie.view.*
 
 /**
- * title:
+ * title:底部BottomBar使用Lottie动画
  * describe:
  *
  * @author memo

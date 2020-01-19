@@ -1,8 +1,10 @@
 package com.memo.question.q1
 
+import com.blankj.utilcode.util.LogUtils
 import com.memo.base.base.activity.BaseActivity
 import com.memo.question.R
 import com.memo.tool.adapter.BaseFragmentPagerAdapter
+import com.memo.tool.helper.UUIDHelper
 import kotlinx.android.synthetic.main.activity_q1.*
 
 class Q1Activity : BaseActivity() {
@@ -21,5 +23,6 @@ class Q1Activity : BaseActivity() {
         mAdapter.setData(fragments, titles)
         mViewPager.adapter = mAdapter
         mTab.setViewPager(mViewPager)
+        LogUtils.iTag("uuid", UUIDHelper.getUUID())
     }
 }

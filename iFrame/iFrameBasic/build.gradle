@@ -16,6 +16,7 @@ dependencies {
     // 第三方包库
     api fileTree(dir: 'libs', include: ['*.jar'])
 
+    // 视项目具体情况去除一些不必要的依赖，同时需要去除一些依赖库的工具类或方法
     // 控件
     api DepConfig.appcompat
     api DepConfig.constraintLayout

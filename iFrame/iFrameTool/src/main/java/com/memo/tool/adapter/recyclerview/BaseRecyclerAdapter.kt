@@ -20,14 +20,14 @@ import com.memo.tool.helper.ClickHelper
 abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
     BaseQuickAdapter<T, ViewHolder>(layoutResInt) {
 
+    /**
+     * 是否允许过快点击 只正对setOnItemClickListener 对于 setOnItemChildClickListener还是需要手动操作
+     */
+    private var enableItemViewFastClick = false
+
     /*** 用户存储子RecyclerView的状态 ***/
     protected val mStateCache by lazy { SparseArray<Parcelable?>() }
 
-    /**
-     * 是否允许过快点击
-     * @return Boolean enable
-     */
-    open fun enableFastClick() = false
 
     override fun convert(helper: ViewHolder, item: T?) {
         item ?: return
@@ -38,6 +38,16 @@ abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
      * 转换 数据都不为空
      */
     protected abstract fun converts(helper: ViewHolder, item: T)
+
+    /**
+     * 是否允许过快点击 只正对setOnItemClickListener 对于 setOnItemChildClickListener还是需要手动操作
+     * @param enable Boolean
+     * @return BaseRecyclerAdapter<T>
+     */
+    fun enableItemViewFastClick(enable: Boolean): BaseRecyclerAdapter<T> {
+        this.enableItemViewFastClick = enable
+        return this
+    }
 
     /**
      * 设置数据并且恢复状态
@@ -74,7 +84,7 @@ abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
      * 防止过快点击
      */
     override fun setOnItemClick(v: View?, position: Int) {
-        if (!enableFastClick()) {
+        if (!enableItemViewFastClick) {
             if (ClickHelper.isNotFastClick) {
                 super.setOnItemClick(v, position)
             }
@@ -84,7 +94,7 @@ abstract class BaseRecyclerAdapter<T>(@LayoutRes layoutResInt: Int) :
     }
 
     override fun setOnItemLongClick(v: View?, position: Int): Boolean {
-        if (!enableFastClick()) {
+        if (!enableItemViewFastClick) {
             if (ClickHelper.isNotFastLongClick) {
                 super.setOnItemLongClick(v, position)
             }

@@ -8,8 +8,8 @@ import com.alibaba.android.arouter.facade.annotation.Route
 import com.bigkoo.pickerview.view.OptionsPickerView
 import com.bigkoo.pickerview.view.TimePickerView
 import com.blankj.utilcode.util.LogUtils
-import com.memo.base.manager.router.RouterPath
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.manager.router.RouterPath
 import com.memo.test.ui.anim.AnimActivity
 import com.memo.test.ui.bottom.BottomActivity
 import com.memo.test.ui.bus.BusSubscribeActivity

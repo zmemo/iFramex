@@ -67,6 +67,5 @@ class FragmentHelper constructor(containerResId: Int, fragmentManager: FragmentM
             }
         }
         beginTransaction.commitAllowingStateLoss()
-
     }
 }
