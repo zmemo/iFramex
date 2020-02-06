@@ -4,6 +4,9 @@ import android.annotation.SuppressLint
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.OnLifecycleEvent
 import java.util.*
 
 /**
@@ -13,7 +16,8 @@ import java.util.*
  * @author zhou
  * @date 2019-03-29 16:09
  */
-class FragmentHelper constructor(containerResId: Int, fragmentManager: FragmentManager) {
+class FragmentHelper constructor(containerResId: Int, fragmentManager: FragmentManager) :
+    LifecycleObserver {
 
     /*** 布局容器id ***/
     private val mContainerResId: Int = containerResId
@@ -23,6 +27,17 @@ class FragmentHelper constructor(containerResId: Int, fragmentManager: FragmentM
 
     /*** 存放Fragment容器 ***/
     private val mStack: Stack<Fragment> by lazy { Stack<Fragment>() }
+
+    /*** 生命周期 ***/
+    private var mLifecycleOwner: LifecycleOwner? = null
+
+    /**
+     * 绑定生命周期
+     */
+    fun bindLifecycle(lifecycleOwner: LifecycleOwner) {
+        this.mLifecycleOwner = lifecycleOwner
+        this.mLifecycleOwner?.lifecycle?.addObserver(this)
+    }
 
     /**
      * 添加Fragment列表
@@ -67,5 +82,10 @@ class FragmentHelper constructor(containerResId: Int, fragmentManager: FragmentM
             }
         }
         beginTransaction.commitAllowingStateLoss()
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+    private fun onDestroy() {
+        this.mStack.clear()
     }
 }

@@ -24,6 +24,7 @@ import com.memo.test.ui.ninegridview.NineGridActivity
 import com.memo.test.ui.notification.NotificationActivity
 import com.memo.test.ui.recyclerview.RecyclerViewActivity
 import com.memo.test.ui.retrofit.RetrofitActivity
+import com.memo.test.ui.rxjava.RxJavaActivity
 import com.memo.test.ui.share.ShareFromActivity
 import com.memo.test.ui.status.LoadSirActivity
 import com.memo.test.ui.sw.SmallestWidthActivity
@@ -155,6 +156,7 @@ class TestActivity : BaseActivity() {
 		mBtnVp.onClick(listener)
 		mBtnDialogActivity.onClick(listener)
 		mBtnLocation.onClick(listener)
+        mBtnRxJava.onClick(listener)
 	}
 	
 	private fun doSomeThing() {
@@ -261,6 +263,9 @@ class TestActivity : BaseActivity() {
 				R.id.mBtnLocation -> {
 					startActivity<LocationActivity>()
 				}
+                R.id.mBtnRxJava -> {
+                    startActivity<RxJavaActivity>()
+                }
 			}
 		}
 	}

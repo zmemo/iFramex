@@ -155,6 +155,12 @@
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:text="@string/Location" />
+
+                <Button
+                    android:id="@+id/mBtnRxJava"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/RxJava" />
 				
 				<com.memo.widget.itemview.ItemView
 					android:id="@+id/mItem"

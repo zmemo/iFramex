@@ -1,11 +1,12 @@
 class DepConfig {
 
     static gradleVersion = "3.5.2"
-    static kotlinVersion = "1.3.60"
+    static kotlinVersion = "1.3.61"
     static retrofitVersion = "2.7.1"
     static glideVersion = "4.11.0"
     static autoDisposeVersion = "1.4.0"
     static doKitVersion = "2.2.1"
+
     // Gradle
     static gradle = "com.android.tools.build:gradle:$gradleVersion"
     static gradleKotlin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
@@ -57,12 +58,11 @@ class DepConfig {
     static glideOkHttp = "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
     static arouter = "com.alibaba:arouter-api:1.5.0"
     static mmkv = "com.tencent:mmkv:1.0.22"
-    static preview = "com.ycjiang:ImagePreview:2.2.8"
+    static preview = "com.ycjiang:ImagePreview:2.3.4"
     static stickyHeader = "com.oushangfeng:PinnedSectionItemDecoration:1.3.2"
     static luBan = "top.zibin:Luban:1.1.8"
     static lottie = "com.airbnb.android:lottie:3.1.0"
     static banner = "com.youth.banner:banner:1.4.10"
-
 
     // 插件
     static doKitRelease = "com.didichuxing.doraemonkit:doraemonkit-no-op:$doKitVersion"

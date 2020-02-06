@@ -15,7 +15,7 @@ import com.previewlibrary.wight.PhotoViewPager
  */
 class ImagePreviewViewPager : PhotoViewPager {
 
-    var isCanScrollable = true
+    private var isScrollable = true
 
     constructor(context: Context) : super(context)
 
@@ -23,12 +23,12 @@ class ImagePreviewViewPager : PhotoViewPager {
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(ev: MotionEvent): Boolean {
-        return isCanScrollable && super.onTouchEvent(ev)
+        return isScrollable && super.onTouchEvent(ev)
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
         return try {
-            isCanScrollable && super.onInterceptTouchEvent(ev)
+            isScrollable && super.onInterceptTouchEvent(ev)
         } catch (e: Exception) {
             e.printStackTrace()
             false
@@ -36,7 +36,7 @@ class ImagePreviewViewPager : PhotoViewPager {
     }
 
     override fun setEnabled(enabled: Boolean) {
-        isCanScrollable = enabled
+        isScrollable = enabled
         super.setEnabled(enabled)
     }
 
