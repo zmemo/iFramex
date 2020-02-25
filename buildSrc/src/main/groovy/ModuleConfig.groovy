@@ -5,5 +5,4 @@ class ModuleConfig {
 
     static isModuleTestRunAlone = false
 
-    static isModuleQuestionRunAlone = true
 }

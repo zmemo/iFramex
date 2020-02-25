@@ -14,38 +14,40 @@ import com.memo.tool.helper.PermissionHelper
 import kotlinx.android.synthetic.main.activity_matisse_select.*
 
 class MatisseSelectActivity : BaseActivity() {
-	
-	private val REQUEST_CODE_SELECT : Int = 1
-	private val REQUEST_CODE_TAKE : Int = 2
-	private val REQUEST_CODE_CROP : Int = 3
-	private val REQUEST_CODE_VIDEO : Int = 4
-	
-	private val MAXSIZE : Int = 9
-	private var takePhotoPath : String? = null
-	private var cropPhotpPath : String? = null
-	
-	override fun bindLayoutRes() : Int = R.layout.activity_matisse_select
-	
+
+    private val REQUEST_CODE_SELECT: Int = 1
+    private val REQUEST_CODE_TAKE: Int = 2
+    private val REQUEST_CODE_CROP: Int = 3
+    private val REQUEST_CODE_VIDEO: Int = 4
+
+    private val MAXSIZE: Int = 9
+    private var takePhotoPath: String? = null
+    private var cropPhotpPath: String? = null
+
+    override fun bindLayoutRes(): Int = R.layout.activity_matisse_select
+
 	override fun initialize() {
 		initView()
 		initListener()
 	}
-	
+
 	private fun initView() {
-		mNineGridView.setAddDrawableRes(R.drawable.ic_pic_add)
-			.setDelDrawableRes(R.drawable.ic_pic_del)
-			.setMaxImageSize(MAXSIZE)
-			.initialize()
-	}
-	
+        mNineGridView
+            .setAddDrawableRes(R.drawable.ic_pic_add)
+            .setDelDrawableRes(R.drawable.ic_pic_del)
+            .setMaxImageSize(MAXSIZE)
+            .initialize()
+    }
+
 	private fun initListener() {
 		mNineGridView.addOnSelectListener { leftSize ->
 			MediaHelper.choosePhoto(mContext, leftSize, REQUEST_CODE_SELECT)
 		}
 		mBtnSelect.onClick {
 			MediaHelper.choosePhoto(
-				mContext, MAXSIZE - mNineGridView.getCurImageSize(),
-				REQUEST_CODE_SELECT)
+                mContext, MAXSIZE - mNineGridView.getCurImageSize(),
+                REQUEST_CODE_SELECT
+            )
 		}
 		mBtnTake.onClick {
 			if (PermissionHelper.grantedCamera(mContext)) {
@@ -62,8 +64,8 @@ class MatisseSelectActivity : BaseActivity() {
 			mNineGridView.clear()
 		}
 	}
-	
-	override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?) {
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 		super.onActivityResult(requestCode, resultCode, data)
 		if (resultCode == Activity.RESULT_OK) {
 			when (requestCode) {
@@ -76,12 +78,11 @@ class MatisseSelectActivity : BaseActivity() {
 							val builder = StringBuilder()
 							it.forEach {
 								builder.append(it.name)
-									.append(" ")
-									.append(FileUtils.getLength(it))
-									.append("\n")
+                                    .append(" ")
+                                    .append(FileUtils.getLength(it))
+                                    .append("\n")
 							}
 							LogUtils.iTag("compress", builder)
-							
 							mNineGridView.addImageFiles(it)
 							toast("图片压缩完毕")
 							hideLoading()

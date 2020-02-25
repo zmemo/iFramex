@@ -3,70 +3,67 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion Config.compileSdkVersion
-    defaultConfig {
-        minSdkVersion Config.minSdkVersion
-        targetSdkVersion Config.targetSdkVersion
-        versionCode Config.versionCode
-        versionName Config.versionName
-    }
+	compileSdkVersion Config.compileSdkVersion
+	defaultConfig {
+		minSdkVersion Config.minSdkVersion
+		targetSdkVersion Config.targetSdkVersion
+		versionCode Config.versionCode
+		versionName Config.versionName
+	}
 }
 
 dependencies {
-    // 第三方包库
-    api fileTree(dir: 'libs', include: ['*.jar'])
+	// 第三方包库
+	api fileTree(dir: 'libs', include: ['*.jar,*.aar'])
 
-    // 视项目具体情况去除一些不必要的依赖，同时需要去除一些依赖库的工具类或方法
-    // 控件
-    api DepConfig.appcompat
-    api DepConfig.constraintLayout
-    api DepConfig.recyclerView
-    api DepConfig.cardView
-    api DepConfig.rWidgetHelper
-    api DepConfig.basePopupCore
-    api DepConfig.basePopupAndroidx
-    api DepConfig.baseRecyclerViewAdapterHelper
-    api DepConfig.pickerView
-    api DepConfig.qrCode
-    api DepConfig.loadSir
-    api DepConfig.matisse
-    api DepConfig.uCrop
-    api DepConfig.agentWeb
-    api DepConfig.smartRefreshLayout
-    api DepConfig.tabLayout
-    api DepConfig.androidSwipeLayout
-    api DepConfig.flexBoxLayout
+	// 视项目具体情况去除一些不必要的依赖，同时需要去除一些依赖库的工具类或方法
+	// 控件
+	api DepConfig.appcompat
+	api DepConfig.agentWeb
+	api DepConfig.androidSwipeLayout
+	api DepConfig.basePopupCore
+	api DepConfig.baseRecyclerViewAdapterHelper
+	api DepConfig.cardView
+	api DepConfig.constraintLayout
+	api DepConfig.flexBoxLayout
+	api DepConfig.loadSir
+	api DepConfig.matisse
+	api DepConfig.pickerView
+	api DepConfig.qrCode
+	api DepConfig.recyclerView
+	api DepConfig.rWidgetHelper
+	api DepConfig.smartRefreshLayout
+	api DepConfig.tabLayout
+	api DepConfig.uCrop
 
-    // 工具
-    api DepConfig.kotlin
-    api DepConfig.coreKtx
-    api DepConfig.multiDex
-    api DepConfig.androidUtilCode
-    api DepConfig.rxJava2
-    api DepConfig.rxAndroid2
-    api DepConfig.rxBus
-    api DepConfig.autoDispose
-    api DepConfig.autoDisposeArch
-    api DepConfig.retrofit
-    api DepConfig.retrofitGson
-    api DepConfig.retrofitConverter
-    api DepConfig.retrofitRxJavaAdapter
-    api DepConfig.retrofitUrlManager
-    api DepConfig.glide
-    api DepConfig.glideOkHttp
-    api DepConfig.arouter
-    api DepConfig.mmkv
-    api DepConfig.preview
-    api DepConfig.stickyHeader
-    api DepConfig.luBan
-    api DepConfig.lottie
-    api DepConfig.banner
+	// 工具
+	api DepConfig.arouter
+	api DepConfig.androidUtilCode
+	api DepConfig.autoDispose
+	api DepConfig.autoDisposeArch
+	api DepConfig.banner
+	api DepConfig.coreKtx
+	api DepConfig.glide
+	api DepConfig.glideOkHttp
+	api DepConfig.luBan
+	api DepConfig.lottie
+	api DepConfig.kotlin
+	api DepConfig.mmkv
+	api DepConfig.multiDex
+	api DepConfig.preview
+	api DepConfig.rxJava2
+	api DepConfig.rxAndroid2
+	api DepConfig.rxBus
+	api DepConfig.retrofit
+	api DepConfig.retrofitGson
+	api DepConfig.retrofitConverter
+	api DepConfig.retrofitRxJavaAdapter
+	api DepConfig.retrofitUrlManager
+	api DepConfig.stickyHeader
 
 
-    // 插件
-    debugApi DepConfig.leakCanaryDebug
-    debugApi(DepConfig.doKitDebug) {
-        exclude module: 'utilcode'
-    }
-    releaseApi DepConfig.doKitRelease
+	// 插件
+	debugApi DepConfig.leakCanaryDebug
+	debugApi(DepConfig.doKitDebug) { exclude module: 'utilcode' }
+	releaseApi DepConfig.doKitRelease
 }
