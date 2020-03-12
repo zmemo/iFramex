@@ -1,7 +1,7 @@
 package com.memo.test.ui.bus
 
-import com.memo.base.manager.bus.BusManager
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.manager.bus.BusManager
 import com.memo.test.R
 import com.memo.tool.ext.onClick
 import com.memo.tool.ext.startActivity
@@ -21,7 +21,8 @@ class BusSubscribeActivity : BaseActivity() {
         mBtnBus.onClick { startActivity<BusPostActivity>() }
 
         BusManager.get().subscribeMain(this) {
-	        mTvBus.text = it.message
+            mTv1.text = it.message
+            mTv2.text = it.message
         }
 
     }

@@ -81,7 +81,7 @@ fun Int.checkMore99(): String = if (this > 99) "99+" else this.toString()
 fun copyToClipboard(content: String) {
     val plainText = ClipData.newPlainText("Copy", content)
     val clipboardManager = ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)
-    clipboardManager?.primaryClip = plainText
+    clipboardManager?.setPrimaryClip(plainText)
 }
 
 /**
