@@ -32,5 +32,6 @@
     <string name="DialogActivity">Dialog形式的Activity</string>
     <string name="Location">定位</string>
     <string name="RxJava">Rxhava</string>
+    <string name="LooperRv">循环RecyclerView</string>
 
 </resources>

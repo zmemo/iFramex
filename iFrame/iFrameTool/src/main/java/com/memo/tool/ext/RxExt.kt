@@ -63,7 +63,7 @@ fun delay(lifecycleOwner: LifecycleOwner, milliseconds: Long, onNext: (second: L
  * @param onSuccess 成功回调
  * @param onFailure 失败回调
  */
-fun <T> doInBackground(
+fun <T> doInBackgroundExt(
     lifecycleOwner: LifecycleOwner,
     doInBackground: () -> T,
     onSuccess: (t: T) -> Unit,
@@ -79,7 +79,7 @@ fun <T> doInBackground(
  * @param lifecycleOwner 生命周期绑定
  * @param doInBackground 后台执行任务
  */
-fun doInBackground(
+fun doInBackgroundExt(
     lifecycleOwner: LifecycleOwner,
     doInBackground: () -> Unit
 ) {
@@ -88,6 +88,27 @@ fun doInBackground(
         .subscribe()
 }
 
+/**
+ * 在后台执行任务
+ * @param doInBackground 后台执行任务
+ * @param onSuccess 成功回调
+ * @param onFailure 失败回调
+ */
+fun <T> LifecycleOwner.doInBackground(
+    doInBackground: () -> T,
+    onSuccess: (t: T) -> Unit,
+    onFailure: (error: Throwable) -> Unit
+) {
+    doInBackgroundExt(this, doInBackground, onSuccess, onFailure)
+}
+
+/**
+ * 在后台执行任务不计较结果
+ * @param doInBackground 后台执行任务
+ */
+fun LifecycleOwner.doInBackground(doInBackground: () -> Unit) {
+    doInBackgroundExt(this, doInBackground)
+}
 
 /**
  * 创建一个RxJava2输入流

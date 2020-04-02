@@ -14,7 +14,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.target.Target
 import com.bumptech.glide.request.transition.Transition
 import com.memo.tool.app.BaseApp
-import com.memo.tool.ext.doInBackground
+import com.memo.tool.ext.doInBackgroundExt
 import com.memo.tool.glide.GlideApp
 import com.memo.tool.simple.SimpleGlideTarget
 import java.io.File
@@ -164,7 +164,7 @@ object ImageLoadHelper {
     fun getImageFileFromCache(context: Context, lifecycleOwner: LifecycleOwner, url: String,
                               onSuccess: (file: File) -> Unit,
                               onFailure: (error: Throwable) -> Unit) {
-        doInBackground(lifecycleOwner, {
+        doInBackgroundExt(lifecycleOwner, {
             GlideApp
                 .with(context)
                 .downloadOnly()
@@ -204,7 +204,7 @@ object ImageLoadHelper {
     @SuppressLint("CheckResult")
     @JvmStatic
     fun clearDiskCache(owner: LifecycleOwner) {
-        doInBackground(owner) {
+        doInBackgroundExt(owner) {
             GlideApp.get(BaseApp.app.applicationContext).clearDiskCache()
         }
     }

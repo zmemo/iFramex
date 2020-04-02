@@ -1,6 +1,5 @@
 package com.memo.test.ui.dialogactivity
 
-import com.blankj.utilcode.util.ActivityUtils
 import com.memo.base.base.activity.BaseActivity
 import com.memo.test.R
 import com.memo.tool.ext.onClick
@@ -28,7 +27,7 @@ class KickOutActivity : BaseActivity() {
             finish()
         }
         mTvPositive.onClick {
-            ActivityUtils.finishAllActivities()
+            finish()
         }
     }
 

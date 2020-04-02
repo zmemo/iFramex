@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	
-	<style name="kick_dialog_activity" parent="Theme.AppCompat.Light.Dialog">
+
+    <style name="kick_out_dialog_activity" parent="Theme.AppCompat.Light.Dialog">
 		<item name="windowNoTitle">true</item>
 		<item name="android:windowFrame">@null</item>
 		<item name="android:windowIsFloating">true</item>

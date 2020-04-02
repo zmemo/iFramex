@@ -12,9 +12,9 @@ import kotlinx.android.synthetic.main.activity_notification.*
 import java.util.concurrent.TimeUnit
 
 class NotificationActivity : BaseActivity() {
-	
-	
-	override fun bindLayoutRes() : Int = R.layout.activity_notification
+
+
+    override fun bindLayoutRes(): Int = R.layout.activity_notification
 
     override fun initialize() {
         mBtnMessage.onClick {
@@ -24,8 +24,7 @@ class NotificationActivity : BaseActivity() {
                 TestConfig.MESSAGE_CHANNEL_NAME,
                 android.R.drawable.ic_dialog_dialer,
                 "测试标题",
-                "测试内容",
-                "IFrame"
+                "测试内容"
             )
         }
 
@@ -41,7 +40,6 @@ class NotificationActivity : BaseActivity() {
                         TestConfig.PROGRESS_CHANNEL_NAME,
                         android.R.drawable.ic_dialog_dialer,
                         "下载进度 $it%",
-                        "iFrame",
                         it.toInt()
                     )
                 }

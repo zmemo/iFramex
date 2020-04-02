@@ -52,7 +52,7 @@
 		<activity android:name=".ui.drag.DragActivity" />
 		<activity
 			android:name=".ui.dialogactivity.KickOutActivity"
-			android:theme="@style/kick_dialog_activity" />
+            android:theme="@style/kick_out_dialog_activity" />
 		
 		<service android:name=".ui.download.DownloadService" />
 	</application>

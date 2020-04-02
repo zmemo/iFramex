@@ -2,17 +2,11 @@
 
 package com.memo.tool.helper
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
 import android.app.PendingIntent
-import android.content.Context
-import android.content.Intent
-import android.os.Build
-import android.text.TextUtils
 import androidx.annotation.IntRange
+import androidx.annotation.Nullable
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import com.memo.tool.app.BaseApp
+import com.blankj.utilcode.util.NotificationUtils
 
 /**
  * title:通知帮助
@@ -23,16 +17,13 @@ import com.memo.tool.app.BaseApp
  */
 object NotificationHelper {
 
-    private var sNotificationManager: NotificationManager? = null
-
 
     /**
      * 判断是否开启应用通知权限
      * @return Boolean
      */
     @JvmStatic
-    fun isNotificationEnable(): Boolean =
-        NotificationManagerCompat.from(BaseApp.app.applicationContext).areNotificationsEnabled()
+    fun isNotificationEnable(): Boolean = NotificationUtils.areNotificationsEnabled()
 
 
     /**
@@ -51,70 +42,22 @@ object NotificationHelper {
         channelName: String,
         smallIconId: Int,
         title: CharSequence,
-        summary: CharSequence,
-        ticker: CharSequence? = null,
-        pendingIntent: PendingIntent? = null
+        content: CharSequence,
+        @Nullable pendingIntent: PendingIntent? = null
     ) {
-        val builder: NotificationCompat.Builder =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationCompat.Builder(BaseApp.app.applicationContext, channelId)
-            } else {
-                NotificationCompat.Builder(BaseApp.app.applicationContext)
-            }
-        builder.setSmallIcon(smallIconId)
-            .setContentTitle(title)
-            .setContentText(summary)
-            .setAutoCancel(true)
-            .setPriority(NotificationCompat.PRIORITY_HIGH)
-            .setProgress(0, 0, false)
-        if (!TextUtils.isEmpty(ticker)) {
-            builder.setTicker(ticker)
-        }
-        if (pendingIntent != null) {
-            builder.setContentIntent(pendingIntent)
-        } else {
-            builder.setContentIntent(
-                PendingIntent.getBroadcast(
-                    BaseApp.app.applicationContext,
-                    0,
-                    Intent(),
-                    PendingIntent.FLAG_UPDATE_CURRENT
-                )
-            )
-        }
-        val manager =
-            createNotificationManager(BaseApp.app.applicationContext, channelId, channelName)
-        manager.notify(notifyId, builder.build())
-    }
-
-    /**
-     * 设置进度通知
-     *
-     * @param notifyId 消息ID
-     * @param channelId 渠道id
-     * @param channelName 渠道名称 这个在app设置界面可以看到一般为 这条通知的作用 比如应用更新 消息通知
-     * @param smallIconId 通知栏小图标
-     * @param title 标题
-     * @param progress 进度（0-100）
-     */
-    @JvmStatic
-    fun sendProgressNotification(
-        notifyId: Int,
-        channelId: String,
-        channelName: String,
-        smallIconId: Int,
-        title: CharSequence,
-        progress: Int
-    ) {
-        sendProgressNotification(
-            notifyId,
+        val config = NotificationUtils.ChannelConfig(
             channelId,
             channelName,
-            smallIconId,
-            title,
-            null,
-            progress
+            NotificationUtils.IMPORTANCE_HIGH
         )
+        NotificationUtils.notify(notifyId, config) { param ->
+            param.setSmallIcon(smallIconId)
+                .setContentTitle(title)
+                .setContentText(content)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
+        }
     }
 
     /**
@@ -136,41 +79,22 @@ object NotificationHelper {
         channelName: String,
         smallIconId: Int,
         title: CharSequence,
-        ticker: CharSequence?,
         @IntRange(from = 0, to = 100) progress: Int,
-        pendingIntent: PendingIntent? = null
+        @Nullable pendingIntent: PendingIntent? = null
     ) {
-        val builder: NotificationCompat.Builder =
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                NotificationCompat.Builder(BaseApp.app.applicationContext, channelId)
-            } else {
-                NotificationCompat.Builder(BaseApp.app.applicationContext)
-            }
-        builder.setSmallIcon(smallIconId)
-            .setContentTitle(title)
-            .setProgress(100, progress, progress == 0)
-            .setOngoing(progress < 99)
-            .setAutoCancel(progress > 99)
-            // 表示只声音提示一次
-            .setOnlyAlertOnce(true)
-        if (pendingIntent != null) {
-            builder.setContentIntent(pendingIntent)
-        } else {
-            builder.setContentIntent(
-                PendingIntent.getBroadcast(
-                    BaseApp.app.applicationContext,
-                    0,
-                    Intent(),
-                    PendingIntent.FLAG_UPDATE_CURRENT
-                )
-            )
+        val config = NotificationUtils.ChannelConfig(
+            channelId,
+            channelName,
+            NotificationUtils.IMPORTANCE_HIGH
+        )
+        NotificationUtils.notify(notifyId, config) { param ->
+            param.setSmallIcon(smallIconId)
+                .setContentTitle(title)
+                .setProgress(100, progress, false)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setContentIntent(pendingIntent)
         }
-        if (!TextUtils.isEmpty(ticker)) {
-            builder.setTicker(ticker)
-        }
-        val manager =
-            createNotificationManager(BaseApp.app.applicationContext, channelId, channelName)
-        manager.notify(notifyId, builder.build())
     }
 
     /**
@@ -180,7 +104,7 @@ object NotificationHelper {
      */
     @JvmStatic
     fun cancel(notifyId: Int) {
-        sNotificationManager?.cancel(notifyId)
+        NotificationUtils.cancel(notifyId)
     }
 
     /**
@@ -188,25 +112,6 @@ object NotificationHelper {
      */
     @JvmStatic
     fun cancelAll() {
-        sNotificationManager?.cancelAll()
-    }
-
-    private fun createNotificationManager(
-        context: Context,
-        channelId: String,
-        channelName: String
-    ): NotificationManager {
-        if (sNotificationManager != null) {
-            return sNotificationManager!!
-        }
-        sNotificationManager =
-            context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        // 适配>=7.0手机通知栏显示问题
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val notificationChannel =
-                NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_HIGH)
-            sNotificationManager!!.createNotificationChannel(notificationChannel)
-        }
-        return sNotificationManager!!
+        NotificationUtils.cancelAll()
     }
 }

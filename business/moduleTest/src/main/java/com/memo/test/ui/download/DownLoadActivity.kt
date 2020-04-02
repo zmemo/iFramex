@@ -14,7 +14,7 @@ class DownLoadActivity : BaseActivity() {
     /**
      * 绑定布局id
      */
-    override fun bindLayoutRes() : Int = R.layout.activity_down_load
+    override fun bindLayoutRes(): Int = R.layout.activity_down_load
 
     /**
      * 进行初始化操作
@@ -22,11 +22,10 @@ class DownLoadActivity : BaseActivity() {
     override fun initialize() {
 
         mBtnService.onClick {
-            if (PermissionHelper.grantedStorage(mContext)) {
+            PermissionHelper.grantedStorage(mContext) {
                 DownloadService.start(
                     Api.DownUrl,
-                    Environment.getExternalStorageDirectory().absolutePath +
-                            File.separator + "IFrame",
+                    Environment.getExternalStorageDirectory().absolutePath + File.separator + "IFrame",
                     "${AppUtils.getAppName()}.apk"
                 )
             }

@@ -34,7 +34,12 @@ object UMengHelper {
      * @param text 文本
      */
     @JvmStatic
-    fun shareText(activity: Activity, platform: SHARE_MEDIA, text: String, listener: SimpleShareListener = SimpleShareListener()) {
+    fun shareText(
+        activity: Activity,
+        platform: SHARE_MEDIA,
+        text: String,
+        listener: SimpleShareListener = SimpleShareListener()
+    ) {
         ShareAction(activity)
             .withText(text)
             .setPlatform(platform)
@@ -50,23 +55,30 @@ object UMengHelper {
      * @param image 图片地址 文件File 资源文件R.drawable.ic_share_logo
      */
     @JvmStatic
-    fun shareImage(activity: Activity, platform: SHARE_MEDIA, title: String, content: String, image: Any, listener: SimpleShareListener = SimpleShareListener()) {
-	    if (PermissionHelper.grantedStorage(activity)) {
-		    val umImg = when (image) {
-			    is String -> UMImage(activity, image)
-			    is File -> UMImage(activity, image)
-			    is Int -> UMImage(activity, image)
-			    else -> null
-		    }
-		    umImg?.let {
-			    it.title = title
-			    it.description = content
-			    ShareAction(activity)
-				    .withMedia(it)
-				    .setPlatform(platform)
-				    .setCallback(listener)
-				    .share()
-		    }
+    fun shareImage(
+        activity: Activity,
+        platform: SHARE_MEDIA,
+        title: String,
+        content: String,
+        image: Any,
+        listener: SimpleShareListener = SimpleShareListener()
+    ) {
+        PermissionHelper.grantedStorage(activity) {
+            val umImg = when (image) {
+                is String -> UMImage(activity, image)
+                is File -> UMImage(activity, image)
+                is Int -> UMImage(activity, image)
+                else -> null
+            }
+            umImg?.let {
+                it.title = title
+                it.description = content
+                ShareAction(activity)
+                    .withMedia(it)
+                    .setPlatform(platform)
+                    .setCallback(listener)
+                    .share()
+            }
         }
     }
 
@@ -80,7 +92,15 @@ object UMengHelper {
      * @param url 网址
      */
     @JvmStatic
-    fun shareWeb(activity: Activity, platform: SHARE_MEDIA, title: String, content: String, thumbImg: String, url: String, listener: SimpleShareListener = SimpleShareListener()) {
+    fun shareWeb(
+        activity: Activity,
+        platform: SHARE_MEDIA,
+        title: String,
+        content: String,
+        thumbImg: String,
+        url: String,
+        listener: SimpleShareListener = SimpleShareListener()
+    ) {
         val umWeb = UMWeb(url)
         umWeb.title = title
         umWeb.description = content
@@ -99,9 +119,18 @@ object UMengHelper {
      * 详细数据 https://developer.umeng.com/docs/66632/detail/66639#h2-u7528u6237u8D44u6599u57FAu672Cu4FE1u606Fu89E3u6790u5982u4E0B16
      */
     @JvmStatic
-    fun login(activity: Activity, platform: SHARE_MEDIA, onSuccess: (MutableMap<String, String>) -> Unit, onError: () -> Unit) {
+    fun login(
+        activity: Activity,
+        platform: SHARE_MEDIA,
+        onSuccess: (MutableMap<String, String>) -> Unit,
+        onError: () -> Unit
+    ) {
         UMShareAPI.get(activity).getPlatformInfo(activity, platform, object : SimpleAuthListener() {
-            override fun onComplete(platform: SHARE_MEDIA, action: Int, map: MutableMap<String, String>) {
+            override fun onComplete(
+                platform: SHARE_MEDIA,
+                action: Int,
+                map: MutableMap<String, String>
+            ) {
                 super.onComplete(platform, action, map)
                 onSuccess(map)
             }
@@ -117,7 +146,12 @@ object UMengHelper {
      * QQ与新浪不需要添加Activity，但需要在使用QQ分享或者授权的Activity中，onActivityResult添加：
      */
     @JvmStatic
-    fun onQQAndWeiBoActivityResult(context : Context, requestCode : Int, resultCode : Int, data : Intent?) {
+    fun onQQAndWeiBoActivityResult(
+        context: Context,
+        requestCode: Int,
+        resultCode: Int,
+        data: Intent?
+    ) {
         UMShareAPI.get(context).onActivityResult(requestCode, resultCode, data)
     }
 

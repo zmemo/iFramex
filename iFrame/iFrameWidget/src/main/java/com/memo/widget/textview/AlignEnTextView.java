@@ -444,7 +444,6 @@ public class AlignEnTextView extends AppCompatTextView {
     public boolean isCN(String str) {
         byte[] bytes = str.getBytes(StandardCharsets.UTF_8);
         return bytes.length != str.length();
-        return false;
     }
 
     /**

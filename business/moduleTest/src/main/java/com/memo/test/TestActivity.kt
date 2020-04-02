@@ -18,6 +18,7 @@ import com.memo.test.ui.dialogactivity.KickOutActivity
 import com.memo.test.ui.download.DownLoadActivity
 import com.memo.test.ui.drag.DragActivity
 import com.memo.test.ui.location.LocationActivity
+import com.memo.test.ui.looper.LooperRvActivity
 import com.memo.test.ui.map.MapActivity
 import com.memo.test.ui.matisse.MatisseSelectActivity
 import com.memo.test.ui.ninegridview.NineGridActivity
@@ -53,88 +54,88 @@ import kotlinx.android.synthetic.main.activity_test.*
  */
 @Route(path = RouterPath.Launcher.TestActivity)
 class TestActivity : BaseActivity() {
-	
+
 	private val REQUEST_CODE_INSTALL = 1
-	
-	private var area : Area? = null
-	
+
+    private var area: Area? = null
+
 	private var index = 0
-	
-	private var mTimePickerView : TimePickerView? = null
-	private var mCityPickerView : OptionsPickerView<Any>? = null
-	
-	
-	private val mAlertDialog : AlertDialog by lazy {
+
+    private var mTimePickerView: TimePickerView? = null
+    private var mCityPickerView: OptionsPickerView<Any>? = null
+
+
+    private val mAlertDialog: AlertDialog by lazy {
 		AlertDialog(mContext, message = "这是一个提示")
-			.setOnTipClickListener({
-				toast("点击确定")
-			}, {
-				toast("点击取消")
-			})
-	}
-	
-	private val mBottomListDialog : BottomListDialog by lazy {
+            .setOnTipClickListener({
+                toast("点击确定")
+            }, {
+                toast("点击取消")
+            })
+    }
+
+    private val mBottomListDialog: BottomListDialog by lazy {
 		BottomListDialog(
-			mContext,
-			arrayListOf("Item 1", "Item 2", "Item 3")
+            mContext,
+            arrayListOf("Item 1", "Item 2", "Item 3")
 		).setOnItemClickListener { _, item ->
 			toast(item)
 		}
 	}
-	private val mLocateListDialog : LocateListDialog by lazy {
+    private val mLocateListDialog: LocateListDialog by lazy {
 		LocateListDialog(
-			mContext,
-			arrayListOf("Item 1", "Item 2", "Item 3")
+            mContext,
+            arrayListOf("Item 1", "Item 2", "Item 3")
 		).setOnItemClickListener { _, item ->
 			toast(item)
 		}
 	}
-	private val mBottomGridDialog : BottomGridDialog by lazy {
+    private val mBottomGridDialog: BottomGridDialog by lazy {
 		BottomGridDialog(
-			mContext, arrayListOf(
+            mContext, arrayListOf(
 				BottomGridDialog.GridItem(R.drawable.iframex, "Item 1", 1),
 				BottomGridDialog.GridItem(R.drawable.iframex, "Item 2", 2),
 				BottomGridDialog.GridItem(R.drawable.iframex, "Item 3", 3)
-			)
+            )
 		).setOnItemClickListener { _, item ->
 			toast(item.name)
 		}
 	}
-	
-	
-	private val mActionDialog by lazy {
+
+
+    private val mActionDialog by lazy {
 		ActionBottomSheetDialog().setData(
-			arrayListOf(
-				"1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-				"1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-				"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
-			)
+            arrayListOf(
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
+            )
 		).setOnItemClickListener { dialog, position, data ->
 			dialog.dismiss()
 			toast("position = $position data = $data")
 		}
 	}
-	
-	override fun bindLayoutRes() : Int = R.layout.activity_test
-	
+
+    override fun bindLayoutRes(): Int = R.layout.activity_test
+
 	override fun initialize() {
 		initData()
 		initView()
 		initListener()
 		doSomeThing()
 	}
-	
+
 	private fun initData() {
 		//解析全国省份字符串
 		DialogHelper.parseArea(mLifecycleOwner) {
 			area = it
 		}
 	}
-	
+
 	private fun initView() {
-	
-	}
-	
+
+    }
+
 	private fun initListener() {
 		mItem.onClick(listener)
 		mBtnGlide.onClick(listener)
@@ -157,17 +158,18 @@ class TestActivity : BaseActivity() {
 		mBtnDialogActivity.onClick(listener)
 		mBtnLocation.onClick(listener)
         mBtnRxJava.onClick(listener)
-	}
-	
+        mBtnLooperRv.onClick(listener)
+    }
+
 	private fun doSomeThing() {
 		if (PermissionHelper.grantedInstallUnKnowApp(mContext, REQUEST_CODE_INSTALL)) {
 			toast("已有安装权限")
 		}
 	}
-	
-	
-	private val listener = object : OnNotFastClickListener {
-		override fun onNotFastClick(view : View) {
+
+
+    private val listener = object : OnNotFastClickListener {
+        override fun onNotFastClick(view: View) {
 			when (view.id) {
 				R.id.mItem -> {
 					//UMengHelper.login(mContext,SHARE_MEDIA.QQ,{},{})
@@ -195,9 +197,9 @@ class TestActivity : BaseActivity() {
 							area?.let {
 								if (mCityPickerView == null) {
 									mCityPickerView =
-										DialogHelper.selectCity(mContext, it) { city ->
-											toast(city)
-										}
+                                        DialogHelper.selectCity(mContext, it) { city ->
+                                            toast(city)
+                                        }
 								}
 								mCityPickerView!!.show()
 							}
@@ -266,12 +268,15 @@ class TestActivity : BaseActivity() {
                 R.id.mBtnRxJava -> {
                     startActivity<RxJavaActivity>()
                 }
+                R.id.mBtnLooperRv -> {
+                    startActivity<LooperRvActivity>()
+                }
 			}
 		}
 	}
-	
-	
-	override fun onActivityResult(requestCode : Int, resultCode : Int, data : Intent?) {
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 		super.onActivityResult(requestCode, resultCode, data)
 		UMengHelper.onQQAndWeiBoActivityResult(mContext, requestCode, resultCode, data)
 		if (resultCode == Activity.RESULT_OK) {
@@ -280,5 +285,5 @@ class TestActivity : BaseActivity() {
 			}
 		}
 	}
-	
+
 }

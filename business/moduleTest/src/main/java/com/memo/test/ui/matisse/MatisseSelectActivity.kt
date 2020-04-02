@@ -50,7 +50,7 @@ class MatisseSelectActivity : BaseActivity() {
             )
 		}
 		mBtnTake.onClick {
-			if (PermissionHelper.grantedCamera(mContext)) {
+            PermissionHelper.grantedCamera(mContext) {
 				takePhotoPath = MediaHelper.takePhoto(mContext, REQUEST_CODE_TAKE)
 			}
 		}

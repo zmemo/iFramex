@@ -9,7 +9,7 @@ import androidx.annotation.Nullable
 import androidx.lifecycle.LifecycleOwner
 import cn.bingoogolapple.qrcode.zxing.QRCodeDecoder
 import cn.bingoogolapple.qrcode.zxing.QRCodeEncoder
-import com.memo.tool.ext.doInBackground
+import com.memo.tool.ext.doInBackgroundExt
 import com.memo.tool.ext.toast
 
 /**
@@ -45,7 +45,7 @@ object QRCodeHelper {
 		onSuccess : (String) -> Unit,
 		onFailure : (Throwable) -> Unit = { toast("无法读取二维码数据") }
 	) {
-		doInBackground(lifecycleOwner, {
+        doInBackgroundExt(lifecycleOwner, {
 			QRCodeDecoder.syncDecodeQRCode(picPath)
 		}, onSuccess, onFailure)
 	}
@@ -73,7 +73,7 @@ object QRCodeHelper {
 		onSuccess : (Bitmap) -> Unit,
 		onFailure : (Throwable) -> Unit = { toast("二维码创建失败") }
 	) {
-		doInBackground(lifecycleOwner, {
+        doInBackgroundExt(lifecycleOwner, {
 			QRCodeEncoder.syncEncodeQRCode(content, sizePx, foregroundColor, backgroundColor, logo)
 		}, onSuccess, onFailure)
 	}

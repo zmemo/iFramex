@@ -4,100 +4,100 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion Config.compileSdkVersion
+	compileSdkVersion Config.compileSdkVersion
 
-    defaultConfig {
-        applicationId Config.applicationId
-        minSdkVersion Config.minSdkVersion
-        targetSdkVersion Config.targetSdkVersion
-        versionCode Config.versionCode
-        versionName Config.versionName
-        testInstrumentationRunner Config.androidJunitRunner
-        multiDexEnabled true
-        resConfigs "zh"
-        ndk {
-            abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
-            //'x86_64', 'mips', 'mips64'
-        }
-    }
+	defaultConfig {
+		applicationId Config.applicationId
+		minSdkVersion Config.minSdkVersion
+		targetSdkVersion Config.targetSdkVersion
+		versionCode Config.versionCode
+		versionName Config.versionName
+		testInstrumentationRunner Config.androidJunitRunner
+		multiDexEnabled true
+		resConfigs "zh"
+		ndk {
+			abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+			//'x86_64', 'x86', 'mips', 'mips64'
+		}
+	}
 
-//    signingConfigs {
-//        sign {
-//            keyAlias SignKeyAlias
-//            keyPassword SignKeyPassword
-//            storeFile file(SignStoreFile)
-//            storePassword SignStorePassword
-//        }
-//    }
+	signingConfigs {
+		sign {
+			keyAlias SignKeyAlias
+			keyPassword SignKeyPassword
+			storeFile file(SignStoreFile)
+			storePassword SignStorePassword
+		}
+	}
 
-    buildTypes {
-        debug {
-            minifyEnabled false
-            //signingConfig signingConfigs.sign
-            applicationIdSuffix '.debug'
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            android.applicationVariants.all { variant ->
-                variant.outputs.all {
-                    def time = new Date().format("MM月dd日HH时mm分", TimeZone.getDefault())
-                    outputFileName = "debug_v${variant.versionName}_${time}.apk"
-                }
-            }
-        }
-        release {
-            minifyEnabled true
-            zipAlignEnabled true
-            shrinkResources true
-            //signingConfig signingConfigs.sign
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            android.applicationVariants.all { variant ->
-                variant.outputs.all {
-                    def time = new Date().format("MM月dd日HH时mm分", TimeZone.getDefault())
-                    outputFileName = "release_v${variant.versionName}_${time}.apk"
-                }
-            }
-        }
-    }
+	buildTypes {
+		debug {
+			minifyEnabled false
+			signingConfig signingConfigs.sign
+			applicationIdSuffix '.debug'
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			android.applicationVariants.all { variant ->
+				variant.outputs.all {
+					def time = new Date().format("MM月dd日HH时mm分", TimeZone.getDefault())
+					outputFileName = "debug_v${variant.versionName}_${time}.apk"
+				}
+			}
+		}
+		release {
+			minifyEnabled true
+			zipAlignEnabled true
+			shrinkResources true
+			signingConfig signingConfigs.sign
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+			android.applicationVariants.all { variant ->
+				variant.outputs.all {
+					def time = new Date().format("MM月dd日HH时mm分", TimeZone.getDefault())
+					outputFileName = "release_v${variant.versionName}_${time}.apk"
+				}
+			}
+		}
+	}
 
-    lintOptions {
-        checkReleaseBuilds false
-        abortOnError false
-        ignoreWarnings true
-    }
+	lintOptions {
+		checkReleaseBuilds false
+		abortOnError false
+		ignoreWarnings true
+	}
 
-    aaptOptions {
-        cruncherEnabled = false
-        useNewCruncher = false
-    }
+	aaptOptions {
+		cruncherEnabled = false
+		useNewCruncher = false
+	}
 
-    packagingOptions {
-        exclude 'META-INF/*'
-    }
+	packagingOptions {
+		exclude 'META-INF/*'
+	}
 
-    dexOptions {
-        preDexLibraries true
-        javaMaxHeapSize "8g"
-        maxProcessCount 8
-        dexInProcess = true
-    }
+	dexOptions {
+		preDexLibraries true
+		javaMaxHeapSize "8g"
+		maxProcessCount 8
+		dexInProcess = true
+	}
 
-    compileOptions {
-        targetCompatibility JavaVersion.VERSION_1_8
-        sourceCompatibility JavaVersion.VERSION_1_8
-    }
+	compileOptions {
+		targetCompatibility JavaVersion.VERSION_1_8
+		sourceCompatibility JavaVersion.VERSION_1_8
+	}
 }
 
 kapt {
-    arguments {
-        arg("AROUTER_MODULE_NAME", project.getName())
-    }
+	arguments {
+		arg("AROUTER_MODULE_NAME", project.getName())
+	}
 }
 
 dependencies {
-    testImplementation DepConfig.junit
-    androidTestImplementation DepConfig.testJunit
-    androidTestImplementation DepConfig.testEspresso
-    kapt DepConfig.arouterCompiler
+	testImplementation DepConfig.junit
+	androidTestImplementation DepConfig.testJunit
+	androidTestImplementation DepConfig.testEspresso
+	kapt DepConfig.arouterCompiler
 
-    if (!ModuleConfig.isModuleUiRunAlone) implementation project(path: ':business:moduleUi')
-    if (!ModuleConfig.isModuleTestRunAlone) implementation project(path: ':business:moduleTest')
+	if (!ModuleConfig.isModuleUiRunAlone) implementation project(path: ':business:moduleUi')
+	if (!ModuleConfig.isModuleTestRunAlone) implementation project(path: ':business:moduleTest')
 }

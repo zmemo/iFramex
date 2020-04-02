@@ -21,7 +21,7 @@ import com.memo.tool.R
 import com.memo.tool.dialog.entity.Area
 import com.memo.tool.dialog.entity.Province
 import com.memo.tool.ext.color
-import com.memo.tool.ext.doInBackground
+import com.memo.tool.ext.doInBackgroundExt
 import java.text.SimpleDateFormat
 
 /**
@@ -94,7 +94,7 @@ object DialogHelper {
 	 */
 	@JvmStatic
 	fun parseArea(lifecycleOwner : LifecycleOwner, onSuccess : (area : Area) -> Unit) =
-		doInBackground(lifecycleOwner, {
+        doInBackgroundExt(lifecycleOwner, {
 			val json = ResourceUtils.readAssets2String("province.json")
 			val provinces = GsonHelper.parse2List<Province>(json)
 			val cities : ArrayList<ArrayList<String>> = arrayListOf()

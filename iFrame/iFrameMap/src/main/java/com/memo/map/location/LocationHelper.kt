@@ -6,7 +6,6 @@ import com.amap.api.location.AMapLocationClient
 import com.amap.api.location.AMapLocationClientOption
 import com.blankj.utilcode.util.LogUtils
 import com.memo.tool.app.BaseApp
-import com.memo.tool.helper.PermissionHelper
 
 
 /**
@@ -28,24 +27,26 @@ object LocationHelper {
      * 检查模块清单文件中是否填写了高德SDK的apiKey
      */
     @JvmStatic
-    fun startOnceLocation(context: Context, onSuccess: (location: AMapLocation) -> Unit, onError: () -> Unit = {}) {
-        if (PermissionHelper.grantedLocation(context)) {
-            val client = AMapLocationClient(BaseApp.app.applicationContext)
-            client.setLocationListener {
-                if (it.errorCode == AMapLocation.LOCATION_SUCCESS) {
-                    onSuccess(it)
-                } else {
-                    LogUtils.eTag("Location", it.errorInfo)
-                    onError()
-                }
+    fun startOnceLocation(
+        context: Context,
+        onSuccess: (location: AMapLocation) -> Unit,
+        onError: () -> Unit = {}
+    ) {
+        val client = AMapLocationClient(BaseApp.app.applicationContext)
+        client.setLocationListener {
+            if (it.errorCode == AMapLocation.LOCATION_SUCCESS) {
+                onSuccess(it)
+            } else {
+                LogUtils.eTag("Location", it.errorInfo)
+                onError()
             }
-            //设置使用HTTPS进行网络连接
-            AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTPS)
-            val option = AMapLocationClientOption()
-            //设置单次定位
-            option.isOnceLocation = true
-            client.setLocationOption(option)
-            client.startLocation()
         }
+        //设置使用HTTPS进行网络连接
+        AMapLocationClientOption.setLocationProtocol(AMapLocationClientOption.AMapLocationProtocol.HTTPS)
+        val option = AMapLocationClientOption()
+        //设置单次定位
+        option.isOnceLocation = true
+        client.setLocationOption(option)
+        client.startLocation()
     }
 }

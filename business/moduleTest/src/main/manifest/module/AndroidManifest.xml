@@ -3,7 +3,8 @@
     package="com.memo.test">
 
     <application>
-        <activity android:name=".ui.rxjava.RxJavaActivity"></activity>
+        <activity android:name=".ui.looper.LooperRvActivity"></activity>
+        <activity android:name=".ui.rxjava.RxJavaActivity" />
         <activity android:name=".ui.location.LocationActivity" />
         <activity android:name=".TestActivity" />
         <activity android:name=".ui.viewpager.ViewPagerActivity" />
@@ -31,7 +32,7 @@
         <activity android:name=".ui.drag.DragActivity" />
         <activity
             android:name=".ui.dialogactivity.KickOutActivity"
-            android:theme="@style/kick_dialog_activity" />
+            android:theme="@style/kick_out_dialog_activity" />
 
         <service android:name=".ui.download.DownloadService" />
     </application>

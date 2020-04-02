@@ -2,11 +2,12 @@ class DepConfig {
 
     static gradleVersion = "3.5.2"
     static kotlinVersion = "1.3.61"
-    static retrofitVersion = "2.7.1"
-    static glideVersion = "4.11.0"
+
     static autoDisposeVersion = "1.4.0"
-    static doKitVersion = "2.2.2"
+    static doKitVersion = "3.0.0"
+    static glideVersion = "4.11.0"
     static leakCanaryVersion = "2.2"
+    static retrofitVersion = "2.7.1"
 
     // Gradle
     static gradle = "com.android.tools.build:gradle:$gradleVersion"
@@ -24,7 +25,8 @@ class DepConfig {
     static appcompat = "androidx.appcompat:appcompat:1.1.0"
     static agentWeb = "com.just.agentweb:agentweb:4.1.2"
     static androidSwipeLayout = "com.daimajia.swipelayout:library:1.2.0@aar"
-    static basePopupCore = "com.github.razerdp:BasePopup:2.2.2"
+    static banner = "com.github.zhpanvip:BannerViewPager:2.7.1"
+    static basePopupCore = "com.github.razerdp:BasePopup:2.2.2.2"
     static baseRecyclerViewAdapterHelper = "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47-androidx"
     static cardView = "androidx.cardview:cardview:1.0.0"
     static constraintLayout = "androidx.constraintlayout:constraintlayout:1.1.3"
@@ -42,10 +44,9 @@ class DepConfig {
 
     // 工具
     static arouter = "com.alibaba:arouter-api:1.5.0"
-    static androidUtilCode = "com.blankj:utilcodex:1.26.0"
+    static androidUtilCode = "com.blankj:utilcodex:1.27.0"
     static autoDispose = "com.uber.autodispose:autodispose-android:$autoDisposeVersion"
     static autoDisposeArch = "com.uber.autodispose:autodispose-android-archcomponents:$autoDisposeVersion"
-    static banner = "com.github.zhpanvip:BannerViewPager:2.6.6"
     static coreKtx = "androidx.core:core-ktx:1.0.2"
     static glide = "com.github.bumptech.glide:glide:$glideVersion"
     static glideOkHttp = "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
