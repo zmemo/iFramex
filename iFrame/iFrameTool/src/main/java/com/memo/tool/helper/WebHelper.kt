@@ -12,6 +12,7 @@ import android.widget.FrameLayout
 import androidx.annotation.LayoutRes
 import com.just.agentweb.AgentWeb
 import com.just.agentweb.AgentWebConfig
+import com.just.agentweb.WebViewClient
 
 /**
  * title:
@@ -21,20 +22,26 @@ import com.just.agentweb.AgentWebConfig
  * @date 2019-08-08 14:10
  */
 object WebHelper {
-	
+
 	@SuppressLint("SetJavaScriptEnabled", "ObsoleteSdkInt")
-	fun init(activity : Activity, container : ViewGroup, @LayoutRes errorLayoutRes : Int, url : String) : AgentWeb {
+	fun init(activity: Activity, container: ViewGroup, @LayoutRes errorLayoutRes: Int, url: String, onWebFinish: () -> Unit = {}): AgentWeb {
 		//如果是空白网址 设置一个错误的地址
 		val httpUrl = if (url.isEmpty()) "https://error" else url
-		
+
 		val agentWeb = AgentWeb.with(activity)
-			.setAgentWebParent(container, FrameLayout.LayoutParams(-1, -1))
-			.useDefaultIndicator()
-			.setMainFrameErrorView(errorLayoutRes, -1)
-			.createAgentWeb()
-			.ready()
-			.go(httpUrl)
-		
+				.setAgentWebParent(container, FrameLayout.LayoutParams(-1, -1))
+				.useDefaultIndicator()
+				.setWebViewClient(object : WebViewClient() {
+					override fun onPageFinished(view: WebView?, url: String?) {
+						super.onPageFinished(view, url)
+						onWebFinish()
+					}
+				})
+				.setMainFrameErrorView(errorLayoutRes, -1)
+				.createAgentWeb()
+				.ready()
+				.go(httpUrl)
+
 		val webView = agentWeb.webCreator.webView
 		val settings = webView.settings
 		//去除过度拉伸效果
@@ -58,35 +65,35 @@ object WebHelper {
 		}
 		return agentWeb
 	}
-	
+
 	/**
 	 * 生命周期 onPause
 	 */
-	fun onPause(agentWeb : AgentWeb?) {
+	fun onPause(agentWeb: AgentWeb?) {
 		agentWeb?.webLifeCycle?.onPause()
 	}
-	
+
 	/**
 	 * 生命周期 onResume
 	 */
-	fun onResume(agentWeb : AgentWeb?) {
+	fun onResume(agentWeb: AgentWeb?) {
 		agentWeb?.webLifeCycle?.onResume()
 	}
-	
+
 	/**
 	 * 生命周期 onDestroy
 	 */
-	fun onDestroy(agentWeb : AgentWeb?) {
+	fun onDestroy(agentWeb: AgentWeb?) {
 		agentWeb?.webLifeCycle?.onDestroy()
 	}
-	
+
 	/**
 	 * 清除本地缓存
 	 */
-	fun clearCache(context : Context) {
+	fun clearCache(context: Context) {
 		AgentWebConfig.clearDiskCache(context)
 	}
-	
+
 	/**
 	 * android调用网页js方法
 	 * @param agentWeb AgentWeb
@@ -95,14 +102,14 @@ object WebHelper {
 	 * @param params 传参
 	 */
 	fun callJs(
-		agentWeb : AgentWeb?,
-		method : String,
-		callback : ValueCallback<String>? = null,
-		vararg params : String
+			agentWeb: AgentWeb?,
+			method: String,
+			callback: ValueCallback<String>? = null,
+			vararg params: String
 	) {
 		agentWeb?.jsAccessEntrace?.quickCallJs(method, callback, *params)
 	}
-	
+
 	/**
 	 * android响应网页js方法
 	 * 例如：网页调方法 window.android.showToast(message)
@@ -114,9 +121,9 @@ object WebHelper {
 	 * @param methodClazz Any
 	 *
 	 */
-	fun respondJs(agentWeb : AgentWeb?, className : String, methodClazz : Any) {
+	fun respondJs(agentWeb: AgentWeb?, className: String, methodClazz: Any) {
 		agentWeb?.jsInterfaceHolder?.addJavaObject(className, methodClazz)
 	}
-	
-	
+
+
 }

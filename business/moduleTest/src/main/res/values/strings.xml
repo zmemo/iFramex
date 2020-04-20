@@ -33,5 +33,6 @@
     <string name="Location">定位</string>
     <string name="RxJava">Rxhava</string>
     <string name="LooperRv">循环RecyclerView</string>
+	<string name="WebComment">网页加评论</string>
 
 </resources>

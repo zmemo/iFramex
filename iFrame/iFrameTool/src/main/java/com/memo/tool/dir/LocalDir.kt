@@ -13,19 +13,30 @@ import com.memo.tool.ext.string
  */
 object LocalDir {
 
-	val ROOT_PATH = "${Environment.getExternalStorageDirectory().absolutePath}/${string(BaseApp.app.applicationContext.applicationInfo.labelRes)}"
+	/*** 本地沙箱地址 SDK29 Android Q后统一使用 不需要权限直接使用 手机上无法查看到数据***/
+	val SANDBOX_CACHE by lazy { BaseApp.app.getExternalFilesDir("caches") }
 
-    val DIR_COMPRESS : String = "$ROOT_PATH/compress"
-	val NOMEDIA_COMPRESS : String = "$DIR_COMPRESS/.nomedia"
+	/*** 本地文件夹 需要权限才可以使用 ***/
+	val LOCAL_CACHE by lazy { "${Environment.getExternalStorageDirectory().absolutePath}/${string(BaseApp.app.applicationInfo.labelRes)}" }
 
-    val DIR_CAPTURE : String = "$ROOT_PATH/capture"
-	val NOMEDIA_CAPTURE : String = "$DIR_CAPTURE/.nomedia"
+	/*** 本地缓存根目录 ***/
+	val CACHE_ROOT_PATH = SANDBOX_CACHE?.absolutePath ?: LOCAL_CACHE
 
-    val DIR_CROP : String = "$ROOT_PATH/crop"
-	val NOMEDIA_CROP : String = "$DIR_CROP/.nomedia"
+	/*** 本地图片压缩缓存 ***/
+	val CACHE_DIR_COMPRESS: String = "$CACHE_ROOT_PATH/compress"
+	val NOMEDIA_COMPRESS: String = "$CACHE_DIR_COMPRESS/.nomedia"
 
-	val DIR_VIDEO: String = "$ROOT_PATH/video"
-	val NOMEDIA_VIDEO : String = "$DIR_VIDEO/.nomedia"
+	/*** 本地拍照缓存 ***/
+	val CACHE_DIR_CAPTURE: String = "$CACHE_ROOT_PATH/capture"
+	val NOMEDIA_CAPTURE: String = "$CACHE_DIR_CAPTURE/.nomedia"
 
-    val DIR_EXCEPTION_LOG: String = "$ROOT_PATH/log"
+	/*** 本地图片裁剪缓存 ***/
+	val CACHE_DIR_CROP: String = "$CACHE_ROOT_PATH/crop"
+	val NOMEDIA_CROP: String = "$CACHE_DIR_CROP/.nomedia"
+
+	/*** 本地文件缓存 ***/
+	val CACHE_DIR_FILE: String = "$CACHE_ROOT_PATH/file"
+
+	/*** 本地日志缓存 ***/
+	val CACHE_DIR_LOG: String = "$CACHE_ROOT_PATH/log"
 }

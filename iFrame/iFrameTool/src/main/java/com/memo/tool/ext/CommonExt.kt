@@ -80,7 +80,8 @@ fun Int.checkMore99(): String = if (this > 99) "99+" else this.toString()
  */
 fun copyToClipboard(content: String) {
     val plainText = ClipData.newPlainText("Copy", content)
-    val clipboardManager = ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)
+	val clipboardManager =
+			ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)
     clipboardManager?.setPrimaryClip(plainText)
 }
 
@@ -88,7 +89,10 @@ fun copyToClipboard(content: String) {
  * 从粘贴板上获取复制数据
  */
 fun getFromClipboard(): String {
-    val clipData = ContextCompat.getSystemService(BaseApp.app.applicationContext, ClipboardManager::class.java)?.primaryClip
+	val clipData = ContextCompat.getSystemService(
+			BaseApp.app.applicationContext,
+			ClipboardManager::class.java
+	)?.primaryClip
     return if (clipData != null && clipData.itemCount > 0) {
         clipData.getItemAt(0).text.toString()
     } else {
@@ -107,4 +111,9 @@ fun tryCatch(tryToDo: () -> Unit) {
 }
 
 
-//---------------------------------------- Loop ----------------------------------------
+//---------------------------------------- 循环 ----------------------------------------
+fun foreach(index: Int, loop: () -> Unit) {
+	for (i in 0..index) {
+		loop()
+	}
+}

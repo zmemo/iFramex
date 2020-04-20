@@ -16,8 +16,8 @@ android {
 		multiDexEnabled true
 		resConfigs "zh"
 		ndk {
-			abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
-			//'x86_64', 'x86', 'mips', 'mips64'
+			abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a', 'x86'
+			//'x86_64', 'mips', 'mips64'
 		}
 	}
 

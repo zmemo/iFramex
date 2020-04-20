@@ -5,7 +5,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.ViewTreeObserver
-import android.widget.TextView
+import androidx.appcompat.widget.AppCompatTextView
 import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.LogUtils
 
@@ -17,7 +17,7 @@ import com.blankj.utilcode.util.LogUtils
  * @author zhou
  * @date 2019-09-05 11:51
  */
-class DragView : TextView,
+class DragView : AppCompatTextView,
     ViewTreeObserver.OnGlobalLayoutListener {
 
     private var startY = 0f

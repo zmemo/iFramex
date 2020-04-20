@@ -31,11 +31,6 @@ class KickOutActivity : BaseActivity() {
         }
     }
 
-
     override fun onBackPressed() {}
 
-    override fun finish() {
-        super.finish()
-        overridePendingTransition(0, R.anim.scale_out)
-    }
 }

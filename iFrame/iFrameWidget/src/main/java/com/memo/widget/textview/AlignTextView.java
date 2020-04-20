@@ -22,8 +22,6 @@ import androidx.appcompat.widget.AppCompatTextView;
  */
 public class AlignTextView extends AppCompatTextView {
 
-    private boolean alignOnlyOneLine = false;
-
     public AlignTextView(Context context) {
         this(context, null);
     }
@@ -60,6 +58,7 @@ public class AlignTextView extends AppCompatTextView {
             int lineBaseline = layout.getLineBaseline(i) + getPaddingTop();
             int lineStart = layout.getLineStart(i);
             int lineEnd = layout.getLineEnd(i);
+	        boolean alignOnlyOneLine = false;
             if (alignOnlyOneLine && layout.getLineCount() == 1) { // 只有一行
                 String line = text.substring(lineStart, lineEnd);
                 float width = StaticLayout.getDesiredWidth(text, lineStart, lineEnd, getPaint());

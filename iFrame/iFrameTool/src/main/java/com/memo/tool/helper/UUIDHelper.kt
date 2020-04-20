@@ -25,20 +25,20 @@ object UUIDHelper {
      */
     fun getUUID(): String {
         if (uuid.isEmpty()) {
-            var imei = PhoneUtils.getIMEI()
-            if (imei.isEmpty()) {
-                imei = StringBuilder()
-                    .append(Build.BOARD).append(Build.BRAND)
-                    .append(Build.DEVICE).append(Build.DISPLAY)
-                    .append(Build.FINGERPRINT).append(Build.HOST)
-                    .append(Build.MANUFACTURER).append(Build.MODEL)
-                    .append(Build.PRODUCT).append(Build.TAGS)
-                    .append(Build.TYPE).append(Build.USER)
-                    .append(DeviceUtils.getAndroidID())
-                    .append(DeviceUtils.getMacAddress())
-                    .toString()
+            uuid = PhoneUtils.getIMEI()
+            if (uuid.isEmpty()) {
+                uuid = StringBuilder()
+                        .append(Build.BOARD).append(Build.BRAND)
+                        .append(Build.DEVICE).append(Build.DISPLAY)
+                        .append(Build.FINGERPRINT).append(Build.HOST)
+                        .append(Build.MANUFACTURER).append(Build.MODEL)
+                        .append(Build.PRODUCT).append(Build.TAGS)
+                        .append(Build.TYPE).append(Build.USER)
+                        .append(DeviceUtils.getAndroidID())
+                        .append(DeviceUtils.getMacAddress())
+                        .toString()
             }
-            uuid = imei.md5()
+            uuid = uuid.md5()
         }
         return uuid
     }

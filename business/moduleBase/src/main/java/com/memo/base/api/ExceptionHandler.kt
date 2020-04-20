@@ -72,7 +72,7 @@ object ExceptionHandler {
         if (!PermissionUtils.isGranted(PermissionConstants.STORAGE)) return
 
         //创建错误日志文件夹
-        val file = File(LocalDir.DIR_EXCEPTION_LOG)
+	    val file = File(LocalDir.CACHE_DIR_LOG)
         FileUtils.createOrExistsDir(file)
 
         //获取详细错误信息

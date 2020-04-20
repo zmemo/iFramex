@@ -29,478 +29,429 @@ import kotlinx.android.synthetic.main.layout_title_view.view.*
  * @date 2019-05-07 11:26
  */
 @SuppressLint("ObsoleteSdkInt")
-class TitleView(context: Context, attrs: AttributeSet?) : FrameLayout(context, attrs, 0) {
+class TitleView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, def: Int = 0)
+	: FrameLayout(context, attrs, def) {
 
-    /*** 标题 ***/
-    private var titleText: String = ""
-    private var titleSize: Float =
-        if (isInEditMode) {
-            50f
-        } else {
-            dimen(R.dimen.sp18)
-        }
-    private var titleColor: Int =
-        if (isInEditMode) {
-            Color.BLACK
-        } else {
-            color(R.color.color_333333)
-        }
-    private var titleBold: Boolean = true
-    private var titleMarqueeEnable: Boolean = false
+	/*** 标题 ***/
+	private var titleText: String = ""
+	private var titleSize: Float = if (isInEditMode) 50f else dimen(R.dimen.sp18)
+	private var titleColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
+	private var titleBold: Boolean = true
+	private var titleMarqueeEnable: Boolean = false
 
-    /*** 副标题 ***/
-    private var subtitleText: String = ""
-    private var subtitleSize: Float =
-        if (isInEditMode) {
-            40f
-        } else {
-            dimen(R.dimen.sp14)
-        }
-    private var subtitleColor: Int =
-        if (isInEditMode) {
-            Color.BLACK
-        } else {
-            color(R.color.color_333333)
-        }
-    private var subtitleBold: Boolean = false
+	/*** 副标题 ***/
+	private var subtitleText: String = ""
+	private var subtitleSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
+	private var subtitleColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
 
-    /*** 左侧图标 ***/
-    private var leftText: String = ""
-    private var leftTextSize: Float =
-        if (isInEditMode) {
-            40f
-        } else {
-            dimen(R.dimen.sp14)
-        }
-    private var leftTextColor: Int =
-        if (isInEditMode) {
-            Color.BLACK
-        } else {
-            color(R.color.color_333333)
-        }
-    private var leftTextBold: Boolean = false
-    private var leftDrawablePadding: Float =
-        if (isInEditMode) {
-            13f
-        } else {
-            dimen(R.dimen.dp5)
-        }
-    private var leftDrawable: Int = R.drawable.ic_back
-    private var leftShown: Boolean = true
+	private var subtitleBold: Boolean = false
 
-    /*** 右侧图标 ***/
-    private var rightText: String = ""
-    private var rightTextSize: Float =
-        if (isInEditMode) {
-            40f
-        } else {
-            dimen(R.dimen.sp14)
-        }
-    private var rightTextColor: Int =
-        if (isInEditMode) {
-            Color.BLACK
-        } else {
-            color(R.color.color_333333)
-        }
-    private var rightTextBold: Boolean = false
-    private var rightDrawable: Int = 0
-    private var rightDrawablePadding: Float =
-        if (isInEditMode) {
-            13f
-        } else {
-            dimen(R.dimen.dp5)
-        }
+	/*** 左侧图标 ***/
+	private var leftText: String = ""
+	private var leftTextSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
+	private var leftTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
 
-    private var mElevation: Float =
-        if (isInEditMode) {
-            10f
-        } else {
-            dimen(R.dimen.dp4)
-        }
+	private var leftTextBold: Boolean = false
+	private var leftDrawablePadding: Float = if (isInEditMode) 13f else dimen(R.dimen.dp5)
+	private var leftDrawable: Int = R.drawable.ic_back
+	private var leftShown: Boolean = true
 
-    /*** 底部阴影 ***/
-    private var shadowShown: Boolean = true
+	/*** 右侧图标 ***/
+	private var rightText: String = ""
+	private var rightTextSize: Float = if (isInEditMode) 40f else dimen(R.dimen.sp14)
+	private var rightTextColor: Int = if (isInEditMode) Color.BLACK else color(R.color.color_333333)
 
-    /*** 背景颜色 ***/
-    private var background: Int = Color.WHITE
+	private var rightTextBold: Boolean = false
+	private var rightDrawable: Int = 0
+	private var rightDrawablePadding: Float = if (isInEditMode) 13f else dimen(R.dimen.dp5)
 
-    private var mLeftListener: LeftClickListener? = null
-    private var mRightListener: RightClickListener? = null
-    private var mTitleListener: TitleClickListener? = null
 
-    init {
-        inflaterView(R.layout.layout_title_view, this)
-        val attr: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleView)
-        initOption(attr)
-        initView()
-        initListener()
-        attr.recycle()
-    }
+	private var mElevation: Float = if (isInEditMode) 10f else dimen(R.dimen.dp4)
 
-    private fun initOption(attr: TypedArray) {
-        titleText = attr.getString(R.styleable.TitleView_title_title_text) ?: titleText
-        titleSize = attr.getDimension(R.styleable.TitleView_title_title_size, titleSize)
-        titleColor = attr.getColor(R.styleable.TitleView_title_title_color, titleColor)
-        titleBold = attr.getBoolean(R.styleable.TitleView_title_title_bold, titleBold)
-        titleMarqueeEnable =
-            attr.getBoolean(R.styleable.TitleView_title_marquee_enable, titleMarqueeEnable)
 
-        subtitleText = attr.getString(R.styleable.TitleView_title_subtitle_text) ?: subtitleText
-        subtitleSize = attr.getDimension(R.styleable.TitleView_title_subtitle_size, subtitleSize)
-        subtitleColor = attr.getColor(R.styleable.TitleView_title_subtitle_color, subtitleColor)
-        subtitleBold = attr.getBoolean(R.styleable.TitleView_title_subtitle_bold, subtitleBold)
+	/*** 底部阴影 ***/
+	private var shadowShown: Boolean = true
 
-        leftText = attr.getString(R.styleable.TitleView_title_left_text) ?: leftText
-        leftTextSize = attr.getDimension(R.styleable.TitleView_title_left_text_size, leftTextSize)
-        leftTextColor = attr.getColor(R.styleable.TitleView_title_left_text_color, leftTextColor)
-        leftTextBold = attr.getBoolean(R.styleable.TitleView_title_left_text_bold, leftTextBold)
-        leftDrawablePadding = attr.getDimension(
-            R.styleable.TitleView_title_left_drawable_padding,
-            leftDrawablePadding
-        )
-        leftDrawable = attr.getResourceId(R.styleable.TitleView_title_left_drawable, leftDrawable)
-        leftShown = attr.getBoolean(R.styleable.TitleView_title_left_shown, leftShown)
+	/*** 背景颜色 ***/
+	private var background: Int = Color.WHITE
 
-        rightText = attr.getString(R.styleable.TitleView_title_right_text) ?: rightText
-        rightTextSize =
-            attr.getDimension(R.styleable.TitleView_title_right_text_size, rightTextSize)
-        rightTextColor = attr.getColor(R.styleable.TitleView_title_right_text_color, rightTextColor)
-        rightTextBold = attr.getBoolean(R.styleable.TitleView_title_right_text_bold, rightTextBold)
-        rightDrawable =
-            attr.getResourceId(R.styleable.TitleView_title_right_drawable, rightDrawable)
-        rightDrawablePadding = attr.getDimension(
-            R.styleable.TitleView_title_right_drawable_padding,
-            rightDrawablePadding
-        )
+	private var mLeftListener: LeftClickListener? = null
+	private var mRightListener: RightClickListener? = null
+	private var mTitleListener: TitleClickListener? = null
 
-        shadowShown = attr.getBoolean(R.styleable.TitleView_title_shadow_shown, shadowShown)
+	init {
+		inflaterView(R.layout.layout_title_view, this)
+		val attr: TypedArray = context.obtainStyledAttributes(attrs, R.styleable.TitleView)
+		initOption(attr)
+		initView()
+		initListener()
+		attr.recycle()
+	}
 
-        background = attr.getColor(R.styleable.TitleView_title_background, Color.WHITE)
-    }
+	private fun initOption(attr: TypedArray) {
+		titleText = attr.getString(R.styleable.TitleView_title_title_text) ?: titleText
+		titleSize = attr.getDimension(R.styleable.TitleView_title_title_size, titleSize)
+		titleColor = attr.getColor(R.styleable.TitleView_title_title_color, titleColor)
+		titleBold = attr.getBoolean(R.styleable.TitleView_title_title_bold, titleBold)
+		titleMarqueeEnable =
+				attr.getBoolean(R.styleable.TitleView_title_marquee_enable, titleMarqueeEnable)
 
-    private fun initView() {
-        // 标题
-        mTvTitle.text = titleText
-        mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize)
-        mTvTitle.setTextColor(titleColor)
-        if (titleBold) {
-            mTvTitle.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
-        }
-        if (titleMarqueeEnable) {
-            mTvTitle.ellipsize = TextUtils.TruncateAt.MARQUEE
-            mTvTitle.setSingleLine()
-            mTvTitle.isSelected = true
-            mTvTitle.isFocusable = true
-            mTvTitle.isFocusableInTouchMode = true
-        }
-        // 副标题
-        if (subtitleText.isNotEmpty()) {
-            mTvSubTitle.visible()
-            mTvSubTitle.text = subtitleText
-            mTvSubTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, subtitleSize)
-            mTvSubTitle.setTextColor(subtitleColor)
-            if (subtitleBold) {
-                mTvSubTitle.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
-            }
-        }
-        // 左侧图标
-        if (leftShown) {
-            mTvLeft.visibility = View.VISIBLE
-            //左侧图标
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(leftDrawable, 0, 0, 0)
-            } else {
-                mTvLeft.setCompoundDrawablesWithIntrinsicBounds(leftDrawable, 0, 0, 0)
-            }
-            mTvRight.compoundDrawablePadding = leftDrawablePadding.toInt()
-            //左侧文字
-            if (leftText.isNotEmpty()) {
-                mTvLeft.text = leftText
-                mTvLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX, leftTextSize)
-                mTvLeft.setTextColor(leftTextColor)
-                if (leftTextBold) {
-                    mTvLeft.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
-                }
-            }
-        } else {
-            mTvLeft.visibility = View.GONE
-        }
-        // 右侧文字
-        if (rightText.isNotEmpty()) {
-            mTvRight.visibility = View.VISIBLE
-            mTvRight.text = rightText
-            mTvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize)
-            mTvRight.setTextColor(rightTextColor)
-            if (rightTextBold) {
-                mTvRight.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
-            }
-        }
-        if (rightDrawable != 0) {
-            mTvRight.visibility = View.VISIBLE
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-                mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, rightDrawable, 0)
-            } else {
-                mTvRight.setCompoundDrawablesWithIntrinsicBounds(0, 0, rightDrawable, 0)
-            }
-            mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
-        }
-        //设置背景颜色
-        setBackgroundColor(background)
-        //是否显示边框阴影
-        if (shadowShown && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            this.outlineProvider = ViewOutlineProvider.BOUNDS
-            ViewCompat.setElevation(this, mElevation)
-            clipToPadding = false
-        }
-    }
+		subtitleText = attr.getString(R.styleable.TitleView_title_subtitle_text) ?: subtitleText
+		subtitleSize = attr.getDimension(R.styleable.TitleView_title_subtitle_size, subtitleSize)
+		subtitleColor = attr.getColor(R.styleable.TitleView_title_subtitle_color, subtitleColor)
+		subtitleBold = attr.getBoolean(R.styleable.TitleView_title_subtitle_bold, subtitleBold)
 
-    private fun initListener() {
-        onViewsClickListener({
-            when (it.id) {
-                R.id.mTvLeft -> {
-                    if (mLeftListener == null) {
-                        if (context is Activity) {
-                            (context as Activity).finish()
-                        }
-                    } else {
-                        mLeftListener?.onLeftClick()
-                    }
-                }
-                R.id.mTvTitle -> {
-                    mTitleListener?.onTitleClick()
-                }
-                R.id.mTvRight -> {
-                    mRightListener?.onRightClick()
-                }
-            }
-        }, mTvLeft, mTvTitle, mTvRight)
-    }
+		leftText = attr.getString(R.styleable.TitleView_title_left_text) ?: leftText
+		leftTextSize = attr.getDimension(R.styleable.TitleView_title_left_text_size, leftTextSize)
+		leftTextColor = attr.getColor(R.styleable.TitleView_title_left_text_color, leftTextColor)
+		leftTextBold = attr.getBoolean(R.styleable.TitleView_title_left_text_bold, leftTextBold)
+		leftDrawablePadding = attr.getDimension(
+				R.styleable.TitleView_title_left_drawable_padding,
+				leftDrawablePadding
+		)
+		leftDrawable = attr.getResourceId(R.styleable.TitleView_title_left_drawable, leftDrawable)
+		leftShown = attr.getBoolean(R.styleable.TitleView_title_left_shown, leftShown)
 
-    /**
-     * 设置标题
-     * @param title String? 标题
-     */
-    fun setTitle(title: String?) {
-        mTvTitle.text = title ?: ""
-    }
+		rightText = attr.getString(R.styleable.TitleView_title_right_text) ?: rightText
+		rightTextSize =
+				attr.getDimension(R.styleable.TitleView_title_right_text_size, rightTextSize)
+		rightTextColor = attr.getColor(R.styleable.TitleView_title_right_text_color, rightTextColor)
+		rightTextBold = attr.getBoolean(R.styleable.TitleView_title_right_text_bold, rightTextBold)
+		rightDrawable =
+				attr.getResourceId(R.styleable.TitleView_title_right_drawable, rightDrawable)
+		rightDrawablePadding = attr.getDimension(
+				R.styleable.TitleView_title_right_drawable_padding,
+				rightDrawablePadding
+		)
 
-    /**
-     * 设置标题字体大小
-     * @param dimenSp Int R.dimen.sp10
-     */
-    fun setTitleSize(@DimenRes dimenSp: Int) {
-        mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, dimen(dimenSp))
-    }
+		shadowShown = attr.getBoolean(R.styleable.TitleView_title_shadow_shown, shadowShown)
 
-    /**
-     * 设置标题字体颜色
-     * @param colorInt Int Color.White
-     */
-    fun setTitleColor(@ColorInt colorInt: Int) {
-        mTvTitle.setTextColor(colorInt)
-    }
+		background = attr.getColor(R.styleable.TitleView_title_background, Color.WHITE)
+	}
 
-    /**
-     * 是否开启标题跑马灯
-     * @param enable Boolean
-     */
-    fun enableTitleMarquee(enable: Boolean) {
-        mTvTitle.ellipsize = TextUtils.TruncateAt.MARQUEE
-        mTvTitle.setSingleLine()
-        mTvTitle.isSelected = enable
-        mTvTitle.isFocusable = enable
-        mTvTitle.isFocusableInTouchMode = enable
-    }
+	private fun initView() {
+		// 标题
+		mTvTitle.text = titleText
+		mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, titleSize)
+		mTvTitle.setTextColor(titleColor)
+		if (titleBold) {
+			mTvTitle.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
+		}
+		if (titleMarqueeEnable) {
+			mTvTitle.ellipsize = TextUtils.TruncateAt.MARQUEE
+			mTvTitle.setSingleLine()
+			mTvTitle.isSelected = true
+			mTvTitle.isFocusable = true
+			mTvTitle.isFocusableInTouchMode = true
+		}
+		// 副标题
+		if (subtitleText.isNotEmpty()) {
+			mTvSubTitle.visible()
+			mTvSubTitle.text = subtitleText
+			mTvSubTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, subtitleSize)
+			mTvSubTitle.setTextColor(subtitleColor)
+			if (subtitleBold) {
+				mTvSubTitle.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
+			}
+		}
+		// 左侧图标
+		if (leftShown) {
+			mTvLeft.visibility = View.VISIBLE
+			//左侧图标
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+				mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(leftDrawable, 0, 0, 0)
+			} else {
+				mTvLeft.setCompoundDrawablesWithIntrinsicBounds(leftDrawable, 0, 0, 0)
+			}
+			mTvRight.compoundDrawablePadding = leftDrawablePadding.toInt()
+			//左侧文字
+			if (leftText.isNotEmpty()) {
+				mTvLeft.text = leftText
+				mTvLeft.setTextSize(TypedValue.COMPLEX_UNIT_PX, leftTextSize)
+				mTvLeft.setTextColor(leftTextColor)
+				if (leftTextBold) {
+					mTvLeft.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
+				}
+			}
+		} else {
+			mTvLeft.visibility = View.GONE
+		}
+		// 右侧文字
+		if (rightText.isNotEmpty()) {
+			mTvRight.visibility = View.VISIBLE
+			mTvRight.text = rightText
+			mTvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, rightTextSize)
+			mTvRight.setTextColor(rightTextColor)
+			if (rightTextBold) {
+				mTvRight.typeface = Typeface.defaultFromStyle(Typeface.BOLD)
+			}
+		}
+		if (rightDrawable != 0) {
+			mTvRight.visibility = View.VISIBLE
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+				mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, rightDrawable, 0)
+			} else {
+				mTvRight.setCompoundDrawablesWithIntrinsicBounds(0, 0, rightDrawable, 0)
+			}
+			mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
+		}
+		//设置背景颜色
+		setBackgroundColor(background)
+		//是否显示边框阴影
+		if (shadowShown && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			this.outlineProvider = ViewOutlineProvider.BOUNDS
+			ViewCompat.setElevation(this, mElevation)
+			clipToPadding = false
+		}
+	}
 
-    /**
-     * 是否允许标题粗体
-     * @param enable Boolean
-     */
-    fun enableTitleBold(enable: Boolean) {
-        mTvRight.typeface = if (enable) {
-            Typeface.defaultFromStyle(Typeface.BOLD)
-        } else {
-            Typeface.defaultFromStyle(Typeface.NORMAL)
-        }
-    }
+	private fun initListener() {
+		onViewsClickListener({
+			when (it.id) {
+				R.id.mTvLeft -> {
+					if (mLeftListener == null) {
+						if (context is Activity) {
+							(context as Activity).finish()
+						}
+					} else {
+						mLeftListener?.onLeftClick()
+					}
+				}
+				R.id.mTvTitle -> {
+					mTitleListener?.onTitleClick()
+				}
+				R.id.mTvRight -> {
+					mRightListener?.onRightClick()
+				}
+			}
+		}, mTvLeft, mTvTitle, mTvRight)
+	}
 
-    /**
-     * 设置副标题
-     * @param subTitle String? 副标题
-     */
-    fun setSubTitle(subTitle: String?) {
-        subTitle?.let {
-            mTvSubTitle.visible()
-            mTvSubTitle.text = it
-        }
-    }
+	/**
+	 * 设置标题
+	 * @param title String? 标题
+	 */
+	fun setTitle(title: String?) {
+		mTvTitle.text = title ?: ""
+	}
 
-    /**
-     * 副标题字体大小
-     * @param dimenSp Int R.dimen.sp10
-     */
-    fun setSubTitleSize(@DimenRes dimenSp: Int) {
-        mTvSubTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, dimen(dimenSp))
-    }
+	/**
+	 * 设置标题字体大小
+	 * @param dimenSp Int R.dimen.sp10
+	 */
+	fun setTitleSize(@DimenRes dimenSp: Int) {
+		mTvTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, dimen(dimenSp))
+	}
 
-    /**
-     * 设置副标题颜色
-     * @param colorInt Int Color.white
-     */
-    fun setSubTitleColor(@ColorInt colorInt: Int) {
-        mTvSubTitle.setTextColor(colorInt)
-    }
+	/**
+	 * 设置标题字体颜色
+	 * @param colorInt Int Color.White
+	 */
+	fun setTitleColor(@ColorInt colorInt: Int) {
+		mTvTitle.setTextColor(colorInt)
+	}
 
-    /**
-     * 是否允许副标题粗体
-     * @param enable Boolean
-     */
-    fun enableSubTitleBold(enable: Boolean) {
-        mTvSubTitle.typeface = if (enable) {
-            Typeface.defaultFromStyle(Typeface.BOLD)
-        } else {
-            Typeface.defaultFromStyle(Typeface.NORMAL)
-        }
-    }
+	/**
+	 * 是否开启标题跑马灯
+	 * @param enable Boolean
+	 */
+	fun enableTitleMarquee(enable: Boolean) {
+		mTvTitle.ellipsize = TextUtils.TruncateAt.MARQUEE
+		mTvTitle.setSingleLine()
+		mTvTitle.isSelected = enable
+		mTvTitle.isFocusable = enable
+		mTvTitle.isFocusableInTouchMode = enable
+	}
 
-    /**
-     * 左侧图标
-     * @param drawableRes Int
-     */
-    fun setLeftDrawable(@DrawableRes drawableRes: Int) {
-        mTvLeft.visible()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(drawableRes, 0, 0, 0)
-        } else {
-            mTvLeft.setCompoundDrawablesWithIntrinsicBounds(drawableRes, 0, 0, 0)
-        }
-    }
+	/**
+	 * 是否允许标题粗体
+	 * @param enable Boolean
+	 */
+	fun enableTitleBold(enable: Boolean) {
+		mTvRight.typeface = if (enable) {
+			Typeface.defaultFromStyle(Typeface.BOLD)
+		} else {
+			Typeface.defaultFromStyle(Typeface.NORMAL)
+		}
+	}
 
-    /**
-     * 是否显示左侧图标
-     * @param shown Boolean
-     */
-    fun showLeft(shown: Boolean) {
-        mTvLeft.setVisible(shown)
-    }
+	/**
+	 * 设置副标题
+	 * @param subTitle String? 副标题
+	 */
+	fun setSubTitle(subTitle: String?) {
+		subTitle?.let {
+			mTvSubTitle.visible()
+			mTvSubTitle.text = it
+		}
+	}
 
-    /**
-     * 设置右侧图标
-     * @param drawableRes Int
-     */
-    fun setRightDrawable(@DrawableRes drawableRes: Int) {
-        mTvRight.visible()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawableRes, 0)
-        } else {
-            mTvRight.setCompoundDrawablesWithIntrinsicBounds(0, 0, drawableRes, 0)
-        }
-        mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
-    }
+	/**
+	 * 副标题字体大小
+	 * @param dimenSp Int R.dimen.sp10
+	 */
+	fun setSubTitleSize(@DimenRes dimenSp: Int) {
+		mTvSubTitle.setTextSize(TypedValue.COMPLEX_UNIT_PX, dimen(dimenSp))
+	}
 
-    /**
-     * 设置右侧文字
-     * @param moreText String? 文字
-     */
-    fun setRightText(moreText: String?) {
-        if (!moreText.isNullOrEmpty()) {
-            mTvRight.visible()
-            mTvRight.text = moreText
-        }
-    }
+	/**
+	 * 设置副标题颜色
+	 * @param colorInt Int Color.white
+	 */
+	fun setSubTitleColor(@ColorInt colorInt: Int) {
+		mTvSubTitle.setTextColor(colorInt)
+	}
 
-    /**
-     * 设置右侧文字大小
-     * @param dimenSp Int R.dimen.sp10
-     */
-    fun setRightTextSize(@DimenRes dimenSp: Int) {
-        mTvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, dimen(dimenSp))
-    }
+	/**
+	 * 是否允许副标题粗体
+	 * @param enable Boolean
+	 */
+	fun enableSubTitleBold(enable: Boolean) {
+		mTvSubTitle.typeface = if (enable) {
+			Typeface.defaultFromStyle(Typeface.BOLD)
+		} else {
+			Typeface.defaultFromStyle(Typeface.NORMAL)
+		}
+	}
 
-    /**
-     * 设置右侧文字颜色
-     * @param colorInt Int Color.white
-     */
-    fun setRightTextColor(@ColorInt colorInt: Int) {
-        mTvRight.setTextColor(colorInt)
-    }
+	/**
+	 * 左侧图标
+	 * @param drawableRes Int
+	 */
+	fun setLeftDrawable(@DrawableRes drawableRes: Int) {
+		mTvLeft.visible()
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+			mTvLeft.setCompoundDrawablesRelativeWithIntrinsicBounds(drawableRes, 0, 0, 0)
+		} else {
+			mTvLeft.setCompoundDrawablesWithIntrinsicBounds(drawableRes, 0, 0, 0)
+		}
+	}
 
-    /**
-     * 右侧文字粗体
-     * @param enable Boolean
-     */
-    fun enableRightTextBold(enable: Boolean) {
-        mTvRight.typeface = if (enable) {
-            Typeface.defaultFromStyle(Typeface.BOLD)
-        } else {
-            Typeface.defaultFromStyle(Typeface.NORMAL)
-        }
-    }
+	/**
+	 * 是否显示左侧图标
+	 * @param shown Boolean
+	 */
+	fun showLeft(shown: Boolean) {
+		mTvLeft.setVisible(shown)
+	}
 
-    /**
-     * 设置右侧文字和图标的间隔
-     * @param padding Int
-     */
-    fun setRightDrawablePadding(padding: Int) {
-        mTvRight.compoundDrawablePadding = padding
-    }
+	/**
+	 * 设置右侧图标
+	 * @param drawableRes Int
+	 */
+	fun setRightDrawable(@DrawableRes drawableRes: Int) {
+		mTvRight.visible()
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+			mTvRight.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, drawableRes, 0)
+		} else {
+			mTvRight.setCompoundDrawablesWithIntrinsicBounds(0, 0, drawableRes, 0)
+		}
+		mTvRight.compoundDrawablePadding = rightDrawablePadding.toInt()
+	}
 
-    fun getLeftView() = mTvLeft
+	/**
+	 * 设置右侧文字
+	 * @param moreText String? 文字
+	 */
+	fun setRightText(moreText: String?) {
+		if (!moreText.isNullOrEmpty()) {
+			mTvRight.visible()
+			mTvRight.text = moreText
+		}
+	}
 
-    fun getRightView() = mTvRight
+	/**
+	 * 设置右侧文字大小
+	 * @param dimenSp Int R.dimen.sp10
+	 */
+	fun setRightTextSize(@DimenRes dimenSp: Int) {
+		mTvRight.setTextSize(TypedValue.COMPLEX_UNIT_PX, dimen(dimenSp))
+	}
 
-    /**
-     * 设置左侧点击
-     */
-    fun setOnLeftClickListener(onClick: () -> Unit) {
-        mLeftListener = object : LeftClickListener {
-            override fun onLeftClick() {
-                onClick()
-            }
-        }
-    }
+	/**
+	 * 设置右侧文字颜色
+	 * @param colorInt Int Color.white
+	 */
+	fun setRightTextColor(@ColorInt colorInt: Int) {
+		mTvRight.setTextColor(colorInt)
+	}
 
-    /**
-     * 设置右侧点击
-     */
-    fun setOnRightClickListener(onClick: () -> Unit) {
-        mRightListener = object : RightClickListener {
-            override fun onRightClick() {
-                onClick()
-            }
-        }
-    }
+	/**
+	 * 右侧文字粗体
+	 * @param enable Boolean
+	 */
+	fun enableRightTextBold(enable: Boolean) {
+		mTvRight.typeface = if (enable) {
+			Typeface.defaultFromStyle(Typeface.BOLD)
+		} else {
+			Typeface.defaultFromStyle(Typeface.NORMAL)
+		}
+	}
 
-    /**
-     * 设置标题点击
-     */
-    fun setOnTitleClickListener(onClick: () -> Unit) {
-        mTitleListener = object : TitleClickListener {
-            override fun onTitleClick() {
-                onClick()
-            }
-        }
-    }
+	/**
+	 * 设置右侧文字和图标的间隔
+	 * @param padding Int
+	 */
+	fun setRightDrawablePadding(padding: Int) {
+		mTvRight.compoundDrawablePadding = padding
+	}
 
-    /**
-     * 左侧点击
-     */
-    private interface LeftClickListener {
-        fun onLeftClick()
-    }
+	fun getLeftView() = mTvLeft
 
-    /**
-     * 标题点击
-     */
-    private interface RightClickListener {
-        fun onRightClick()
-    }
+	fun getRightView() = mTvRight
 
-    /**
-     * 右侧点击
-     */
-    private interface TitleClickListener {
-        fun onTitleClick()
-    }
+	/**
+	 * 设置左侧点击
+	 */
+	fun setOnLeftClickListener(onClick: () -> Unit) {
+		mLeftListener = object : LeftClickListener {
+			override fun onLeftClick() {
+				onClick()
+			}
+		}
+	}
+
+	/**
+	 * 设置右侧点击
+	 */
+	fun setOnRightClickListener(onClick: () -> Unit) {
+		mRightListener = object : RightClickListener {
+			override fun onRightClick() {
+				onClick()
+			}
+		}
+	}
+
+	/**
+	 * 设置标题点击
+	 */
+	fun setOnTitleClickListener(onClick: () -> Unit) {
+		mTitleListener = object : TitleClickListener {
+			override fun onTitleClick() {
+				onClick()
+			}
+		}
+	}
+
+	/**
+	 * 左侧点击
+	 */
+	private interface LeftClickListener {
+		fun onLeftClick()
+	}
+
+	/**
+	 * 标题点击
+	 */
+	private interface RightClickListener {
+		fun onRightClick()
+	}
+
+	/**
+	 * 右侧点击
+	 */
+	private interface TitleClickListener {
+		fun onTitleClick()
+	}
 
 }

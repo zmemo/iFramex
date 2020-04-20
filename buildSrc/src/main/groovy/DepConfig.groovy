@@ -36,7 +36,7 @@ class DepConfig {
     static pickerView = "com.contrarywind:Android-PickerView:4.1.8"
     static qrCode = "cn.bingoogolapple:bga-qrcode-zxing:1.3.6"
     static recyclerView = "androidx.recyclerview:recyclerview:1.0.0"
-    static rWidgetHelper = "com.ruffian.library:RWidgetHelper:1.1.11"
+	static rWidgetHelper = 'com.ruffian.library:RWidgetHelper-AndroidX:0.0.3'
     static smartRefreshLayout = "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0"
     static tabLayout = "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar"
     static uCrop = "com.github.yalantis:ucrop:2.2.3"
@@ -44,7 +44,7 @@ class DepConfig {
 
     // 工具
     static arouter = "com.alibaba:arouter-api:1.5.0"
-    static androidUtilCode = "com.blankj:utilcodex:1.27.0"
+	static androidUtilCode = "com.blankj:utilcodex:1.27.2"
     static autoDispose = "com.uber.autodispose:autodispose-android:$autoDisposeVersion"
     static autoDisposeArch = "com.uber.autodispose:autodispose-android-archcomponents:$autoDisposeVersion"
     static coreKtx = "androidx.core:core-ktx:1.0.2"

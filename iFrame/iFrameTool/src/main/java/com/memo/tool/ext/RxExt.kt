@@ -1,5 +1,6 @@
 package com.memo.tool.ext
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import com.uber.autodispose.AutoDispose
@@ -7,6 +8,7 @@ import com.uber.autodispose.ObservableSubscribeProxy
 import com.uber.autodispose.android.lifecycle.AndroidLifecycleScopeProvider
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import java.util.concurrent.TimeUnit
 
@@ -54,6 +56,12 @@ fun delay(lifecycleOwner: LifecycleOwner, milliseconds: Long, onNext: (second: L
     Observable.timer(milliseconds, TimeUnit.MILLISECONDS)
         .io2MainLifecycle(lifecycleOwner)
         .subscribe(onNext)
+}
+
+@SuppressLint("CheckResult")
+fun delay(duration: Long, onNext: (second: Long) -> Unit): Disposable? {
+    return Observable.timer(duration, TimeUnit.MILLISECONDS)
+            .io2Main().subscribe(onNext)
 }
 
 /**

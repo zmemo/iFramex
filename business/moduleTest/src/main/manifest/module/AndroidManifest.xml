@@ -3,7 +3,7 @@
     package="com.memo.test">
 
     <application>
-        <activity android:name=".ui.looper.LooperRvActivity"></activity>
+        <activity android:name=".ui.looper.LooperRvActivity" />
         <activity android:name=".ui.rxjava.RxJavaActivity" />
         <activity android:name=".ui.location.LocationActivity" />
         <activity android:name=".TestActivity" />

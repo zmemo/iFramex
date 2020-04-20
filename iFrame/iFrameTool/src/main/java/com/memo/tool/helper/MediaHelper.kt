@@ -1,5 +1,3 @@
-@file:Suppress("DEPRECATION")
-
 package com.memo.tool.helper
 
 import android.annotation.SuppressLint
@@ -44,66 +42,76 @@ import java.util.concurrent.locks.ReentrantLock
  * @date 2018-09-12 上午11:05
  */
 object MediaHelper {
-	
+
 	var MATISSE_PROVIDER = "${AppUtils.getAppPackageName()}.provider.MatisseFileProvider"
-	
-	
+
+
+	/**
+	 * 判断是否本地沙箱可以使用
+	 */
+	@JvmStatic
+	fun isSandBoxCacheEnable() = FileUtils.createOrExistsDir(LocalDir.SANDBOX_CACHE)
+
+
 	/**
 	 * 创建多媒体文件夹和.nomedia文件
 	 */
 	@JvmStatic
 	fun createLocalDir() {
-		val dirCapture = FileUtils.createOrExistsDir(LocalDir.DIR_CAPTURE)
-		val noMediaCapture = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_CAPTURE)
-		val dirCompress = FileUtils.createOrExistsDir(LocalDir.DIR_COMPRESS)
-		val noMediaCompress = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_COMPRESS)
-		val dirCrop = FileUtils.createOrExistsDir(LocalDir.DIR_CROP)
-		val noMediaCrop = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_CROP)
-		val dirVideo = FileUtils.createOrExistsDir(LocalDir.DIR_VIDEO)
-		val noMediaVideo = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_VIDEO)
-		val dirExceptionLog = FileUtils.createOrExistsDir(LocalDir.DIR_EXCEPTION_LOG)
-		LogUtils.iTag(
-			"LocalDir",
-			"dirCapture = $dirCapture",
-			"noMediaCapture = $noMediaCapture",
-			"dirCompress = $dirCompress",
-			"noMediaCompress = $noMediaCompress",
-			"dirCrop = $dirCrop",
-			"noMediaCrop = $noMediaCrop",
-			"dirVideo = $dirVideo",
-			"noMediaVideo = $noMediaVideo",
-			"dirExceptionLog = $dirExceptionLog")
+		if (isSandBoxCacheEnable()) {
+			createDirs()
+		} else {
+			PermissionHelper.grantedStorage(BaseApp.app) {
+				createDirs()
+			}
+		}
 	}
-	
+
+	private fun createDirs() {
+		val dirCapture = FileUtils.createOrExistsDir(LocalDir.CACHE_DIR_CAPTURE)
+		val noMediaCapture = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_CAPTURE)
+		val dirCompress = FileUtils.createOrExistsDir(LocalDir.CACHE_DIR_COMPRESS)
+		val noMediaCompress = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_COMPRESS)
+		val dirCrop = FileUtils.createOrExistsDir(LocalDir.CACHE_DIR_CROP)
+		val noMediaCrop = FileUtils.createOrExistsFile(LocalDir.NOMEDIA_CROP)
+		val dirFile = FileUtils.createOrExistsDir(LocalDir.CACHE_DIR_FILE)
+		val dirLog = FileUtils.createOrExistsDir(LocalDir.CACHE_DIR_LOG)
+		LogUtils.iTag(
+				"LocalDir",
+				"dirCapture = $dirCapture ${LocalDir.CACHE_DIR_CAPTURE}",
+				"noMediaCapture = $noMediaCapture",
+				"dirCompress = $dirCompress ${LocalDir.CACHE_DIR_COMPRESS}",
+				"noMediaCompress = $noMediaCompress",
+				"dirCrop = $dirCrop ${LocalDir.CACHE_DIR_CROP}",
+				"noMediaCrop = $noMediaCrop",
+				"dirFile = $dirFile ${LocalDir.CACHE_DIR_FILE}",
+				"dirLog = $dirLog ${LocalDir.CACHE_DIR_LOG}")
+	}
+
 	/**
 	 * 通知相册刷新
 	 *
 	 * @param file 文件
 	 */
 	@JvmStatic
-	fun refreshAlbum(file : File?) {
+	fun refreshAlbum(file: File?) {
 		if (file != null && file.exists()) {
-			BaseApp.app.applicationContext.sendBroadcast(
-				Intent(
-					Intent.ACTION_MEDIA_SCANNER_SCAN_FILE,
-					Uri.fromFile(file)
-				)
-			)
+			BaseApp.app.applicationContext.sendBroadcast(Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(file)))
 		}
 	}
-	
+
 	/**
 	 * 通知相册刷新
 	 *
 	 * @param filePath 文件地址
 	 */
 	@JvmStatic
-	fun refreshAlbum(filePath : String?) {
+	fun refreshAlbum(filePath: String?) {
 		if (filePath != null) {
 			refreshAlbum(File(filePath))
 		}
 	}
-	
+
 	/**
 	 * 判断是否录音可以使用
 	 *
@@ -114,23 +122,23 @@ object MediaHelper {
 	 * 根据开始录音判断是否有录音权限
 	 */
 	@JvmStatic
-	val isAudioUsable : Boolean
+	val isAudioUsable: Boolean
 		get() {
 			val audioFormat = AudioFormat.ENCODING_PCM_16BIT
 			val channelConfig = AudioFormat.CHANNEL_IN_STEREO
 			val sampleRateInHz = 44100
 			val bufferSizeInBytes = AudioRecord.getMinBufferSize(
-				sampleRateInHz,
-				channelConfig, audioFormat
+					sampleRateInHz,
+					channelConfig, audioFormat
 			)
 			val audioSource = MediaRecorder.AudioSource.MIC
 			val audioRecord = AudioRecord(
-				audioSource, sampleRateInHz,
-				channelConfig, audioFormat, bufferSizeInBytes
+					audioSource, sampleRateInHz,
+					channelConfig, audioFormat, bufferSizeInBytes
 			)
 			try {
 				audioRecord.startRecording()
-			} catch (e : IllegalStateException) {
+			} catch (e: IllegalStateException) {
 				e.printStackTrace()
 				return false
 			}
@@ -141,7 +149,7 @@ object MediaHelper {
 			audioRecord.release()
 			return true
 		}
-	
+
 	/**
 	 * 判断是否摄像头可以使用
 	 *
@@ -149,42 +157,42 @@ object MediaHelper {
 	 * setParameters 是针对魅族MX5 做的。MX5 通过Camera.open() 拿到的Camera
 	 */
 	@JvmStatic
-	val isCameraUsable : Boolean
+	val isCameraUsable: Boolean
 		get() {
 			var canUse = true
-			var mCamera : Camera? = null
+			var mCamera: Camera? = null
 			try {
 				mCamera = Camera.open()
 				val mParameters = mCamera!!.parameters
 				mCamera.parameters = mParameters
-			} catch (e : Exception) {
+			} catch (e: Exception) {
 				canUse = false
 			}
-			
+
 			mCamera?.release()
 			return canUse
 		}
-	
+
 	/**
 	 * 选择视频
 	 * @param activity Activity
 	 * @param requestCode Int
 	 */
 	@JvmStatic
-	fun chooseVideo(activity : Activity, requestCode : Int) {
+	fun chooseVideo(activity: Activity, requestCode: Int) {
 		Matisse.from(activity)
-			.choose(MimeType.ofVideo())
-			.addFilter(VideoTimeFilter())
-			.countable(true)
-			.showSingleMediaType(true)
-			.maxSelectable(1)
-			.thumbnailScale(0.8f)
-			.theme(R.style.Matisse_Zhihu)
-			.imageEngine(Glide4Engine())
-			.autoHideToolbarOnSingleTap(true)
-			.forResult(requestCode)
+				.choose(MimeType.ofVideo())
+				.addFilter(VideoTimeFilter())
+				.countable(true)
+				.showSingleMediaType(true)
+				.maxSelectable(1)
+				.thumbnailScale(0.8f)
+				.theme(R.style.Matisse_Zhihu)
+				.imageEngine(Glide4Engine())
+				.autoHideToolbarOnSingleTap(true)
+				.forResult(requestCode)
 	}
-	
+
 	/**
 	 * 选择相册图片
 	 * @param mActivity 上下文
@@ -194,11 +202,11 @@ object MediaHelper {
 	 */
 	@JvmStatic
 	fun choosePhoto(
-		mActivity : Activity,
-		@IntRange(from = 1, to = 9) chooseSize : Int,
-		requestCode : Int,
-		showCapture : Boolean = false,
-		chooseGif : Boolean = true) {
+			mActivity: Activity,
+			@IntRange(from = 1, to = 9) chooseSize: Int,
+			requestCode: Int,
+			showCapture: Boolean = false,
+			chooseGif: Boolean = true) {
 		if (chooseSize < 1) {
 			return
 		}
@@ -212,20 +220,20 @@ object MediaHelper {
 		}
 		if (showCapture) {
 			creator
-				.capture(true)
-				.captureStrategy(CaptureStrategy(true, MATISSE_PROVIDER, "capture"))
+					.capture(true)
+					.captureStrategy(CaptureStrategy(true, MATISSE_PROVIDER, "capture"))
 		}
 		creator.addFilter(GifSizeFilter())
-			.countable(true)
-			.showSingleMediaType(true)
-			.maxSelectable(chooseSize)
-			.thumbnailScale(0.8f)
-			.theme(R.style.Matisse_Zhihu)
-			.imageEngine(Glide4Engine())
-			.autoHideToolbarOnSingleTap(true)
-			.forResult(requestCode)
+				.countable(true)
+				.showSingleMediaType(true)
+				.maxSelectable(chooseSize)
+				.thumbnailScale(0.8f)
+				.theme(R.style.Matisse_Zhihu)
+				.imageEngine(Glide4Engine())
+				.autoHideToolbarOnSingleTap(true)
+				.forResult(requestCode)
 	}
-	
+
 	/**
 	 * 照相
 	 * @param mActivity 上下文
@@ -235,7 +243,7 @@ object MediaHelper {
 	 * 注意此时的data:Intent为空
 	 */
 	@JvmStatic
-	fun takePhoto(mActivity : Activity, requestCode : Int) : String? {
+	fun takePhoto(mActivity: Activity, requestCode: Int): String? {
 		// 创建压缩图片文件夹
 		createLocalDir()
 		val mediaStoreCompat = MediaStoreCompat(mActivity)
@@ -244,7 +252,7 @@ object MediaHelper {
 		// 因为是指定Uri所以onActivityResult中的data为空 只能再这里获取拍照的路径
 		return mediaStoreCompat.currentPhotoPath
 	}
-	
+
 	/**
 	 * 裁剪图片
 	 * @param mActivity 上下文
@@ -254,18 +262,18 @@ object MediaHelper {
 	 * 注意需要在onActivityResult中有返回值之后才可以用
 	 */
 	@JvmStatic
-	fun cropPhoto(mActivity : Activity, sourcePath : String, requestCode : Int) : String? {
+	fun cropPhoto(mActivity: Activity, sourcePath: String, requestCode: Int): String? {
 		// 创建压缩图片文件夹
 		createLocalDir()
 		val sourceUri = Uri.fromFile(File(sourcePath))
-		val outDir = File(LocalDir.DIR_CROP)
+		val outDir = File(LocalDir.CACHE_DIR_CROP)
 		val outFile = File(outDir, "CROP_${System.currentTimeMillis()}.jpg")
 		FileUtils.createOrExistsFile(outFile)
 		val outUri = Uri.fromFile(outFile)
-		
-		val uCrop : UCrop = UCrop.of(sourceUri, outUri)
+
+		val uCrop: UCrop = UCrop.of(sourceUri, outUri)
 		// 配置
-		val option : UCrop.Options = UCrop.Options()
+		val option: UCrop.Options = UCrop.Options()
 		// 隐藏底部栏
 		option.setHideBottomControls(true)
 		// 显示圆形遮盖
@@ -288,17 +296,17 @@ object MediaHelper {
 		uCrop.start(mActivity, requestCode)
 		return outFile.absolutePath
 	}
-	
+
 	/**
 	 * 从Intent中获取图片路径地址
 	 * @param intent Intent
 	 */
 	@JvmStatic
-	fun obtainPathResult(intent : Intent?) : MutableList<String> {
+	fun obtainPathResult(intent: Intent?): MutableList<String> {
 		intent ?: return arrayListOf()
 		return Matisse.obtainPathResult(intent) ?: arrayListOf()
 	}
-	
+
 	/**
 	 * 同步压缩图片
 	 * @param mContext 上下文
@@ -310,29 +318,29 @@ object MediaHelper {
 	@SuppressLint("CheckResult")
 	@JvmStatic
 	fun compressImagesSyn(
-		mContext : Context,
-		images : MutableList<String>,
-		onSuccess : (images : List<File>) -> Unit,
-		onFailure : (error : Throwable) -> Unit
+			mContext: Context,
+			images: MutableList<String>,
+			onSuccess: (images: List<File>) -> Unit,
+			onFailure: (error: Throwable) -> Unit
 	) {
 		// 创建压缩图片文件夹
 		createLocalDir()
 		Flowable.just(images)
-			.observeOn(Schedulers.io())
-			.map {
-				Luban.with(mContext)
-					.load(it)
-					.setFocusAlpha(true)
-					.setTargetDir(LocalDir.DIR_COMPRESS)
-					.filter { path ->
-						//如果是gif图不进行压缩
-						!path.toLowerCase(Locale.getDefault()).endsWith(".gif")
-					}
-					.get()
-			}.observeOn(AndroidSchedulers.mainThread())
-			.subscribe(onSuccess, onFailure)
+				.observeOn(Schedulers.io())
+				.map {
+					Luban.with(mContext)
+							.load(it)
+							.setFocusAlpha(true)
+							.setTargetDir(LocalDir.CACHE_DIR_COMPRESS)
+							.filter { path ->
+								//如果是gif图不进行压缩
+								!path.toLowerCase(Locale.getDefault()).endsWith(".gif")
+							}
+							.get()
+				}.observeOn(AndroidSchedulers.mainThread())
+				.subscribe(onSuccess, onFailure)
 	}
-	
+
 	/**
 	 * 异步压缩图片
 	 * 注意点:回调是延时操作并且不回被取消
@@ -343,10 +351,10 @@ object MediaHelper {
 	 */
 	@JvmStatic
 	fun compressImagesASyn(
-		mContext : Context,
-		images : MutableList<String>,
-		onSuccess : (images : List<File>) -> Unit,
-		onFailure : () -> Unit
+			mContext: Context,
+			images: MutableList<String>,
+			onSuccess: (images: List<File>) -> Unit,
+			onFailure: () -> Unit
 	) {
 		// 创建压缩图片文件夹
 		createLocalDir()
@@ -357,46 +365,46 @@ object MediaHelper {
 		val paths = arrayListOf<File>()
 		// 判断是否错误发生了
 		var isErrorHappened = false
-		
+
 		Luban.with(mContext)
-			.load(images)
-			.setFocusAlpha(true)
-			.setTargetDir(LocalDir.DIR_COMPRESS)
-			.filter {
-				//如果是gif图不进行压缩
-				!it.toLowerCase(Locale.getDefault()).endsWith(".gif")
-			}
-			.setCompressListener(object : OnCompressListener {
-				override fun onStart() {}
-				
-				/*** 一张图片压缩成功 ***/
-				override fun onSuccess(file : File) {
-					// 加锁
-					successLock.lock()
-					try {
-						paths.add(file)
-						if (paths.size == images.size) {
-							onSuccess(paths)
-						}
-					} finally {
-						//解锁
-						successLock.unlock()
-					}
+				.load(images)
+				.setFocusAlpha(true)
+				.setTargetDir(LocalDir.CACHE_DIR_COMPRESS)
+				.filter {
+					//如果是gif图不进行压缩
+					!it.toLowerCase(Locale.getDefault()).endsWith(".gif")
 				}
-				
-				/*** 一张图片压缩失败 ***/
-				override fun onError(e : Throwable?) {
-					LogUtils.eTag("compress", "图片压缩失败 $e")
-					errorLock.lock()
-					try {
-						if (!isErrorHappened) {
-							isErrorHappened = true
-							onFailure()
+				.setCompressListener(object : OnCompressListener {
+					override fun onStart() {}
+
+					/*** 一张图片压缩成功 ***/
+					override fun onSuccess(file: File) {
+						// 加锁
+						successLock.lock()
+						try {
+							paths.add(file)
+							if (paths.size == images.size) {
+								onSuccess(paths)
+							}
+						} finally {
+							//解锁
+							successLock.unlock()
 						}
-					} finally {
-						errorLock.unlock()
 					}
-				}
-			}).launch()
+
+					/*** 一张图片压缩失败 ***/
+					override fun onError(e: Throwable?) {
+						LogUtils.eTag("compress", "图片压缩失败 $e")
+						errorLock.lock()
+						try {
+							if (!isErrorHappened) {
+								isErrorHappened = true
+								onFailure()
+							}
+						} finally {
+							errorLock.unlock()
+						}
+					}
+				}).launch()
 	}
 }

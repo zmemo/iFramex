@@ -20,34 +20,26 @@ import java.io.File
  * @author zhou
  * @date 2019-06-05 15:54
  */
-class NineGridView : FrameLayout {
+class NineGridView @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null, defStyle: Int = 0)
+	: FrameLayout(context, attrs, defStyle) {
 
-    private val mGridLayoutManager: NoScrollGridLayoutManager by lazy {
-        NoScrollGridLayoutManager(
-            context,
-            3
-        )
-    }
-    /*** 自定义九宫格适配器 ***/
-    private val mAdapter: NineGridViewAdapter by lazy { NineGridViewAdapter() }
-    /*** 点击加号监听 ***/
-    private var mSelectListener: OnSelectListener? = null
-    /*** 最大图片展示 ***/
-    private var mMaxImageSize: Int = 9
+	private val mGridLayoutManager: NoScrollGridLayoutManager by lazy { NoScrollGridLayoutManager(context, 3) }
+
+	/*** 自定义九宫格适配器 ***/
+	private val mAdapter: NineGridViewAdapter by lazy { NineGridViewAdapter() }
+
+	/*** 点击加号监听 ***/
+	private var mSelectListener: OnSelectListener? = null
+
+	/*** 最大图片展示 ***/
+	private var mMaxImageSize: Int = 9
+
 	@DrawableRes
-    private var mAddDrawableRes: Int = R.drawable.ic_pic_add
+	private var mAddDrawableRes: Int = R.drawable.ic_pic_add
+
 	@DrawableRes
-    private var mDelDrawableRes: Int = R.drawable.ic_pic_del
+	private var mDelDrawableRes: Int = R.drawable.ic_pic_del
 
-    constructor(context: Context) : super(context)
-
-    constructor(context: Context, attrs: AttributeSet) : super(context, attrs)
-
-    constructor(context: Context, attrs: AttributeSet, defStyle: Int) : super(
-        context,
-        attrs,
-        defStyle
-    )
 
 	init {
 		inflaterView(R.layout.layout_nine_grid_view, this)
@@ -69,17 +61,17 @@ class NineGridView : FrameLayout {
 				R.id.mIvPic -> {
 					if (mAdapter.data[position] == mAddDrawableRes) {
 						// 添加图片
-                        mSelectListener?.onSelectPicture(mMaxImageSize - getCurImageSize())
+						mSelectListener?.onSelectPicture(mMaxImageSize - getCurImageSize())
 					} else {
 						// 跳转预览大图
 						if (context is Activity) {
-                            ImagePreviewHelper.start(
-                                context as Activity,
-                                mGridLayoutManager,
-                                R.id.mIvPic,
-                                getCurImageList(),
-                                position
-                            )
+							ImagePreviewHelper.start(
+									context as Activity,
+									mGridLayoutManager,
+									R.id.mIvPic,
+									getCurImageList(),
+									position
+							)
 						}
 					}
 				}
@@ -99,7 +91,7 @@ class NineGridView : FrameLayout {
 	 * @param max Int 最大限制
 	 * @return NineGridView
 	 */
-    fun setMaxImageSize(max: Int): NineGridView {
+	fun setMaxImageSize(max: Int): NineGridView {
 		mMaxImageSize = max
 		return this
 	}
@@ -109,7 +101,7 @@ class NineGridView : FrameLayout {
 	 * @param addRes Int 添加图标
 	 * @return NineGridView
 	 */
-    fun setAddDrawableRes(@DrawableRes addRes: Int): NineGridView {
+	fun setAddDrawableRes(@DrawableRes addRes: Int): NineGridView {
 		mAddDrawableRes = addRes
 		return this
 	}
@@ -119,7 +111,7 @@ class NineGridView : FrameLayout {
 	 * @param delRes Int 删除图标
 	 * @return NineGridView
 	 */
-    fun setDelDrawableRes(@DrawableRes delRes: Int): NineGridView {
+	fun setDelDrawableRes(@DrawableRes delRes: Int): NineGridView {
 		mDelDrawableRes = delRes
 		return this
 	}
@@ -136,7 +128,7 @@ class NineGridView : FrameLayout {
 	 * 添加一组图片
 	 * @param images MutableList<String> 图片列表
 	 */
-    fun addImages(images: List<String>) {
+	fun addImages(images: List<String>) {
 		if (getCurImageSize() + images.size > mMaxImageSize) {
 			toast("选择图片超出最大限制")
 			return
@@ -148,17 +140,17 @@ class NineGridView : FrameLayout {
 	 * 添加图片 主要用于一张图片
 	 * @param images Array<out String> 图片
 	 */
-    fun addImages(vararg images: String) {
+	fun addImages(vararg images: String) {
 		addImages(images.asList())
 	}
 
-    /**
+	/**
 	 * 添加图片
 	 * @param images List<File> 图片列表
 	 */
-    fun addImageFiles(images: List<File>) {
-        addImages(images.map { it.absolutePath })
-    }
+	fun addImageFiles(images: List<File>) {
+		addImages(images.map { it.absolutePath })
+	}
 
 	/**
 	 * 清空所有图片
@@ -169,56 +161,56 @@ class NineGridView : FrameLayout {
 		addAdd()
 	}
 
-    /**
+	/**
 	 * 设置选择图片的监听
 	 * @param onSelectPicture () -> Unit 选择图片监听
 	 * @return NineGridView
 	 */
-    fun addOnSelectListener(onSelectPicture: (leftSize: Int) -> Unit): NineGridView {
-        mSelectListener = object : OnSelectListener {
-            override fun onSelectPicture(leftSize: Int) {
+	fun addOnSelectListener(onSelectPicture: (leftSize: Int) -> Unit): NineGridView {
+		mSelectListener = object : OnSelectListener {
+			override fun onSelectPicture(leftSize: Int) {
 				onSelectPicture(leftSize)
 			}
 		}
 		return this
 	}
 
-    /**
+	/**
 	 * 获取当前选中的图片
 	 * @return ArrayList<String> 图片列表
 	 */
-    fun getCurImageList(): ArrayList<String> {
-        val images: ArrayList<String> = arrayListOf()
+	fun getCurImageList(): ArrayList<String> {
+		val images: ArrayList<String> = arrayListOf()
 		for (path in mAdapter.data) {
-            if (path != mAddDrawableRes && path is String && path.isNotEmpty()) {
+			if (path != mAddDrawableRes && path is String && path.isNotEmpty()) {
 				images.add(path)
 			}
 		}
 		return images
 	}
 
-    /**
+	/**
 	 * 实际选中图片的数量
 	 * @return Int
 	 */
-    fun getCurImageSize(): Int {
-        return getCurImageList().size
-    }
+	fun getCurImageSize(): Int {
+		return getCurImageList().size
+	}
 
-    private fun addImage(images: List<String>) {
-        val curImageSize: Int = getCurImageSize()
-        val addImageSize = images.size
-        if (curImageSize + addImageSize < mMaxImageSize) {
-            // 在加号之前放入图片
+	private fun addImage(images: List<String>) {
+		val curImageSize: Int = getCurImageSize()
+		val addImageSize = images.size
+		if (curImageSize + addImageSize < mMaxImageSize) {
+			// 在加号之前放入图片
 			mAdapter.addData(curImageSize, images)
 		} else {
-            // 去除加号 添加图片
+			// 去除加号 添加图片
 			mAdapter.remove(curImageSize)
 			mAdapter.addData(images)
 		}
 	}
 
-    /**
+	/**
 	 * 添加一个加号图片
 	 */
 	private fun addAdd() {
@@ -234,7 +226,7 @@ class NineGridView : FrameLayout {
 		}
 	}
 
-    /**
+	/**
 	 * 删除末尾的加号图片
 	 */
 	private fun removeAdd() {
@@ -244,12 +236,12 @@ class NineGridView : FrameLayout {
 		}
 	}
 
-    /*** 点击加号的监听 ***/
-    interface OnSelectListener {
-        /**
-         * 选择图片
-         * @param leftSize 剩余可选择图片数量
-         */
-        fun onSelectPicture(leftSize: Int)
+	/*** 点击加号的监听 ***/
+	interface OnSelectListener {
+		/**
+		 * 选择图片
+		 * @param leftSize 剩余可选择图片数量
+		 */
+		fun onSelectPicture(leftSize: Int)
 	}
 }

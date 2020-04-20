@@ -1,43 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:app="http://schemas.android.com/apk/res-auto"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:gravity="center"
-	android:orientation="vertical"
-	tools:context=".MainActivity">
-	
-	
-	<com.ruffian.library.widget.RTextView
-		android:id="@+id/mBtnTest"
-		android:layout_width="@dimen/dp150"
-		android:layout_height="@dimen/dp30"
-		android:gravity="center"
-		android:paddingLeft="@dimen/dp10"
-		android:paddingTop="0dp"
-		android:paddingRight="@dimen/dp10"
-		android:paddingBottom="0dp"
-		android:text="跳转Test模块"
-		android:textColor="@color/white"
-		app:background_normal="@color/color_666666"
-		app:background_pressed="@color/color_333333"
-		app:corner_radius="@dimen/dp10" />
-	
-	<com.ruffian.library.widget.RTextView
-		android:id="@+id/mBtnUi"
-		android:layout_width="@dimen/dp150"
-		android:layout_height="@dimen/dp30"
-		android:layout_marginTop="@dimen/dp10"
-		android:gravity="center"
-		android:paddingLeft="@dimen/dp10"
-		android:paddingTop="0dp"
-		android:paddingRight="@dimen/dp10"
-		android:paddingBottom="0dp"
-		android:text="跳转Ui模块"
-		android:textColor="@color/white"
-		app:background_normal="@color/color_666666"
-		app:background_pressed="@color/color_333333"
-		app:corner_radius="@dimen/dp10" />
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+
+        <com.ruffian.library.widget.RTextView
+            android:id="@+id/mBtnTest"
+            android:layout_width="@dimen/dp150"
+            android:layout_height="@dimen/dp30"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingTop="0dp"
+            android:paddingRight="@dimen/dp10"
+            android:paddingBottom="0dp"
+            android:text="跳转Test模块"
+            android:textColor="@color/white"
+            app:background_normal="@color/color_666666"
+            app:background_pressed="@color/color_333333"
+            app:corner_radius="@dimen/dp10" />
+
+        <com.ruffian.library.widget.RTextView
+            android:id="@+id/mBtnUi"
+            android:layout_width="@dimen/dp150"
+            android:layout_height="@dimen/dp30"
+            android:layout_marginTop="@dimen/dp10"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp10"
+            android:paddingTop="0dp"
+            android:paddingRight="@dimen/dp10"
+            android:paddingBottom="0dp"
+            android:text="跳转Ui模块"
+            android:textColor="@color/white"
+            app:background_normal="@color/color_666666"
+            app:background_pressed="@color/color_333333"
+            app:corner_radius="@dimen/dp10" />
+
+    </LinearLayout>
+
+    <com.memo.widget.splash.SplashView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</FrameLayout>
+
+

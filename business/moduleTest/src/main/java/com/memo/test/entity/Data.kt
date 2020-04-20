@@ -20,36 +20,41 @@ object Multi {
 object GridMulti {
 	//轮播图
 	const val TYPE_BANNER = 0
+
 	//标题
 	const val TYPE_TITLE = 1
+
 	//列表
 	const val TYPE_LIST = 2
+
 	//海报
 	const val TYPE_POSTER = 3
+
 	//歌曲 右标题
 	const val TYPE_SONG_RIGHT = 4
+
 	//歌曲 上标题
 	const val TYPE_SONG_TOP = 5
 }
 
 data class MultiEntity(
-	val title : String,
-	val img : String,
-	val type : Int
+		val title: String,
+		val img: String,
+		val type: Int
 ) : MultiItemEntity {
-	override fun getItemType() : Int = type
+	override fun getItemType(): Int = type
 }
 
 class Sections : SectionEntity<SectionItem> {
-	
-	constructor(isHeader : Boolean, header : String) : super(isHeader, header)
-	
-	constructor(item : SectionItem) : super(item)
+
+	constructor(isHeader: Boolean, header: String) : super(isHeader, header)
+
+	constructor(item: SectionItem) : super(item)
 }
 
 data class SectionItem(
-	val content : String,
-	val image : String
+		val content: String,
+		val image: String
 )
 
 object LevelMulti {
@@ -58,21 +63,34 @@ object LevelMulti {
 }
 
 data class LevelTitle(
-	val content : String = "title"
+		val content: String = "title"
 ) : AbstractExpandableItem<LevelContent>(), MultiItemEntity {
-	
-	override fun getLevel() : Int = 0
-	
-	override fun getItemType() : Int {
+
+	override fun getLevel(): Int = 0
+
+	override fun getItemType(): Int {
 		return LevelMulti.TYPE_TITLE
 	}
 }
 
 data class LevelContent(
-	val content : String = "content"
+		val content: String = "content"
 ) : MultiItemEntity {
-	override fun getItemType() : Int {
+	override fun getItemType(): Int {
 		return LevelMulti.TYPE_CONTENT
 	}
 }
 
+const val WEB_WEB = 1
+const val WEB_COMMENT = 2
+
+data class WebModel(
+		val url: String = "",
+		val content: String = ""
+) : MultiItemEntity {
+	override fun getItemType(): Int = if (url.isEmpty()) {
+		WEB_COMMENT
+	} else {
+		WEB_WEB
+	}
+}
