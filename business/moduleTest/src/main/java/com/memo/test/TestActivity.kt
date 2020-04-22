@@ -12,8 +12,9 @@ import com.memo.base.base.activity.BaseActivity
 import com.memo.base.manager.router.RouterPath
 import com.memo.test.ui.anim.AnimActivity
 import com.memo.test.ui.bottom.BottomActivity
+import com.memo.test.ui.bottomsheet.ActionBottomSheetDialog
+import com.memo.test.ui.bottomsheet.BottomSheetActivity
 import com.memo.test.ui.bus.BusSubscribeActivity
-import com.memo.test.ui.dialog.ActionBottomSheetDialog
 import com.memo.test.ui.dialogactivity.KickOutActivity
 import com.memo.test.ui.download.DownLoadActivity
 import com.memo.test.ui.drag.DragActivity
@@ -55,18 +56,18 @@ import kotlinx.android.synthetic.main.activity_test.*
 @Route(path = RouterPath.Launcher.TestActivity)
 class TestActivity : BaseActivity() {
 
-	private val REQUEST_CODE_INSTALL = 1
+    private val REQUEST_CODE_INSTALL = 1
 
     private var area: Area? = null
 
-	private var index = 0
+    private var index = 0
 
     private var mTimePickerView: TimePickerView? = null
     private var mCityPickerView: OptionsPickerView<Any>? = null
 
 
     private val mAlertDialog: AlertDialog by lazy {
-	    AlertDialog(mContext, message = "这是一个提示")
+        AlertDialog(mContext, message = "这是一个提示")
             .setOnTipClickListener({
                 toast("点击确定")
             }, {
@@ -75,215 +76,218 @@ class TestActivity : BaseActivity() {
     }
 
     private val mBottomListDialog: BottomListDialog by lazy {
-	    BottomListDialog(
+        BottomListDialog(
             mContext,
             arrayListOf("Item 1", "Item 2", "Item 3")
-	    ).setOnItemClickListener { _, item ->
-		    toast(item)
-	    }
+        ).setOnItemClickListener { _, item ->
+            toast(item)
+        }
     }
     private val mLocateListDialog: LocateListDialog by lazy {
-	    LocateListDialog(
+        LocateListDialog(
             mContext,
             arrayListOf("Item 1", "Item 2", "Item 3")
-	    ).setOnItemClickListener { _, item ->
-		    toast(item)
-	    }
+        ).setOnItemClickListener { _, item ->
+            toast(item)
+        }
     }
     private val mBottomGridDialog: BottomGridDialog by lazy {
-	    BottomGridDialog(
+        BottomGridDialog(
             mContext, arrayListOf(
-			    BottomGridDialog.GridItem(R.drawable.iframex, "Item 1", 1),
-			    BottomGridDialog.GridItem(R.drawable.iframex, "Item 2", 2),
-			    BottomGridDialog.GridItem(R.drawable.iframex, "Item 3", 3)
+                BottomGridDialog.GridItem(R.drawable.iframex, "Item 1", 1),
+                BottomGridDialog.GridItem(R.drawable.iframex, "Item 2", 2),
+                BottomGridDialog.GridItem(R.drawable.iframex, "Item 3", 3)
             )
-	    ).setOnItemClickListener { _, item ->
-		    toast(item.name)
-	    }
+        ).setOnItemClickListener { _, item ->
+            toast(item.name)
+        }
     }
 
 
     private val mActionDialog by lazy {
-	    ActionBottomSheetDialog().setData(
+        ActionBottomSheetDialog().setData(
             arrayListOf(
                 "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
                 "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
                 "1", "2", "3", "4", "5", "6", "7", "8", "9", "0"
             )
-	    ).setOnItemClickListener { dialog, position, data ->
-		    dialog.dismiss()
-		    toast("position = $position data = $data")
-	    }
+        ).setOnItemClickListener { dialog, position, data ->
+            dialog.dismiss()
+            toast("position = $position data = $data")
+        }
     }
 
     override fun bindLayoutRes(): Int = R.layout.activity_test
 
-	override fun initialize() {
-		initData()
-		initView()
-		initListener()
-		doSomeThing()
-	}
-
-	private fun initData() {
-		//解析全国省份字符串
-		DialogHelper.parseArea(mLifecycleOwner) {
-			area = it
-		}
-	}
-
-	private fun initView() {
-
+    override fun initialize() {
+        initData()
+        initView()
+        initListener()
+        doSomeThing()
     }
 
-	private fun initListener() {
-		mItem.onClick(listener)
-		mBtnGlide.onClick(listener)
-		mBtnRetrofit.onClick(listener)
-		mBtnBus.onClick(listener)
-		mBtnSW.onClick(listener)
-		mBtnDialog.onClick(listener)
-		mBtnDown.onClick(listener)
-		mBtnNine.onClick(listener)
-		mBtnStatus.onClick(listener)
-		mBtnMatisse.onClick(listener)
-		mBtnNotification.onClick(listener)
-		mBtnMap.onClick(listener)
-		mBtnAnim.onClick(listener)
-		mBtnShare.onClick(listener)
-		mBtnMulti.onClick(listener)
-		mBtnBottom.onClick(listener)
-		mBtnDrag.onClick(listener)
-		mBtnVp.onClick(listener)
-		mBtnDialogActivity.onClick(listener)
-		mBtnLocation.onClick(listener)
+    private fun initData() {
+        //解析全国省份字符串
+        DialogHelper.parseArea(mLifecycleOwner) {
+            area = it
+        }
+    }
+
+    private fun initView() {
+    }
+
+    private fun initListener() {
+        mItem.onClick(listener)
+        mBtnGlide.onClick(listener)
+        mBtnRetrofit.onClick(listener)
+        mBtnBus.onClick(listener)
+        mBtnSW.onClick(listener)
+        mBtnDialog.onClick(listener)
+        mBtnDown.onClick(listener)
+        mBtnNine.onClick(listener)
+        mBtnStatus.onClick(listener)
+        mBtnMatisse.onClick(listener)
+        mBtnNotification.onClick(listener)
+        mBtnMap.onClick(listener)
+        mBtnAnim.onClick(listener)
+        mBtnShare.onClick(listener)
+        mBtnMulti.onClick(listener)
+        mBtnBottom.onClick(listener)
+        mBtnDrag.onClick(listener)
+        mBtnVp.onClick(listener)
+        mBtnDialogActivity.onClick(listener)
+        mBtnLocation.onClick(listener)
         mBtnRxJava.onClick(listener)
         mBtnLooperRv.onClick(listener)
+        mBtnBehavior.onClick(listener)
     }
 
-	private fun doSomeThing() {
-		if (PermissionHelper.grantedInstallUnKnowApp(mContext, REQUEST_CODE_INSTALL)) {
-			toast("已有安装权限")
-		}
-	}
+    private fun doSomeThing() {
+        if (PermissionHelper.grantedInstallUnKnowApp(mContext, REQUEST_CODE_INSTALL)) {
+            toast("已有安装权限")
+        }
+    }
 
 
     private val listener = object : OnNotFastClickListener {
         override fun onNotFastClick(view: View) {
-	        when (view.id) {
-		        R.id.mItem -> {
-			        //UMengHelper.login(mContext,SHARE_MEDIA.QQ,{},{})
-			        //UMengHelper.shareImage(mContext,SHARE_MEDIA.QQ,"标题","内容","https://wap.shwread.com:6088/group1/M00/25/31/F_0BjkNdft17ZyCGf5.jpg")
-			        //UMengHelper.shareWeb(mContext,SHARE_MEDIA.QQ,"标题","内容","https://wap.shwread.com:6088/group1/M00/25/31/F_0BjkNdft17ZyCGf5.jpg","https://www.baidu.com")
-		        }
-		        R.id.mBtnGlide -> {
-			        (view as Button).resendVerificationCodeAfter(mLifecycleOwner, 10)
-			        ImageLoadHelper.clearDiskCache(mLifecycleOwner)
-			        ImageLoadHelper.clearMemoryCache()
-		        }
-		        R.id.mBtnRetrofit -> {
-			        startActivity<RetrofitActivity>()
-		        }
-		        R.id.mBtnBus -> {
-			        startActivity<BusSubscribeActivity>()
-		        }
-		        R.id.mBtnSW -> {
-			        startActivity<SmallestWidthActivity>()
-		        }
-		        R.id.mBtnDialog -> {
-			        when (index++ % 8) {
-				        0 -> {
-					        LogUtils.iTag("area", area == null)
-					        area?.let {
-						        if (mCityPickerView == null) {
-							        mCityPickerView =
-									        DialogHelper.selectCity(mContext, it) { info ->
-										        toast(info)
+            when (view.id) {
+                R.id.mItem -> {
+                    //UMengHelper.login(mContext,SHARE_MEDIA.QQ,{},{})
+                    //UMengHelper.shareImage(mContext,SHARE_MEDIA.QQ,"标题","内容","https://wap.shwread.com:6088/group1/M00/25/31/F_0BjkNdft17ZyCGf5.jpg")
+                    //UMengHelper.shareWeb(mContext,SHARE_MEDIA.QQ,"标题","内容","https://wap.shwread.com:6088/group1/M00/25/31/F_0BjkNdft17ZyCGf5.jpg","https://www.baidu.com")
+                }
+                R.id.mBtnGlide -> {
+                    (view as Button).resendVerificationCodeAfter(mLifecycleOwner, 10)
+                    ImageLoadHelper.clearDiskCache(mLifecycleOwner)
+                    ImageLoadHelper.clearMemoryCache()
+                }
+                R.id.mBtnRetrofit -> {
+                    startActivity<RetrofitActivity>()
+                }
+                R.id.mBtnBus -> {
+                    startActivity<BusSubscribeActivity>()
+                }
+                R.id.mBtnSW -> {
+                    startActivity<SmallestWidthActivity>()
+                }
+                R.id.mBtnDialog -> {
+                    when (index++ % 8) {
+                        0 -> {
+                            LogUtils.iTag("area", area == null)
+                            area?.let {
+                                if (mCityPickerView == null) {
+                                    mCityPickerView =
+                                        DialogHelper.selectCity(mContext, it) { info ->
+                                            toast(info)
                                         }
-						        }
-						        mCityPickerView!!.show()
-					        }
-				        }
-				        1 -> {
-					        if (mTimePickerView == null) {
-						        mTimePickerView = DialogHelper.selectTime(mContext) { time ->
-							        toast(time)
-						        }
-					        }
-					        mTimePickerView!!.show()
-				        }
-				        2 -> mAlertDialog.show()
-				        3 -> mBottomListDialog.show()
-				        4 -> mBottomGridDialog.show()
-				        5 -> mLocateListDialog.showHorizontal(view)
-				        6 -> {
-					        showLoading()
-					        delay(mLifecycleOwner, 1000) { hideLoading() }
-				        }
-				        7 -> mActionDialog.show(supportFragmentManager)
-			        }
-		        }
-		        R.id.mBtnDown -> {
-			        startActivity<DownLoadActivity>()
-		        }
-		        R.id.mBtnNine -> {
-			        startActivity<NineGridActivity>()
-		        }
-		        R.id.mBtnStatus -> {
-			        startActivity<LoadSirActivity>()
-		        }
-		        R.id.mBtnMatisse -> {
-			        startActivity<MatisseSelectActivity>()
-		        }
-		        R.id.mBtnNotification -> {
-			        startActivity<NotificationActivity>()
-		        }
-		        R.id.mBtnMap -> {
-			        startActivity<MapActivity>()
-		        }
-		        R.id.mBtnAnim -> {
-			        startActivity<AnimActivity>()
-		        }
-		        R.id.mBtnShare -> {
-			        startActivity<ShareFromActivity>()
-		        }
-		        R.id.mBtnMulti -> {
-			        startActivity<RecyclerViewActivity>()
-		        }
-		        R.id.mBtnBottom -> {
-			        startActivity<BottomActivity>()
-		        }
-		        R.id.mBtnDrag -> {
-			        startActivity<DragActivity>()
-		        }
-		        R.id.mBtnVp -> {
-			        startActivity<ViewPagerActivity>()
-		        }
-		        R.id.mBtnDialogActivity -> {
-			        BaseApp.app.startActivity<KickOutActivity>()
-		        }
-		        R.id.mBtnLocation -> {
-			        startActivity<LocationActivity>()
-		        }
+                                }
+                                mCityPickerView!!.show()
+                            }
+                        }
+                        1 -> {
+                            if (mTimePickerView == null) {
+                                mTimePickerView = DialogHelper.selectTime(mContext) { time ->
+                                    toast(time)
+                                }
+                            }
+                            mTimePickerView!!.show()
+                        }
+                        2 -> mAlertDialog.show()
+                        3 -> mBottomListDialog.show()
+                        4 -> mBottomGridDialog.show()
+                        5 -> mLocateListDialog.showHorizontal(view)
+                        6 -> {
+                            showLoading()
+                            delay(mLifecycleOwner, 1000) { hideLoading() }
+                        }
+                        7 -> mActionDialog.show(supportFragmentManager)
+                    }
+                }
+                R.id.mBtnDown -> {
+                    startActivity<DownLoadActivity>()
+                }
+                R.id.mBtnNine -> {
+                    startActivity<NineGridActivity>()
+                }
+                R.id.mBtnStatus -> {
+                    startActivity<LoadSirActivity>()
+                }
+                R.id.mBtnMatisse -> {
+                    startActivity<MatisseSelectActivity>()
+                }
+                R.id.mBtnNotification -> {
+                    startActivity<NotificationActivity>()
+                }
+                R.id.mBtnMap -> {
+                    startActivity<MapActivity>()
+                }
+                R.id.mBtnAnim -> {
+                    startActivity<AnimActivity>()
+                }
+                R.id.mBtnShare -> {
+                    startActivity<ShareFromActivity>()
+                }
+                R.id.mBtnMulti -> {
+                    startActivity<RecyclerViewActivity>()
+                }
+                R.id.mBtnBottom -> {
+                    startActivity<BottomActivity>()
+                }
+                R.id.mBtnDrag -> {
+                    startActivity<DragActivity>()
+                }
+                R.id.mBtnVp -> {
+                    startActivity<ViewPagerActivity>()
+                }
+                R.id.mBtnDialogActivity -> {
+                    BaseApp.app.startActivity<KickOutActivity>()
+                }
+                R.id.mBtnLocation -> {
+                    startActivity<LocationActivity>()
+                }
                 R.id.mBtnRxJava -> {
                     startActivity<RxJavaActivity>()
                 }
                 R.id.mBtnLooperRv -> {
                     startActivity<LooperRvActivity>()
                 }
-	        }
+                R.id.mBtnBehavior -> {
+                    startActivity<BottomSheetActivity>()
+                }
+            }
         }
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-	    super.onActivityResult(requestCode, resultCode, data)
-	    UMengHelper.onQQAndWeiBoActivityResult(mContext, requestCode, resultCode, data)
-	    if (resultCode == Activity.RESULT_OK) {
-		    when (requestCode) {
-			    REQUEST_CODE_INSTALL -> toast("已有安装权限")
-		    }
-	    }
+        super.onActivityResult(requestCode, resultCode, data)
+        UMengHelper.onQQAndWeiBoActivityResult(mContext, requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CODE_INSTALL -> toast("已有安装权限")
+            }
+        }
     }
 
 }

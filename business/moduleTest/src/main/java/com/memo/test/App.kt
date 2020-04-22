@@ -18,6 +18,7 @@ import me.jessyan.retrofiturlmanager.RetrofitUrlManager
  * @date 2019-07-26 10:24
  */
 class App : BaseApplication() {
+
     override fun onCreate() {
         super.onCreate()
         RetrofitUrlManager.getInstance().setDebug(Config.isOpenLog)

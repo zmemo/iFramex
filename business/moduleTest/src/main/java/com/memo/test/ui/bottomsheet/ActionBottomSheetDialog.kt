@@ -1,4 +1,4 @@
-package com.memo.test.ui.dialog
+package com.memo.test.ui.bottomsheet
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.memo.test.R

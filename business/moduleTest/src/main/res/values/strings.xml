@@ -31,8 +31,8 @@
     <string name="ViewPager">设置ViewPager滑动变色</string>
     <string name="DialogActivity">Dialog形式的Activity</string>
     <string name="Location">定位</string>
-    <string name="RxJava">Rxhava</string>
+    <string name="RxJava">RxJava</string>
     <string name="LooperRv">循环RecyclerView</string>
-	<string name="WebComment">网页加评论</string>
+    <string name="Behavior">BottomSheetBehavior</string>
 
 </resources>

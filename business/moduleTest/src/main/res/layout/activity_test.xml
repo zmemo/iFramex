@@ -190,6 +190,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/LooperRv" />
 
+                <Button
+                    android:id="@+id/mBtnBehavior"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Behavior" />
+
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>

@@ -3,6 +3,7 @@
     package="com.memo.test">
 
     <application>
+        <activity android:name=".ui.bottomsheet.BottomSheetActivity"></activity>
         <activity android:name=".ui.looper.LooperRvActivity" />
         <activity android:name=".ui.rxjava.RxJavaActivity" />
         <activity android:name=".ui.location.LocationActivity" />
