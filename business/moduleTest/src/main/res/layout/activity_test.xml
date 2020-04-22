@@ -9,8 +9,8 @@
     android:orientation="vertical"
     android:overScrollMode="never"
     tools:context=".TestActivity">
-
-    <com.memo.widget.titleview.TitleView
+	
+	<com.memo.base.widget.titleview.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title_left_text="返回"
@@ -34,8 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-                <com.memo.widget.itemview.ItemView
+	
+	            <com.memo.base.widget.itemview.ItemView
                     android:id="@+id/mItem"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/dp50"

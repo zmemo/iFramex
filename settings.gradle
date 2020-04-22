@@ -8,6 +8,6 @@ include ':app',
 
         ':iFrame:iFramePay', ':iFrame:iFrameMap', ':iFrame:iFrameUMeng', ':iFrame:iFrameProguard',
 
-        ':iFrame:iFrameBase',':iFrame:iFrameWidget'
+        ':iFrame:iFrameBase'
 
 

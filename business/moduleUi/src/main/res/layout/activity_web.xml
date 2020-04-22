@@ -6,7 +6,7 @@
 	android:orientation="vertical"
 	tools:context=".web.WebActivity">
 	
-	<com.memo.widget.titleview.TitleView
+	<com.memo.base.widget.titleview.TitleView
 		android:id="@+id/mTitleView"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content" />

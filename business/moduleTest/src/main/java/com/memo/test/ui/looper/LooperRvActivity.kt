@@ -5,8 +5,8 @@ import androidx.recyclerview.widget.PagerSnapHelper
 import com.memo.base.base.activity.BaseActivity
 import com.memo.base.tool.adapter.recyclerview.BaseRecyclerAdapter
 import com.memo.base.tool.adapter.recyclerview.ViewHolder
+import com.memo.base.widget.recyclerview.layoutmanager.LooperLayoutManager
 import com.memo.test.R
-import com.memo.widget.recyclerview.layoutmanager.LooperLayoutManager
 import kotlinx.android.synthetic.main.activity_looper_rv.*
 
 /**

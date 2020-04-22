@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.bottom.BottomActivity">
-
-    <com.memo.widget.titleview.TitleView
+	
+	<com.memo.base.widget.titleview.TitleView
         android:id="@+id/mTitleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,8 +26,8 @@
         android:id="@+id/mTabBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-    <com.memo.widget.bottomnavigationbar.BottomNavigationViewEx
+	
+	<com.memo.base.widget.bottomnavigationbar.BottomNavigationViewEx
         android:id="@+id/mBottomBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

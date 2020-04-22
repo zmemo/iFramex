@@ -7,7 +7,7 @@
 	android:orientation="vertical"
 	tools:context=".ui.share.ShareFromActivity">
 	
-	<com.memo.widget.titleview.TitleView
+	<com.memo.base.widget.titleview.TitleView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:title_title_text="共享元素" />

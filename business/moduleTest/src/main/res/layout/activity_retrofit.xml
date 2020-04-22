@@ -8,7 +8,7 @@
 	android:padding="@dimen/dp_10"
 	tools:context=".ui.retrofit.RetrofitActivity">
 	
-	<com.memo.widget.titleview.TitleView
+	<com.memo.base.widget.titleview.TitleView
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		app:title_title_text="网络下载" />

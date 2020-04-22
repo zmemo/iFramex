@@ -12,12 +12,8 @@ package com.memo.test.ui.rxjava
  */
 object RxJavaDataUtils {
 
-    fun getData(listener: RxJavaListener) {
-        Thread.sleep(2000)
-        listener.onResponse("这就是数据")
-    }
+	fun getData(callback: (String) -> Unit) {
+		callback("这就是数据")
+	}
 
-    interface RxJavaListener {
-        fun onResponse(data: String)
-    }
 }

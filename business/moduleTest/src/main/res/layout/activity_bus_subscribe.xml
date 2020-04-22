@@ -6,8 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.bus.BusSubscribeActivity">
-
-    <com.memo.widget.titleview.TitleView
+	
+	<com.memo.base.widget.titleview.TitleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title_title_text="RxBus接收" />
@@ -18,16 +18,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="跳转发送界面" />
-
-    <com.memo.widget.textview.AlignTextView
+	
+	<com.memo.base.widget.textview.AlignTextView
         android:id="@+id/mTv1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/dp15"
         android:text="Tempo的微软Kinect运动传感器每秒对你扫描30次，如果动作有误，它就会通知你。它安装在一个设计仪。其核心形Every single 橱炼用的垫、恢复泡 product in the market took a piece of equipme加重量、训练nt out of a gym and slapped a screen on it says Tempo CEO an一种健成反d co-他们安全锻founder Moawia Eldeeb. You need t柜里，柜里整齐地收纳锻o be able to see a 杠铃、哑铃、附user to actually be able to give精巧的独立式和心率监护 them guidance so they can work " />
-
-    <com.memo.widget.textview.AlignEnTextView
+	
+	<com.memo.base.widget.textview.AlignEnTextView
         android:id="@+id/mTv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

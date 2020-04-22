@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">iFrameTool</string>
+	<string name="app_name">iFrameBase</string>
 
     <string name="tip_title">提示</string>
     <string name="tip_positive">确定</string>
