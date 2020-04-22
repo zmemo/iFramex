@@ -1,11 +1,11 @@
 package com.memo.test.ui.recyclerview.multi
 
+import com.memo.base.tool.adapter.recyclerview.BaseMultiAdapter
+import com.memo.base.tool.adapter.recyclerview.BaseMultiProvider
 import com.memo.test.entity.MultiEntity
 import com.memo.test.ui.recyclerview.multi.provider.ImageMultiProvider
 import com.memo.test.ui.recyclerview.multi.provider.TextImageMultiProvider
 import com.memo.test.ui.recyclerview.multi.provider.TextMultiProvider
-import com.memo.tool.adapter.recyclerview.BaseMultiAdapter
-import com.memo.tool.adapter.recyclerview.BaseMultiProvider
 
 /**
  * title:

@@ -1,11 +1,11 @@
 package com.memo.test.ui.recyclerview.grid.provider
 
 import android.content.Context
+import com.memo.base.tool.adapter.recyclerview.BaseMultiProvider
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
 import com.memo.test.R
 import com.memo.test.entity.GridMulti
 import com.memo.test.entity.MultiEntity
-import com.memo.tool.adapter.recyclerview.BaseMultiProvider
-import com.memo.tool.adapter.recyclerview.ViewHolder
 
 /**
  * title:

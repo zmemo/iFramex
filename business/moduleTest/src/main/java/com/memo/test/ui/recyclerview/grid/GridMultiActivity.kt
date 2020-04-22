@@ -3,12 +3,12 @@ package com.memo.test.ui.recyclerview.grid
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.SimpleItemAnimator
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.delay
+import com.memo.base.tool.helper.GsonHelper
 import com.memo.test.R
 import com.memo.test.entity.GridMulti
 import com.memo.test.entity.MultiEntity
 import com.memo.test.tool.DataFactory
-import com.memo.tool.ext.delay
-import com.memo.tool.helper.GsonHelper
 import com.oushangfeng.pinnedsectionitemdecoration.PinnedHeaderItemDecoration
 import kotlinx.android.synthetic.main.activity_grid_multi.*
 

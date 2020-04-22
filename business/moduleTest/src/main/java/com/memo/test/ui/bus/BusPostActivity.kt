@@ -1,10 +1,10 @@
 package com.memo.test.ui.bus
 
+import com.memo.base.base.activity.BaseActivity
 import com.memo.base.entity.event.PostEvent
 import com.memo.base.manager.bus.BusManager
-import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.onClick
 import com.memo.test.R
-import com.memo.tool.ext.onClick
 import kotlinx.android.synthetic.main.activity_bus_post.*
 
 class BusPostActivity : BaseActivity() {

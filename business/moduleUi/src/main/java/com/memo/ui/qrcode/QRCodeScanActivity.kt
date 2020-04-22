@@ -4,12 +4,12 @@ import android.app.Activity
 import android.content.Intent
 import cn.bingoogolapple.qrcode.core.QRCodeView
 import com.alibaba.android.arouter.facade.annotation.Route
-import com.memo.base.manager.router.RouterPath
 import com.memo.base.base.activity.BaseActivity
-import com.memo.tool.ext.finishActivityWithResult
-import com.memo.tool.ext.startActivityForResult
-import com.memo.tool.helper.MediaHelper
-import com.memo.tool.helper.QRCodeHelper
+import com.memo.base.manager.router.RouterPath
+import com.memo.base.tool.ext.finishActivityWithResult
+import com.memo.base.tool.ext.startActivityForResult
+import com.memo.base.tool.helper.MediaHelper
+import com.memo.base.tool.helper.QRCodeHelper
 import com.memo.ui.R
 import com.zhihu.matisse.Matisse
 import kotlinx.android.synthetic.main.activity_qr_code_scan.*

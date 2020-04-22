@@ -15,8 +15,8 @@
 	<!--  页面跳转动画	-->
 	<style name="AnimationActivity" parent="@android:style/Animation.Activity">
 		<item name="android:activityOpenEnterAnimation">@anim/slide_in_from_right</item>
-		<item name="android:activityOpenExitAnimation">@anim/fade_hide</item>
-		<item name="android:activityCloseEnterAnimation">@anim/fade_show</item>
+		<item name="android:activityOpenExitAnimation">@anim/activity_fade_hide</item>
+		<item name="android:activityCloseEnterAnimation">@anim/activity_fade_show</item>
 		<item name="android:activityCloseExitAnimation">@anim/slide_out_to_right</item>
 	</style>
 	

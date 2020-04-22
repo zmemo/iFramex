@@ -1,10 +1,10 @@
 package com.memo.test.ui.map
 
-import com.memo.base.manager.router.RouterManager
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.manager.router.RouterManager
+import com.memo.base.tool.ext.onClick
+import com.memo.base.tool.helper.NavigationHelper
 import com.memo.test.R
-import com.memo.tool.ext.onClick
-import com.memo.tool.helper.NavigationHelper
 import kotlinx.android.synthetic.main.activity_map.*
 
 

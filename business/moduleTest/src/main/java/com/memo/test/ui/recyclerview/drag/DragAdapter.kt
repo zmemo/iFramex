@@ -1,10 +1,10 @@
 package com.memo.test.ui.recyclerview.drag
 
 import com.chad.library.adapter.base.BaseItemDraggableAdapter
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
+import com.memo.base.tool.helper.ImageLoadHelper
 import com.memo.test.R
 import com.memo.test.entity.MultiEntity
-import com.memo.tool.adapter.recyclerview.ViewHolder
-import com.memo.tool.helper.ImageLoadHelper
 
 /**
  * title:

@@ -1,10 +1,10 @@
 package com.memo.test.ui.bottomsheet
 
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.memo.base.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
+import com.memo.base.tool.dialog.dialog.BaseBottomSheetDialog
 import com.memo.test.R
-import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
-import com.memo.tool.adapter.recyclerview.ViewHolder
-import com.memo.tool.dialog.dialog.BaseBottomSheetDialog
 import kotlinx.android.synthetic.main.dialog_action_bottom_sheet.view.*
 
 /**

@@ -7,9 +7,9 @@ import com.blankj.utilcode.util.LogUtils
 import com.chad.library.adapter.base.callback.ItemDragAndSwipeCallback
 import com.chad.library.adapter.base.listener.OnItemDragListener
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.toast
 import com.memo.test.R
 import com.memo.test.entity.MultiEntity
-import com.memo.tool.ext.toast
 import kotlinx.android.synthetic.main.activity_drag_rv.*
 
 class DragRvActivity : BaseActivity() {

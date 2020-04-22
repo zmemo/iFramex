@@ -2,9 +2,9 @@ package com.memo.test.ui.anim
 
 import android.os.Build
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.onClick
+import com.memo.base.tool.helper.AnimHelper
 import com.memo.test.R
-import com.memo.tool.ext.onClick
-import com.memo.tool.helper.AnimHelper
 import kotlinx.android.synthetic.main.activity_anim.*
 
 

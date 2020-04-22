@@ -1,8 +1,8 @@
 package com.memo.test.ui.status
 
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.adapter.BaseFragmentPagerAdapter
 import com.memo.test.R
-import com.memo.tool.adapter.BaseFragmentPagerAdapter
 import kotlinx.android.synthetic.main.activity_load_sir.*
 
 /**

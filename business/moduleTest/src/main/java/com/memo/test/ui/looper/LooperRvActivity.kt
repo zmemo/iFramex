@@ -3,9 +3,9 @@ package com.memo.test.ui.looper
 import android.widget.TextView
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
 import com.memo.test.R
-import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
-import com.memo.tool.adapter.recyclerview.ViewHolder
 import com.memo.widget.recyclerview.layoutmanager.LooperLayoutManager
 import kotlinx.android.synthetic.main.activity_looper_rv.*
 

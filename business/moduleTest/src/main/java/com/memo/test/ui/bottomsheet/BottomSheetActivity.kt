@@ -5,9 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
 import com.memo.test.R
-import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
-import com.memo.tool.adapter.recyclerview.ViewHolder
 import kotlinx.android.synthetic.main.activity_bottom_sheet.*
 
 class BottomSheetActivity : BaseActivity() {

@@ -3,9 +3,9 @@ package com.memo.test.ui.status
 
 import com.kingja.loadsir.core.LoadService
 import com.memo.base.base.fragment.BaseFragment
+import com.memo.base.tool.ext.delay
+import com.memo.base.tool.ext.toast
 import com.memo.test.R
-import com.memo.tool.ext.delay
-import com.memo.tool.ext.toast
 import kotlinx.android.synthetic.main.fragment_lazy.*
 
 /**

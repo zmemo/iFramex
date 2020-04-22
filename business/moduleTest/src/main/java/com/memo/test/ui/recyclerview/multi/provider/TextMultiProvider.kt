@@ -1,11 +1,11 @@
 package com.memo.test.ui.recyclerview.multi.provider
 
 import android.content.Context
+import com.memo.base.tool.adapter.recyclerview.BaseMultiProvider
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
 import com.memo.test.R
 import com.memo.test.entity.Multi
 import com.memo.test.entity.MultiEntity
-import com.memo.tool.adapter.recyclerview.BaseMultiProvider
-import com.memo.tool.adapter.recyclerview.ViewHolder
 
 /**
  * title:文字类型

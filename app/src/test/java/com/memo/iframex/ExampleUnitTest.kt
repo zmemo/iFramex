@@ -1,6 +1,6 @@
 package com.memo.iframex
 
-import com.memo.tool.helper.GsonHelper
+import com.memo.base.tool.helper.GsonHelper
 import org.junit.Test
 
 /**

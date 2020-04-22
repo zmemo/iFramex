@@ -2,11 +2,11 @@ package com.memo.test.ui.notification
 
 import com.blankj.utilcode.util.LogUtils
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.io2MainLifecycle
+import com.memo.base.tool.ext.onClick
+import com.memo.base.tool.helper.NotificationHelper
 import com.memo.test.R
 import com.memo.test.ui.config.TestConfig
-import com.memo.tool.ext.io2MainLifecycle
-import com.memo.tool.ext.onClick
-import com.memo.tool.helper.NotificationHelper
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_notification.*
 import java.util.concurrent.TimeUnit

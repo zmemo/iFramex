@@ -6,8 +6,8 @@ import android.view.View
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.onClick
 import com.memo.test.R
-import com.memo.tool.ext.onClick
 import kotlinx.android.synthetic.main.activity_share_from.*
 
 class ShareFromActivity : BaseActivity() {

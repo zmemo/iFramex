@@ -2,8 +2,8 @@ package com.memo.test.ui.bottom
 
 import android.view.MenuItem
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.toastCenter
 import com.memo.test.R
-import com.memo.tool.ext.toastCenter
 import com.memo.widget.bottomnavigationbar.OnItemChangeListener
 import kotlinx.android.synthetic.main.activity_bottom.*
 

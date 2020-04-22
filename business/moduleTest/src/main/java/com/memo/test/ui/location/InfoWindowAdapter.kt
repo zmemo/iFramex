@@ -3,9 +3,9 @@ package com.memo.test.ui.location
 import android.content.Context
 import android.view.View
 import com.amap.api.maps.model.Marker
+import com.memo.base.tool.ext.onClick
 import com.memo.map.infowindow.BaseInfoWindowAdapter
 import com.memo.test.R
-import com.memo.tool.ext.onClick
 import kotlinx.android.synthetic.main.layout_info_window.view.*
 
 /**

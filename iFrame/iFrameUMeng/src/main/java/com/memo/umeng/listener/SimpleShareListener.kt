@@ -1,7 +1,7 @@
 package com.memo.umeng.listener
 
 import com.blankj.utilcode.util.LogUtils
-import com.memo.tool.ext.toast
+import com.memo.base.tool.ext.toast
 import com.umeng.socialize.UMShareListener
 import com.umeng.socialize.bean.SHARE_MEDIA
 

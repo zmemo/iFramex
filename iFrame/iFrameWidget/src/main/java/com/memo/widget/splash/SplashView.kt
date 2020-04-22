@@ -6,9 +6,9 @@ import android.graphics.drawable.ColorDrawable
 import android.util.AttributeSet
 import android.view.animation.Animation
 import android.widget.FrameLayout
-import com.memo.tool.ext.*
-import com.memo.tool.helper.AnimHelper
-import com.memo.tool.simple.SimpleAnimationListener
+import com.memo.base.tool.ext.*
+import com.memo.base.tool.helper.AnimHelper
+import com.memo.base.tool.simple.SimpleAnimationListener
 import com.memo.widget.R
 import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.layout_splash_view.view.*

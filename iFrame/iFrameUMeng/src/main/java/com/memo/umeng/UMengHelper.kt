@@ -3,7 +3,7 @@ package com.memo.umeng
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import com.memo.tool.helper.PermissionHelper
+import com.memo.base.tool.helper.PermissionHelper
 import com.memo.umeng.listener.SimpleAuthListener
 import com.memo.umeng.listener.SimpleShareListener
 import com.umeng.socialize.ShareAction

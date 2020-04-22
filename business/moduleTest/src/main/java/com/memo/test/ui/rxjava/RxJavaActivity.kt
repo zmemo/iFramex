@@ -2,9 +2,9 @@ package com.memo.test.ui.rxjava
 
 import com.blankj.utilcode.util.LogUtils
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.io2MainLifecycle
+import com.memo.base.tool.ext.toObservable
 import com.memo.test.R
-import com.memo.tool.ext.io2MainLifecycle
-import com.memo.tool.ext.toObservable
 import io.reactivex.Observable
 import io.reactivex.functions.Function3
 

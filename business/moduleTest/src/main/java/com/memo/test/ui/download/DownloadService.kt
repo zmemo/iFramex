@@ -5,11 +5,11 @@ import android.content.Intent
 import com.blankj.utilcode.util.AppUtils
 import com.blankj.utilcode.util.LogUtils
 import com.blankj.utilcode.util.ToastUtils
+import com.memo.base.tool.app.BaseApp
+import com.memo.base.tool.ext.io2Main
+import com.memo.base.tool.helper.NotificationHelper
 import com.memo.test.ui.api.RetrofitClient
 import com.memo.test.ui.config.TestConfig
-import com.memo.tool.app.BaseApp
-import com.memo.tool.ext.io2Main
-import com.memo.tool.helper.NotificationHelper
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 import java.io.File
@@ -75,6 +75,15 @@ class DownloadService : IntentService("DownloadService") {
 
         override fun onDownLoadSuccess(file: File) {
             LogUtils.iTag("Down", "完成")
+	        // 最后发送一次 避免网速太快导致通知还没有变化
+	        NotificationHelper.sendProgressNotification(
+		        TestConfig.DOWNLOAD_NOTIFY_ID,
+		        TestConfig.DOWNLOAD_CHANNEL_ID,
+		        TestConfig.DOWNLOAD_CHANNEL_NAME,
+		        android.R.drawable.ic_dialog_dialer,
+		        "应用更新 - 100%",
+		        100
+	        )
             AppUtils.installApp(file)
         }
 

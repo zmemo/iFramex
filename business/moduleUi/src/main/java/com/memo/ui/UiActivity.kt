@@ -5,10 +5,10 @@ import android.content.Intent
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.memo.base.base.activity.BaseActivity
 import com.memo.base.manager.router.RouterPath
-import com.memo.tool.ext.onClick
-import com.memo.tool.ext.toast
-import com.memo.tool.helper.PermissionHelper
-import com.memo.tool.helper.QRCodeHelper
+import com.memo.base.tool.ext.onClick
+import com.memo.base.tool.ext.toast
+import com.memo.base.tool.helper.PermissionHelper
+import com.memo.base.tool.helper.QRCodeHelper
 import com.memo.ui.qrcode.QRCodeScanActivity
 import com.memo.ui.web.WebActivity
 import kotlinx.android.synthetic.main.activity_ui.*

@@ -5,11 +5,11 @@ import android.view.KeyEvent
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.blankj.utilcode.util.LogUtils
 import com.just.agentweb.AgentWeb
-import com.memo.base.manager.router.RouterPath
 import com.memo.base.base.activity.BaseActivity
-import com.memo.tool.ext.gone
-import com.memo.tool.ext.startActivity
-import com.memo.tool.helper.WebHelper
+import com.memo.base.manager.router.RouterPath
+import com.memo.base.tool.ext.gone
+import com.memo.base.tool.ext.startActivity
+import com.memo.base.tool.helper.WebHelper
 import com.memo.ui.R
 import kotlinx.android.synthetic.main.activity_web.*
 

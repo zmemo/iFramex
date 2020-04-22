@@ -2,8 +2,8 @@ package com.memo.base.manager.retrofit
 
 import com.memo.base.config.config.Config
 import com.memo.base.config.constant.Constant
-import com.memo.tool.helper.GsonHelper
-import com.memo.tool.http.interceptor.HttpLogInterceptor
+import com.memo.base.tool.helper.GsonHelper
+import com.memo.base.tool.http.interceptor.HttpLogInterceptor
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

@@ -8,9 +8,9 @@ import androidx.core.view.children
 import androidx.recyclerview.widget.GridLayoutManager
 import com.blankj.utilcode.util.LogUtils
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.color
+import com.memo.base.tool.ext.dimen
 import com.memo.test.R
-import com.memo.tool.ext.color
-import com.memo.tool.ext.dimen
 import kotlinx.android.synthetic.main.activity_drag.*
 
 

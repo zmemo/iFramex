@@ -1,7 +1,7 @@
 package com.memo.test.ui.download
 
 import androidx.annotation.IntRange
-import com.memo.tool.helper.IOHelper
+import com.memo.base.tool.helper.IOHelper
 import io.reactivex.disposables.Disposable
 import okhttp3.ResponseBody
 import java.io.File

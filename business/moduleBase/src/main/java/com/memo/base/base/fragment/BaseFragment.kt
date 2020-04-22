@@ -8,7 +8,7 @@ import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import com.memo.base.base.activity.BaseActivity
-import com.memo.tool.helper.OOMHelper
+import com.memo.base.tool.helper.OOMHelper
 
 /**
  * title:基础的Fragment

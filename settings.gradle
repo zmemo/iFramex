@@ -6,12 +6,8 @@ include ':app',
 
         ':business:moduleBase',
 
-        ':iFrame:iFrameWidget', ':iFrame:iFramePay', ':iFrame:iFrameMap', ':iFrame:iFrameUMeng',
+        ':iFrame:iFramePay', ':iFrame:iFrameMap', ':iFrame:iFrameUMeng', ':iFrame:iFrameProguard',
 
-        ':iFrame:iFrameTool',
-
-        ':iFrame:iFrameProguard',
-
-        ':iFrame:iFrameBasic'
+        ':iFrame:iFrameBase',':iFrame:iFrameWidget'
 
 

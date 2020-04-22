@@ -14,5 +14,5 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar','*.aar'])
-    implementation project(path: ':iFrame:iFrameTool')
+    implementation project(path: ':iFrame:iFrameBase')
 }

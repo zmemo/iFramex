@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
 import com.blankj.utilcode.util.BarUtils
 import com.blankj.utilcode.util.ScreenUtils
-import com.memo.tool.dialog.dialog.LoadingDialog
-import com.memo.tool.ext.inflaterView
-import com.memo.tool.helper.KeyboardHelper
-import com.memo.tool.helper.OOMHelper
-import com.memo.tool.helper.StatusBarHelper
+import com.memo.base.tool.dialog.dialog.LoadingDialog
+import com.memo.base.tool.ext.inflaterView
+import com.memo.base.tool.helper.KeyboardHelper
+import com.memo.base.tool.helper.OOMHelper
+import com.memo.base.tool.helper.StatusBarHelper
 
 /**
  * title:基础的Activity

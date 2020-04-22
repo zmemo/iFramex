@@ -10,7 +10,7 @@ import com.memo.base.BuildConfig
 import com.memo.base.R
 import com.memo.base.config.config.Config
 import com.memo.base.config.constant.Constant
-import com.memo.tool.app.BaseApp
+import com.memo.base.tool.app.BaseApp
 import com.memo.umeng.UMengManager
 import com.scwang.smartrefresh.layout.SmartRefreshLayout
 import com.scwang.smartrefresh.layout.footer.BallPulseFooter

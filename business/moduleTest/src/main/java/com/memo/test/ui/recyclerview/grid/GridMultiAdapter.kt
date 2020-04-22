@@ -1,9 +1,9 @@
 package com.memo.test.ui.recyclerview.grid
 
+import com.memo.base.tool.adapter.recyclerview.BaseMultiAdapter
+import com.memo.base.tool.adapter.recyclerview.BaseMultiProvider
 import com.memo.test.entity.MultiEntity
 import com.memo.test.ui.recyclerview.grid.provider.*
-import com.memo.tool.adapter.recyclerview.BaseMultiAdapter
-import com.memo.tool.adapter.recyclerview.BaseMultiProvider
 
 /**
  * title:

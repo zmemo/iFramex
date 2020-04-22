@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import com.memo.base.base.activity.BaseActivity
 import com.memo.base.manager.init.InitManager
 import com.memo.base.manager.router.RouterManager
-import com.memo.tool.ext.onClick
-import com.memo.tool.ext.toastCancel
-import com.memo.tool.helper.ClickHelper
-import com.memo.tool.helper.MediaHelper
-import com.memo.tool.helper.OOMHelper
+import com.memo.base.tool.ext.onClick
+import com.memo.base.tool.ext.toastCancel
+import com.memo.base.tool.helper.ClickHelper
+import com.memo.base.tool.helper.MediaHelper
+import com.memo.base.tool.helper.OOMHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 /**
@@ -28,7 +28,9 @@ class MainActivity : BaseActivity() {
 		InitManager.get().initInSplash()
 		//开启内存监听
 		OOMHelper.startMonitorLowMemory()
+		//创建缓存文件夹
 		MediaHelper.createLocalDir()
+
 		mBtnTest.onClick {
 			RouterManager.startLauncherTest()
 		}

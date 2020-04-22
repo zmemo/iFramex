@@ -2,11 +2,11 @@ package com.memo.test.ui.retrofit
 
 import android.annotation.SuppressLint
 import com.memo.base.base.activity.BaseMvpActivity
+import com.memo.base.tool.ext.onClick
+import com.memo.base.tool.helper.GsonHelper
 import com.memo.test.R
 import com.memo.test.entity.Wan
 import com.memo.test.entity.ZhiHuNews
-import com.memo.tool.ext.onClick
-import com.memo.tool.helper.GsonHelper
 import kotlinx.android.synthetic.main.activity_retrofit.*
 
 @SuppressLint("SetTextI18n")

@@ -3,10 +3,10 @@ package com.memo.test.ui.recyclerview.resume
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.memo.base.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
 import com.memo.test.R
 import com.memo.test.entity.SectionItem
-import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
-import com.memo.tool.adapter.recyclerview.ViewHolder
 
 /**
  * title:

@@ -3,11 +3,11 @@ package com.memo.test.ui.location
 import android.os.Bundle
 import com.blankj.utilcode.util.LogUtils
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.toast
+import com.memo.base.tool.helper.PermissionHelper
 import com.memo.map.infowindow.InfoWindowOverlay
 import com.memo.map.location.LocationHelper
 import com.memo.test.R
-import com.memo.tool.ext.toast
-import com.memo.tool.helper.PermissionHelper
 import kotlinx.android.synthetic.main.activity_location.*
 
 /**

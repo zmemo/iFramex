@@ -1,7 +1,7 @@
 package com.memo.base.application
 
 import com.memo.base.manager.init.InitManager
-import com.memo.tool.app.BaseApp
+import com.memo.base.tool.app.BaseApp
 
 /**
  * title:Application

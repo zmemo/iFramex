@@ -15,7 +15,7 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar','*.aar'])
-    implementation project(path: ':iFrame:iFrameTool')
+    implementation project(path: ':iFrame:iFrameBase')
     //定位
     api 'com.amap.api:location:4.7.2'
     //3D地图

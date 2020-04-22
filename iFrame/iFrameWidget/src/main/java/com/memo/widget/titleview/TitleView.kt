@@ -17,7 +17,7 @@ import androidx.annotation.ColorInt
 import androidx.annotation.DimenRes
 import androidx.annotation.DrawableRes
 import androidx.core.view.ViewCompat
-import com.memo.tool.ext.*
+import com.memo.base.tool.ext.*
 import com.memo.widget.R
 import kotlinx.android.synthetic.main.layout_title_view.view.*
 

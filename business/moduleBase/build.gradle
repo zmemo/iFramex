@@ -16,7 +16,7 @@ dependencies {
     //混淆
     api project(path: ':iFrame:iFrameProguard')
     //基础工具类
-    api project(path: ':iFrame:iFrameTool')
+    api project(path: ':iFrame:iFrameBase')
     //自定义控件
     api project(path: ':iFrame:iFrameWidget')
     //支付

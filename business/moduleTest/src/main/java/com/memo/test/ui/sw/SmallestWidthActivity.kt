@@ -4,9 +4,9 @@ import android.annotation.SuppressLint
 import android.util.DisplayMetrics
 import com.blankj.utilcode.util.ScreenUtils
 import com.memo.base.base.activity.BaseActivity
+import com.memo.base.tool.ext.dimen
+import com.memo.base.tool.ext.height
 import com.memo.test.R
-import com.memo.tool.ext.dimen
-import com.memo.tool.ext.height
 import kotlinx.android.synthetic.main.activity_smallest_width.*
 
 /**

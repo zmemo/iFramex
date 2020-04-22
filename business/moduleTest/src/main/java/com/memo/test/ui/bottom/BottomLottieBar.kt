@@ -7,9 +7,9 @@ import android.view.MotionEvent.ACTION_UP
 import android.view.ViewOutlineProvider
 import android.widget.FrameLayout
 import androidx.core.view.ViewCompat
+import com.memo.base.tool.ext.dimen
+import com.memo.base.tool.ext.inflaterView
 import com.memo.test.R
-import com.memo.tool.ext.dimen
-import com.memo.tool.ext.inflaterView
 import kotlinx.android.synthetic.main.layout_bottom_lottie.view.*
 
 /**

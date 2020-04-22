@@ -1,8 +1,8 @@
 package com.memo.test.ui.recyclerview.expand
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
-import com.memo.tool.adapter.recyclerview.BaseMultiAdapter
-import com.memo.tool.adapter.recyclerview.BaseMultiProvider
+import com.memo.base.tool.adapter.recyclerview.BaseMultiAdapter
+import com.memo.base.tool.adapter.recyclerview.BaseMultiProvider
 
 /**
  * title:

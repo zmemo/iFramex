@@ -1,7 +1,7 @@
 package com.memo.base.api
 
 import com.memo.base.base.mvp.IView
-import com.memo.tool.ext.toastCenter
+import com.memo.base.tool.ext.toastCenter
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.disposables.Disposable

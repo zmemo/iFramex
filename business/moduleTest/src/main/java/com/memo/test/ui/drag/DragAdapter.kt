@@ -1,8 +1,8 @@
 package com.memo.test.ui.drag
 
+import com.memo.base.tool.adapter.recyclerview.BaseRecyclerAdapter
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
 import com.memo.test.R
-import com.memo.tool.adapter.recyclerview.BaseRecyclerAdapter
-import com.memo.tool.adapter.recyclerview.ViewHolder
 
 /**
  * title:

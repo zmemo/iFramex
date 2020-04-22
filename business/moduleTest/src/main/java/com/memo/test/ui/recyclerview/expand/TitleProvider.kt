@@ -3,12 +3,12 @@ package com.memo.test.ui.recyclerview.expand
 import android.content.Context
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter
 import com.chad.library.adapter.base.entity.MultiItemEntity
+import com.memo.base.tool.adapter.recyclerview.BaseMultiProvider
+import com.memo.base.tool.adapter.recyclerview.ViewHolder
+import com.memo.base.tool.ext.onClick
 import com.memo.test.R
 import com.memo.test.entity.LevelMulti
 import com.memo.test.entity.LevelTitle
-import com.memo.tool.adapter.recyclerview.BaseMultiProvider
-import com.memo.tool.adapter.recyclerview.ViewHolder
-import com.memo.tool.ext.onClick
 
 /**
  * title:
